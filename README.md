@@ -1,5 +1,24 @@
 # Acolhe
 
+## Trabalho de GenAI e Vision nesta branch
+
+Branch `feat/genai-vision`, a partir da base `4a2d00f`. Consulte o [PRD com diagramas e critérios de aceite](docs/PRD_GENAI_VISION.md), o [plano GenAI](genai/PLAN.md), o [plano Vision](vision/PLAN.md) e a [validação desta branch](docs/VALIDACAO_GENAI_VISION.md). O [mapa Graphify](docs/knowledge/README.md) registra código e documentação de todas as disciplinas para orientar este trabalho.
+
+GenAI usa o modelo local opcional `qwen2.5:1.5b-instruct`, com contexto e saída limitados para CPU. O [guia do módulo](genai/README.md) contém instalação, diagnóstico e comparação reproduzível. A PWA mantém o modo curado quando o modelo não foi habilitado explicitamente.
+
+Vision agora permite preparar e auditar dados COCO locais, configurar treino CPU e enviar uma imagem de objetos pela PWA (`POST /api/vision/predict`, PNG/JPEG bruto, até 8 MiB, sem armazenamento). Sem checkpoint customizado, retorna 503. Dataset, treino real e aprovação humana de qualidade continuam requisitos de evidência; veja o [guia Vision](vision/README.md).
+
+Para verificar preparação/auditoria e toda a suíte com dependências leves em ambiente isolado:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r vision/requirements-data.txt
+.\.venv\Scripts\python.exe -B -m unittest discover -v
+node --test tests/frontend.test.cjs
+```
+
+O restante deste README descreve a base recebida e seus registros históricos; resultados da branch devem ser consultados no registro acima.
+
 
 ## Equipe
 

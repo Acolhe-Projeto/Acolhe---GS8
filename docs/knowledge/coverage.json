@@ -1,0 +1,640 @@
+{
+  "base_commit": "4a2d00f34c3eb570c90cc7b56822eea5f028fc3b",
+  "worktree_snapshot": true,
+  "code_files": 71,
+  "code_source_hashes": {
+    ".github/workflows/devsecops.yml": "b3561ed889f5fc1d5fc68c79d1d2f00738cc302f89a0a7150456960f0f084b5a",
+    ".github/workflows/evaluate-python-bases.yml": "66d804bd1e78f5f486aca6e7eeb9c06f0faf79c1ef82a421f3ae591240f6a71b",
+    "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/core.py": "e1bac14433b34917732070c82c66e31ee6a020a6101ef9bd87720e97b0a36f23",
+    "app/server.py": "e4328745d3e130cb04f5b0bb18c01f64d3a6eb68def796768205f1072def0065",
+    "app/static/app.js": "37f20347131ec5d0ac265aa430e1996823807f56330a95867125f185e2ad1e1c",
+    "app/static/lessons.json": "32c8f931120aa2b0ccf4741c043d4bf9640c27e0c20b870f4741f5274cdf7029",
+    "app/static/sw.js": "7bafc55428a29499c13c2a4ab57a6e113b2bdf3ee6ac4777051fa4d08dbecacf",
+    "app/static/vision.js": "44ee2349a1739d8a989c21621f5d184e0b8583c3d273de2265f9cb5d74751284",
+    "big_data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "big_data/airflow/acolhe_dag.py": "cb4ba6d2962f34af61e21c7fbdc1b191dea106aba60f404696b7b96b978ef1e2",
+    "big_data/airflow/official_sources_dag.py": "b25f3e65c86fbe775bc6d99e7669671a841667aee018025640e23792f05476a6",
+    "big_data/collect_official.py": "5f9aa3cfe6edb61019a634848fd7265b8b2894ca8ebd110a69ca9814de491ee7",
+    "big_data/databricks/medallion.py": "68ed01129dd44a1649bf147a9653ae9aac992a8d9ddc5f78fbc6ea078a1d5b20",
+    "big_data/output/summary.json": "42d6e8539b9a5a8a0c6c18ce8679a0520e9b393b8db8cb7462310ab218355b2c",
+    "big_data/pipeline.py": "eccd3849db60e9afd224b5e18f3bfef8e76fc9c6bddd441b621b34e4fd36a494",
+    "big_data/queries.sql": "08b842f78eccacbfe75299ef992cef124133cffdc549520365135df3dd05ce1f",
+    "big_data/test_collection.py": "ba7a35090033d54f9c25b2515560340f5455751f8902b18da1a78064c59606ae",
+    "big_data/test_copy_statement.py": "8fad2d911109aa255fb1150bd886cea691f86a1ac04d3f86d5d0ddaab321973f",
+    "big_data/test_deployment.py": "ba4cebaade78fbd78783556002126fed58567a85da6a76b10780f98918e804df",
+    "big_data/test_pipeline.py": "509450e07abd7965a7c11462b792c9b675f68b4a53d6fc28ccbcfab6b599029a",
+    "compose.yaml": "0ef3c41971526e32626901988b3788b579b7e42b5bba78e656aea0ba2f861f0c",
+    "devsecops/monitoring/alerts.yml": "d4fb8cd8fedb13a06951cb2aaffc28ddb8ccbd4ff0e523767a75a8682c60b907",
+    "devsecops/monitoring/grafana-dashboard.json": "94740234db01c95fa5b60f4e18863fc5b811b41ef96004b800555589259907e2",
+    "devsecops/monitoring/prometheus.yml": "80e0d74ab3114f1f085d6745feb32a56fb485d6cf1aad446c194a8f71d9ef884",
+    "devsecops/semgrep.yml": "01dc5e35e0e3f59a56c8cf8d2ec22caa9cd783ef46727c2a0dff054f6a6c28e7",
+    "devsecops/terraform/main.tf": "a720bfdc5a3f1641be7e3132dad7af776391d9f3e276273d93199653d993462f",
+    "docs/build_pdf.py": "116f63997bf7e80a417c1129bef06d0d4b479943fb254af0fa89c98c00158c69",
+    "docs/evidencias/documentacao-qa-20261107.json": "3cac41440601c7e2790a4a035a48e291897844cf8edfd374d6c43ec2f9aeff95",
+    "docs/evidencias/genai-vision-20261116.json": "964f4f5c74c33c224a5fc23ccd68a6b6d2793e1f8eaf556b34d7b716c866b419",
+    "docs/evidencias/revisao-sessao-copy-20261107T165112Z.json": "609d165b018ec4abcc6bfb056aab2f9bb2126c2f3013a9a7163f4ff0b3d57bf6",
+    "docs/evidencias/verificacao-20261107T133614Z.json": "2fa74f4d585c8000cb5a02b6c859368660361d5251ce717501ad47d5d87d8280",
+    "genai/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "genai/compare.py": "ed9c314ff2a2c1842893b12d8b78d13caa658cb0a5edf27ff0c418995bba7a26",
+    "genai/data/corpus.json": "701e419cd660c82ec99f412e1e38ec4d5d6d98c78f08a9658aff48545bab80f2",
+    "genai/evaluate.py": "5cc91f7e7c0971434c5e3359280fabd2e249dbecc6a88664111fe237d13b978d",
+    "genai/execute_notebook.py": "3a8327a6eec4c2f84e7022e0d23bed627619b67378f7082846d9f61420da4ca2",
+    "genai/experiment.py": "a6402f37b94ae7089595e17d196fe5d62678f6eb962226383b704937ed756cc2",
+    "genai/local.py": "66b9ca128a5b1a7ffb985c820c6eb027950cbc9b503d9c5f6db6b364dbce69b7",
+    "genai/reports/qwen05b-cpu-20261116.json": "925d142634545137a575f538048f729f0e42301b54258e4017cacae8a0083735",
+    "genai/reports/qwen05b-cpu-structured-20261116.json": "7f9231367c3d8126117d3fdc6beeb6a790b13c2e4aaf3475933305b5d87a859d",
+    "genai/reports/qwen15b-cpu-subset4-20261116.json": "db0b04624848246d888b1eaa0e068e10f8828f483679b84e0cb1c89936bae327",
+    "genai/reports/retrieval.json": "5429966c33634509d098dd0c8bda747c3b37892e4f5da68f3906f26e78bda79c",
+    "genai/reports/service-smoke-20261116.json": "f209994019ea4818ed4a04c90bbe3d932d1cf4fa022eeff77aae5c4ca7d48e4b",
+    "genai/reports/service-smoke15b-20261116.json": "d7cb19d4a3f3b6de589e5494735f475a4ab6055e4670bfad1da3b89bf53169c9",
+    "genai/service.py": "8bd8cc296b8bb703c4a02c3797fa20940acfb685e1875a54ade006822c27073b",
+    "genai/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "genai/tests/test_experiment.py": "ae592034b1b2a61c97f4b5082f94e1280fd088e1f9fe7b2ef98b30a5e215d8b6",
+    "genai/tests/test_service.py": "f01f63786f97d7f824bb79afc0ecbf91d6aeaca94b51db0485612a03a550fa38",
+    "robot/__init__.py": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+    "robot/service.py": "2fba8979aef95c93d11d1e4f747e09814912686c1bf60fdc9ffef64541fdbef0",
+    "robot/simulator.py": "27ce025171c8473e3269c192f5a42790b097141b03b2c04a98b64951c19a6d39",
+    "robot/test_robot.py": "f6fbcd017f767ac79d4e2d602d7c3b7325355bb21a440616604bce2024e01701",
+    "rpa/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rpa/robot.py": "665464ed3722a288ee292684a64d3118f64dd536268fa1d053a36e59dea03a3c",
+    "rpa/test_robot.py": "97465334c7c93492bd07c4fb480020c3f0ddd54c84e823a4e4b19a2449ed9caf",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/frontend.test.cjs": "85cd70569c39056c41fe6e54676122e66801e3c10a8652295e31cf9bd352ee88",
+    "tests/test_core.py": "50498c4d70933c4d153c91b260a461883e1ad6aa4d2562c44de6445d3e04f407",
+    "tests/test_http.py": "6e491a700e4df7146f193013065ae41dafbcb2c90a5d5e4ce88fd9fb1eb944be",
+    "vision/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "vision/audit.py": "1d864100d23c946182ddd1e91d4b6623c489f18d61667f249e825bdd8c50c8eb",
+    "vision/data/dataset.example.yaml": "1128a78f43feb2c53d34db4c98652b8a519c78b21ff773ebf3abdc3c23b99677",
+    "vision/data/provenance.example.json": "c8de387611be70de40a38e8b229611767e033d60753a7169977fda227c78688c",
+    "vision/prepare.py": "17b686c4c53758e6c6d09a0f88681dada01ff2b6525c0cf4a8f70b177c7fc61c",
+    "vision/service.py": "dc3c63c090d3a32905b5771a667117706c0b44d263d87c6c6e2735663cef8226",
+    "vision/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "vision/tests/test_dataset.py": "5ede96f459f659373c42600e2d45dc7c5a8e4c2dd87b4db0ed4db18677520d20",
+    "vision/tests/test_guards.py": "ddb2ef5c2f52834c1e11458650ba5bf0593ad2073813f78593925326c1255721",
+    "vision/tests/test_service.py": "9a0fd7449134fbd523ab993fed1f2637942e554593a2f452381d043a128c2547",
+    "vision/train.py": "b4a91d2c3270b9daec3b499241c823dccab89c41bd8c19c8cf41ef00e51453b4"
+  },
+  "ast_nodes": 461,
+  "ast_edges": 1035,
+  "unmodeled_code": [
+    "app/static/lessons.json",
+    "big_data/output/summary.json",
+    "devsecops/monitoring/grafana-dashboard.json",
+    "docs/evidencias/documentacao-qa-20261107.json",
+    "docs/evidencias/genai-vision-20261116.json",
+    "docs/evidencias/revisao-sessao-copy-20261107T165112Z.json",
+    "docs/evidencias/verificacao-20261107T133614Z.json",
+    "genai/data/corpus.json",
+    "genai/reports/qwen05b-cpu-20261116.json",
+    "genai/reports/qwen05b-cpu-structured-20261116.json",
+    "genai/reports/qwen15b-cpu-subset4-20261116.json",
+    "genai/reports/retrieval.json",
+    "genai/reports/service-smoke-20261116.json",
+    "genai/reports/service-smoke15b-20261116.json",
+    "vision/data/provenance.example.json"
+  ],
+  "reviewed_semantic_sources": [
+    ".dockerignore",
+    ".gitattributes",
+    ".gitignore",
+    "Dockerfile",
+    "IMPLEMENTATION_PLAN.md",
+    "Iniciar-Acolhe.cmd",
+    "README.md",
+    "app/static/fonts.css",
+    "app/static/icon.svg",
+    "app/static/index.html",
+    "app/static/logo.png",
+    "app/static/manifest.webmanifest",
+    "app/static/style.css",
+    "bi/indicadores.md",
+    "bi/roteiro_pitch.md",
+    "big_data/OFFICIAL_SOURCES.md",
+    "big_data/README.md",
+    "big_data/VERIFICATION.md",
+    "big_data/queries.sql",
+    "devsecops/Dockerfile.candidate",
+    "devsecops/README.md",
+    "devsecops/terraform/.gitignore",
+    "devsecops/terraform/terraform.tfvars.example",
+    "docs/PRD_GENAI_VISION.md",
+    "docs/README.md",
+    "docs/VALIDACAO_GENAI_VISION.md",
+    "docs/manual_acolhe.md",
+    "docs/manual_acolhe.pdf",
+    "docs/registro_testes.md",
+    "docs/roteiros_videos.md",
+    "genai/PLAN.md",
+    "genai/README.md",
+    "genai/notebooks/01_retrieval.ipynb",
+    "genai/notebooks/02_local_llm.ipynb",
+    "genai/reports/error_analysis.md",
+    "genai/reports/llm_error_analysis.md",
+    "genai/reports/qwen05b-cpu-20261116.json",
+    "genai/reports/qwen05b-cpu-structured-20261116.json",
+    "genai/reports/qwen15b-cpu-subset4-20261116.json",
+    "genai/reports/service-smoke-20261116.json",
+    "genai/reports/service-smoke15b-20261116.json",
+    "robot/README.md",
+    "robot/firmware/acolhe_safe/acolhe_safe.ino",
+    "rpa/README.md",
+    "rpa/processo.bpmn",
+    "vision/COCO_ASSESSMENT.md",
+    "vision/OPEN_IMAGES_ASSESSMENT.md",
+    "vision/PLAN.md",
+    "vision/README.md",
+    "vision/notebooks/01_train_real.ipynb",
+    "vision/requirements-data.txt",
+    "vision/requirements.txt"
+  ],
+  "stale_semantic_sources": [],
+  "structural_sources": {
+    "IMPLEMENTATION_PLAN.md": {
+      "lines": 12,
+      "sha256": "1e1584be981066c60cece8e3054d219657c0a7491e3f48780506f427b71ed135"
+    },
+    "README.md": {
+      "lines": 243,
+      "sha256": "ceea955429572e89479c88c22418718dc7a2ab5018137e6c3a9e8704d2add40c"
+    },
+    "app/static/index.html": {
+      "lines": 12,
+      "sha256": "e141d52c81e7d8f3204109ca0b86b491fc25c36b8f446e6c2054f440b8057564"
+    },
+    "bi/indicadores.md": {
+      "lines": 45,
+      "sha256": "c16e9d6aebbfb2ebabd1cf5f13d057afbf5811b580d7e8a74e9319d67c76257e"
+    },
+    "bi/roteiro_pitch.md": {
+      "lines": 78,
+      "sha256": "76ed1d53a65fd2f761a9b5211702f02e78b071909fb9d025c9bdf7450abfa15c"
+    },
+    "big_data/OFFICIAL_SOURCES.md": {
+      "lines": 30,
+      "sha256": "19c42d1c3dfbd0d5a1c084db0595142dc2314583332c2d21e104750153c8aab6"
+    },
+    "big_data/README.md": {
+      "lines": 50,
+      "sha256": "2694f1592c6df3af647bd1fc2edb988b131b3fab06d12b26e7f19ca18cd638e4"
+    },
+    "big_data/VERIFICATION.md": {
+      "lines": 23,
+      "sha256": "40a98e40ec3fa6361c798ee123d74439e315e93f142cb0ed81534214cb36ada2"
+    },
+    "devsecops/README.md": {
+      "lines": 57,
+      "sha256": "d8df0b06d0a515c5b12e553baab0ec8ab1d495724d962a0165419bc6d3963faa"
+    },
+    "docs/PRD_GENAI_VISION.md": {
+      "lines": 112,
+      "sha256": "810a1115e9b676eb325289fcbf2e7d8018f15933624e80fb332b7e5ecd995d16"
+    },
+    "docs/README.md": {
+      "lines": 34,
+      "sha256": "01daa07f9d2906e428f49f074c88dc3b196942437156a947a0cdacf89ebaded3"
+    },
+    "docs/VALIDACAO_GENAI_VISION.md": {
+      "lines": 91,
+      "sha256": "9a4d0e88c8116550a189db13b07723cbb7551d3928534ddafe7391996f33fac7"
+    },
+    "docs/manual_acolhe.md": {
+      "lines": 283,
+      "sha256": "d4ca4bf0d9bb0ff5f28dc4fdaa877add1720196cc9f7479fa1e7c04b81af01ab"
+    },
+    "docs/registro_testes.md": {
+      "lines": 63,
+      "sha256": "9f9cdade5dda458a0aeb1b56e663a48de2329d618fa32fae69b1020501f4a09a"
+    },
+    "docs/roteiros_videos.md": {
+      "lines": 69,
+      "sha256": "0fe65bfd163b60f4e7e7d6fdf1024d3a2e597048665dd465ec2edc6a55855f54"
+    },
+    "genai/PLAN.md": {
+      "lines": 68,
+      "sha256": "2c1746ef01251cedad7bfb087a282ad572b3f485a728880712e9982b5f1c98fc"
+    },
+    "genai/README.md": {
+      "lines": 76,
+      "sha256": "8f6b6cd54c4e34a8c003ca6240b46fcd92e0a7b20f8c03bc19e50f9042839133"
+    },
+    "genai/reports/error_analysis.md": {
+      "lines": 12,
+      "sha256": "9e5acad630503bc1235d2ee5515ff542e47b088c666d369de7a8e77153962250"
+    },
+    "genai/reports/llm_error_analysis.md": {
+      "lines": 85,
+      "sha256": "1e9391cdc23247b7979a24d2b596a0296f24d960c5d7641bb584002ae963bf86"
+    },
+    "genai/reports/qwen05b-cpu-20261116.review.md": {
+      "lines": 71,
+      "sha256": "a110c86be6eb5d1106afef14cae0bcf4cecdb7723e0951031b58e62f06a18ea5"
+    },
+    "genai/reports/qwen05b-cpu-structured-20261116.review.md": {
+      "lines": 71,
+      "sha256": "3137457d6c9e2da4e627fed03c0055e2e13c66912ea43496f6e36d430a8e3bd7"
+    },
+    "genai/reports/qwen15b-cpu-subset4-20261116.review.md": {
+      "lines": 23,
+      "sha256": "cbb8ac746e9f78a9980901ea913c05701bc8b8a9b2a49a8eee7af49497145c08"
+    },
+    "robot/README.md": {
+      "lines": 39,
+      "sha256": "0fa39ffc15e06e3a050cce074858a9938beff195ff990ddeba4a00e123e8089e"
+    },
+    "rpa/README.md": {
+      "lines": 28,
+      "sha256": "8ea40898d32946300a687f6368a4f138051fe70ff6fd5dee91a3769ee25894d4"
+    },
+    "vision/COCO_ASSESSMENT.md": {
+      "lines": 25,
+      "sha256": "2de94080d08b0c837c0cf90b20807b17ba92fc1fe3e7780da66b32c333b8b94e"
+    },
+    "vision/OPEN_IMAGES_ASSESSMENT.md": {
+      "lines": 51,
+      "sha256": "9b00f331e060382f00fd1ae16586852645b39839be12971dd53365305810a40a"
+    },
+    "vision/PLAN.md": {
+      "lines": 86,
+      "sha256": "17d20cd9cf538ea97e40f3fff1a09617200f750555e5d018a5ef8bdc0dd897f6"
+    },
+    "vision/README.md": {
+      "lines": 68,
+      "sha256": "f6952875c89819528c0b9be094983fce63058c34e925cb1ec9c81eabae3807c4"
+    },
+    "vision/requirements-data.txt": {
+      "lines": 3,
+      "sha256": "1922c43f7c3b33c5617eae55ce77a27538539dbcd225cc40e8fe2c575a3ad3ef"
+    },
+    "vision/requirements.txt": {
+      "lines": 4,
+      "sha256": "0cdfa6237a4664dc70bdfa231848a4c0b7f3fa35b8f0fcb235a471592a21dd54"
+    },
+    "docs/manual_acolhe.pdf": {
+      "lines": 393,
+      "sha256": "aacd8b1403ddc2a9f3e59132ae798259d5c578f218122ff81980f87179021d87"
+    },
+    "app/static/lessons.json": {
+      "lines": 1,
+      "sha256": "32c8f931120aa2b0ccf4741c043d4bf9640c27e0c20b870f4741f5274cdf7029"
+    },
+    "big_data/output/summary.json": {
+      "lines": 44,
+      "sha256": "42d6e8539b9a5a8a0c6c18ce8679a0520e9b393b8db8cb7462310ab218355b2c"
+    },
+    "devsecops/monitoring/grafana-dashboard.json": {
+      "lines": 1,
+      "sha256": "94740234db01c95fa5b60f4e18863fc5b811b41ef96004b800555589259907e2"
+    },
+    "docs/evidencias/documentacao-qa-20261107.json": {
+      "lines": 15,
+      "sha256": "3cac41440601c7e2790a4a035a48e291897844cf8edfd374d6c43ec2f9aeff95"
+    },
+    "docs/evidencias/genai-vision-20261116.json": {
+      "lines": 39,
+      "sha256": "964f4f5c74c33c224a5fc23ccd68a6b6d2793e1f8eaf556b34d7b716c866b419"
+    },
+    "docs/evidencias/revisao-sessao-copy-20261107T165112Z.json": {
+      "lines": 46,
+      "sha256": "609d165b018ec4abcc6bfb056aab2f9bb2126c2f3013a9a7163f4ff0b3d57bf6"
+    },
+    "docs/evidencias/verificacao-20261107T133614Z.json": {
+      "lines": 71,
+      "sha256": "2fa74f4d585c8000cb5a02b6c859368660361d5251ce717501ad47d5d87d8280"
+    },
+    "genai/data/corpus.json": {
+      "lines": 74,
+      "sha256": "701e419cd660c82ec99f412e1e38ec4d5d6d98c78f08a9658aff48545bab80f2"
+    },
+    "genai/reports/qwen05b-cpu-20261116.json": {
+      "lines": 1361,
+      "sha256": "925d142634545137a575f538048f729f0e42301b54258e4017cacae8a0083735"
+    },
+    "genai/reports/qwen05b-cpu-structured-20261116.json": {
+      "lines": 1279,
+      "sha256": "7f9231367c3d8126117d3fdc6beeb6a790b13c2e4aaf3475933305b5d87a859d"
+    },
+    "genai/reports/qwen15b-cpu-subset4-20261116.json": {
+      "lines": 253,
+      "sha256": "db0b04624848246d888b1eaa0e068e10f8828f483679b84e0cb1c89936bae327"
+    },
+    "genai/reports/retrieval.json": {
+      "lines": 137,
+      "sha256": "5429966c33634509d098dd0c8bda747c3b37892e4f5da68f3906f26e78bda79c"
+    },
+    "genai/reports/service-smoke-20261116.json": {
+      "lines": 41,
+      "sha256": "f209994019ea4818ed4a04c90bbe3d932d1cf4fa022eeff77aae5c4ca7d48e4b"
+    },
+    "genai/reports/service-smoke15b-20261116.json": {
+      "lines": 41,
+      "sha256": "d7cb19d4a3f3b6de589e5494735f475a4ab6055e4670bfad1da3b89bf53169c9"
+    },
+    "vision/data/provenance.example.json": {
+      "lines": 33,
+      "sha256": "c8de387611be70de40a38e8b229611767e033d60753a7169977fda227c78688c"
+    },
+    ".dockerignore": {
+      "lines": 10,
+      "sha256": "941bb4c4c90b112f89629d5b354763059103bfa945e2babf389ad64c379bd1cc"
+    },
+    ".gitattributes": {
+      "lines": 8,
+      "sha256": "b0d7b4e6517c3891370cb60c97aabee45b102f468a068db89b07cf96a418cc74"
+    },
+    ".gitignore": {
+      "lines": 54,
+      "sha256": "23c27f94dab51b22a4057364e05021f47f46a7ab9b372142f2af6db223a9bda3"
+    },
+    "Dockerfile": {
+      "lines": 18,
+      "sha256": "0c6376c8ec507954970abcf09cb86a3eefbfc486ef68620f7e29afc880924a28"
+    },
+    "Iniciar-Acolhe.cmd": {
+      "lines": 8,
+      "sha256": "fe66913385ada4225440722a1ea6274cb4b56b986f8ba0d5997c84c945188a7c"
+    },
+    "app/static/fonts.css": {
+      "lines": 1,
+      "sha256": "43ac933031448649d22154875c5fc8f52b55f2a58dd0c472af9378470bf0c9f4"
+    },
+    "app/static/manifest.webmanifest": {
+      "lines": 1,
+      "sha256": "291988502150e6b5b17296acd120fd985432e2360c9a91e2569585794024fcee"
+    },
+    "app/static/style.css": {
+      "lines": 3,
+      "sha256": "08abb889830658628dabf36a2ec87a8ecd8818aff21b5ca9a88f82c528862735"
+    },
+    "big_data/input/demand_2026-11-05.csv": {
+      "lines": 3,
+      "sha256": "cbffa9b2064cf567bfc20bac09a61e7162f258879a7d42a2909350b598b299af"
+    },
+    "big_data/input/demand_2026-11-06.csv": {
+      "lines": 3,
+      "sha256": "0cbf7f38658bb03dc97a7ebc4755be850faf87eb49e0546e5215b9405c5d6a2d"
+    },
+    "big_data/input/services_2026-11-05.csv": {
+      "lines": 3,
+      "sha256": "a874d662d860c189cdeae94c37d7c5951870516101ee8b938d6d72fd9ffc275f"
+    },
+    "big_data/input/services_2026-11-06.csv": {
+      "lines": 3,
+      "sha256": "9afc943e8047b7e6d4077242c3806c0f7ebea0b43f9312e9ca5c2494cac02ff1"
+    },
+    "devsecops/Dockerfile.candidate": {
+      "lines": 17,
+      "sha256": "2a5896ec084d89e8f865369d3cafee6ece7f1fafeb0f0350b72823de9577af16"
+    },
+    "devsecops/terraform/.gitignore": {
+      "lines": 5,
+      "sha256": "c122ced4162b390a5e1e56fbd4c764f2260b5fe4c1397c3c9158641839d9c87f"
+    },
+    "devsecops/terraform/terraform.tfvars.example": {
+      "lines": 5,
+      "sha256": "301536fd13465f021016c952b6d697707e335e0fbdb89bd470be1faafea0080a"
+    },
+    "genai/notebooks/01_retrieval.ipynb": {
+      "lines": 209,
+      "sha256": "531f94b17a3d95c0f95eea63d06c8d5490c0ba239702b2e6a2f4bf37333115a4"
+    },
+    "genai/notebooks/02_local_llm.ipynb": {
+      "lines": 84,
+      "sha256": "a5679619911108ea6a816c36cbf38e24157c114325f9a68a23d333e24998c18a"
+    },
+    "robot/firmware/acolhe_safe/acolhe_safe.ino": {
+      "lines": 35,
+      "sha256": "a7a8954e4ca2dcd92debf8a670cc2c3f0779656a8fd0aab6a51f5dfa9c4c0b9f"
+    },
+    "rpa/processo.bpmn": {
+      "lines": 6,
+      "sha256": "e1ac08c3b61828e4ec9816ee3d5b8b4b7a88e03b802c9c1ce923a5456954099a"
+    },
+    "vision/notebooks/01_train_real.ipynb": {
+      "lines": 33,
+      "sha256": "d7d0a3d9ada8d1adb6ea9d8aa46270ddd132616a2e2d60456ef7e19981e00679"
+    }
+  },
+  "token_usage": null,
+  "token_usage_reason": "Host agent usage not exposed",
+  "graph_nodes": 864,
+  "graph_edges": 1406,
+  "communities": 65,
+  "health": {
+    "node_count": 815,
+    "unverified_node_count": 0,
+    "raw_edge_count": 1508,
+    "non_object_edges": 0,
+    "missing_endpoint_edges": 0,
+    "dangling_endpoint_edges": 231,
+    "external_reference_edges": 4,
+    "self_loop_edges": 0,
+    "valid_candidate_edges": 1273,
+    "exact_duplicate_edges": 1,
+    "directed_unique_endpoint_pairs": 1173,
+    "directed_same_endpoint_collapsed_edges": 100,
+    "undirected_unique_endpoint_pairs": 1172,
+    "undirected_same_endpoint_collapsed_edges": 101,
+    "same_endpoint_group_count": 56,
+    "relation_variant_groups": 21,
+    "source_file_variant_groups": 0,
+    "source_location_variant_groups": 34,
+    "context_variant_groups": 1,
+    "post_build_graph_type": "Graph",
+    "post_build_node_count": 864,
+    "post_build_edge_count": 1406,
+    "post_build_error": "",
+    "producer_suppression": {
+      "path": "C:\\Users\\hyeon\\AppData\\Roaming\\uv\\tools\\graphifyy\\Lib\\site-packages\\graphify\\extract.py",
+      "total_sites": 12,
+      "sites": [
+        {
+          "line": 1901,
+          "name": "seen_ids",
+          "tuple_arity": 0,
+          "sample": "seen_ids = {n[\"id\"] for n in nodes}"
+        },
+        {
+          "line": 2596,
+          "name": "seen_ids",
+          "tuple_arity": 0,
+          "sample": "seen_ids = {n[\"id\"] for n in nodes}"
+        },
+        {
+          "line": 2598,
+          "name": "seen_doc_refs",
+          "tuple_arity": 0,
+          "sample": "seen_doc_refs: set[str] = set()"
+        },
+        {
+          "line": 3265,
+          "name": "seen_ids",
+          "tuple_arity": 0,
+          "sample": "seen_ids: set[str] = {n[\"id\"] for n in nodes}"
+        },
+        {
+          "line": 3412,
+          "name": "seen_ids",
+          "tuple_arity": 0,
+          "sample": "seen_ids = {n.get(\"id\") for n in nodes}"
+        },
+        {
+          "line": 5147,
+          "name": "seen_keys",
+          "tuple_arity": 0,
+          "sample": "seen_keys: set[tuple] = set()"
+        },
+        {
+          "line": 5333,
+          "name": "seen_keys",
+          "tuple_arity": 0,
+          "sample": "seen_keys: set[tuple] = set()"
+        },
+        {
+          "line": 10022,
+          "name": "seen_ids",
+          "tuple_arity": 0,
+          "sample": "seen_ids: set[str] = set()"
+        },
+        {
+          "line": 10130,
+          "name": "seen_ids",
+          "tuple_arity": 0,
+          "sample": "seen_ids: set[str] = set()"
+        },
+        {
+          "line": 10209,
+          "name": "seen_ids",
+          "tuple_arity": 0,
+          "sample": "seen_ids: set[str] = set()"
+        },
+        {
+          "line": 10734,
+          "name": "seen_ids",
+          "tuple_arity": 0,
+          "sample": "seen_ids: set[str] = set()"
+        },
+        {
+          "line": 10735,
+          "name": "seen_edges",
+          "tuple_arity": 4,
+          "sample": "seen_edges: set[tuple[str, str, str, str | None]] = set()"
+        }
+      ],
+      "error": ""
+    },
+    "examples": [
+      {
+        "source": "github_workflows_devsecops_test_and_build_steps",
+        "target": "github_workflows_devsecops_steps_run",
+        "edge_count": 11,
+        "relations": [
+          "contains"
+        ],
+        "source_files": [
+          ".github/workflows/devsecops.yml"
+        ],
+        "source_locations": [
+          "L28",
+          "L32",
+          "L33",
+          "L35",
+          "L37",
+          "L39",
+          "L41",
+          "L43",
+          "L64",
+          "L66",
+          "L68"
+        ],
+        "contexts": [
+          ""
+        ]
+      },
+      {
+        "source": "github_workflows_devsecops_test_and_build_steps",
+        "target": "github_workflows_devsecops_steps_name",
+        "edge_count": 8,
+        "relations": [
+          "contains"
+        ],
+        "source_files": [
+          ".github/workflows/devsecops.yml"
+        ],
+        "source_locations": [
+          "L34",
+          "L36",
+          "L38",
+          "L40",
+          "L42",
+          "L63",
+          "L65",
+          "L67"
+        ],
+        "contexts": [
+          ""
+        ]
+      },
+      {
+        "source": "github_workflows_devsecops_test_and_build_steps",
+        "target": "github_workflows_devsecops_steps_uses",
+        "edge_count": 4,
+        "relations": [
+          "contains"
+        ],
+        "source_files": [
+          ".github/workflows/devsecops.yml"
+        ],
+        "source_locations": [
+          "L22",
+          "L25",
+          "L29",
+          "L69"
+        ],
+        "contexts": [
+          ""
+        ]
+      },
+      {
+        "source": "github_workflows_devsecops_test_and_build_steps",
+        "target": "github_workflows_devsecops_steps_with",
+        "edge_count": 4,
+        "relations": [
+          "contains"
+        ],
+        "source_files": [
+          ".github/workflows/devsecops.yml"
+        ],
+        "source_locations": [
+          "L23",
+          "L26",
+          "L30",
+          "L70"
+        ],
+        "contexts": [
+          ""
+        ]
+      },
+      {
+        "source": "github_workflows_evaluate_python_bases_evaluate_steps",
+        "target": "github_workflows_evaluate_python_bases_steps_name",
+        "edge_count": 4,
+        "relations": [
+          "contains"
+        ],
+        "source_files": [
+          ".github/workflows/evaluate-python-bases.yml"
+        ],
+        "source_locations": [
+          "L16",
+          "L20",
+          "L22",
+          "L43"
+        ],
+        "contexts": [
+          ""
+        ]
+      }
+    ]
+  }
+}

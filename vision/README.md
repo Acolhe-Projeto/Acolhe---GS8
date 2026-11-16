@@ -1,49 +1,68 @@
 # Visão: vocabulário por objetos
 
-## Estado real
-12 classes definidas; contrato de inferência e workflow de treino preparados.
-**Nenhum treinamento, checkpoint customizado, métrica de detecção ou inferência real foi executado.** A API retorna indisponível, nunca uma detecção fictícia.
-Python global não tem torch/Pillow/ultralytics. PyYAML 6.0.3 foi instalado apenas em vision/.test-deps para validar o parser em testes, não no Python global. O venv CP5 histórico não inicia. Dataset Food101 encontrado localmente é inadequado às classes e não foi usado como evidência.
+O módulo reconhece 12 classes para ensinar vocabulário PT/ES: mochila, cadeira, livro, garrafa, copo, colher, garfo, tigela, relógio, guarda-chuva, ônibus e semáforo. Semáforo é somente o nome do objeto: não determina cor, travessia ou rota segura. Não há reconhecimento facial nem gravação de uploads.
 
-## Classes e segurança
-Mochila, cadeira, livro, garrafa, copo, colher, garfo, tigela, relógio, guarda-chuva, ônibus e semáforo.
-Labels em PT/ES em service.py. Caderno não está coberto por book; será expansão com dados próprios.
-Semáforo é apenas um objeto para vocabulário: não inferimos sua cor, permissão de travessia nem rota segura. Sem reconhecimento facial, identidade ou gravação de imagens.
+## Estado em 2026-11-16
 
-## Dataset real necessário
-Candidato: COCO 2017 (https://cocodataset.org/#download). As 12 classes existem no COCO.
-**Candidato ainda não baixado nem licenças individuais verificadas.** Anotações COCO usam CC-BY-4.0; fotografias têm licenças próprias, portanto verificar o campo licenses de cada imagem antes de reutilizar/distribuir. Não declarar todas as fotografias CC-BY.
-Planejamento: filtrar classes, selecionar imagens com licença compatível, manter créditos/image_id/source/license em inventário; remapear categorias para 0..11, converter caixas para YOLO normalizado, remover duplicatas.
-Separar por image_id antes de augmentations: treino/validação/teste 70/15/15 com seed 42; não reaproveitar teste para tuning. Auditar distribuição por classe/ambiente e evitar imagens identificáveis de crianças.
-Copiar dataset.example.yaml e provenance.example.json e preencher com evidências reais. O exemplo contém real_images=false de propósito.
+Implementados: contrato de inferência, tradução, verificação de checkpoint, preparação COCO → YOLO, auditoria do dataset antes do treino, opções de CPU e registro de métricas globais/por classe do teste. O plano e os critérios de aceite estão em [PLAN.md](PLAN.md).
 
-## Execução quando dependências/dados estiverem disponíveis
-```powershell
-python -m unittest vision.tests.test_service
-# Em ambiente aprovado com PyTorch apropriado e dependências de requirements.txt:
-python -m vision.train --dataset vision/data/dataset.yaml --provenance vision/data/provenance.json --epochs 40
-```
-Treino usa transferência de yolo11n.pt, seed 42 e teste separado. O Ultralytics pode obter pesos oficiais na primeira execução; revisar compatibilidade da licença AGPL/comercial com a distribuição. Treino customizado é obrigatório; pesos COCO sozinhos não cumprem a entrega.
-Resultados reais vão a runs/ e artifacts/. O script grava hash do checkpoint/dataset, procedência e métricas do conjunto teste. A pasta de saída de artefatos deve ser inexistente: a reserva exclusiva falha se já houver qualquer diretório com esse nome. Use --output vision/artifacts-experimento-02 para outro experimento. Arquivos finais são abertos exclusivamente, sem sobrescrever. Uma execução interrompida pode deixar uma pasta parcial; ela não será reutilizada automaticamente.
+**Não executados: curadoria de fotografias reais, treinamento, inferência YOLO real e métricas de qualidade.** O repositório não contém imagens, anotações COCO ou pesos. Sem checkpoint próprio, o serviço continua indisponível; não apresenta detecções fictícias. Os testes usam imagens sintéticas temporárias e runtime simulado para testar contratos, sem evidência de qualidade de modelo.
 
-## Serviço e avaliação
-status() só informa ready=true após verificar manifesto JSON, trained_on_real_images=true, ordem das classes, SHA-256 do checkpoint, dependências, carregamento por YOLO e nomes das classes do próprio modelo. Isso não comprova qualidade: quality_validated permanece false. predict(bytes) repete as verificações antes da inferência.
-Em caso de ausência: ModelUnavailable. Com checkpoint: objetos, caixas, confiança e traduções; limiar 0,5, limite de arquivo 8 MiB/20 megapixels, sem armazenamento. Dependências ausentes também impedem inferência.
-Antes da entrega acadêmica: confirmar classes do YAML correspondem à procedência; contar imagens/objetos por split; mAP50/mAP50-95, precisão/recall por classe; matriz de confusão; cinco erros reais com imagens licenciadas; testar luz baixa/oclusão e objetos não conhecidos. Esses resultados **estão pendentes**.
+## Preparar os dados sem instalar a stack de treino
 
-
-## Proteções verificadas em 2026-11-07
-
-O YAML é carregado com PyYAML SafeLoader, recusando chaves duplicadas. names deve ser uma lista na ordem de service.LABELS ou um mapa com IDs inteiros 0..11 e os mesmos nomes nessa ordem. Não aceita IDs em texto, classes extras, faltantes, duplicadas ou reordenadas. nc, quando presente, deve ser o inteiro 12. train, val e test precisam ser declarados; a procedência deve listar as mesmas classes em ordem. Essas verificações precedem a construção do modelo e qualquer obtenção de pesos.
-
-Ainda não há auditoria automática de pixels, licenças, contagens ou sobreposição dos splits. O campo real_images é uma declaração de procedência, não prova independente de curadoria. O hash detecta alterações no checkpoint, não autentica sua origem. Usar somente checkpoints locais próprios e confiáveis. status carrega o modelo para verificar compatibilidade, podendo consumir tempo e memória; a checagem não executa uma imagem de teste.
-
-Teste completo executado com PyYAML isolado: 55 testes passaram, sem skips, em 5,392 s. Os testes do carregador de modelo usam stubs deliberadamente; não representam execução de YOLO real. Sem treino, inferência real ou métricas de qualidade.
-
-Comando reproduzível a partir da raiz:
+Na raiz do repositório:
 
 ```powershell
-python -B -c "import sys,unittest;sys.path.insert(0,'vision/.test-deps');suite=unittest.defaultTestLoader.discover('.');r=unittest.TextTestRunner(verbosity=2).run(suite);sys.exit(not r.wasSuccessful())"
+python -m venv vision/.venv
+vision/.venv/Scripts/python.exe -m pip install -r vision/requirements-data.txt
+vision/.venv/Scripts/python.exe -B -m unittest discover -s vision/tests -v
 ```
 
-Sem PyYAML, somente o teste de parser YAML é explicitamente ignorado; os demais testes não precisam da stack de treinamento. Copias anteriores dos dois módulos estão em arquivos .py.before-guards, excluídos de versionamento.
+As avaliações [COCO](COCO_ASSESSMENT.md) e [Open Images](OPEN_IMAGES_ASSESSMENT.md) são registros históricos de outra máquina; seus arquivos externos e hardware não foram transferidos para este clone. COCO preserva as 12 classes. Uma licença declarada no dataset não substitui a verificação da fotografia original.
+
+1. Obter localmente as anotações COCO e somente as imagens escolhidas, ou produzir fotos próprias autorizadas. A ferramenta não baixa nada.
+2. Inspecionar cada imagem; excluir cenas identificáveis de crianças. Registrar imagem original, autor, licença, data da revisão, hash SHA-256 e confirmação de revisão de privacidade. As declarações precisam corresponder a evidências verificáveis guardadas localmente.
+3. Definir splits por imagem original antes de recortes/augmentations, por exemplo 70/15/15 com seed 42. Distribuir as 12 classes em **cada** split; não duplicar fotos para preencher classes faltantes. O conversor respeita o split declarado no inventário e não decide licenças nem faz revisão visual automaticamente.
+4. Copiar `vision/data/provenance.example.json` para um arquivo local, preencher os campos gerais e criar uma entrada em `images` para cada fotografia. `image_id` é o ID COCO como texto; `split` é `train`, `val` ou `test`. Para o conversor, `file` é preenchido na saída. `real_images` e `privacy_reviewed` só podem ser verdadeiros depois da revisão humana.
+
+```powershell
+vision/.venv/Scripts/python.exe -m vision.prepare --annotations vision/data/instances_train2017.json --images vision/data/originals --reviews vision/data/reviews.json --output vision/data/curated-01
+vision/.venv/Scripts/python.exe -m vision.audit --dataset vision/data/curated-01/dataset.yaml --provenance vision/data/curated-01/provenance.json
+```
+
+O conversor valida dimensões originais e caixas COCO, remapeia classes para 0..11, preserva créditos e separa imagens/labels. Recusa caixas crowd, fotografias sem revisão, classes incompletas e destinos existentes. A saída só aparece quando toda a auditoria passa: `dataset.yaml`, `provenance.json`, `audit.json`, `images/{train,val,test}` e `labels/{train,val,test}`.
+
+A auditoria verifica imagens legíveis, limite de 20 megapixels, inventário exato, hashes, ausência de duplicatas binárias, caixas YOLO normalizadas e todas as classes por split. Também recusa caminhos fora da raiz e diretivas de download. O fingerprint incorpora os bytes de imagens e labels. Não detecta cópias recortadas/recomprimidas nem confirma direitos autorais ou privacidade por si só; essa revisão continua humana. Um único exemplo por classe passa o teste estrutural, mas não basta para avaliar qualidade.
+
+## Treinar um piloto em CPU
+
+Foi mantido **YOLO11n**, a variante nano já prevista na base, para evitar migração desnecessária. Defaults: `device=cpu`, `imgsz=320`, `batch=2`, `workers=0`, sem cache de imagens em RAM. São parâmetros de baixo consumo inicial, não garantia de velocidade. Treino em CPU pode demorar; medir tempo/RAM no piloto antes de aumentar o dataset ou épocas. A resolução menor pode prejudicar objetos pequenos, principalmente semáforos.
+
+A stack completa é opcional. Instale a versão CPU do PyTorch indicada no [seletor oficial](https://pytorch.org/get-started/locally/) e depois:
+
+```powershell
+vision/.venv/Scripts/python.exe -m pip install -r vision/requirements.txt
+vision/.venv/Scripts/python.exe -m vision.train --dataset vision/data/curated-01/dataset.yaml --provenance vision/data/curated-01/provenance.json --epochs 1 --device cpu --imgsz 320 --batch 2 --workers 0 --output vision/artifacts-pilot-01
+```
+
+Uma época testa a execução; **não valida qualidade nem cumpre sozinha o treinamento da disciplina**. Depois do piloto, ajustar épocas somente com treino/validação; reservar o teste final. Ultralytics pode baixar `yolo11n.pt` na primeira execução. Revisar a [licença AGPL/Enterprise](https://www.ultralytics.com/license) antes de distribuição; uso acadêmico não implica isenção automática.
+
+O script audita antes de importar Ultralytics e obter pesos. Salva `best.pt`, `model_manifest.json`, YAML com raiz absoluta e checklist `error_analysis.md`, sem reutilizar artefatos existentes. A avaliação usa `split=test`, gera plots/JSON na pasta indicada em `evaluation_directory` e registra precisão, recall, mAP50/mAP50-95 por classe e globais. Os resultados são calculados pelo runtime real, nunca preenchidos por testes. Guarde a pasta completa de avaliação para a matriz de confusão e revisão das predições.
+
+## Usar no serviço
+
+`status()` verifica manifesto, treino real declarado, ordem das classes, hash do checkpoint, dependências e carregamento YOLO. `quality_validated` permanece falso: carregar pesos não comprova qualidade. `predict(bytes)` limita upload a 8 MiB/20 megapixels, usa CPU/resolução 320/confiança 0,5, retorna classes/caixas/traduções e não salva imagens. Imagens inválidas geram `ValueError`; checkpoint ausente/inválido gera `ModelUnavailable`.
+
+A PWA oferece seleção de imagem e resultado PT/ES. `POST /api/vision/predict` recebe os bytes da imagem PNG/JPEG diretamente no corpo HTTP, até 8 MiB, e retorna JSON. Sem checkpoint, responde HTTP 503; não é inferência simulada. `GET /api/vision/status` informa a disponibilidade. O envio não usa multipart nem base64 e não persiste a imagem.
+
+O destino padrão de treino é `vision/artifacts`, lido pelo serviço. Para experimentar sem alterar o modelo servido, use `--output vision/artifacts-pilot-01`. Promover o resultado ao caminho padrão exige revisão humana de métricas e de erros; não trate um piloto como aprovado. Use somente checkpoints locais próprios e confiáveis.
+
+## Evidências para a entrega
+
+- Inventário de imagens/caixas por classe e split, créditos, hashes, método de separação e limites da curadoria.
+- Comando, ambiente, versões, seed, duração/RAM e checkpoint com hash.
+- Curvas, matriz de confusão e precisão/recall/mAP por classe sobre teste reservado.
+- Pelo menos cinco erros reais, se ocorrerem: image_id, classe esperada/predita, condição (luz, oclusão, tamanho), hipótese e ação. Se não houver cinco, registrar quantos foram encontrados; não inventar erros.
+- Demonstração PT/ES, ausência de modelo, arquivo inválido e nenhum objeto encontrado. Revisão de segurança e pedagógica antes de qualquer uso real.
+
+Validação nesta alteração: 21 testes de visão passaram em ambiente isolado com Pillow/PyYAML, sem torch/YOLO instalado e sem downloads de pesos/dataset. Referências técnicas: [treino e parâmetros](https://docs.ultralytics.com/modes/train/), [validação](https://docs.ultralytics.com/modes/val/), [formato YOLO](https://docs.ultralytics.com/datasets/detect/) e [YOLO11](https://docs.ultralytics.com/models/yolo11/).

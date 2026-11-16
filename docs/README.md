@@ -2,6 +2,10 @@
 
 ## Arquivos para leitura
 
+- [PRD GenAI/Vision](PRD_GENAI_VISION.md): escopo desta branch, diagramas, lacunas e critérios de aceite.
+- [Validação GenAI/Vision](VALIDACAO_GENAI_VISION.md): execução e limites das evidências desta branch.
+- [Conhecimento Graphify](knowledge/README.md): mapa de todas as disciplinas, cobertura, consultas e vault Obsidian.
+
 - `manual_acolhe.pdf`: manual diagramado com capa, logo original, equipe, sumário navegável, onze capítulos e páginas numeradas.
 - `manual_acolhe.md`: fonte editável do conteúdo do manual.
 - `registro_testes.md`: modelo de registro de evidências; campos não preenchidos não são resultados.

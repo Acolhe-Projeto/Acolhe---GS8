@@ -61,11 +61,14 @@ def predict(image):
     if not isinstance(image, bytes) or not image or len(image) > 8 * 1024 * 1024:
         raise ValueError("image must be nonempty bytes, maximum 8 MiB")
     from PIL import Image
-    source = Image.open(io.BytesIO(image))
-    if source.width * source.height > 20_000_000:
-        raise ValueError("Image too large")
-    source = source.convert("RGB")
-    results = model.predict(source, conf=0.5, verbose=False)
+    try:
+        with Image.open(io.BytesIO(image)) as uploaded:
+            if uploaded.width * uploaded.height > 20_000_000:
+                raise ValueError("Image too large")
+            source = uploaded.convert("RGB")
+    except (OSError, Image.DecompressionBombError) as exc:
+        raise ValueError("Invalid or unsafe image") from exc
+    results = model.predict(source, conf=0.5, imgsz=320, device="cpu", save=False, verbose=False)
     detections = []
     for result in results:
         for box in result.boxes:

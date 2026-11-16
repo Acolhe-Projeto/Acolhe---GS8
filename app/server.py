@@ -26,6 +26,8 @@ class Handler(BaseHTTPRequestHandler):
    if method=='POST':
     origin=self.headers.get('Origin'); host=self.headers.get('Host','')
     if origin and urlparse(origin).netloc!=host: self.reply({'error':'Origem não autorizada'},403); return
+    if urlparse(self.path).path=='/api/vision/predict':
+     self.predict_image(); return
     if self.headers.get('Content-Type','').split(';')[0]!='application/json': self.reply({'error':'Use JSON'},415); return
     size=int(self.headers.get('Content-Length','0'))
     if not 0<size<=8192: self.reply({'error':'Corpo inválido ou muito grande'},413); return
@@ -79,6 +81,28 @@ class Handler(BaseHTTPRequestHandler):
    from genai.service import answer
    return self.reply(answer(question,language))
   return self.reply({'error':'Não encontrado'},404)
+
+ def predict_image(self):
+  """Explicit raw upload: no image or identifier is written to disk."""
+  content_type=self.headers.get('Content-Type','').split(';')[0]
+  if content_type not in ('image/png','image/jpeg'):
+   return self.reply({'error':'Use uma imagem PNG ou JPEG'},415)
+  size=int(self.headers.get('Content-Length','0'))
+  if not 0<size<=8*1024*1024:
+   return self.reply({'error':'Imagem vazia ou maior que 8 MiB'},413)
+  image=self.rfile.read(size)
+  if len(image)!=size:
+   raise ValueError('Upload incompleto')
+  if not (image.startswith(b'\x89PNG\r\n\x1a\n') if content_type=='image/png' else image.startswith(b'\xff\xd8\xff')):
+   raise ValueError('Conteúdo incompatível com PNG/JPEG')
+  from vision.service import predict, ModelUnavailable
+  try:
+   result=predict(image)
+  except ModelUnavailable:
+   return self.reply({'error':'Modelo de visão indisponível. Consulte /api/vision/status.', 'mode':'unavailable','stores_image':False},503)
+  except (OSError, ValueError):
+   raise ValueError('Não foi possível ler esta imagem')
+  return self.reply(result)
 
 def create_server(host='127.0.0.1',port=8080,db_path=None):
  server=ThreadingHTTPServer((host,port),Handler); server.daemon_threads=True

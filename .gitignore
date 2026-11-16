@@ -46,3 +46,9 @@ node_modules/
 /vision/runs/
 *.pt
 *.onnx
+# Rebuildable Graphify caches, machine paths and local Obsidian workspace
+/graphify-out/cache/
+/graphify-out/.graphify_*
+/graphify-out/cost.json
+/graphify-out/manual-pdf-text.txt
+/graphify-out/obsidian/
