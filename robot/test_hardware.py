@@ -22,7 +22,7 @@ class HardwareTests(unittest.TestCase):
         stream=ResetSerial();ticks=[0]
         def now():ticks[0]+=.25;return ticks[0]
         robot=RobotConnection()
-        with patch.object(robot,'ports',return_value=[{'device':'COM4'}]),patch('serial.Serial',return_value=stream),patch('robot.hardware.time.monotonic',side_effect=now),patch('robot.hardware.time.sleep'),patch('robot.hardware.threading.Thread'):
+        with patch.object(robot,'ports',return_value=[{'device':'COM4'}]),patch.dict('sys.modules',{'serial':Mock(Serial=Mock(return_value=stream))}),patch('robot.hardware.time.monotonic',side_effect=now),patch('robot.hardware.time.sleep'),patch('robot.hardware.threading.Thread'):
             result=robot.connect('COM4')
             self.assertTrue(result['connected']);self.assertTrue(stream.reset)
             robot.close()
