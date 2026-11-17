@@ -1,0 +1,17 @@
+{
+  "recorded_at_utc": "2026-11-11T18:58:13.561Z",
+  "kind": "software_tests_mocked_motor_dispatch",
+  "exit_code": 0,
+  "output": "----------------------------------------------------------------------\r\nRan 97 tests in 9.739s\r\n\r\nOK\r\n✔ corrupt progress storage does not prevent lesson initialization (6.7505ms)\n✔ blocked storage allows answers in memory (3.361ms)\n✔ language switch ignores old answer and preserves submitted language (1.6457ms)\n✔ reopening same lesson ignores old request failures (2.1539ms)\n✔ erase waits for pending session creation and prevents answer submission (2.6024ms)\n✔ erase waits for posted answer before deleting and cannot resurrect progress (2.4366ms)\n✔ overlapping answers share one pending session creation (2.6568ms)\n✔ failed deletion retains session for retry and releases erase button (2.1764ms)\n✔ switching view during session creation does not post a stale answer (2.5242ms)\n✔ storage write failures do not turn a saved answer into an error (3.0912ms)\n✔ expired session clears old progress before a fresh session is created (3.891ms)\n✔ physical robot command is not presented as simulation (1.21ms)\n✔ audio is downsampled to 16 kHz mono PCM16 (5.6413ms)\n✔ audio clips samples and bounds recording at fifteen seconds (7.4531ms)\n✔ panel never opens microphone automatically and disconnected readings are absent (8.1742ms)\n✔ stop suppresses a late answer and sends physical STOP (2.2788ms)\n✔ microphone denial leaves text input available with a clear error (1.3116ms)\n✔ microphone granted after stop is immediately released (1.4406ms)\n✔ stop keeps input disabled while cancelled inference is still finishing (1.1202ms)\nℹ tests 19\nℹ suites 0\nℹ pass 19\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 104.2111\nwarning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'app/static/app.js', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'app/static/index.html', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/roteiros_videos.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'robot/README.md', LF will be replaced by CRLF the next time Git touches it\n",
+  "physical_motion_verified": false,
+  "agent_sent_test_pulse": false,
+  "commands": {
+    "Acolhe, mova o braço": "TEST arm 100 120 1",
+    "Acolhe, mova a cabeça": "TEST head 100 120 1"
+  },
+  "notes": [
+    "Fixed explicit user commands, never LLM-generated GPIO actions.",
+    "Automatic lesson gestures still require observed calibration.",
+    "Cancellation checked inside serial lock before sending test."
+  ]
+}

@@ -14,9 +14,26 @@ Português para recomeçar. Protótipo acadêmico da Global Solution FIAP 2026.2
 
 
 
-**Estado:** MVP local com módulos demonstrativos. Não é um produto validado para uso com crianças nem uma entrega acadêmica integralmente comprovada. Use adultos e dados fictícios nesta fase. O código está publicado em https://github.com/TomazVC/Acolhe---GS8. Isso não publica o aplicativo na internet nem comprova um ambiente de produção.
+**Estado:** MVP local com módulos demonstrativos. Não é um produto validado para uso com crianças nem uma entrega acadêmica integralmente comprovada. Use adultos e dados fictícios nesta fase. Repositório: https://github.com/TomazVC/Acolhe---GS8. As alterações locais precisam de push para aparecer no GitHub. Isso não publica o aplicativo na internet nem comprova um ambiente de produção.
 
 
+
+## Maker Lab: robô Acolhe
+
+O Acolhe apoia o acolhimento linguístico em português/espanhol, com conversa educativa e atividades sobre o ambiente. A proposta CitizenTech aproxima pessoas em adaptação ao idioma de um recurso interativo de aprendizagem, com mediação de um adulto.
+
+- **Hardware atual:** Arduino Uno USB, DHT11 adicional, LCD QAPASS I²C, L298N e dois motores TT (cabeça/braço), sem buzzer e sem PWM.
+- **Voz e IA:** microfone → Whisper local → Qwen3 4B/Ollama com material educativo e telemetria validada → Piper/saída de voz no computador. O Uno atualiza o LCD e executa os gestos autorizados.
+- **Autonomia:** três leituras válidas de pelo menos 30 °C oferecem uma atividade sobre calor, sem comando manual; rearme abaixo de 28 °C e intervalo mínimo de dois minutos. É regra didática, sem significado clínico. No treino, acerto pede gesto do braço e nova tentativa pede cabeça, após calibração observada. Regras e respostas geradas pelo LLM são identificadas separadamente.
+- **Instalação, componentes, circuito e firmware:** [robot/README.md](robot/README.md).
+- **Conferência de requisitos e evidências:** [docs/maker-entrega.md](docs/maker-entrega.md).
+- **Abrir a conversa local:** http://127.0.0.1:8080/robo.html, depois de executar `Iniciar-Acolhe.cmd`.
+
+### Vídeo demonstrativo Maker (até 6 minutos)
+
+**Pendente: gravar e inserir aqui o link real do YouTube ou o arquivo no repositório.** O funcionamento dos motores e dos gestos foi confirmado pelo operador; isso não substitui o vídeo exigido. O roteiro de até 5min45s está em [docs/roteiros_videos.md](docs/roteiros_videos.md).
+
+A entrega Maker ainda depende do vídeo, das evidências físicas e da publicação desta revisão no GitHub. Os quatro integrantes e RMs estão acima; apenas um integrante deve enviar o link oficial.
 
 ## Ficha técnica
 
@@ -28,11 +45,11 @@ Português para recomeçar. Protótipo acadêmico da Global Solution FIAP 2026.2
 
 - Persistência: sessões pseudônimas, tentativas, acertos e idioma por tentativa. Exclusão por sessão; expurgo após sete dias nas operações do banco, não por agendador independente.
 
-- Integrações: recuperação lexical de conteúdo curado, adaptador opcional Ollama, contrato de visão, robô simulado, pipeline de dados e RPA local.
+- Integrações: recuperação lexical de conteúdo curado, Ollama e voz local no Maker, contrato de visão, robô físico USB e simulador separado, pipeline de dados e RPA local.
 
 - Infraestrutura preparada: Docker/Compose, GitHub Actions, Terraform Azure e métricas Prometheus. Configuração não equivale a infraestrutura executada.
 
-- Documentação: [manual PDF](docs/manual_acolhe.pdf), [fonte Markdown](docs/manual_acolhe.md) e [registro de testes](docs/registro_testes.md).
+- Documentação oficial no GitHub: [guia Maker](robot/README.md), [manual Markdown](docs/manual_acolhe.md) e [registro de testes](docs/registro_testes.md). O PDF é material complementar e não substitui a entrega Maker no GitHub.
 
 
 
@@ -119,7 +136,7 @@ Na validação de 7 de novembro de 2026, às 16:51:12 UTC, a suíte Python desco
 
 5. `vision/`: classes, serviço indisponível sem checkpoint e roteiro de treinamento real.
 
-6. `robot/`: feedback simulado; não abre serial nem movimenta motores.
+6. `robot/`: painel local de voz, DHT11/LCD I2C e Uno USB com L298N, ENA/ENB nos jumpers e controle somente por direcao/duracao (ACOLHE_V2, sem PWM). Testes manuais por comando e gestos das licoes mediante calibracao observada. Veja [guia Maker](robot/README.md) e abra `/robo.html`.
 
 7. `big_data/`: pipeline demonstrativo, consultas SQL, exemplos Airflow/Databricks e saída sintética.
 
@@ -205,7 +222,7 @@ Antes de exposição pública: autenticação/autorização, TLS e servidor adeq
 
 - Big Data: fontes reais e execuções de coleta em dois dias distintos; execução em Spark/Databricks e Airflow.
 
-- Robótica: bancada, sensor, LCD, alimentação, parada segura, firmware e demonstração física. Simulação não é hardware comprovado.
+- Robotica: software local e firmware DHT11/I2C implementados; movimentos e gestos confirmados pelo operador em 17/11. Faltam registro audiovisual, demonstracao de variacao real do sensor integrada a IA e casos de falha. Veja `robot/README.md` para evidencias e limites.
 
 - DevSecOps: build Docker, CI/scanners, validação Terraform, ambiente autorizado, métricas e alerta demonstrados.
 

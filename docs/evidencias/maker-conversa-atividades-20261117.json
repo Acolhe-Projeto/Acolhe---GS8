@@ -1,0 +1,160 @@
+{
+  "note": "Real HTTP + Qwen3 + Piper. Text input; no serial or physical gestures. Microphone and audible playback not verified. Sensor explicitly unavailable.",
+  "results": [
+    {
+      "transcript": "Oi, o que você sabe fazer?",
+      "answer": "Olá! Posso ensinar palavras e praticar vocabulário com você.",
+      "mode": "local_llm_rag",
+      "model": "qwen3:4b",
+      "sensor": {
+        "valid": false
+      },
+      "sources": [
+        "greeting",
+        "lost"
+      ],
+      "motor_test": null,
+      "motor_reaction": null,
+      "errors": [],
+      "elapsed_seconds": 2.47,
+      "audio_seconds": 4.03,
+      "audio_bytes": 177940
+    },
+    {
+      "transcript": "Como digo obrigado em espanhol?",
+      "answer": "gracias",
+      "mode": "local_llm_rag",
+      "model": "qwen3:4b",
+      "sensor": {
+        "valid": false
+      },
+      "sources": [
+        "thanks",
+        "backpack",
+        "book"
+      ],
+      "motor_test": null,
+      "motor_reaction": null,
+      "errors": [],
+      "elapsed_seconds": 1.16,
+      "audio_seconds": 1.04,
+      "audio_bytes": 45728
+    },
+    {
+      "transcript": "Como pedir ajuda com gentileza?",
+      "answer": "Para pedir ajuda com gentileza, diga: Pode me ajudar, por favor?",
+      "mode": "local_llm_rag",
+      "model": "qwen3:4b",
+      "sensor": {
+        "valid": false
+      },
+      "sources": [
+        "please",
+        "lost",
+        "bus"
+      ],
+      "motor_test": null,
+      "motor_reaction": null,
+      "errors": [],
+      "elapsed_seconds": 1.75,
+      "audio_seconds": 3.74,
+      "audio_bytes": 165024
+    },
+    {
+      "transcript": "Vamos praticar",
+      "answer": "Vamos praticar! Como se diz hola em português? Responda só a palavra.",
+      "mode": "guided_practice",
+      "model": null,
+      "sensor": {
+        "valid": false
+      },
+      "sources": [],
+      "motor_test": null,
+      "motor_reaction": null,
+      "errors": [],
+      "elapsed_seconds": 0.69,
+      "audio_seconds": 4.64,
+      "audio_bytes": 204680
+    },
+    {
+      "transcript": "olá",
+      "answer": "Isso mesmo! Como se diz silla em português? Responda só a palavra.",
+      "mode": "guided_practice",
+      "model": null,
+      "sensor": {
+        "valid": false
+      },
+      "sources": [],
+      "motor_test": null,
+      "motor_reaction": {
+        "sent": false,
+        "motor": "arm",
+        "physical_verified": false
+      },
+      "errors": [],
+      "elapsed_seconds": 0.58,
+      "audio_seconds": 4.41,
+      "audio_bytes": 194440
+    },
+    {
+      "transcript": "livro",
+      "answer": "Vamos tentar novamente: silla em português é cadeira. Responda só a palavra.",
+      "mode": "guided_practice",
+      "model": null,
+      "sensor": {
+        "valid": false
+      },
+      "sources": [],
+      "motor_test": null,
+      "motor_reaction": {
+        "sent": false,
+        "motor": "head",
+        "physical_verified": false
+      },
+      "errors": [],
+      "elapsed_seconds": 0.58,
+      "audio_seconds": 4.44,
+      "audio_bytes": 195860
+    },
+    {
+      "transcript": "cadeira",
+      "answer": "Isso mesmo! Como se diz botella em português? Responda só a palavra.",
+      "mode": "guided_practice",
+      "model": null,
+      "sensor": {
+        "valid": false
+      },
+      "sources": [],
+      "motor_test": null,
+      "motor_reaction": {
+        "sent": false,
+        "motor": "arm",
+        "physical_verified": false
+      },
+      "errors": [],
+      "elapsed_seconds": 0.59,
+      "audio_seconds": 4.57,
+      "audio_bytes": 201608
+    },
+    {
+      "transcript": "garrafa",
+      "answer": "Muito bem! Você completou as palavras. Para repetir, diga: vamos praticar.",
+      "mode": "guided_practice",
+      "model": null,
+      "sensor": {
+        "valid": false
+      },
+      "sources": [],
+      "motor_test": null,
+      "motor_reaction": {
+        "sent": false,
+        "motor": "arm",
+        "physical_verified": false
+      },
+      "errors": [],
+      "elapsed_seconds": 0.64,
+      "audio_seconds": 5.29,
+      "audio_bytes": 233352
+    }
+  ]
+}

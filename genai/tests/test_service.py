@@ -4,6 +4,9 @@ from genai import service
 from genai.evaluate import recall_at
 
 class ServiceTests(unittest.TestCase):
+    def test_polite_words_bilingual(self):
+        self.assertEqual(service.retrieve('gracias obrigado')[0]['id'], 'thanks')
+        self.assertEqual(service.retrieve('por favor pedir educadamente')[0]['id'], 'please')
     def test_retrieve_bilingual(self):
         self.assertEqual(service.retrieve("¿Cómo cruzar la calle?")[0]["id"], "crossing")
     def test_no_model_is_honest(self):

@@ -36,7 +36,7 @@ class Store:
   sid=uuid.uuid4().hex
   with self.connect() as db: db.execute('INSERT INTO sessions VALUES(?,?,?)',(sid,language,datetime.now(timezone.utc).isoformat()))
   return {'id':sid,'language':language}
- def attempt(self,sid,lesson_id,option,request_id,language=None):
+ def attempt(self,sid,lesson_id,option,request_id,language=None,include_created=False):
   if language is not None and language not in ('pt','es'): raise ValueError('Idioma invalido')
   if not isinstance(sid,str) or len(sid)!=32: raise ValueError('Sessão inválida')
   lesson=next((x for x in LESSONS if x['id']==lesson_id),None)
@@ -49,10 +49,10 @@ class Store:
    old=db.execute('SELECT id,correct,lesson_id FROM attempts WHERE session_id=? AND request_id=?',(sid,request_id)).fetchone()
    if old:
     if old['lesson_id']!=lesson_id: raise ValueError('Identificador já utilizado')
-    return {'id':old['id'],'correct':bool(old['correct'])}
+    return dict(id=old['id'],correct=bool(old['correct']),**({'created':False} if include_created else {}))
    attempt_id=uuid.uuid4().hex; correct=option==lesson['answer']
    db.execute('INSERT INTO attempts(id,session_id,lesson_id,correct,created_at,request_id,language) VALUES(?,?,?,?,?,?,?)',(attempt_id,sid,lesson_id,int(correct),datetime.now(timezone.utc).isoformat(),request_id,language or session['language']))
-  return {'id':attempt_id,'correct':correct}
+  return dict(id=attempt_id,correct=correct,**({'created':True} if include_created else {}))
  def summary(self):
   with self.connect() as db:
    row=db.execute('SELECT COUNT(*) AS attempts,COALESCE(SUM(correct),0) AS correct FROM attempts').fetchone()

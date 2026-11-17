@@ -1,0 +1,4 @@
+# Voice/serial only. No Talos application or vision dependencies.
+faster-whisper==1.2.1
+numpy==2.5.4
+pyserial==3.5

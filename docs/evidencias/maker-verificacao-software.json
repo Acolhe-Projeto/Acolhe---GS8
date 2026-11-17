@@ -1,0 +1,80 @@
+{
+  "recorded_at_utc": "2026-11-11T15:24:45.622774+00:00",
+  "hardware_tested": false,
+  "microphone_tested": false,
+  "browser_visual_tested": false,
+  "checks": [
+    {
+      "command": [
+        "C:\\Users\\tomaz\\OneDrive\\Documents\\estudos\\fiap\\GS8-Projeto\\acolhe\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-q"
+      ],
+      "exit_code": 0,
+      "output": "----------------------------------------------------------------------\nRan 88 tests in 9.321s\n\nOK"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=spec",
+        "tests/frontend.test.cjs",
+        "tests/robot_frontend.test.cjs"
+      ],
+      "exit_code": 0,
+      "output": "✔ corrupt progress storage does not prevent lesson initialization (5.919ms)\n✔ blocked storage allows answers in memory (3.3575ms)\n✔ language switch ignores old answer and preserves submitted language (1.465ms)\n✔ reopening same lesson ignores old request failures (1.7318ms)\n✔ erase waits for pending session creation and prevents answer submission (2.1191ms)\n✔ erase waits for posted answer before deleting and cannot resurrect progress (1.2678ms)\n✔ overlapping answers share one pending session creation (1.3167ms)\n✔ failed deletion retains session for retry and releases erase button (1.2739ms)\n✔ switching view during session creation does not post a stale answer (1.5089ms)\n✔ storage write failures do not turn a saved answer into an error (2.3713ms)\n✔ expired session clears old progress before a fresh session is created (2.6009ms)\n✔ physical robot command is not presented as simulation (1.3743ms)\n✔ audio is downsampled to 16 kHz mono PCM16 (5.305ms)\n✔ audio clips samples and bounds recording at fifteen seconds (5.7585ms)\n✔ panel never opens microphone automatically and disconnected readings are absent (4.6068ms)\n✔ stop suppresses a late answer and sends physical STOP (1.9838ms)\n✔ microphone denial leaves text input available with a clear error (1.3592ms)\n✔ microphone granted after stop is immediately released (1.1603ms)\n✔ stop keeps input disabled while cancelled inference is still finishing (1.104ms)\nℹ tests 19\nℹ suites 0\nℹ pass 19\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 95.9472"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "app/static/robot.js"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "app/static/app.js"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "app/static/sw.js"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\tomaz\\AppData\\Local\\Programs\\Arduino IDE\\resources\\app\\lib\\backend\\resources\\arduino-cli.exe",
+        "--config-file",
+        "C:\\Users\\tomaz\\.arduinoIDE\\arduino-cli.yaml",
+        "compile",
+        "--fqbn",
+        "arduino:avr:uno",
+        "robot/firmware/acolhe"
+      ],
+      "exit_code": 0,
+      "output": "Sketch uses 14978 bytes (46%) of program storage space. Maximum is 32256 bytes.\nGlobal variables use 878 bytes (42%) of dynamic memory, leaving 1170 bytes for local variables. Maximum is 2048 bytes."
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": "warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'app/static/app.js', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'app/static/index.html', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/roteiros_videos.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'robot/README.md', LF will be replaced by CRLF the next time Git touches it"
+    }
+  ]
+}

@@ -106,7 +106,7 @@ Robô: evento da atividade e leitura do sensor → regras de segurança → aç�
 - `devsecops/`: infraestrutura, monitoramento e orientações de implantação, quando presentes.
 - `tests/`: testes do núcleo da aplicação.
 
-Os documentos originais ficam na pasta pai e não devem ser substituídos. O logo original está em `../logo-png.png`. A identidade visual usa teal `#168C86` e peach `#F2A97A`; contraste e legibilidade têm prioridade sobre a aplicação de cores.
+Os documentos originais ficam na pasta pai e não devem ser substituídos. O logo original está em `assets/logo-png.png`. A identidade visual usa teal `#168C86` e peach `#F2A97A`; contraste e legibilidade têm prioridade sobre a aplicação de cores.
 
 # 5 Instalação e operação local
 

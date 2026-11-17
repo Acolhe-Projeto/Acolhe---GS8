@@ -1,0 +1,31 @@
+{
+  "recorded_at_utc": "2026-11-11T18:43:47.898894+00:00",
+  "source": "local backend reading ACOLHE_V1 serial telemetry",
+  "robot": {
+    "connected": true,
+    "port": "COM4",
+    "version": "ACOLHE_V1",
+    "sensor": {
+      "sensor": "DHT11",
+      "valid": true,
+      "temperature": 26.6,
+      "humidity": 55.0,
+      "age_seconds": 1.6
+    },
+    "lcd_ok": false,
+    "lcd_enabled": false,
+    "board": "ESP32_CLASSIC",
+    "motors_enabled": false,
+    "calibrations": {},
+    "error": null,
+    "activity": null,
+    "ack": null,
+    "physical_verified": false
+  },
+  "motor_motion_observed": false,
+  "lcd_physically_tested": false,
+  "notes": [
+    "Sensor values are reported by the connected firmware; no independent measurement calibration performed.",
+    "Automatic gestures require operator-observed motor calibration. No pulse was sent during this capture."
+  ]
+}

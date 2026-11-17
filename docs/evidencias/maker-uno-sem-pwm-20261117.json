@@ -1,0 +1,31 @@
+{
+  "task_date_local": "2026-11-17",
+  "recorded_at_utc": "2026-11-17T14:13:56.627885+00:00",
+  "board": "Arduino Uno",
+  "protocol": "ACOLHE_V2",
+  "motor_control": "direction_only",
+  "enable_configuration": "L298N ENA/ENB jumpers installed, no Uno enable wiring",
+  "lcd_enabled": true,
+  "compile": {
+    "fqbn": "arduino:avr:uno",
+    "exit_code": 0,
+    "flash_bytes": 14800,
+    "ram_bytes": 870
+  },
+  "verification": {
+    "python_tests_passed": 100,
+    "node_tests_passed": 20,
+    "javascript_syntax_check": "passed",
+    "git_diff_check": "passed",
+    "independent_review": "no important findings"
+  },
+  "agent_uploaded": false,
+  "physical_hardware_verified": false,
+  "serial_ports_detected": [],
+  "sha256": {
+    "robot/firmware/acolhe/acolhe.ino": "54c3cf6569211f758c73b07905498d62457fbd95f845bad49f79e7bf11ee5000",
+    "robot/hardware.py": "4ef3a5af7c3cb97c05638b46c68306ab8fa81e69a186ff1ac5abea816157da0b",
+    "app/static/robot.js": "50b50992bf131bb690809f13a8ee44213cacfbbbed6edcbb3488e6cd8671428a",
+    "app/static/robo.html": "60d75cb5a7555fad7d5bf517ccf9684b1d12852d5bd9d857d0923ab71b2e9b7c"
+  }
+}
