@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#168C86"><title>Acolhe · Vamos conversar</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="/fonts.css">
+  <link rel="stylesheet" href="/robot.css"><script src="/robot.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#conversa">Ir para a conversa</a>
+<header><a href="/" aria-label="Voltar ao Acolhe"><img src="/logo.png" width="110" height="74" alt="Acolhe"></a><nav aria-label="Navegação"><a href="/">Atividades</a><a href="#montagem">Conectar robô</a></nav><span class="local">● Neste computador</span></header>
+<main>
+  <section class="intro"><p class="eyebrow">PALAVRAS QUE APROXIMAM</p><h1>Um olá.<br>Uma nova descoberta.</h1><p>Converse com o Acolhe, aprenda palavras e descubra o ambiente ao seu redor.</p></section>
+  <div class="workspace">
+    <section class="conversation card" id="conversa" aria-label="Conversa com Acolhe">
+      <div class="conversation-top"><span class="pill" id="interaction-state" role="status">Pronto</span><span class="small">Sua voz fica neste computador</span></div>
+      <div class="character" aria-hidden="true"><div class="antenna"></div><div class="face"><span></span><span></span><i></i></div><div class="character-shadow"></div></div>
+      <h2>Olá, eu sou o Acolhe.</h2><p class="subtitle">Podemos aprender juntos. O que você quer descobrir?</p>
+      <div class="messages" id="messages" role="log" aria-label="Histórico da conversa" aria-live="polite"><p class="message welcome">Toque no microfone para falar, ou escreva sua pergunta abaixo.</p></div>
+      <div class="quick" aria-label="Sugestões de perguntas"><button type="button" data-question="Como está a temperatura da sala?">Como está a sala?</button><button type="button" data-question="Como atravessar a rua com segurança?">Vamos aprender?</button><button type="button" data-question="Qual é o seu nome?">Quem é você?</button><button type="button" data-question="Acolhe, mova o braço">Testar braço</button><button type="button" data-question="Acolhe, mova a cabeça">Testar cabeça</button><button type="button" data-question="Vamos praticar">Treinar palavras</button><button type="button" data-question="Acolhe, dê um oi">Dar um oi</button></div>
+      <p class="small">Peça: “Acolhe, mova o braço”, “mova a cabeça”, “diga sim” ou “diga não”. No treino de palavras: acerto pede gesto do braço; nova tentativa, da cabeça. Os gestos do treino precisam da calibração dos dois motores.</p>
+      <div class="gesture-setup" id="gesture-setup"><p id="gesture-guidance" role="status">Conecte o Arduino e confirme os motores para os gestos do treino.</p><a class="secondary" id="prepare-gestures" href="#calibration">Preparar gestos do treino →</a></div>
+      <form id="robot-form"><label class="sr-only" for="robot-question">Sua pergunta</label><div class="compose"><input id="robot-question" maxlength="500" placeholder="Escreva uma pergunta…" autocomplete="off" required><button type="submit" id="send-text" aria-label="Enviar pergunta">Enviar ↗</button></div></form>
+      <div class="actions"><button type="button" class="primary" id="talk">● Falar com Acolhe</button><button type="button" class="stop" id="stop">■ Parar</button></div>
+      <div class="audio-actions"><audio id="voice-player" controls aria-label="Resposta falada do Acolhe"></audio><button id="clear-chat" class="text-button" type="button">Limpar conversa</button></div>
+      <p class="error" id="robot-error" role="alert"></p><p class="small" id="latency"></p>
+    </section>
+    <aside class="sidebar" aria-label="Ambiente e robô">
+      <section class="card environment"><p class="eyebrow">O AMBIENTE AGORA</p><h2>Pequenas observações.</h2><div class="sensor-values"><div><span>Temperatura</span><strong id="temperature">—</strong><small>graus Celsius</small></div><div><span>Umidade</span><strong id="humidity">—</strong><small>por cento</small></div></div><p class="sensor-note" id="sensor-note" role="status">Conecte o robô para receber leituras reais.</p><p class="small">DHT11 · leitura a cada 2 segundos</p><div id="heat-activity" class="heat hidden"><p>Uma descoberta sobre calor</p><button type="button" id="heat-question">Vamos aprender a palavra “quente”?</button></div></section>
+      <section class="card connection" id="montagem"><p class="eyebrow">NOSSO ROBÔ</p><h2>Uma conexão de cada vez.</h2><p id="connection-status" role="status">Arduino desconectado</p><label for="serial-port">Porta USB do Arduino</label><select id="serial-port"><option value="">Selecione uma porta</option></select><div class="row"><button type="button" class="secondary" id="refresh-ports">Atualizar</button><button type="button" class="primary" id="connect">Conectar</button></div><p class="small">Feche o Monitor Serial do Arduino IDE antes de conectar.</p><dl class="components"><div><dt>Display I²C</dt><dd id="lcd-state">Não verificado</dd></div><div><dt>Voz local</dt><dd id="voice-state">Verificando arquivos</dd></div><div><dt>Motores</dt><dd id="motor-state">Bloqueados</dd></div></dl>
+      <details id="calibration"><summary>Habilitar gestos: confirmar cabeça e braço</summary><p class="small">Confira alimentação, GND e limites mecânicos. A confirmação serial não comprova movimento. Cada teste envia um único pulso, sem retorno automático.</p><label class="check"><input type="checkbox" id="wiring-confirmed">Conferi a montagem e posso interromper a alimentação dos motores.</label><label for="motor">Motor</label><select id="motor"><option value="head">Cabeça</option><option value="arm">Braço</option></select><label>Duração (ms)<input id="pulse-ms" type="number" min="1" max="150" value="100"></label><p class="small">Acionamento total pelos jumpers ENA/ENB. O Arduino controla somente duração e sentido.</p><label for="direction">Direção</label><select id="direction"><option value="1">Sentido 1</option><option value="-1">Sentido inverso</option></select><button type="button" class="secondary full" id="test-pulse">Testar um pulso</button><button type="button" class="secondary full" id="confirm-movement">Observei movimento seguro: registrar</button><p class="small" id="calibration-status">Confirme os dois motores para permitir gestos nas atividades. Parar ou reconectar bloqueia novamente.</p></details></section>
+    </aside>
+  </div>
+  <p class="privacy">Protótipo acadêmico. Use com um adulto responsável. Sem gravações ou conversas salvas em disco. O sensor mede temperatura e umidade; não detecta presença nem qualidade do ar.</p>
+</main><footer><strong>acolhe.</strong><span>Português para recomeçar · Maker Lab</span><a href="/">Voltar às atividades ↗</a></footer>
+</body></html>

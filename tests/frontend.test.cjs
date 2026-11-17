@@ -38,3 +38,10 @@ test('expired session clears old progress before a fresh session is created',asy
  h.routes.delete('/api/attempts');await h.run('submitAnswer(0)');
  assert.equal(h.calls.filter(x=>x.path==='/api/sessions').length,2);assert.equal(h.get('progress').textContent,'1 / 1');
 });
+
+test('physical robot command is not presented as simulation',async()=>{
+ const h=await harness();h.routes.set('/api/attempts',()=>({correct:true,robot:{simulated:false,status:'command_sent'}}));
+ h.run('openLesson(lessons[0])');await h.run('submitAnswer(0)');
+ assert.doesNotMatch(h.get('feedback').textContent,/simulado/);
+ assert.match(h.get('feedback').textContent,/Comando/);
+});

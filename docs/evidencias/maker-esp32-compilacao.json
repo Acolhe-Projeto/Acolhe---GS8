@@ -1,0 +1,43 @@
+{
+  "recorded_at_utc": "2026-11-11T18:37:05.635Z",
+  "kind": "compile_and_targeted_software_tests",
+  "firmware": "robot/firmware/acolhe/acolhe.ino",
+  "esp32_core": "3.3.12",
+  "physical_hardware_tested": false,
+  "uploaded_by_agent": false,
+  "lcd_default_on_esp32": false,
+  "profiles": [
+    {
+      "profile": "ESP32 classic, LCD disabled",
+      "fqbn": "esp32:esp32:esp32",
+      "cpp_flags": "",
+      "exit_code": 0,
+      "output": "Sketch uses 326335 bytes (24%) of program storage space. Maximum is 1310720 bytes.\nGlobal variables use 23864 bytes (7%) of dynamic memory, leaving 303816 bytes for local variables. Maximum is 327680 bytes.\n"
+    },
+    {
+      "profile": "ESP32 classic, LCD enabled",
+      "fqbn": "esp32:esp32:esp32",
+      "cpp_flags": "-DACOLHE_LCD_ENABLED=1",
+      "exit_code": 0,
+      "output": "Sketch uses 329875 bytes (25%) of program storage space. Maximum is 1310720 bytes.\nGlobal variables use 23920 bytes (7%) of dynamic memory, leaving 303760 bytes for local variables. Maximum is 327680 bytes.\n"
+    },
+    {
+      "profile": "Arduino Uno compatibility",
+      "fqbn": "arduino:avr:uno",
+      "cpp_flags": "",
+      "exit_code": 0,
+      "output": "Sketch uses 15144 bytes (46%) of program storage space. Maximum is 32256 bytes.\nGlobal variables use 882 bytes (43%) of dynamic memory, leaving 1166 bytes for local variables. Maximum is 2048 bytes.\n"
+    }
+  ],
+  "software_tests": {
+    "python": "24 targeted tests passed: robot.test_hardware robot.test_robot tests.test_robot_http",
+    "javascript": "7 tests passed: tests/robot_frontend.test.cjs",
+    "syntax_check": "node --check app/static/robot.js passed",
+    "diff_check": "git diff --check passed"
+  },
+  "notes": [
+    "GPIO mapping for classic ESP32 only.",
+    "Motor power must stay disconnected until wiring and pull-down resistors are checked.",
+    "LCD build verification does not validate I2C voltage levels."
+  ]
+}

@@ -44,25 +44,27 @@ Apresentar o robô tutor como apoio a atividades do Acolhe. Explicar que a reaç
 
 ## 0min35s a 1min20s Hardware
 
-Mostrar os componentes físicos realmente montados: controlador, fonte/baterias, ponte H, motores e sensor adicional. Nomear o sensor e a grandeza medida. Explicar alimentação e limites. Motores e servos são atuadores, não sensores.
+Mostrar os componentes físicos realmente montados: controlador, fonte/baterias, ponte H, motores e sensor adicional. Nomear o DHT11 (temperatura em graus Celsius e umidade relativa em porcentagem), LCD QAPASS I2C, Uno USB, L298N e dois motores TT. Nao ha buzzer. Explicar alimentação e limites. Motores e servos são atuadores, não sensores.
+
+Montagem atual de17/11: ENA/ENB com jumpers instalados, sem fiosD5/D6 e sem PWM; jumper do reguladorATIVA5V retirado, lógica5V externa e GNDcomum. Mostrar duração/sentido no painel e explicar acionamento total e freioLOW/LOW. Não usar o diagrama antigo com resistoresENA/ENB como se fosse a montagem atual.
 
 Se o sensor ainda não estiver montado, esta parte não está concluída. Uma imagem de circuito ou um simulador não satisfaz a demonstração física.
 
 ## 1min20s a 2min15s Sensor real
 
-Mostrar a leitura real mudando com uma condição controlada e segura. Manter visíveis o componente e a leitura correspondente. Registrar unidade, limiar e tratamento de leitura inválida. Não movimentar o robô perto de crianças durante testes de bancada.
+Mostrar a leitura real do DHT11 no LCD e no painel /robo.html, mudando com uma condição controlada e segura. Nao usar chama, liquidos ou ar quente intenso. Mostrar tambem o estado indisponivel com o sensor desconectado de forma eletricamente segura. Manter visíveis o componente e a leitura correspondente. Registrar unidade, limiar e tratamento de leitura inválida. Não movimentar o robô perto de crianças durante testes de bancada.
 
 ## 2min15s a 3min25s Integração com IA
 
-Mostrar a atividade no app, evento enviado, informação usada pela IA e decisão produzida. Distinguir regra programada, recuperação de conteúdo e inferência de modelo. Se a IA não estiver ligada ao hardware, registrar isso como pendência, sem narrar a simulação como integração real.
+No painel Acolhe, clicar para falar e perguntar como esta a sala. Mostrar transcricao Whisper, resposta do Qwen3 4B com leitura valida e reproducao Piper. Explicar que numeros vem da telemetria validada e texto educativo vem do modelo local. Mostrar a oferta de atividade de calor (regra didatica de tres leituras >=30 C, rearme abaixo de28 C, intervalo120 s) se a condicao ocorrer realmente; fixtures so podem ser mostradas como testes de software, nunca como medicao fisica. Distinguir regra programada, recuperação de conteúdo e inferência de modelo. Se a IA não estiver ligada ao hardware, registrar isso como pendência, sem narrar a simulação como integração real.
 
 ## 3min25s a 4min35s Ação e retorno
 
-Executar um caso de acerto e um caso de erro. Mostrar uma ação segura e um incentivo apropriado. Explicar como o mediador pode interromper. Evitar movimentos bruscos, força excessiva ou reação punitiva.
+Com calibracao supervisionada confirmada nos dois motores, executar um caso de acerto (braco) e um caso de erro (cabeca). Confirmar movimento visivel e parametros de bancada. Demonstrar tambem a mudanca de estado no LCD I2C. Mostrar uma ação segura e um incentivo apropriado. Explicar como o mediador pode interromper. Evitar movimentos bruscos, força excessiva ou reação punitiva.
 
 ## 4min35s a 5min20s Falha e segurança
 
-Demonstrar perda de comunicação ou leitura inválida em condição controlada. Mostrar parada ou estado seguro. Explicar timeout, limites mecânicos e supervisão. Nunca retirar proteção elétrica para encenar uma falha.
+Demonstrar perda de comunicação ou leitura inválida em condição controlada. Mostrar parada ou estado seguro. Explicar heartbeat de0,5s, parada por perda de comunicacao apos2s, pulsos ate150ms, intervalo2s e bloqueio de motores no boot/parada. Registrar limites mecanicos e supervisao. O botao Parar e uma parada por software; mostrar acesso ao corte de alimentacao dos motores. Nunca retirar proteção elétrica para encenar uma falha.
 
 ## 5min20s a 5min45s Conclusão
 
@@ -71,3 +73,6 @@ Recapitular sensor, decisão e ação efetivamente demonstrados. Exibir pendênc
 ## Evidências para guardar
 
 Fotos da montagem, diagrama conferido, lista de componentes reais, versão do firmware, leituras com data/hora, eventos da aplicação, casos de segurança e vídeo. Não usar imagens de pessoas sem autorização. Não afirmar hardware concluído com base em testes do simulador.
+
+### Sequência curta para a atividade com gestos
+Dizer “Vamos praticar”. Acolhe pergunta como se diz hola: responder “olá” para mostrar acerto e gesto do braço. Na pergunta silla, responder “livro” para demonstrar dica e gesto da cabeça; em seguida “cadeira” e “garrafa” para concluir. Registrar previamente os dois motores na calibração supervisionada. Esperar ao menos dois segundos entre gestos. Dizer “não sei” demonstra dica sem gesto; “Encerrar atividade” termina. Explicar que essa avaliação é regra curada e que as outras perguntas usam Qwen3; não chamar a regra de geração de IA.

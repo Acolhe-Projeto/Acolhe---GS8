@@ -48,3 +48,5 @@ node_modules/
 /vision/runs/
 *.pt
 *.onnx
+/robot/.models/
+/robot/.verification/
