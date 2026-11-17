@@ -4,7 +4,7 @@ Conferido em 2026-11-17 contra o enunciado "Desafio FIAP GS CitizenTech 4ES" e a
 
 Legenda: ✅ atende · 🟡 parcial · ❌ falta · 👤 só a equipe pode fazer (gravar, enviar, montar PDF, hardware)
 
-Links que valem para todas: repositório https://github.com/TomazVC/Acolhe---GS8 (branch Aksel+Ian, ainda sem merge na main) · MVP https://acolhe-gs8.ambitiousbeach-2f5aaa39.canadacentral.azurecontainerapps.io
+Links que valem para todas: repositório https://github.com/Acolhe-Projeto/Acolhe---GS8 (movido de TomazVC em 17/11; branch Aksel+Ian, ainda sem merge na main) · MVP https://acolhe-gs8.ambitiousbeach-2f5aaa39.canadacentral.azurecontainerapps.io
 
 ## 1. Big Data Architecture & Data Integration (Ian e Aksel)
 Entrega: PDF com o link do repositório.
@@ -80,11 +80,12 @@ Entrega: links do repositório. Relatório no GitHub.
 ## 7. Project-Based Maker Lab (Tomáz)
 | Item | Status | Situação |
 |---|---|---|
-| Robô com sensor adicional integrado à IA | 👤 ❌ | Firmware de referência e simulação prontos; montagem física e sensor real pendentes. |
+| Robô com sensor adicional integrado à IA | 🟡 👤 | PR #2 na main (17/11): firmware `acolhe.ino`, sensor DHT11, gestos, voz local (`robot/voice.py`, `hardware.py`) e testes. Falta comprovar com o robô físico em vídeo. |
 | README com componentes, instalação e integração | 🟡 | `robot/README.md` com integrantes e RMs. |
 | Vídeo de até 6 min | 👤 | Roteiro em `docs/roteiros_videos.md`. |
 
 ## Para todos
-- Fazer o merge da `Aksel+Ian` na `main` antes de 19/11, porque o professor vai abrir a branch padrão.
+- Fazer o merge da `Aksel+Ian` na `main` antes de 19/11, porque o professor vai abrir a branch padrão. A `main` recebeu o PR #2 (Maker) depois que a branch foi criada: o merge tem um conflito em `app/server.py`, e o resto (`.gitignore`, `app.js`, `roteiros_videos.md`) se resolve sozinho.
+- Na organização Acolhe-Projeto, a conta Oslyanka agora é administradora, então os secrets do deploy automático (OIDC Azure) já podem ser configurados.
 - Não derrubar o Azure nem tornar privado o pacote GHCR até o fim da correção (cerca de 26/11).
 - Cada PDF precisa de nome completo e RM de todos; a falta disso tira 0,5 em Big Data.
