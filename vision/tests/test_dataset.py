@@ -166,6 +166,15 @@ class DatasetTests(unittest.TestCase):
         self.assertEqual(result["per_class_metrics"]["backpack"]["map50"],0.42)
         self.assertFalse(result["quality_validated"])
         self.assertTrue((out/"error_analysis.md").is_file())
+        # Deferring test evaluation must not instantiate a test model or call val.
+        model.reset_mock(); runtime.YOLO.reset_mock()
+        with patch.dict("sys.modules", {"ultralytics":runtime}):
+            deferred = train.train(self.data,self.provenance,epochs=1,output=self.root/"deferred",evaluate_test=False)
+        model.val.assert_not_called()
+        runtime.YOLO.assert_called_once_with("yolo11n.pt")
+        self.assertIsNone(deferred["test_metrics"])
+        self.assertEqual(deferred["per_class_metrics"], {})
+
 
 
 class TrainingOptionsTests(unittest.TestCase):

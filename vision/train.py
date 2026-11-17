@@ -61,7 +61,7 @@ def reserve_output(path):
     return path
 
 
-def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=320, batch=2, workers=0, base_model="yolo11n.pt", freeze=0):
+def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=320, batch=2, workers=0, base_model="yolo11n.pt", freeze=0, evaluate_test=True):
     if base_model not in {"yolo11n.pt", "yolov8n.pt", "yolo26n.pt"}:
         raise ValueError("Choose an explicitly supported official nano base model")
     if type(freeze) is not int or not 0 <= freeze <= 22:
@@ -94,7 +94,7 @@ def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=32
     evaluation = YOLO(str(best)).val(data=str(resolved_data), split="test", imgsz=imgsz,
                                     batch=batch, device=device, workers=workers,
                                     plots=True, save_json=True, project=str(root/"runs"),
-                                    name=out.name + "-test", exist_ok=False)
+                                    name=out.name + "-test", exist_ok=False) if evaluate_test else None
     with best.open("rb") as source, (out/"best.pt").open("xb") as target:
         shutil.copyfileobj(source, target)
     per_class = {name: {"precision": float(evaluation.box.p[i]),
@@ -102,15 +102,15 @@ def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=32
                         "map50": float(evaluation.box.ap50[i]),
                         "map50_95": float(evaluation.box.ap[i])}
                  for i, class_id in enumerate(evaluation.box.ap_class_index)
-                 for name in [metadata["class_names"][int(class_id)]]}
+                 for name in [metadata["class_names"][int(class_id)]]} if evaluation is not None else {}
     metadata.update(trained_on_real_images=True, epochs=epochs, model=Path(base_model).stem,
                     device=device, imgsz=imgsz, batch=batch, workers=workers, seed=42, freeze=freeze,
                     inference={"conf": 0.5, "imgsz": imgsz},
                     quality_validated=False, dataset_audit=dataset_audit,
-                    evaluation_directory=str(evaluation.save_dir), per_class_metrics=per_class,
+                    evaluation_directory=str(evaluation.save_dir) if evaluation is not None else None, per_class_metrics=per_class,
                     dataset_yaml_sha256=hashlib.sha256(data.read_bytes()).hexdigest(),
                     checkpoint_sha256=hashlib.sha256((out/"best.pt").read_bytes()).hexdigest(),
-                    test_metrics={str(k): float(v) for k,v in evaluation.results_dict.items()})
+                    test_metrics={str(k): float(v) for k,v in evaluation.results_dict.items()} if evaluation is not None else None)
     with (out/"model_manifest.json").open("x", encoding="utf-8") as target:
         json.dump(metadata, target, indent=2)
     with (out/"error_analysis.md").open("x", encoding="utf-8") as target:
@@ -132,7 +132,8 @@ if __name__ == "__main__":
     p.add_argument("--batch", type=int, default=2)
     p.add_argument("--workers", type=int, default=0)
     p.add_argument("--base-model", choices=["yolo11n.pt", "yolov8n.pt", "yolo26n.pt"], default="yolo11n.pt")
+    p.add_argument("--skip-test", action="store_true", help="Train/select on validation only; defer test until calibration is frozen")
     p.add_argument("--freeze", type=int, default=0)
     a=p.parse_args()
     print(json.dumps(train(a.dataset,a.provenance,a.epochs,a.output,device=a.device,
-                           imgsz=a.imgsz,batch=a.batch,workers=a.workers,base_model=a.base_model,freeze=a.freeze),indent=2))
+                           imgsz=a.imgsz,batch=a.batch,workers=a.workers,base_model=a.base_model,freeze=a.freeze,evaluate_test=not a.skip_test),indent=2))

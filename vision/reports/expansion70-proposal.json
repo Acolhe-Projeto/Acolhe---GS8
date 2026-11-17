@@ -47,7 +47,7 @@
     },
     "test": {}
   },
-  "human_approval": "pending",
+  "human_approval": "approved",
   "privacy_reviewed_true": 0,
   "local_packet": "vision/data/public-review-train70-v2-20261117",
   "source": "COCO train2017 (85 new) + five previously approved photos retaining original split",
@@ -57,8 +57,8 @@
   "historical_test_exact_overlap": 0,
   "near_duplicate_review": "pending",
   "agent_visual_screening": "All acquired contact sheets inspected; five unsuitable collage/toy/airplane images removed before final packet. One prior-approved bus scene has a distant annotated person; human review remains pending.",
-  "training_started": false,
-  "approval_required": true,
+  "training_started": true,
+  "approval_required": false,
   "planned_experiment": {
     "base": "yolo26n.pt",
     "epochs": 100,
@@ -71,5 +71,7 @@
     "promotion": "only if validation supports useful improvement; preserve current active model",
     "test": "23 approved images, diagnostic regression only after frozen choice; never train on them"
   },
-  "source_acquisition": "HTTP429 stopped online acquisition. Final packet assembled entirely from verified cache; no rate-limit bypass."
+  "source_acquisition": "HTTP429 stopped online acquisition. Final packet assembled entirely from verified cache; no rate-limit bypass.",
+  "approval_reference": "Aprovo o lote e o treino local",
+  "dataset_fingerprint_sha256": "680186e488f3189b421f910e89a0010cecb836fa75d0232d7148e54313eb46ac"
 }
