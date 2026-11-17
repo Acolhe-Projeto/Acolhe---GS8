@@ -1,0 +1,5 @@
+{
+  "scope": "dHash64, Hamming<=4 and relative aspect difference<5%; heuristic candidates only. Not proof of independent scenes or absence of leaks. No outcomes used.",
+  "candidate_pairs": [],
+  "dataset_fingerprint_sha256": "abb3344456883d54fd452809101782b353c94de25c3127646e05b0edc7a9732e"
+}

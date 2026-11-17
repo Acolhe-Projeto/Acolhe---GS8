@@ -177,9 +177,65 @@ class DatasetTests(unittest.TestCase):
 
 
 
+    def test_warm_start_checks_hash_and_uses_explicit_low_rate(self):
+        from types import SimpleNamespace
+        parent = self.root / "parent"
+        parent.mkdir()
+        checkpoint = parent / "best.pt"
+        checkpoint.write_bytes(b"unit fixture, never a trained-model claim")
+        manifest = {"class_names":list(LABELS), "trained_on_real_images":True,
+                    "checkpoint_sha256":hashlib.sha256(checkpoint.read_bytes()).hexdigest(), "model":"yolo26n", "epochs":80, "imgsz":640}
+        (parent/"model_manifest.json").write_text(json.dumps(manifest))
+        runtime = Mock(); model = runtime.YOLO.return_value
+        model.names = dict(enumerate(LABELS)); model.trainer.best = checkpoint; model.trainer.epoch = 8
+        with patch.dict("sys.modules", {"ultralytics":runtime}):
+            result = train.train(self.data,self.provenance,epochs=30,output=self.root/"warm",base_model="yolo26n.pt",
+                                 initial_artifacts=parent,learning_rate=5e-5,patience=8,mosaic=0,freeze=10,evaluate_test=False)
+        runtime.YOLO.assert_called_once_with(str(checkpoint))
+        kwargs=model.train.call_args.kwargs
+        self.assertEqual((kwargs['optimizer'],kwargs['lr0'],kwargs['warmup_bias_lr']), ('AdamW',5e-5,0.0))
+        self.assertFalse(kwargs['resume']); model.val.assert_not_called()
+        self.assertEqual(result['epochs_completed'],9)
+        self.assertEqual(result['warm_start']['checkpoint_sha256'],manifest['checkpoint_sha256'])
+        from vision.calibrate import calibrate
+        with patch.dict("sys.modules", {"ultralytics":runtime}), patch("vision.calibrate.collect",return_value=[]) as collect:
+            calibration=calibrate(parent,self.data,self.provenance,self.root/"calibration.json",imgsz=960)
+        self.assertEqual(calibration['imgsz'],960)
+        self.assertEqual(calibration['trained_imgsz'],640)
+        self.assertEqual(collect.call_args.args[-1],960)
+        checkpoint.write_bytes(b"changed")
+        with self.assertRaisesRegex(ValueError,"hash"):
+            train.initial_checkpoint(parent,"yolo26n.pt")
+
+    def test_merge_deduplicates_without_changing_splits_or_labels(self):
+        from vision.merge_approved import merge
+        result = merge([self.root,self.root], self.root, self.root/"merged")
+        self.assertEqual([result['splits'][s]['images'] for s in ('train','val','test')], [12,12,12])
+        merged=json.loads((self.root/"merged/provenance.json").read_text(encoding='utf-8'))
+        original={r['image_id']:r for r in self.records}
+        for record in merged['images']:
+            old=original[record['image_id']]
+            self.assertEqual(old['split'],record['split'])
+            self.assertEqual(old['sha256'],record['sha256'])
+        with self.assertRaises(FileExistsError): merge([self.root],self.root,self.root/"merged")
+        import shutil
+        other=self.root/"other"
+        other.mkdir()
+        shutil.copytree(self.root/"images",other/"images")
+        shutil.copytree(self.root/"labels",other/"labels")
+        shutil.copyfile(self.data,other/"dataset.yaml")
+        shutil.copyfile(self.provenance,other/"provenance.json")
+        label=other/"labels/train/0.txt"
+        label.write_text("0 0.4 0.4 0.3 0.3\n")
+        with self.assertRaisesRegex(ValueError,"Conflicting"):
+            merge([self.root,other],self.root,self.root/"conflict")
+        self.assertFalse((self.root/"conflict").exists())
+
+
+
 class TrainingOptionsTests(unittest.TestCase):
     def test_invalid_cpu_options_fail_before_data_or_runtime(self):
-        for options in ({"imgsz":33},{"batch":0},{"workers":-1},{"device":""},{"base_model":"https://untrusted.invalid/model.pt"},{"freeze":-1},{"freeze":23}):
+        for options in ({"imgsz":33},{"batch":0},{"workers":-1},{"device":""},{"base_model":"https://untrusted.invalid/model.pt"},{"freeze":-1},{"freeze":23},{"learning_rate":0},{"learning_rate":float("nan")},{"patience":0},{"mosaic":-1}):
             with self.subTest(options=options), patch.object(train,"validate_dataset") as validate:
                 with self.assertRaises(ValueError): train.train("missing","missing",**options)
                 validate.assert_not_called()

@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import math
 import shutil
 from pathlib import Path
 
@@ -55,15 +56,29 @@ def validate_dataset(dataset, provenance):
     return data, metadata
 
 
+def initial_checkpoint(artifacts, base_model):
+    """Only warm-start a local, hash-bound checkpoint with the expected class head."""
+    root = Path(artifacts).resolve()
+    manifest = json.loads((root / "model_manifest.json").read_text(encoding="utf-8"))
+    validate_names(manifest.get("class_names"))
+    checkpoint = root / "best.pt"
+    digest = hashlib.sha256(checkpoint.read_bytes()).hexdigest()
+    if (manifest.get("trained_on_real_images") is not True or manifest.get("model") != Path(base_model).stem
+            or digest != manifest.get("checkpoint_sha256")):
+        raise ValueError("Initial checkpoint must match its real-training manifest, model and hash")
+    return checkpoint, {"checkpoint_sha256": digest, "source_epochs": manifest.get("epochs"),
+                        "source_model": manifest["model"], "optimizer_resumed": False}
+
+
 def reserve_output(path):
     path = Path(path)
     path.mkdir(parents=True, exist_ok=False)
     return path
 
 
-def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=320, batch=2, workers=0, base_model="yolo11n.pt", freeze=0, evaluate_test=True):
-    if base_model not in {"yolo11n.pt", "yolov8n.pt", "yolo26n.pt"}:
-        raise ValueError("Choose an explicitly supported official nano base model")
+def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=320, batch=2, workers=0, base_model="yolo11n.pt", freeze=0, evaluate_test=True, initial_artifacts=None, learning_rate=None, patience=100, mosaic=1.0):
+    if base_model not in {"yolo11n.pt", "yolov8n.pt", "yolo26n.pt", "yolo26s.pt", "yolo26m.pt"}:
+        raise ValueError("Choose an explicitly supported official base model")
     if type(freeze) is not int or not 0 <= freeze <= 22:
         raise ValueError("freeze must be an integer between0 and22")
     if type(epochs) is not int or epochs < 1:
@@ -74,6 +89,13 @@ def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=32
         raise ValueError("batch must be positive and workers nonnegative integers")
     if not isinstance(device, str) or not device.strip():
         raise ValueError("device must be cpu or an explicitly selected device")
+    if learning_rate is not None and (type(learning_rate) not in (int, float) or not math.isfinite(learning_rate) or not 0 < learning_rate <= 0.1):
+        raise ValueError("learning_rate must be finite and in (0,0.1]")
+    if type(patience) is not int or patience < 1:
+        raise ValueError("patience must be a positive integer")
+    if type(mosaic) not in (int, float) or not math.isfinite(mosaic) or not 0 <= mosaic <= 1:
+        raise ValueError("mosaic must be finite and in [0,1]")
+    initial, warm_start = initial_checkpoint(initial_artifacts, base_model) if initial_artifacts else (base_model, None)
     data, metadata = validate_dataset(dataset, provenance)
     from vision.audit import audit
     dataset_audit = audit(data, provenance)
@@ -86,10 +108,14 @@ def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=32
     config["path"] = str((data.parent / config.get("path", ".")).resolve())
     resolved_data = out / "dataset-resolved.yaml"
     resolved_data.write_text(yaml.safe_dump(config, sort_keys=False), encoding="utf-8")
-    model = YOLO(base_model)
+    model = YOLO(str(initial))
+    if initial_artifacts:
+        validate_names(model.names)
+    tuning = {"optimizer": "AdamW", "lr0": learning_rate, "lrf": 0.1, "warmup_epochs": 1.0, "warmup_bias_lr": 0.0} if learning_rate is not None else {}
     model.train(data=str(resolved_data), epochs=epochs, imgsz=imgsz, batch=batch, device=device,
                 workers=workers, cache=False, seed=42, deterministic=True, freeze=freeze,
-                project=str(root/"runs"), name=out.name, exist_ok=False)
+                project=str(root/"runs"), name=out.name, exist_ok=False,
+                resume=False, patience=patience, mosaic=mosaic, close_mosaic=0 if mosaic == 0 else 10, **tuning)
     best = Path(model.trainer.best)
     evaluation = YOLO(str(best)).val(data=str(resolved_data), split="test", imgsz=imgsz,
                                     batch=batch, device=device, workers=workers,
@@ -103,7 +129,10 @@ def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=32
                         "map50_95": float(evaluation.box.ap[i])}
                  for i, class_id in enumerate(evaluation.box.ap_class_index)
                  for name in [metadata["class_names"][int(class_id)]]} if evaluation is not None else {}
-    metadata.update(trained_on_real_images=True, epochs=epochs, model=Path(base_model).stem,
+    completed_epoch = getattr(model.trainer, "epoch", None)
+    metadata.update(trained_on_real_images=True, epochs=epochs,
+                    epochs_completed=completed_epoch+1 if type(completed_epoch) is int else None, model=Path(base_model).stem,
+                    warm_start=warm_start, training_overrides=tuning, resume=False, patience=patience, mosaic=mosaic,
                     device=device, imgsz=imgsz, batch=batch, workers=workers, seed=42, freeze=freeze,
                     inference={"conf": 0.5, "imgsz": imgsz},
                     quality_validated=False, dataset_audit=dataset_audit,
@@ -131,9 +160,13 @@ if __name__ == "__main__":
     p.add_argument("--imgsz", type=int, default=320)
     p.add_argument("--batch", type=int, default=2)
     p.add_argument("--workers", type=int, default=0)
-    p.add_argument("--base-model", choices=["yolo11n.pt", "yolov8n.pt", "yolo26n.pt"], default="yolo11n.pt")
+    p.add_argument("--base-model", choices=["yolo11n.pt", "yolov8n.pt", "yolo26n.pt", "yolo26s.pt", "yolo26m.pt"], default="yolo11n.pt")
     p.add_argument("--skip-test", action="store_true", help="Train/select on validation only; defer test until calibration is frozen")
+    p.add_argument("--initial-artifacts", help="Local audited custom checkpoint directory; weights only, no optimizer resume")
+    p.add_argument("--learning-rate", type=float, help="Explicit AdamW learning rate; bypass automatic LR selection")
+    p.add_argument("--patience", type=int, default=100)
+    p.add_argument("--mosaic", type=float, default=1.0)
     p.add_argument("--freeze", type=int, default=0)
     a=p.parse_args()
     print(json.dumps(train(a.dataset,a.provenance,a.epochs,a.output,device=a.device,
-                           imgsz=a.imgsz,batch=a.batch,workers=a.workers,base_model=a.base_model,freeze=a.freeze,evaluate_test=not a.skip_test),indent=2))
+                           imgsz=a.imgsz,batch=a.batch,workers=a.workers,base_model=a.base_model,freeze=a.freeze,evaluate_test=not a.skip_test,initial_artifacts=a.initial_artifacts,learning_rate=a.learning_rate,patience=a.patience,mosaic=a.mosaic),indent=2))
