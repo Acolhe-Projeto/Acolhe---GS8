@@ -77,15 +77,17 @@ def fingerprint(records):
     return hashlib.sha256(json.dumps(fields, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
-def build(root, train=4, val=1, test=1, excluded=(), cached_only=False):
+def build(root, train=4, val=1, test=1, excluded=(), cached_only=False, source_split="val2017", minimum_train_images=0, minimum_val_images=0):
     from PIL import Image, ImageDraw, ImageFont
-    if any(type(n) is not int or n < 1 for n in (train, val, test)):
-        raise ValueError("Each class needs a positive image count in each split")
+    if (any(type(n) is not int or n < 1 for n in (train, val)) or type(test) is not int or test < 0
+            or any(type(n) is not int or n < 0 for n in (minimum_train_images, minimum_val_images))
+            or source_split not in ("train2017", "val2017")):
+        raise ValueError("Train/validation need positive per-class counts; test may be zero; source must be COCO2017")
     root = Path(root).resolve()
     if (root / "reviews.json").exists(): raise FileExistsError("Choose a fresh review directory")
     root.mkdir(parents=True, exist_ok=True)
-    coco = metadata(root, "instances_val2017.json")
-    captions = metadata(root, "captions_val2017.json")
+    coco = metadata(root, "instances_" + source_split + ".json")
+    captions = metadata(root, "captions_" + source_split + ".json")
     texts = defaultdict(list)
     for caption in captions["annotations"]: texts[caption["image_id"]].append(caption["caption"])
     annotations = defaultdict(list)
@@ -124,7 +126,7 @@ def build(root, train=4, val=1, test=1, excluded=(), cached_only=False):
         flickr_id = re.search(r"/(\d+)_", image["flickr_url"]).group(1)
         page, source_url = fetch("https://www.flickr.com/photo.gne?id=" + flickr_id)
         credit = flickr_credit(page.decode("utf-8"))
-        image_url = "https://s3.amazonaws.com/images.cocodataset.org/val2017/" + image["file_name"]
+        image_url = "https://s3.amazonaws.com/images.cocodataset.org/" + source_split + "/" + image["file_name"]
         pixels = path.read_bytes() if path.is_file() else fetch(image_url)[0]
         with Image.open(io.BytesIO(pixels)) as picture:
             if picture.size != (image["width"], image["height"]): raise ValueError("Source dimensions changed")
@@ -141,9 +143,14 @@ def build(root, train=4, val=1, test=1, excluded=(), cached_only=False):
         return record
 
     for split, minimum in (("test", test), ("val", val), ("train", train)):
+        if minimum == 0:
+            continue
         counts = Counter()
-        while min((counts[name] for name in LABELS), default=0) < minimum:
+        split_count = 0
+        image_floor = {"train": minimum_train_images, "val": minimum_val_images}.get(split, 0)
+        while min((counts[name] for name in LABELS), default=0) < minimum or split_count < image_floor:
             missing = {name for name in LABELS if counts[name] < minimum}
+            if not missing: missing = set(LABELS)
             available = [image for image in candidates if image["id"] not in used and missing.intersection(image["target_classes"])]
             if not available: raise ValueError("Not enough verified candidates: " + str(missing))
             # Prefer photographs without annotated people, then cover multiple missing classes.
@@ -162,17 +169,27 @@ def build(root, train=4, val=1, test=1, excluded=(), cached_only=False):
                     if not missing.intersection(record["target_classes"]): continue
                     used.add(image["id"])
                     selected.append(dict(record, split=split, review_number=len(selected)+1))
+                    split_count += 1
                     counts.update(record["target_classes"])
                     missing = {name for name in LABELS if counts[name] < minimum}
+                    if not missing and split_count < image_floor: missing = set(LABELS)
             print(split, len(selected), dict(counts), flush=True)
             (root / "selection-progress.json").write_text(json.dumps({"images": selected, "failures": failures}, ensure_ascii=False, indent=2), encoding="utf-8")
     if cached_only:
         for image in candidates:
             if image["id"] not in used:
                 selected.append(dict(acquire(image), split="train", review_number=len(selected)+1))
+    selected_ids = {int(r["image_id"]) for r in selected}
+    subset = {"images": [im for im in coco["images"] if im["id"] in selected_ids],
+              "categories": coco["categories"], "annotations": [a for a in coco["annotations"] if a["image_id"] in selected_ids]}
+    annotation_path = root / "instances_subset.json"
+    annotation_path.write_text(json.dumps(subset, ensure_ascii=False), encoding="utf-8")
+    annotation_hash = hashlib.sha256(annotation_path.read_bytes()).hexdigest()
+    for record in selected: record["annotations_sha256"] = annotation_hash
     packet_hash = fingerprint(selected)
     review = {"source_url": "https://cocodataset.org/", "license": "Per-image CC-BY 2.0 confirmed on Flickr; annotations CC-BY 4.0",
-              "real_images": True, "split_method": "COCO val2017 subset; deterministic seed42; images split before any augmentation",
+              "real_images": True, "split_method": "COCO " + source_split + " subset; deterministic seed42; images split before any augmentation",
+              "annotations_file": annotation_path.name, "annotations_sha256": annotation_hash,
               "class_names": list(LABELS), "packet_sha256": packet_hash, "human_approval": "pending", "images": selected}
     (root / "reviews.json").write_text(json.dumps(review, indent=2, ensure_ascii=False), encoding="utf-8")
     (root / "download_failures.json").write_text(json.dumps(failures, indent=2), encoding="utf-8")
@@ -251,10 +268,13 @@ if __name__ == "__main__":
     sub = parser.add_subparsers(dest="command", required=True)
     make = sub.add_parser("build"); make.add_argument("--root", required=True)
     make.add_argument("--train", type=int, default=4); make.add_argument("--val", type=int, default=1); make.add_argument("--test", type=int, default=1)
+    make.add_argument("--source-split", choices=("train2017", "val2017"), default="val2017")
+    make.add_argument("--minimum-train-images", type=int, default=0)
+    make.add_argument("--minimum-val-images", type=int, default=0)
     make.add_argument("--exclude", type=int, nargs="*", default=[])
     make.add_argument("--cached-only", action="store_true", help="Use previously verified source records only; reserve all remaining images for training")
     approval = sub.add_parser("approve"); approval.add_argument("--root", required=True)
     approval.add_argument("--packet-sha256", required=True); approval.add_argument("--reviewer", required=True); approval.add_argument("--reference", required=True)
     args = parser.parse_args()
-    result = build(args.root, args.train, args.val, args.test, args.exclude, args.cached_only) if args.command == "build" else approve(args.root,args.packet_sha256,args.reviewer,args.reference)
+    result = build(args.root, args.train, args.val, args.test, args.exclude, args.cached_only, args.source_split, args.minimum_train_images, args.minimum_val_images) if args.command == "build" else approve(args.root,args.packet_sha256,args.reviewer,args.reference)
     print(json.dumps(result, indent=2, ensure_ascii=False))

@@ -95,4 +95,21 @@ class PublicReviewTests(unittest.TestCase):
                 self.assertEqual(summary["class_images_per_split"][split], {"book": 1, "bus": 1})
 
 
+            # A fresh packet can allocate only train/validation and enforce image totals.
+            import shutil
+            expanded = root / "expansion"
+            expanded.mkdir()
+            shutil.copytree(root / "source-records", expanded / "source-records")
+            shutil.copytree(root / "originals", expanded / "originals")
+            with patch("vision.public_review.LABELS", {"book": {}, "bus": {}}), patch("vision.public_review.metadata", side_effect=[coco, {"annotations": []}]), patch("vision.public_review.fetch") as network:
+                summary = build(expanded, train=1, val=1, test=0, cached_only=True,
+                                source_split="train2017", minimum_train_images=3, minimum_val_images=2)
+            network.assert_not_called()
+            self.assertGreaterEqual(summary["split_images"]["train"], 3)
+            self.assertGreaterEqual(summary["split_images"]["val"], 2)
+            self.assertNotIn("test", summary["split_images"])
+            review = json.loads((expanded / "reviews.json").read_text(encoding="utf-8"))
+            self.assertEqual(review["annotations_sha256"], hashlib.sha256((expanded / "instances_subset.json").read_bytes()).hexdigest())
+
+
 if __name__ == "__main__": unittest.main()

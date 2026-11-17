@@ -1,5 +1,9 @@
 # GenAI — mobilidade educativa PT/ES
 
+**Há uma LLM real instalada localmente.** O RAG recupera fontes; Qwen gera a resposta. [Manifesto do modelo](model_manifest.json) registra o digest, tamanho, origem e comando de instalação. Os pesos (~1,9 GB) são baixados pelo Ollama e não foram versionados no Git. Não há LoRA nem pesos treinados pela equipe. A página 29 usa a expressão treinar LLM local; o item05 da rubrica, página30, permite LoRA **ou agente**, e foi seguida a alternativa de agente comparado ao RAG. Não apresentar isso como fine-tuning.
+
+Perfil atual: v6/corpus v3; placares anteriores abaixo são históricos. [Resultados atuais](../docs/entregas/RESULTADOS_NOTURNOS.md).
+
 Modelo final **qwen2.5:3b-instruct**, Q4_K_M, 3,09B parâmetros (~1,9 GB de pesos), dentro do limite de 4B solicitado. Ollama 0.40.16; a comparação final confirmou 2.085.963.693 bytes em VRAM na RX 6750 XT. Licença Qwen Research: https://huggingface.co/Qwen/Qwen2.5-3B-Instruct/blob/main/LICENSE. Peso em disco não é memória total.
 
 O [relatório formal](../docs/entregas/GENAI_RELATORIO.md) reúne tarefa, equipe, diagramas, fontes, placar, erros e limitações. [Checklist oficial](../docs/ENTREGA_CHECKLIST.md). Os históricos 0.5B/1.5B e CPU permanecem identificados; não são o perfil final GPU.
