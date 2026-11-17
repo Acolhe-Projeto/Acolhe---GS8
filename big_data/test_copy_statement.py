@@ -13,7 +13,7 @@ class CopyStatementTests(unittest.TestCase):
   spark=Capture()
   # Reviewed exception: executes this repository's own notebook AST against a capture stub,
   # never external input.
-  exec(compile(ast.Module(body=[loop],type_ignores=[]),'<copy-statement>','exec'),{'spark':spark,'bronze':'main.acolhe.bronze','input_path':'/Volumes/main/acolhe/data/input','batch_date':'2026-11-05'})  # nosemgrep: devsecops.no-dynamic-evaluation
+  exec(compile(ast.Module(body=[loop],type_ignores=[]),'<copy-statement>','exec'),{'spark':spark,'_exists':lambda p: True,'bronze':'main.acolhe.bronze','input_path':'/Volumes/main/acolhe/data/input','batch_date':'2026-11-05'})  # nosemgrep: devsecops.no-dynamic-evaluation
   self.assertEqual(len(spark.statements),2)
   for source,statement in zip(('demand','services'),spark.statements):
    self.assertIn(source+'_2026-11-05.csv',statement)

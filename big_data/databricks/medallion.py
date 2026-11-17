@@ -27,8 +27,12 @@ spark.sql(f"""CREATE TABLE IF NOT EXISTS {bronze} (
  record_id STRING, region STRING, language STRING, count STRING,
  snapshot_date STRING, synthetic STRING, source STRING, batch_date STRING
 ) USING DELTA""")
+def _exists(p):
+    try: dbutils.fs.ls(p); return True
+    except Exception: return False
 for source in ('demand','services'):
     file_path=f'{input_path}/{source}_{batch_date}.csv'
+    if not _exists(file_path): print(f'{source}: nenhum arquivo para o lote {batch_date}'); continue
     spark.sql(f"""COPY INTO {bronze}
     FROM (SELECT CAST(record_id AS STRING) AS record_id, CAST(region AS STRING) AS region,
                  CAST(language AS STRING) AS language, CAST(count AS STRING) AS count,
@@ -89,9 +93,6 @@ summary={'schema_version':1,'generated_at':datetime.now(timezone.utc).isoformat(
 # by collection day (Databricks Free has no connection to Airflow). COPY INTO loads only
 # files it has not seen; each row keeps its source file and load time.
 chegada=f'{input_path}/chegada'
-def _exists(p):
-    try: dbutils.fs.ls(p); return True
-    except Exception: return False
 REAL={
  'municipios':{'folder':'ibge','pattern':'municipios_*.csv','key':['municipality_id'],
    'rules':[('M1','codigo IBGE com 7 digitos', F.col('municipality_id').rlike('^[0-9]{7}$')),
