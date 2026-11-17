@@ -51,7 +51,7 @@ r2=F.coalesce(F.col('language').isin('pt','es','en'),F.lit(False))
 r3=F.coalesce((F.col('metric')>=0)&F.col('count').rlike('^[0-9]+$')&F.col('day').isNotNull()&F.col('synthetic').isin('true','false'),F.lit(False))
 clean=clean.withColumn('rule_failed',F.when(~r1,'R1').when(~r2,'R2').when(~r3,'R3'))
 valid=F.col('rule_failed').isNull()
-clean.filter(~valid).write.format('delta').mode('overwrite').saveAsTable(f'{namespace}.quarantine')
+clean.filter(~valid).write.format('delta').mode('overwrite').option('overwriteSchema','true').saveAsTable(f'{namespace}.quarantine')
 RULES={'demand_services':[('R1','chave e territorio obrigatorios'),('R2','idioma permitido (pt/es/en)'),('R3','contagem inteira >= 0, data ISO e flag de origem')]}
 def rule_counts(df,layer,rules):
     got={r['rule_failed']:r['n'] for r in df.filter(F.col('rule_failed').isNotNull()).groupBy('rule_failed').agg(F.count('*').alias('n')).collect()}

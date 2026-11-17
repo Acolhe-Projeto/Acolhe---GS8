@@ -102,6 +102,16 @@ jobs:
           docker tag "acolhe:$GITHUB_SHA" "$IMAGE"
           docker push "$IMAGE"
           echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
+      - name: Verify image is publicly pullable (Container Apps pulls without credentials)
+        run: |
+          set -eu
+          REPO="${GITHUB_REPOSITORY,,}"
+          fail() { echo "::error::ghcr.io/${REPO} is not publicly pullable. Make the package public (Package settings > Change visibility) and re-run this job. Azure was not touched."; exit 1; }
+          TOKEN=$(curl -fsS "https://ghcr.io/token?scope=repository:${REPO}:pull" | jq -r .token) || fail
+          curl -fsS -o /dev/null -H "Authorization: Bearer ${TOKEN}" \
+            -H "Accept: application/vnd.oci.image.index.v1+json, application/vnd.docker.distribution.manifest.v2+json, application/vnd.oci.image.manifest.v1+json" \
+            "https://ghcr.io/v2/${REPO}/manifests/${GITHUB_SHA}" || fail
+          echo "Image is public: ${IMAGE}"
       - uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
