@@ -3,11 +3,31 @@ import tempfile
 import hashlib
 import json
 from pathlib import Path
-from vision.calibrate import score, activate
+from vision.calibrate import score, activate, collect
+from types import SimpleNamespace
+from unittest.mock import Mock
 from vision.service import inference_options
 
 
 class CalibrationTests(unittest.TestCase):
+    def test_collect_maps_coco_class_names_and_ignores_unrelated_classes(self):
+        from PIL import Image
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root/'images/val').mkdir(parents=True)
+            (root/'labels/val').mkdir(parents=True)
+            Image.new('RGB', (20, 20)).save(root/'images/val/a.png')
+            (root/'labels/val/a.txt').write_text('1 0.5 0.5 1 1\n')
+            def box(cls):
+                return SimpleNamespace(cls=Mock(item=lambda: cls), conf=Mock(item=lambda: .9),
+                                       xyxy=[Mock(tolist=lambda: [0, 0, 20, 20])])
+            result = SimpleNamespace(names={56: 'chair', 0: 'person'}, boxes=[box(56), box(0)])
+            model = Mock(); model.predict.return_value = [result]
+            images = collect(model, root, {'val': 'images/val'}, 'val', 640)
+            self.assertEqual(len(images[0]['predictions']), 1)
+            self.assertEqual(images[0]['predictions'][0]['class_id'], 1)
+            self.assertEqual(score(images, .5)['tp'], 1)
+
     def test_activation_is_bound_to_checkpoint_and_changes_only_settings(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

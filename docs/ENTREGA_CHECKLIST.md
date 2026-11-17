@@ -1,4 +1,4 @@
-> **Rodada de melhoria concluída:** Vision80épocas640/confiança0,10 ativo por seleção em validação; recall operacional52,4%, precisão51,2% no teste histórico. Meta80%/80% ainda não atingida. Novo lote23fotos aguarda revisão humana. PDF regenerado; roteiro rápido em entregas/COMO_USAR_E_GRAVAR.md. Números20épocas/29,4% abaixo identificam o piloto inicial.
+> **Rodada de melhoria concluída:** Vision80épocas640/confiança0,10 ativo por seleção em validação; recall operacional52,4%, precisão51,2% no teste histórico. Meta70%/70% ainda não atingida. O lote novo23fotos foi aprovado e avaliado: recall53,0%, precisão48,6%; não entrou no treino. PDF regenerado; roteiro rápido em entregas/COMO_USAR_E_GRAVAR.md. Números20épocas/29,4% abaixo identificam o piloto inicial.
 
 # Fechamento atual — GenAI e Vision
 

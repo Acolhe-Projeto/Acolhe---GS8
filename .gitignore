@@ -44,6 +44,7 @@ node_modules/
 /vision/*.py.before-guards
 /vision/artifacts*/
 /vision/runs/
+/runs/
 *.pt
 *.onnx
 # Rebuildable Graphify caches, machine paths and local Obsidian workspace

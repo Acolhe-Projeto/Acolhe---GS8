@@ -41,6 +41,8 @@ def score(images, confidence):
 def collect(model, root, config, split, imgsz):
     from PIL import Image
     from vision.audit import confined, IMAGE_SUFFIXES
+    from vision.service import LABELS
+    target_names = list(LABELS)
     images = []
     folder = confined(root, config[split])
     for path in sorted(p for p in folder.iterdir() if p.suffix.lower() in IMAGE_SUFFIXES):
@@ -54,7 +56,9 @@ def collect(model, root, config, split, imgsz):
         predictions = []
         for result in model.predict(str(path), device='cpu', imgsz=imgsz, conf=0.001, save=False, verbose=False):
             for box in result.boxes:
-                predictions.append({'class_id': int(box.cls.item()), 'confidence': float(box.conf.item()), 'xyxy': box.xyxy[0].tolist()})
+                name = result.names[int(box.cls.item())]
+                if name in LABELS:
+                    predictions.append({'class_id': target_names.index(name), 'confidence': float(box.conf.item()), 'xyxy': box.xyxy[0].tolist()})
         images.append({'file': path.relative_to(root).as_posix(), 'gold': gold, 'predictions': predictions})
     return images
 

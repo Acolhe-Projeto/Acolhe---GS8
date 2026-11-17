@@ -5,10 +5,11 @@
   "test_scope": "Historical7 images/42objects; already examined during error analysis. Not a new independent test.",
   "quality_validated": false,
   "target": {
-    "recall": 0.8,
-    "precision": 0.8,
+    "recall": 0.7,
+    "precision": 0.7,
     "min_class_recall": 0.6,
-    "achieved": false
+    "achieved": false,
+    "reason": "User revised main target to70percent recall and precision; independent23 operating results below both."
   },
   "old": {
     "epochs": 20,
@@ -638,9 +639,228 @@
     }
   },
   "new_test": {
-    "status": "awaiting_human_review",
+    "status": "approved_and_evaluated_frozen",
     "images": 23,
-    "packet_sha256": "099377b49d06316d31c089e1d3f2892050d331181d56dfe2abe5f97a5b62905f"
+    "objects": 66,
+    "packet_sha256": "099377b49d06316d31c089e1d3f2892050d331181d56dfe2abe5f97a5b62905f",
+    "report": "vision/reports/independent23-frozen.json",
+    "active_metrics": {
+      "confidence": 0.1,
+      "iou": 0.5,
+      "tp": 35,
+      "fp": 37,
+      "fn": 31,
+      "precision": 0.4861111111111111,
+      "recall": 0.5303030303030303,
+      "f1": 0.5072463768115942,
+      "per_class": [
+        {
+          "tp": 3,
+          "fp": 3,
+          "fn": 2,
+          "precision": 0.5,
+          "recall": 0.6,
+          "f1": 0.5454545454545454
+        },
+        {
+          "tp": 6,
+          "fp": 8,
+          "fn": 1,
+          "precision": 0.42857142857142855,
+          "recall": 0.8571428571428571,
+          "f1": 0.5714285714285714
+        },
+        {
+          "tp": 3,
+          "fp": 2,
+          "fn": 9,
+          "precision": 0.6,
+          "recall": 0.25,
+          "f1": 0.35294117647058826
+        },
+        {
+          "tp": 2,
+          "fp": 3,
+          "fn": 3,
+          "precision": 0.4,
+          "recall": 0.4,
+          "f1": 0.4
+        },
+        {
+          "tp": 2,
+          "fp": 4,
+          "fn": 1,
+          "precision": 0.3333333333333333,
+          "recall": 0.6666666666666666,
+          "f1": 0.4444444444444444
+        },
+        {
+          "tp": 3,
+          "fp": 3,
+          "fn": 1,
+          "precision": 0.5,
+          "recall": 0.75,
+          "f1": 0.6
+        },
+        {
+          "tp": 0,
+          "fp": 2,
+          "fn": 3,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 6,
+          "fp": 9,
+          "fn": 1,
+          "precision": 0.4,
+          "recall": 0.8571428571428571,
+          "f1": 0.5454545454545454
+        },
+        {
+          "tp": 3,
+          "fp": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1": 0.8571428571428571
+        },
+        {
+          "tp": 2,
+          "fp": 2,
+          "fn": 2,
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        },
+        {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        {
+          "tp": 3,
+          "fp": 1,
+          "fn": 7,
+          "precision": 0.75,
+          "recall": 0.3,
+          "f1": 0.42857142857142855
+        }
+      ]
+    },
+    "baseline_metrics": {
+      "confidence": 0.1,
+      "iou": 0.5,
+      "tp": 30,
+      "fp": 19,
+      "fn": 36,
+      "precision": 0.6122448979591837,
+      "recall": 0.45454545454545453,
+      "f1": 0.5217391304347826,
+      "per_class": [
+        {
+          "tp": 2,
+          "fp": 1,
+          "fn": 3,
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5
+        },
+        {
+          "tp": 5,
+          "fp": 8,
+          "fn": 2,
+          "precision": 0.38461538461538464,
+          "recall": 0.7142857142857143,
+          "f1": 0.5
+        },
+        {
+          "tp": 1,
+          "fp": 0,
+          "fn": 11,
+          "precision": 1.0,
+          "recall": 0.08333333333333333,
+          "f1": 0.15384615384615385
+        },
+        {
+          "tp": 2,
+          "fp": 2,
+          "fn": 3,
+          "precision": 0.5,
+          "recall": 0.4,
+          "f1": 0.4444444444444444
+        },
+        {
+          "tp": 3,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666
+        },
+        {
+          "tp": 3,
+          "fp": 1,
+          "fn": 1,
+          "precision": 0.75,
+          "recall": 0.75,
+          "f1": 0.75
+        },
+        {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5
+        },
+        {
+          "tp": 7,
+          "fp": 2,
+          "fn": 0,
+          "precision": 0.7777777777777778,
+          "recall": 1.0,
+          "f1": 0.875
+        },
+        {
+          "tp": 3,
+          "fp": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1": 0.8571428571428571
+        },
+        {
+          "tp": 1,
+          "fp": 1,
+          "fn": 3,
+          "precision": 0.5,
+          "recall": 0.25,
+          "f1": 0.3333333333333333
+        },
+        {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1": 0.8
+        },
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 10,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      ]
+    },
+    "interpretation": "Recall improves but precision and F1 fall on the new test. Keep validation-selected configuration; no tuning or reselection from this test."
   },
   "runtime_note": "80epochs CPU completed; peakRAM not measured for this run. Previous737MiB pertains only to initial run."
 }

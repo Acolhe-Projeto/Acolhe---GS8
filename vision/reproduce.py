@@ -27,9 +27,9 @@ def download(url, target, expected):
         stream.write(image)
 
 
-def reproduce(output, cache=None):
+def reproduce(output, cache=None, bundle_path=None):
     from vision.audit import audit, confined
-    bundle = json.loads((ROOT/'reports/reproduction.json').read_text(encoding='utf-8'))
+    bundle = json.loads((Path(bundle_path) if bundle_path else ROOT/'reports/reproduction.json').read_text(encoding='utf-8'))
     output = Path(output).resolve()
     output.mkdir(parents=True, exist_ok=False)
     # An interrupted run leaves a partial new directory for inspection, never overwrites it.
@@ -59,5 +59,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', required=True, help='New directory; existing folders are refused')
     parser.add_argument('--cache', type=Path, help='Existing curated dataset for offline reconstruction, still hash-verified')
+    parser.add_argument('--bundle', type=Path, help='Recorded metadata bundle, e.g. vision/reports/reproduction-newtest23.json')
     args = parser.parse_args()
-    print(json.dumps(reproduce(args.output, args.cache), indent=2))
+    print(json.dumps(reproduce(args.output, args.cache, args.bundle), indent=2))

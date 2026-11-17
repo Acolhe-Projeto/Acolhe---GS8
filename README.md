@@ -8,6 +8,8 @@ GenAI final usa **qwen2.5:3b-instruct** (~1,9GB de pesos), dentro do teto4B soli
 
 Vision executou treino customizado YOLO11n por80 épocas em CPU sobre40 fotos aprovadas. No teste histórico, a versão ativa640/confiança 0,10 teve recall operacional52,4% e precisão de 51,2%; qualidade ainda não validada. O modelo inicial20 épocas foi preservado. [PDF Vision](output/pdf/ACOLHE_VISION.pdf), [reprodução e evidências](vision/README.md). As fotos e pesos permanecem locais; uma nova clone precisa reconstruir o lote e treinar para habilitar o detector.
 
+No teste novo aprovado de23 fotos, o modelo ativo teve recall53,0% e precisão48,6%; a meta revisada70%/70% ainda não foi atingida.
+
 Para abrir e gravar: [guia rápido e roteiro de90 segundos](docs/entregas/COMO_USAR_E_GRAVAR.md).
 
 O [checklist da rubrica oficial](docs/ENTREGA_CHECKLIST.md) registra o que falta: revisão da equipe, vídeos publicados e envio no Teams. O [roteiro de demonstração](docs/entregas/ROTEIRO_VIDEOS.md) está preparado. Prazo do enunciado:19/11/2026 às23h55, conferir no Teams.

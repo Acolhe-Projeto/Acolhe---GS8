@@ -61,7 +61,9 @@ def reserve_output(path):
     return path
 
 
-def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=320, batch=2, workers=0):
+def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=320, batch=2, workers=0, base_model="yolo11n.pt"):
+    if base_model not in {"yolo11n.pt", "yolov8n.pt", "yolo26n.pt"}:
+        raise ValueError("Choose an explicitly supported official nano base model")
     if type(epochs) is not int or epochs < 1:
         raise ValueError("epochs must be a positive integer")
     if type(imgsz) is not int or imgsz < 32 or imgsz % 32:
@@ -82,7 +84,7 @@ def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=32
     config["path"] = str((data.parent / config.get("path", ".")).resolve())
     resolved_data = out / "dataset-resolved.yaml"
     resolved_data.write_text(yaml.safe_dump(config, sort_keys=False), encoding="utf-8")
-    model = YOLO("yolo11n.pt")
+    model = YOLO(base_model)
     model.train(data=str(resolved_data), epochs=epochs, imgsz=imgsz, batch=batch, device=device,
                 workers=workers, cache=False, seed=42, deterministic=True,
                 project=str(root/"runs"), name=out.name, exist_ok=False)
@@ -99,7 +101,7 @@ def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=32
                         "map50_95": float(evaluation.box.ap[i])}
                  for i, class_id in enumerate(evaluation.box.ap_class_index)
                  for name in [metadata["class_names"][int(class_id)]]}
-    metadata.update(trained_on_real_images=True, epochs=epochs, model="yolo11n",
+    metadata.update(trained_on_real_images=True, epochs=epochs, model=Path(base_model).stem,
                     device=device, imgsz=imgsz, batch=batch, workers=workers, seed=42,
                     inference={"conf": 0.5, "imgsz": imgsz},
                     quality_validated=False, dataset_audit=dataset_audit,
@@ -127,6 +129,7 @@ if __name__ == "__main__":
     p.add_argument("--imgsz", type=int, default=320)
     p.add_argument("--batch", type=int, default=2)
     p.add_argument("--workers", type=int, default=0)
+    p.add_argument("--base-model", choices=["yolo11n.pt", "yolov8n.pt", "yolo26n.pt"], default="yolo11n.pt")
     a=p.parse_args()
     print(json.dumps(train(a.dataset,a.provenance,a.epochs,a.output,device=a.device,
-                           imgsz=a.imgsz,batch=a.batch,workers=a.workers),indent=2))
+                           imgsz=a.imgsz,batch=a.batch,workers=a.workers,base_model=a.base_model),indent=2))

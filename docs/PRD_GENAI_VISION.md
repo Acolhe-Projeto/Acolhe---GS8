@@ -1,6 +1,6 @@
 # PRD — GenAI e Computer Vision
 
-Versão 2, revisão de 16/11/2026, branch feat/genai-vision. Este documento substitui o planejamento inicial; versões anteriores permanecem no histórico Git. Fonte de requisitos: desafio FIAP CitizenTech, páginas 24,29–31 e44; matriz ponderada em ENTREGA_CHECKLIST.md.
+Versão 3, revisão de 17/11/2026, branch feat/genai-vision. Este documento substitui o planejamento inicial; versões anteriores permanecem no histórico Git. Fonte de requisitos: desafio FIAP CitizenTech, páginas 24,29–31 e44; matriz ponderada em ENTREGA_CHECKLIST.md.
 
 ## Problema, usuários e escopo
 
@@ -61,8 +61,8 @@ Vision inicial:40 fotos aprovadas,25/8/7,97/48/42 objetos,20 épocasCPU com reso
 - Experimento fixado antes dos resultados:80 épocas, resolução 640, batch 2, workers 0, seed 42, mesmas fotos aprovadas; preservar checkpoint20 épocas.
 - Calibrar limiar em grade somente na validação, maximizando F1 micro; desempatar por precisão e depois confiança maior.
 - Comparar candidatos pela validação antes de escolher o modelo ativo. Publicar contagens TP/FP/FN, métricas por classe e parâmetros efetivos.
-- Preparar novo teste de23 fotos sem IDs do lote original; aguarda revisão humana. Não treinar nem escolher hiperparâmetros com essas fotos. Sem aprovação não alegar teste independente novo.
-- Metas locais: recall≥80%, precisão≥80%, nenhuma classe abaixo de60% de recall. São metas propostas para o protótipo, não números da rubrica nem resultado já alcançado. Amostras pequenas não validam produção.
+- Teste de23 fotos aprovado e avaliado, sem IDs/bytes do lote original. Não foi usado no treino ou seleção. Resultados abaixo; após examiná-lo, futuras versões precisam de outro teste final.
+- Metas locais: recall≥70%, precisão≥70%, nenhuma classe abaixo de60% de recall. São metas propostas para o protótipo, não números da rubrica nem resultado já alcançado. Amostras pequenas não validam produção.
 
 O manifesto final e vision/reports/ identificam a versão ativa e os resultados executados. Maior resolução/mais épocas podem melhorar ou piorar; a escolha depende da validação. O novo teste tem pouca cobertura de ônibus e não substitui expansão equilibrada do treino.
 
@@ -85,4 +85,16 @@ Relatórios e código publicados na branch; fotografias e pesos continuam locais
 
 ## Resultado da rodada executada
 
-80 épocas com resolução 640 concluídas. O candidato foi promovido por F1micro de validação0,3488 versus0,3056 do modelo inicial calibrado. Versão ativa: confiança 0,10, resolução 640; checkpoint5935a4aa…. Teste histórico: recall nativo54,65%, mAP50 de 62,12%; no limiar da aplicação,22TP/21FP/20FN, recall52,38%, precisão51,16%. Baseline original no limiar0,5:4TP/1FP/38FN. Comparação justa com baseline também calibrado0,1:11TP/17FP/31FN. Meta de 80%/80% ainda não atingida. Novo teste23 fotos segue aguardando revisão humana; nenhuma imagem nova entrou no treino. Evidências em vision/reports/improvement-20261116.json e calibration-improved-640-80.json.
+80 épocas com resolução 640 concluídas. O candidato foi promovido por F1micro de validação0,3488 versus0,3056 do modelo inicial calibrado. Versão ativa: confiança 0,10, resolução 640; checkpoint5935a4aa…. Teste histórico: recall nativo54,65%, mAP50 de 62,12%; no limiar da aplicação,22TP/21FP/20FN, recall52,38%, precisão51,16%. Baseline original no limiar0,5:4TP/1FP/38FN. Comparação justa com baseline também calibrado0,1:11TP/17FP/31FN. Meta de 70%/70% ainda não atingida. Novo teste de23 fotos aprovado e avaliado sem ajuste posterior; nenhuma imagem nova entrou no treino. Evidências em vision/reports/improvement-20261116.json e calibration-improved-640-80.json.
+
+## Teste novo e meta revisada
+
+Meta principal revisada pelo usuário: recall≥70% e precisão≥70%; o piso de60% por classe permanece um diagnóstico adicional, não uma exigência da rubrica. Teste novo aprovado de23 fotos/66 objetos, executado com configuração congelada no commitccdd7d7: baseline calibrado30TP/19FP/36FN (recall45,5%, precisão61,2%); versão ativa35TP/37FP/31FN (recall53,0%, precisão48,6%). O recall subiu, mas precisão e F1 caíram. Não se trocou modelo/limiar com base no teste; não se declara meta cumprida. Evidência: vision/reports/independent23-frozen.json. As imagens foram autorizadas somente para teste local. Para novos ajustes, ampliar treino e reservar outro teste, mantendo este como histórico congelado.
+
+## Validação de bases leves
+
+ComparaçãoCPU real de YOLO11n,YOLOv8n eYOLO26n pré-treinados nas8 fotos de validação, com remapeamento por nome para12 classes. YOLO26n teve o maior F1devalidação0,4667, contra0,3636/0,4286 das outras bases. São referências genéricas, não treino customizado. Experimento customizadoYOLO26n80épocas640 iniciado com treino25/val8 aprovados, sem usar teste23 na seleção. RF-DETRNano foi pesquisado, não executado; licençaApache2.0, footprintmaior. Decisão detalhada, licenças e fontes em docs/MODELOS_VISION.md.
+
+## Dados da próxima rodada
+
+Priorizar fotos de objetos próximos que representem a interação educativa prevista: diferentes exemplares, fundos e iluminações, com caixas completas e revisão de direitos/privacidade. Manter cenas difíceis separadas para diagnóstico. Não remover silenciosamente exemplos difíceis do teste atual nem apresentar um subconjunto escolhido após os resultados como prova de70%. A expansão ainda não foi treinada; as23 fotos aprovadas são exclusivamente teste.

@@ -1,6 +1,6 @@
 # PRD — GenAI
 
-Versão 2, 16/11/2026. Escopo: orientação educativa de mobilidade e vocabulário PT/ES, acompanhada por adulto. Requisitos oficiais nas páginas 29–31; critérios ponderados em docs/ENTREGA_CHECKLIST.md. Modelos0.5B/1.5B são histórico, não a configuração atual.
+Versão 3, 17/11/2026. Escopo: orientação educativa de mobilidade e vocabulário PT/ES, acompanhada por adulto. Requisitos oficiais nas páginas 29–31; critérios ponderados em docs/ENTREGA_CHECKLIST.md. Modelos0.5B/1.5B são histórico, não a configuração atual.
 
 ## Produto e arquitetura
 

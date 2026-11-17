@@ -51,7 +51,7 @@ Para um ensaio local, a foto de ônibus já aprovada está em `vision/data/publi
 
 1. “Aqui identificamos objetos e mostramos o nome em português e espanhol.” Selecione e envie a foto.
 2. Mostre o resultado real. “Este detector YOLO11n foi treinado com dados próprios do experimento, usando transferência de aprendizado.”
-3. Abra o relatório Vision e mostre a tabela **da versão ativa**, com recall e precisão. Versão atual:80 épocas com resolução 640; recall operacional52,4% e precisão de 51,2% no teste histórico. A meta de 80%/80% não foi atingida. Não use os29,4% nativos do primeiro treino como se fossem a versão atual.
+3. Abra o relatório Vision e mostre a tabela **da versão ativa**, com recall e precisão. Versão atual: 80 épocas com resolução640; no teste novo de23 fotos, recall53,0% e precisão48,6%. A meta de 70%/70% não foi atingida. Não use os29,4% nativos do primeiro treino como se fossem a versão atual.
 4. “É um piloto pequeno, com erros documentados. Não identifica rostos nem decide se uma travessia é segura.”
 
 Os PRDs e relatórios explicam os dados, arquitetura, teste e falhas. O roteiro curto demonstra funcionamento; os documentos fornecem o restante da evidência solicitada pelo PDF.
@@ -65,6 +65,16 @@ ollama pull qwen2.5:3b-instruct
 ```
 
 Instale/inicie o Ollama antes do script. Para Vision, os pesos e fotos não estão no Git: siga vision/README.md para reconstruir o dataset e treinar. Somente clonar o repositório não deixa o detector pronto. Para GenAI, bastam Python e Ollama com o modelo baixado; não precisa treinar pesos.
+
+## Gravar rapidamente no OBS, se usar essa ferramenta
+
+1. Abra o OBS e mantenha o navegador do Acolhe aberto.
+2. Em Fontes, adicione Captura de janela e selecione a janela do navegador. Confira a prévia e evite capturar conversas, senhas ou outras abas.
+3. Confira se o microfone aparece no medidor de áudio e faça um ensaio curto para ouvir a gravação.
+4. Clique em Iniciar gravação, siga o roteiro acima e termine em Parar gravação.
+5. Abra o arquivo gravado para conferir voz, resposta/fonte e imagem legíveis antes de publicar. Não precisa mostrar webcam.
+
+Guia oficial do OBS: https://obsproject.com/kb/quick-start-guide. Gravação é local; iniciar OBS não publica o vídeo automaticamente.
 
 ## Depois da gravação
 

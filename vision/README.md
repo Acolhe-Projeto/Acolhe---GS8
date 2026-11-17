@@ -4,11 +4,21 @@ Reconhece 12 classes para apoiar vocabulário PT/ES: mochila, cadeira, livro, ga
 
 ## Versão ativa após melhoria
 
-YOLO11n treinado por **80 épocas em CPU, resolução 640**, confiança **0,10** escolhida pela validação. Modelo anterior preservado. No teste histórico: **22TP/21FP/20FN**, recall **52,4%**, precisão **51,2%**; o baseline também calibrado teve recall de 26,2% e precisão de 39,3%. Recall nativo médio por classe54,65% e mAP50 de 62,12% são outra agregação. A meta de 80%/80% ainda não foi atingida.
+YOLO11n treinado por **80 épocas em CPU, resolução 640**, confiança **0,10** escolhida pela validação. Modelo anterior preservado. No teste histórico: **22TP/21FP/20FN**, recall **52,4%**, precisão **51,2%**; o baseline também calibrado teve recall de 26,2% e precisão de 39,3%. Recall nativo médio por classe54,65% e mAP50 de 62,12% são outra agregação. A meta de 70%/70% ainda não foi atingida.
 
-[Comparação completa](reports/improvement-20261116.json), [calibração](reports/calibration-improved-640-80.json) e [HTTP real: ônibus0,9522](reports/inference-http-improved.json). Um novo lote23 fotos foi apresentado para revisão, sem uso no treino/teste enquanto a aprovação estiver pendente.
+[Comparação completa](reports/improvement-20261116.json), [calibração](reports/calibration-improved-640-80.json) e [HTTP real: ônibus0,9522](reports/inference-http-improved.json). O novo lote23fotos foi aprovado e avaliado somente como teste local; recall53,0%, precisão48,6%. Nenhuma foto nova entrou no treino.
 
 Para abrir e gravar rapidamente: [guia com comandos e roteiro](../docs/entregas/COMO_USAR_E_GRAVAR.md).
+
+## Teste novo aprovado e congelado
+
+23 fotos novas,66 objetos, autorização explícita do usuário para teste local, sem treino/publicação das fotos. A versão ativa encontrou35 objetos, perdeu31 e gerou37 falsos positivos: recall53,0%, precisão48,6%. Baseline calibrado: recall45,5%, precisão61,2%. Recall melhorou, mas F1/precisão pioraram; a meta principal70%/70% ainda não foi atingida. Mantivemos a configuração escolhida ANTES desse teste. [Saídas e erros por imagem](reports/independent23-frozen.json).
+
+```powershell
+python -m vision.reproduce --bundle vision/reports/reproduction-newtest23.json --output vision/data/reproduzido-novo
+```
+
+Esse bundle conserva25treino/8validação e substitui somente o teste; não autoriza usar as23 fotos como treino. Reconstrução offline foi executada e auditada. O teste é separado do fine-tuning local, sem alegar independência de todo pré-treinoCOCO. Depois de observá-lo, novos ajustes exigem outro teste final.
 
 ## Piloto inicial — histórico
 
