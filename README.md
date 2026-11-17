@@ -6,9 +6,7 @@ Branch `feat/genai-vision`, a partir da base `4a2d00f`. Consulte o [PRD com diag
 
 GenAI final usa **qwen2.5:3b-instruct** (~1,9GB de pesos), dentro do teto4B solicitado. Comparação real baseline/RAG/agente em20 perguntas de desenvolvimento e12 independentes, com GPU confirmada na RX6750XT. O [relatório GenAI](docs/entregas/GENAI_RELATORIO.md) separa métricas automáticas e revisão técnica exploratória.
 
-Vision executou treino customizado YOLO11n por80 épocas em CPU sobre40 fotos aprovadas. No teste histórico, a versão ativa640/confiança 0,10 teve recall operacional52,4% e precisão de 51,2%; qualidade ainda não validada. O modelo inicial20 épocas foi preservado. [PDF Vision](output/pdf/ACOLHE_VISION.pdf), [reprodução e evidências](vision/README.md). As fotos e pesos permanecem locais; uma nova clone precisa reconstruir o lote e treinar para habilitar o detector.
-
-No teste novo aprovado de23 fotos, o modelo ativo teve recall53,0% e precisão48,6%; a meta revisada70%/70% ainda não foi atingida.
+Vision usa agora **YOLO26n customizado**,80épocasCPU640, confiança0,15 escolhida pela validação. Nas23 fotos já examinadas, recall51,5% e precisão60,7%, com melhora de F1 frente ao YOLO11n80. A meta70%/70% ainda não foi atingida. [Pesquisa de bases leves](docs/MODELOS_VISION.md), [guiaVision](vision/README.md) e [PDF](output/pdf/ACOLHE_VISION.pdf). Fotos e pesos permanecem locais; nova clone precisa reconstruir dados e treinar.
 
 Para abrir e gravar: [guia rápido e roteiro de90 segundos](docs/entregas/COMO_USAR_E_GRAVAR.md).
 

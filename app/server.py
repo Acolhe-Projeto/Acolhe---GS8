@@ -1,5 +1,5 @@
 """Local academic MVP. Put behind a production proxy/TLS before public deployment."""
-import json, os, time, mimetypes, threading
+import json, os, time, mimetypes, threading, socket
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse, unquote
@@ -105,7 +105,15 @@ class Handler(BaseHTTPRequestHandler):
   return self.reply(result)
 
 def create_server(host='127.0.0.1',port=8080,db_path=None):
- server=ThreadingHTTPServer((host,port),Handler); server.daemon_threads=True
+ server=ThreadingHTTPServer((host,port),Handler,bind_and_activate=False); server.daemon_threads=True
+ try:
+  if os.name=='nt':
+   # Windows SO_REUSEADDR otherwise permits competing listeners on the same port.
+   server.allow_reuse_address=False
+   server.socket.setsockopt(socket.SOL_SOCKET,socket.SO_EXCLUSIVEADDRUSE,1)
+  server.server_bind(); server.server_activate()
+ except BaseException:
+  server.server_close(); raise
  server.store=Store(db_path or Path(os.environ.get('ACOLHE_DB',str(ROOT/'data/acolhe.db'))))
  server.metrics={'requests':0,'errors':0,'duration':0.0,'active':0}; server.metrics_lock=threading.Lock(); server.started=time.monotonic()
  return server

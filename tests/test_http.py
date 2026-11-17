@@ -15,6 +15,9 @@ class HttpTests(unittest.TestCase):
  def test_health_and_static(self):
   self.assertEqual(json.load(self.request('/api/health'))['status'],'ok')
   with self.request('/') as r: self.assertEqual(r.status,200); self.assertIn('Content-Security-Policy',r.headers)
+ def test_occupied_port_cannot_serve_a_second_instance(self):
+  with self.assertRaises(OSError):
+   create_server('127.0.0.1',self.server.server_port,Path(self.tmp.name)/'second.sqlite')
  def test_session_attempt_http(self):
   session=json.load(self.request('/api/sessions',{'language':'es'}))
   attempt=json.load(self.request('/api/attempts',{'session_id':session['id'],'lesson_id':'casa','option':0,'request_id':'one'}))

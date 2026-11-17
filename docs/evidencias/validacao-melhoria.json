@@ -1,13 +1,27 @@
 {
-  "python_tests_passed": 109,
+  "python_tests_passed": 112,
   "python_tests_failed": 0,
   "node_tests_passed": 14,
   "real_http": [
     "docs/evidencias/roteiro-http-real.json",
-    "vision/reports/inference-http-improved.json"
+    "vision/reports/inference-http-improved.json",
+    "docs/evidencias/demo-final-http.json"
   ],
   "browser": "GenAI question, local_llm_rag mode, source and fixed warning visibly verified in Brave. Vision file upload automation required extension file permission; no security settings changed. Vision verified by actual HTTP.",
   "quality": "Human approval of23new photos recorded; frozen independent local test executed.70percent precision/recall target not achieved. Recall gains trade off precision/F1; no tuning on this test.",
   "new_test": "vision/reports/independent23-frozen.json",
-  "pretrained_reference": "vision/reports/pretrained-bases-validation.json"
+  "pretrained_reference": "vision/reports/pretrained-bases-validation.json",
+  "current_vision": {
+    "model": "YOLO26n80epochs640",
+    "confidence": 0.15,
+    "imgsz": 640,
+    "regression23_precision": 0.6071428571428571,
+    "regression23_recall": 0.5151515151515151,
+    "target_recall": 0.7,
+    "target_precision": 0.7,
+    "target_achieved": false
+  },
+  "portal_url": "http://127.0.0.1:8083",
+  "port_fix": "Windows exclusive socket binding and automatic free port selection in quick-start script; occupied-port regression test passed.",
+  "notebooks": "Retrieval notebook explicitly disables/restores inherited LLM configuration; saved report notebook uses portable paths and neutral CPU/GPU description; actualHTTP notebook refreshed on8083."
 }

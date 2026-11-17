@@ -133,6 +133,13 @@ class DatasetTests(unittest.TestCase):
         self.assertFalse(result["stores_image"])
         self.assertEqual(result["detections"],[])
 
+    def test_optional_image_decoder_failure_is_an_invalid_upload(self):
+        model = Mock()
+        with patch.object(service,"_load_verified_model",return_value=model), patch("PIL.Image.open",side_effect=ModuleNotFoundError("pi_heif")):
+            with self.assertRaisesRegex(ValueError,"Invalid or unsafe image"):
+                service.predict(b"invalid image")
+        model.predict.assert_not_called()
+
     def test_cpu_training_contract_records_audit_and_test_metrics(self):
         import yaml
         checkpoint = self.root / "trusted-test-checkpoint.pt"

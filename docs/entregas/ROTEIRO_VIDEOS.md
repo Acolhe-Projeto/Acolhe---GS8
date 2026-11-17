@@ -1,5 +1,5 @@
 # Roteiro de gravação
 
-Use o guia curto atualizado em [COMO_USAR_E_GRAVAR.md](COMO_USAR_E_GRAVAR.md): comandos, botões, perguntas, roteiroGenAI de90segundos e roteiroVision de1minuto. O modeloVision ativo passou a80épocas640/confiança0,10; não use métricas ou parâmetros antigos na fala.
+Use [COMO_USAR_E_GRAVAR.md](COMO_USAR_E_GRAVAR.md): comando de abertura em porta livre, passos dos botões, roteiro GenAI de90segundos e roteiro Vision de1minuto. Versão Vision ativa: YOLO26n80épocas640, confiança0,15; diagnóstico23 com recall51,5% e precisão60,7%, abaixo da meta70%/70%. Não apresentar esse diagnóstico em teste já exposto como avaliação cega nova.
 
-Vídeos ainda não foram gravados/publicados. Revisar exibição de fotos, atribuição e conteúdo antes de publicar. Completar URLs reais nos relatórios e conferir acesso sem login antes do envio no Teams.
+Vídeos ainda não foram gravados/publicados. Rever foto/crédito/voz, completar URLs reais e conferir acesso sem login antes do Teams.

@@ -7,9 +7,9 @@
   "target": {
     "recall": 0.7,
     "precision": 0.7,
-    "min_class_recall": 0.6,
     "achieved": false,
-    "reason": "User revised main target to70percent recall and precision; independent23 operating results below both."
+    "reason": "User revised main target to70percent recall and precision; independent23 operating results below both.",
+    "per_class_diagnostic_floor": 0.6
   },
   "old": {
     "epochs": 20,
@@ -862,5 +862,6 @@
     },
     "interpretation": "Recall improves but precision and F1 fall on the new test. Keep validation-selected configuration; no tuning or reselection from this test."
   },
-  "runtime_note": "80epochs CPU completed; peakRAM not measured for this run. Previous737MiB pertains only to initial run."
+  "runtime_note": "80epochs CPU completed; peakRAM not measured for this run. Previous737MiB pertains only to initial run.",
+  "status": "Historical YOLO11n80 improvement; superseded by YOLO26n. Current decision in yolo26n-custom-decision.json and regression in yolo26n-regression23.json."
 }

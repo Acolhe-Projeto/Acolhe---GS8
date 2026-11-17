@@ -1,0 +1,85 @@
+{
+  "portal_url": "http://127.0.0.1:8083",
+  "status": {
+    "ready": true,
+    "mode": "custom_model",
+    "reason": null,
+    "classes": {
+      "backpack": {
+        "pt": "mochila",
+        "es": "mochila"
+      },
+      "chair": {
+        "pt": "cadeira",
+        "es": "silla"
+      },
+      "book": {
+        "pt": "livro",
+        "es": "libro"
+      },
+      "bottle": {
+        "pt": "garrafa",
+        "es": "botella"
+      },
+      "cup": {
+        "pt": "copo",
+        "es": "vaso"
+      },
+      "spoon": {
+        "pt": "colher",
+        "es": "cuchara"
+      },
+      "fork": {
+        "pt": "garfo",
+        "es": "tenedor"
+      },
+      "bowl": {
+        "pt": "tigela",
+        "es": "cuenco"
+      },
+      "clock": {
+        "pt": "relógio",
+        "es": "reloj"
+      },
+      "umbrella": {
+        "pt": "guarda-chuva",
+        "es": "paraguas"
+      },
+      "bus": {
+        "pt": "ônibus",
+        "es": "autobús"
+      },
+      "traffic light": {
+        "pt": "semáforo",
+        "es": "semáforo"
+      }
+    },
+    "inference": {
+      "conf": 0.15,
+      "imgsz": 640
+    },
+    "verification": "checkpoint_hash_classes_and_load",
+    "quality_validated": false
+  },
+  "bus_response": {
+    "detections": [
+      {
+        "class": "bus",
+        "pt": "ônibus",
+        "es": "autobús",
+        "confidence": 0.9479,
+        "xyxy": [
+          850.3543090820312,
+          1029.38427734375,
+          4117.22119140625,
+          2328.454345703125
+        ]
+      }
+    ],
+    "mode": "custom_model",
+    "warning": "Vocabulário educativo. Não decide se uma travessia é segura.",
+    "stores_image": false
+  },
+  "corrupt_png_http": 400,
+  "scope": "Actual fresh server from quick-start script; free port selected automatically. No raw image bytes published."
+}

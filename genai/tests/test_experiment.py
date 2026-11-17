@@ -12,6 +12,16 @@ from genai.execute_notebook import llm_notebook
 
 
 class ExperimentTests(unittest.TestCase):
+    def test_retrieval_notebook_does_not_inherit_enabled_llm(self):
+        from genai import execute_notebook
+        with tempfile.TemporaryDirectory() as directory:
+            with patch.object(execute_notebook, "__file__", str(Path(directory)/"execute_notebook.py")), patch.dict(os.environ, {"ACOLHE_OLLAMA_MODEL": "must-not-run"}), patch.object(service, "generate", side_effect=AssertionError("LLM must remain disabled")), contextlib.redirect_stdout(io.StringIO()):
+                execute_notebook.run()
+                self.assertEqual(os.environ["ACOLHE_OLLAMA_MODEL"], "must-not-run")
+            book = json.loads((Path(directory)/"notebooks/01_retrieval.ipynb").read_text(encoding="utf-8"))
+            output = "".join(book["cells"][-1]["outputs"][0]["text"])
+            self.assertEqual(json.loads(output)["mode"], "retrieval_only")
+
     def test_cpu_payload_and_explicit_model(self):
         response = MagicMock()
         response.__enter__.return_value.read.return_value = json.dumps({"message": {"content": json.dumps({"answer":"ola", "sources":[]})}}).encode()

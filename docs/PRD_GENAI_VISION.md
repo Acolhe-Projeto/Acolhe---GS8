@@ -1,100 +1,89 @@
 # PRD — GenAI e Computer Vision
 
-Versão 3, revisão de 17/11/2026, branch feat/genai-vision. Este documento substitui o planejamento inicial; versões anteriores permanecem no histórico Git. Fonte de requisitos: desafio FIAP CitizenTech, páginas 24,29–31 e44; matriz ponderada em ENTREGA_CHECKLIST.md.
+Versão3,17/11/2026. Branch feat/genai-vision. Substitui o planejamento inicial; histórico preservado no Git. Requisitos oficiais: desafioFIAP CitizenTech, páginas24,29–31 e 44. Critérios ponderados e pendências em ENTREGA_CHECKLIST.md.
 
-## Problema, usuários e escopo
+## Problema, pessoas e escopo
 
-Acolhe apoia acolhimento linguístico PT/ES e orientações educativas de mobilidade no trajeto escolar. Um adulto acompanha a atividade. GenAI responde consultando conteúdo atribuído; Vision apresenta vocabulário a partir de objetos em fotos selecionadas. O protótipo usa adultos/dados fictícios, sem interpretar semáforos como permissão de travessia ou tomar decisões de segurança.
+Acolhe apoia acolhimento PT/ES e orientações educativas de mobilidade. Um adulto acompanha a atividade. GenAI responde com conteúdo atribuído ou recusa; Vision nomeia objetos selecionados em fotos. A demonstração usa adultos/dados fictícios, sem identificar pessoas ou decidir travessias. Implementação/testes não certificam segurança, eficácia pedagógica ou conformidade integral com LGPD.
 
-## Jornadas e demonstração
+## Jornadas
 
-1. Iniciar Ollama e scripts/iniciar-demo.ps1; abrir o endereço indicado no terminal.
-2. Em Caminho seguro, perguntar, conferir resposta/fonte/aviso e alternar PT/ES. Uma pergunta sem informação na base deve receber recusa.
-3. Em Para educadores → Objetos que ensinam, selecionar PNG/JPEG e reconhecer objetos; ler nome PT/ES e confiança.
-4. Consultar os resultados, erros e limitações nos relatórios antes de gravar. Guia operacional e roteiro curto: entregas/COMO_USAR_E_GRAVAR.md.
+1. Iniciar Ollama e scripts/iniciar-demo.ps1; abrir o endereço indicado.
+2. Caminho seguro: perguntar em PT/ES e conferir resposta, modo, fonte e aviso. Pergunta sem informação recebe recusa.
+3. Para educadores → Objetos que ensinam: selecionar PNG/JPEG≤8 MiB, reconhecer e ler nomesPT/ES/confiança. Sem câmera automática ou gravação do upload.
+4. Gravar demonstrações reais com entregas/COMO_USAR_E_GRAVAR.md; mostrar resultados e erros, sem prometer perfeição.
 
 ## Arquitetura atual
 
 ```mermaid
 flowchart LR
-    A[Adulto em atividade supervisionada] --> UI[PWA PT/ES]
+    Adulto[Adulto acompanhando] --> UI[PWA PT/ES]
     UI -->|Pergunta| API[API Python local]
-    API --> G[Guardas e busca lexical com limiar]
+    API --> G[Guardas e busca lexical]
     C[Oito microlições atribuídas] --> G
     G --> L[Ollama Qwen2.5 3B]
-    L --> J[Validação JSON e IDs]
+    L --> J[Validar JSON e fontes]
     J --> UI
     G --> R[Recusa explícita]
     R --> UI
-    UI -->|PNG/JPEG até8MiB| API
-    API --> V[YOLO11n customizado em CPU]
-    M[Manifesto: hash, classes e parâmetros] --> V
-    V -->|Objetos, PT/ES e confiança| UI
+    UI -->|PNG/JPEG| API
+    API --> V[YOLO26n customizado CPU]
+    M[Manifesto: hash e parâmetros] --> V
+    V -->|Nomes e confiança| UI
 ```
 
-O aplicativo usa RAG. Baseline e agente retrieve/refuse são variantes de avaliação, com rastros reais; não se apresentam como três modos selecionáveis na UI. Aviso fixo de travessia aparece separado da resposta LLM. Falhas não são substituídas por saídas fictícias. Uploads não são gravados.
+UI usa RAG; baseline e agente retrieve/refuse são variantes comparativas com rastros, não três botões da interface. O aviso fixo de travessia é política curada separada da geração. Sem modelo, texto recuperado é identificado como retrieval_only; falhas não viram geração fictícia.
 
-## Requisitos e critérios verificáveis
+## Requisitos e aceite
 
-| ID | Requisito | Aceite/evidência |
+| ID | Requisito | Evidência / estado |
 |---|---|---|
-| G01 | Domínio, gabarito e casos sem resposta | Mobilidade educativa; dev20 e holdoutC12 rotulados |
-| G02 | Base em trechos atribuídos | Oito documentos bilíngues, IDs, fonte/licença e snapshot em genai/base/ |
-| G03 | Recuperação mensurável | Recall@1/@3 e limiar2.0 justificado em desenvolvimento; não confundir com acerto da resposta |
-| G04 | Geração fundamentada integrada | JSON, fonte e recusa na API/UI; erros semânticos preservados e revisão humana pendente |
-| G05 | Especialização comparada | Agente real versus RAG simples e baseline com o mesmo Qwen3B; LoRA não é obrigatório |
-| G06 | Placar e cinco erros | Resultados por caso, análise técnica identificada e propostas; sem pontuações humanas inventadas |
-| V01 | Dados reais e revisão | Inventário individual, hashes, aprovação humana e splits sem duplicatas binárias |
-| V02 | Treino customizado rastreável | YOLO11n; ambiente, pesos/hash, configuração e avaliação reais |
-| V03 | Melhorar recall sem esconder falsos positivos | Selecionar configuração/limiar pela validação; divulgar precisão, recall e resultados por classe |
-| V04 | Inferência coerente com avaliação | Confidence/imgsz no manifesto, validação de limites, teste HTTP real |
-| V05 | Relatório e demonstração | PDF com resumo250/objetivo50 palavras; vídeo real com URL pública |
+| G01 | Tarefa em mobilidade e gabarito com negativas | dev20 e holdoutC12, respostas/fontes/recusas esperadas |
+| G02 | Trechos com fonte/licença | Oito documentos bilíngues e snapshot em genai/base/ |
+| G03 | Busca medida e limiar justificado | Recall@1/@3=16/16 no desenvolvimento; limiar2.0; não mede correção da resposta |
+| G04 | Geração integrada fundamentada | JSON/fonte/recusa em API/UI; falhas semânticas preservadas |
+| G05 | Especialização comparada | Agente real versus RAG/baseline, mesmo modelo; LoRA não é obrigatório |
+| G06 | Placar, cinco erros e reprodução | Relatório, JSONs, notebooks com outputs e README; revisão humana pendente |
+| V01 | Dados reais e revisão vinculada | Imagens/caixas/licenças/hashes/splits auditados; nenhuma aprovação inventada |
+| V02 | Treino customizado | YOLO26n 80 épocas640, CPU, batch 2, workers 0, seed 42 |
+| V03 | Escolha sem usar teste | Checkpoint/limiar por validação; F1 micro de 0,4675 contra 0,3488 do YOLO11n 80 |
+| V04 | Produto coerente com avaliação | Manifesto validado; confiança 0,15/resolução 640; HTTP real sem guardar foto |
+| V05 | Meta de qualidade | Recall≥70% e precisão ≥ 70% no limiar efetivo; ainda não atingida |
+| V06 | Relatório e demonstração | PDF250/50 palavras; vídeo ainda pendente |
 
-## Estado comprovado
+## GenAI comprovado e limites
 
-GenAI final: Qwen2.5:3b-instruct, Q4_K_M,3,09B, aproximadamente1,9GB de pesos, licença Qwen Research. GPU verificada no Ollama; contexto2048, saída256, temperatura0, seed 42. CPU continua disponível. Desenvolvimento: recall de busca16/16; revisão técnica de respostas baseline/RAG/agente5/20,16/20,16/20. HoldoutC12:4/12,8/12,9/12. São julgamentos exploratórios do agente, não avaliação humana cega.
+Qwen2.5:3b-instruct,3,09B, Q4_K_M,~1,9GB de pesos, dentro do limite4B solicitado. LicençaQwenResearch. GPU verificada no Ollama; contexto2048, saída256, temperatura 0, seed 42. CPU alternativa. A revisão técnica exploratória contou5/20,16/20,16/20 acertos no desenvolvimento e 4/12,8/12,9/12 no holdoutC, para baseline/RAG/agente. Não é avaliação humana cega. Persistem erros de idioma, intenção, omissão e recusa; não afirmar que tudo está correto. Relatório: entregas/GENAI_RELATORIO.md.
 
-Vision inicial:40 fotos aprovadas,25/8/7,97/48/42 objetos,20 épocasCPU com resolução 320. Recall nativo médio0,2943; no limiar do aplicativo0,5 foram4/42 objetos encontrados, com1 falso positivo. As duas métricas usam agregações/pontos de operação diferentes.
+## Vision: dados, decisão e resultados
 
-## Rodada de melhoria de Vision
+Lote inicial40 aprovado:25 treino/8val/7 teste. O usuário aprovou depois23 fotos distintas para teste local, sem treino/publicação. Conjunto final56:25 treino/8val/23 teste,97/48/66 objetos; pixels/caixas/splits de treino e validação inalterados. Sem sobreposição binária/IDs; similaridade perceptual não auditada.
 
-- Experimento fixado antes dos resultados:80 épocas, resolução 640, batch 2, workers 0, seed 42, mesmas fotos aprovadas; preservar checkpoint20 épocas.
-- Calibrar limiar em grade somente na validação, maximizando F1 micro; desempatar por precisão e depois confiança maior.
-- Comparar candidatos pela validação antes de escolher o modelo ativo. Publicar contagens TP/FP/FN, métricas por classe e parâmetros efetivos.
-- Teste de23 fotos aprovado e avaliado, sem IDs/bytes do lote original. Não foi usado no treino ou seleção. Resultados abaixo; após examiná-lo, futuras versões precisam de outro teste final.
-- Metas locais: recall≥70%, precisão≥70%, nenhuma classe abaixo de60% de recall. São metas propostas para o protótipo, não números da rubrica nem resultado já alcançado. Amostras pequenas não validam produção.
+Bases leves YOLO11n, YOLOv8n, YOLO26n executadas em CPU nas 8 de validação. YOLO26n foi o melhor nessa referência e depois treinado de fato. RF-DETRNano foi pesquisado, não executado. Fontes/licenças e medições: MODELOS_VISION.md. A troca de base não foi tratada como solução garantida para poucos dados.
 
-O manifesto final e vision/reports/ identificam a versão ativa e os resultados executados. Maior resolução/mais épocas podem melhorar ou piorar; a escolha depende da validação. O novo teste tem pouca cobertura de ônibus e não substitui expansão equilibrada do treino.
+| Modelo / conjunto 23 | Precisão operacional | Recall operacional | F1 micro |
+|---|---:|---:|---:|
+| YOLO11n 20, primeira rodada | 61,2% | 45,5% | 0,522 |
+| YOLO11n 80, primeira rodada | 48,6% | 53,0% | 0,507 |
+| YOLO26n 80, regressão posterior | 60,7% | 51,5% | 0,557 |
+
+Confianças0,10/0,10/0,15, respectivamente, escolhidas pela validação. IoU≥0,5, correspondência1para1 e classe correta. A avaliação inicial23 foi congelada paraYOLO11n; após examiná-la, o resultadoYOLO26 é regressão em teste exposto, sem nova alegação de independência. Não houve ajuste após essa regressão. Pesos-baseCOCO também limitam alegações de independência de todo pré-treino. Não escolher a precisão nativa de outra agregação para declarar70% no aplicativo.
 
 ```mermaid
 flowchart TD
-    D[Dados aprovados: treino e validação] --> T[Experimento80 épocas com resolução 640]
-    T --> B[Melhor checkpoint pela validação]
-    B --> C[Grade de confiança na validação]
-    O[Modelo20 épocas com resolução 320] --> C
-    C --> S[Escolher por F1 de validação]
-    S --> F[Congelar modelo e limiar]
-    N[Novas fotos e revisão humana] --> E[Teste novo sem ajustes posteriores]
-    F --> E
-    E --> P[Publicar métricas, erros e limitações]
+    D[25 treino e 8 validação aprovados] --> B[Comparar bases na validação]
+    B --> T[Treino customizado]
+    T --> C[Checkpoint e confiança por validação]
+    C --> F[Congelar e registrar decisão]
+    F --> E[Regressão diagnóstica no teste já exposto]
+    E --> R[Relatar ganhos, perdas e erros]
+    R --> N[Mais dados e outro teste final para futura versão]
 ```
 
-## Entrega e dependências restantes
+## Operação e próximos passos
 
-Relatórios e código publicados na branch; fotografias e pesos continuam locais. Novo clone reconstrói os dados e treina. Vídeos ainda precisam ser gravados, revisados e publicados; exibição pública de fotos exige revisão específica. Conferir nomes/RMs, conteúdo pedagógico e links, depois enviar em cada Teams até19/11 às23h55 conforme o horário do ambiente. Não há previsão de nota nem certificação de segurança/LGPD.
+Abrir/gravar: entregas/COMO_USAR_E_GRAVAR.md. Serviço local, fotos/pesos ignorados pelo Git; nova clone reconstrói dados e treina conforme vision/README.md. Versões anteriores preservadas. Modelo ativo: checkpoint 007a199a…, resolução 640, confiança 0,15, quality_validated=false.
 
-## Resultado da rodada executada
+Para perseguir70% nas duas métricas, ampliar treino com objetos próximos representativos da atividade educativa, variedades/fundos/luzes e caixas completas.100–200 objetos por classe é ponto de partida de engenharia, não exigência da FIAP. Não usar as 23 fotos de teste como treino; novos ajustes exigem outro teste reservado. Acompanhar cada classe sem impor um piso adicional como condição formal de aceite.
 
-80 épocas com resolução 640 concluídas. O candidato foi promovido por F1micro de validação0,3488 versus0,3056 do modelo inicial calibrado. Versão ativa: confiança 0,10, resolução 640; checkpoint5935a4aa…. Teste histórico: recall nativo54,65%, mAP50 de 62,12%; no limiar da aplicação,22TP/21FP/20FN, recall52,38%, precisão51,16%. Baseline original no limiar0,5:4TP/1FP/38FN. Comparação justa com baseline também calibrado0,1:11TP/17FP/31FN. Meta de 70%/70% ainda não atingida. Novo teste de23 fotos aprovado e avaliado sem ajuste posterior; nenhuma imagem nova entrou no treino. Evidências em vision/reports/improvement-20261116.json e calibration-improved-640-80.json.
-
-## Teste novo e meta revisada
-
-Meta principal revisada pelo usuário: recall≥70% e precisão≥70%; o piso de60% por classe permanece um diagnóstico adicional, não uma exigência da rubrica. Teste novo aprovado de23 fotos/66 objetos, executado com configuração congelada no commitccdd7d7: baseline calibrado30TP/19FP/36FN (recall45,5%, precisão61,2%); versão ativa35TP/37FP/31FN (recall53,0%, precisão48,6%). O recall subiu, mas precisão e F1 caíram. Não se trocou modelo/limiar com base no teste; não se declara meta cumprida. Evidência: vision/reports/independent23-frozen.json. As imagens foram autorizadas somente para teste local. Para novos ajustes, ampliar treino e reservar outro teste, mantendo este como histórico congelado.
-
-## Validação de bases leves
-
-ComparaçãoCPU real de YOLO11n,YOLOv8n eYOLO26n pré-treinados nas8 fotos de validação, com remapeamento por nome para12 classes. YOLO26n teve o maior F1devalidação0,4667, contra0,3636/0,4286 das outras bases. São referências genéricas, não treino customizado. Experimento customizadoYOLO26n80épocas640 iniciado com treino25/val8 aprovados, sem usar teste23 na seleção. RF-DETRNano foi pesquisado, não executado; licençaApache2.0, footprintmaior. Decisão detalhada, licenças e fontes em docs/MODELOS_VISION.md.
-
-## Dados da próxima rodada
-
-Priorizar fotos de objetos próximos que representem a interação educativa prevista: diferentes exemplares, fundos e iluminações, com caixas completas e revisão de direitos/privacidade. Manter cenas difíceis separadas para diagnóstico. Não remover silenciosamente exemplos difíceis do teste atual nem apresentar um subconjunto escolhido após os resultados como prova de70%. A expansão ainda não foi treinada; as23 fotos aprovadas são exclusivamente teste.
+Faltam revisão da equipe/GenAI, gravação/publicação dos vídeos, URLs reais e envio no Teams de cada disciplina até19/11 às23h55 conforme o ambiente. Rever autorização/créditos antes de exibir fotos publicamente. Não há previsão de nota nem submissão automática.

@@ -81,7 +81,7 @@ def predict(image):
             if uploaded.width * uploaded.height > 20_000_000:
                 raise ValueError("Image too large")
             source = uploaded.convert("RGB")
-    except (OSError, Image.DecompressionBombError) as exc:
+    except (OSError, Image.DecompressionBombError, ImportError) as exc:
         raise ValueError("Invalid or unsafe image") from exc
     options = getattr(model, "_acolhe_inference", None)
     if not isinstance(options, dict):

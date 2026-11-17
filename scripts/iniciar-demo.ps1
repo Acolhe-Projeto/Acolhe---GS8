@@ -5,6 +5,12 @@ $demoPython = Join-Path (Get-Location) '.venv\Scripts\python.exe'
 if (-not (Test-Path -LiteralPath $demoPython)) {
     throw 'Ambiente .venv ausente. Consulte docs/entregas/COMO_USAR_E_GRAVAR.md para instalar.'
 }
+$demoListeners = @(Get-NetTCPConnection -State Listen -ErrorAction SilentlyContinue | Select-Object -ExpandProperty LocalPort)
+$demoFreePort = $Porta..([Math]::Min($Porta + 10, 65535)) | Where-Object { $_ -notin $demoListeners } | Select-Object -First 1
+if ($null -eq $demoFreePort) {
+    throw 'Nenhuma porta livre nas 11 portas verificadas. Escolha outra com -Porta.'
+}
+$Porta = [int]$demoFreePort
 $env:ACOLHE_OLLAMA_MODEL = 'qwen2.5:3b-instruct'
 $env:ACOLHE_OLLAMA_NUM_GPU = '-1'
 $env:ACOLHE_OLLAMA_KEEP_ALIVE = '2m'

@@ -9,7 +9,7 @@ from pathlib import Path
 def llm_notebook(report_path):
     """Execute report-reading code, not the inference again; capture real stdout."""
     code = ("import json\nfrom pathlib import Path\n"
-            + "report_path = Path(" + repr(str(report_path)) + ")\n"
+            + "report_path = Path(" + repr(Path(report_path).as_posix()) + ")\n"
             + "if not report_path.is_absolute():\n"
               "    for base in (Path.cwd(), *Path.cwd().parents):\n"
               "        candidate = base / report_path\n"
@@ -26,8 +26,8 @@ def llm_notebook(report_path):
     return {"cells": [
         {"cell_type": "markdown", "metadata": {}, "source": [
             "# Comparação local real — baseline, RAG e agente\n",
-            "Inferências foram executadas por genai.experiment em CPU. Esta célula foi executada de verdade por Python stdlib (compile/exec), sem kernel Jupyter, e lê o relatório salvo. Não repete inferência e não executa treinamento.\n",
-            "Consulte o JSON para respostas/metadados e reports/llm_error_analysis.md para revisão técnica do agente. Avaliação humana permanece pendente. completed não significa qualidade aprovada.\n"]},
+            "Inferências foram executadas por genai.experiment; o perfil CPU/GPU e as evidências constam do JSON. Esta célula foi executada por Python stdlib (compile/exec), sem kernel Jupyter, e lê o relatório salvo. Não repete inferência e não executa treinamento.\n",
+            "Consulte o JSON e o relatório GenAI para análise técnica. Avaliação humana permanece pendente. completed não significa qualidade aprovada.\n"]},
         {"cell_type": "code", "execution_count": 1, "metadata": {}, "source": code.splitlines(True),
          "outputs": [{"output_type": "stream", "name": "stdout", "text": output.getvalue().splitlines(True)}]}],
         "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
@@ -37,7 +37,10 @@ def llm_notebook(report_path):
 def run():
     source = [
         "import json\nfrom genai.evaluate import evaluate\nreport = evaluate()\nprint(json.dumps(report, ensure_ascii=False, indent=2))",
-        "from genai.service import answer\nprint(json.dumps(answer('Como atravessar a rua?', 'pt'), ensure_ascii=False, indent=2))"
+        "import os\nfrom genai.service import answer\n"
+        "configured_model = os.environ.pop('ACOLHE_OLLAMA_MODEL', None)\n"
+        "try:\n    print(json.dumps(answer('Como atravessar a rua?', 'pt'), ensure_ascii=False, indent=2))\n"
+        "finally:\n    if configured_model is not None:\n        os.environ['ACOLHE_OLLAMA_MODEL'] = configured_model\n"
     ]
     cells = [{"cell_type":"markdown","metadata":{},"source":["# Avaliação real da recuperação\nExecutado com Python stdlib. Não executa LLM."]}]
     namespace = {}

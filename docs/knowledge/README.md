@@ -1,4 +1,4 @@
-> Atualização da melhoria: grafo reconstruído com1.039 nós,1.641 arestas e130 comunidades. PRDs atuais, guia rápido, calibração e serviço foram indexados. Duas anotações antigas de notebooks permanecem excluídas por hash alterado. O extrator tem referências não resolvidas/relações colapsadas; o exportador Obsidian preservou duas notas preexistentes e avisou que o vault pode ficar incompleto. O JSON/HTML e coverage.json registram a cobertura; não se afirma compreensão completa nem execução de tudo que aparece no mapa.
+> Atualização final17/11: grafo reconstruído com1062 nós,1646 arestas e151 comunidades; nenhuma anotação semântica pendente por hash. PRDs, guias e notebooks atuais revisados. Há referências não resolvidas/relações colapsadas no extrator; SQL/PowerShell recebem índice literal. O exportador Obsidian preserva duas notas preexistentes, portanto o vault pode ficar incompleto; JSON/HTML e coverage.json mostram a cobertura. O mapa não comprova execução ou qualidade por si só.
 
 # Mapa de conhecimento do Acolhe
 

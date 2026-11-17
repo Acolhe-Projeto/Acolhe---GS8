@@ -10,8 +10,8 @@ cd D:\GS2026\Acolhe---GS8
 .\scripts\iniciar-demo.ps1
 ```
 
-3. Mantenha o terminal aberto e entre em http://127.0.0.1:8080 no navegador.
-4. Se a porta estiver ocupada, encerre o servidor antigo com Ctrl+C ou rode `.\scripts\iniciar-demo.ps1 -Porta 8082` e abra http://127.0.0.1:8082.
+3. Mantenha o terminal aberto e copie o endereço **Acolhe:** impresso nele. O script usa a primeira porta livre a partir de 8080; a verificação final nesta máquina abriu http://127.0.0.1:8083.
+4. Para escolher outra faixa, rode `.\scripts\iniciar-demo.ps1 -Porta 8090`. Ele verifica11portas a partir da indicada; use o endereço que o terminal imprimir. Duas instâncias não podem mais compartilhar a mesma porta no Windows.
 
 Esse comando habilita Qwen3B local com offload automático de GPU e memória aquecida por dois minutos. O detector usa CPU. A primeira pergunta pode demorar mais. Encerrar o servidor não encerra o aplicativo Ollama.
 
@@ -40,7 +40,7 @@ RAG significa gerar uma resposta consultando documentos. Não diga que está tud
 ## Usar Vision
 
 1. Clique em **Para educadores** e procure **Objetos que ensinam**.
-2. Confira se o modelo está pronto. O diagnóstico técnico também está em http://127.0.0.1:8080/api/vision/status (ajuste a porta se necessário).
+2. Confira se o modelo está pronto. O diagnóstico técnico também está em /api/vision/status no mesmo endereço/porta indicado pelo terminal.
 3. Clique para selecionar uma foto PNG/JPEG, até 8 MiB, de objetos sem dados pessoais.
 4. Clique em **Reconhecer objetos**. Mostre nomes PT/ES e confiança. A câmera não é ligada e o servidor não salva o upload.
 5. Se não reconhecer, mostre a falha e explique a limitação. O número de confiança não é uma garantia de acerto.
@@ -50,8 +50,8 @@ Para um ensaio local, a foto de ônibus já aprovada está em `vision/data/publi
 ## Roteiro Vision: aproximadamente um minuto
 
 1. “Aqui identificamos objetos e mostramos o nome em português e espanhol.” Selecione e envie a foto.
-2. Mostre o resultado real. “Este detector YOLO11n foi treinado com dados próprios do experimento, usando transferência de aprendizado.”
-3. Abra o relatório Vision e mostre a tabela **da versão ativa**, com recall e precisão. Versão atual: 80 épocas com resolução640; no teste novo de23 fotos, recall53,0% e precisão48,6%. A meta de 70%/70% não foi atingida. Não use os29,4% nativos do primeiro treino como se fossem a versão atual.
+2. Mostre o resultado real. “Este detector YOLO26n recebeu treinamento customizado com imagens públicas revisadas, usando transferência de aprendizado.”
+3. Abra o relatório Vision e mostre a tabela da versão ativa. “O YOLO26n foi treinado por 80 épocas. Nas23 fotos já examinadas, o diagnóstico deu recall51,5% e precisão60,7%. A meta70%/70% ainda não foi atingida; precisamos ampliar o treino.” Não apresente esse diagnóstico posterior como novo teste cego.
 4. “É um piloto pequeno, com erros documentados. Não identifica rostos nem decide se uma travessia é segura.”
 
 Os PRDs e relatórios explicam os dados, arquitetura, teste e falhas. O roteiro curto demonstra funcionamento; os documentos fornecem o restante da evidência solicitada pelo PDF.

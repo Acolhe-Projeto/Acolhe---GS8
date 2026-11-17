@@ -1,13 +1,13 @@
 {
-  "base_commit": "44066f85040fba9161e869902728144b1afd0635",
+  "base_commit": "f3ac40b42c15181fa5f99de211dc6b9367b6289c",
   "worktree_snapshot": true,
-  "code_files": 112,
+  "code_files": 121,
   "code_source_hashes": {
     ".github/workflows/devsecops.yml": "b3561ed889f5fc1d5fc68c79d1d2f00738cc302f89a0a7150456960f0f084b5a",
     ".github/workflows/evaluate-python-bases.yml": "66d804bd1e78f5f486aca6e7eeb9c06f0faf79c1ef82a421f3ae591240f6a71b",
     "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "app/core.py": "e1bac14433b34917732070c82c66e31ee6a020a6101ef9bd87720e97b0a36f23",
-    "app/server.py": "e4328745d3e130cb04f5b0bb18c01f64d3a6eb68def796768205f1072def0065",
+    "app/server.py": "cdac27bc783293fabbe00d73899509e24a675abbb05a71767492f5f2cd9243af",
     "app/static/app.js": "37f20347131ec5d0ac265aa430e1996823807f56330a95867125f185e2ad1e1c",
     "app/static/lessons.json": "32c8f931120aa2b0ccf4741c043d4bf9640c27e0c20b870f4741f5274cdf7029",
     "app/static/sw.js": "7bafc55428a29499c13c2a4ab57a6e113b2bdf3ee6ac4777051fa4d08dbecacf",
@@ -32,6 +32,7 @@
     "devsecops/terraform/main.tf": "a720bfdc5a3f1641be7e3132dad7af776391d9f3e276273d93199653d993462f",
     "docs/build_pdf.py": "116f63997bf7e80a417c1129bef06d0d4b479943fb254af0fa89c98c00158c69",
     "docs/entregas/build_vision_pdf.py": "ef8bb58508c023221eea6619dae45c0ab6af05145d2e6a12e754b19b150c692d",
+    "docs/evidencias/demo-final-http.json": "c8e9d488ea828644535c98bb6f3f3aa45e8074a60dc6a9a1655f0a8aa48aa8fb",
     "docs/evidencias/documentacao-qa-20261107.json": "3cac41440601c7e2790a4a035a48e291897844cf8edfd374d6c43ec2f9aeff95",
     "docs/evidencias/genai-vision-20261116.json": "964f4f5c74c33c224a5fc23ccd68a6b6d2793e1f8eaf556b34d7b716c866b419",
     "docs/evidencias/hardware-rx6750xt-20261116.json": "9b75853952bca81da99740c417297238918ec795dcb8f7b38076b276dcb04553",
@@ -39,7 +40,7 @@
     "docs/evidencias/revisao-sessao-copy-20261107T165112Z.json": "609d165b018ec4abcc6bfb056aab2f9bb2126c2f3013a9a7163f4ff0b3d57bf6",
     "docs/evidencias/roteiro-http-real.json": "87cb00c42de4c6b2c049735cfd1c85119ec1311d743dc6f993346f54600a3a37",
     "docs/evidencias/validacao-final.json": "60f9b36310e64d6b5d6fa5c0aff74a6e75cdd5ac077d24ed63037f410191947d",
-    "docs/evidencias/validacao-melhoria.json": "07381e48ea9b60517f442adf3aa8af684a1b07f3b8ccc4cecd46b9c7b76d6fbe",
+    "docs/evidencias/validacao-melhoria.json": "5e20483a2e870ca349fd737d0a6ca4eb020937154c63f9a791df63c4b427276e",
     "docs/evidencias/verificacao-20261107T133614Z.json": "2fa74f4d585c8000cb5a02b6c859368660361d5251ce717501ad47d5d87d8280",
     "genai/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "genai/avaliacao/limiar.json": "111cf563fdbc58aad91ae09645ab25f3eda270c14703b6d01a946f4ccf991779",
@@ -62,7 +63,7 @@
     "genai/compare.py": "d0936c63257cd88d441870a84c7ba023a0da9523830d2b1afa6dc00d2b9ce515",
     "genai/data/corpus.json": "6b4e5c617d41577d9d8ba6958f331a5d8a444346a0de803184760bc21f3bb092",
     "genai/evaluate.py": "5cc91f7e7c0971434c5e3359280fabd2e249dbecc6a88664111fe237d13b978d",
-    "genai/execute_notebook.py": "3a8327a6eec4c2f84e7022e0d23bed627619b67378f7082846d9f61420da4ca2",
+    "genai/execute_notebook.py": "02af21dad46c1016492f823a40117795a42ec19669325fad4d1c0f45ccd2c2b3",
     "genai/experiment.py": "09b248eceba68c503795441416a34ae72d7e6b2b8aad253c54bc5aeb60b97258",
     "genai/local.py": "df6be92b4bd4ed5e73a17d3d36d14fafd9328f787ca7b7338da29cc1cc6a7b95",
     "genai/reports/probes-chat-v2-20261116.json": "09306ba2ecf66d5217e007b12fc31e39e0590bcf4fbc336e27eccfd50322457d",
@@ -75,7 +76,7 @@
     "genai/reports/service-smoke15b-20261116.json": "d7cb19d4a3f3b6de589e5494735f475a4ab6055e4670bfad1da3b89bf53169c9",
     "genai/service.py": "6f0c95e5be0330ff7fbda853f57d84e9e434b031866d14a901148211092a5fae",
     "genai/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "genai/tests/test_experiment.py": "278d6ea0b8532f1f9b580eaa3b5f758addb68caae8d48b947d63a90c3c6aad23",
+    "genai/tests/test_experiment.py": "bab435fee69b893829501974b5e79bd32c2d0b424afe704f1cd2829ef5d30304",
     "genai/tests/test_service.py": "428623c33efc4ad1232b42a86e7cf592b069fbb420ed420ae4a57aa2e68e8892",
     "robot/__init__.py": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
     "robot/service.py": "2fba8979aef95c93d11d1e4f747e09814912686c1bf60fdc9ffef64541fdbef0",
@@ -84,14 +85,14 @@
     "rpa/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "rpa/robot.py": "665464ed3722a288ee292684a64d3118f64dd536268fa1d053a36e59dea03a3c",
     "rpa/test_robot.py": "97465334c7c93492bd07c4fb480020c3f0ddd54c84e823a4e4b19a2449ed9caf",
-    "scripts/iniciar-demo.ps1": "d0510a5c2fae94c13956ff84cfa15965472fbb998b211a595725cc704322bc15",
+    "scripts/iniciar-demo.ps1": "0402ebc300c95b7b01f4f833c809c715f87edf8b1ba99fcc67e16b7dd2275d34",
     "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "tests/frontend.test.cjs": "85cd70569c39056c41fe6e54676122e66801e3c10a8652295e31cf9bd352ee88",
     "tests/test_core.py": "50498c4d70933c4d153c91b260a461883e1ad6aa4d2562c44de6445d3e04f407",
-    "tests/test_http.py": "6e491a700e4df7146f193013065ae41dafbcb2c90a5d5e4ce88fd9fb1eb944be",
+    "tests/test_http.py": "414c4e7f7ff5b9ef90970cc9db224759de0ecc10fcbfac785b3487cc591e0197",
     "vision/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "vision/audit.py": "1d864100d23c946182ddd1e91d4b6623c489f18d61667f249e825bdd8c50c8eb",
-    "vision/calibrate.py": "d7694f9ac915caad3932f0071dc8f8c81de4d0b0a4ab2898f9a63841dc879e5b",
+    "vision/calibrate.py": "de082914944dc35095bdb60cff90d940d6280e2cf3cc72a543728bd2e7c6a331",
     "vision/data/dataset.example.yaml": "1128a78f43feb2c53d34db4c98652b8a519c78b21ff773ebf3abdc3c23b99677",
     "vision/data/provenance.example.json": "c8de387611be70de40a38e8b229611767e033d60753a7169977fda227c78688c",
     "vision/prepare.py": "17b686c4c53758e6c6d09a0f88681dada01ff2b6525c0cf4a8f70b177c7fc61c",
@@ -99,29 +100,38 @@
     "vision/replace_review_bus.py": "4487eef530379bc974905943689cd1a2a4151b78fae68ebf80752873eea10025",
     "vision/reports/calibration-baseline.json": "477fc76c10eb95ffd89174cfd4bd6548309a97ffe2261b458b5b47b1c9963358",
     "vision/reports/calibration-improved-640-80.json": "93cbfdd6ba851b684d8abf2456add821101dfce93ac7930046054c46aaa2f372",
+    "vision/reports/calibration-yolo26n-custom.json": "58d33aa1744afc7450aabe260bd0382829831991b38bf50067e6762779ea367c",
     "vision/reports/error_analysis.json": "284013674d12ae51505150646f417d656eaa96ea9f8572480e3987e547e12cd7",
-    "vision/reports/improvement-20261116.json": "339226b10e6ce170fe71602762bbf18989fe0b4cbc5e31797789092de046e68b",
+    "vision/reports/improvement-20261116.json": "7e0fb45a35ba4824991267b6a849370466cbffbeb5195b9c424b099d94307c9e",
+    "vision/reports/independent23-frozen.json": "cea83174bcfa9dfe6c7708168d93d971a78ade8021196aa3b146a399f388a838",
     "vision/reports/inference-http-20261116.json": "6fefc36c479cb6d4cf0f915adeed9b7bb24e5fe85ab184dc6f2f05ae5d870494",
     "vision/reports/inference-http-improved.json": "2df34aa71bd0c3222e7ef4791bf756485ea22be400810748b3b6cad8abe03d00",
+    "vision/reports/inference-http-yolo26n.json": "fc7c919d8639d766384be648448067fa8c3a4144c0ab46b03f275cf71c0fd35f",
+    "vision/reports/pretrained-bases-validation.json": "3a25e4f61cdd39af20cc71f5bf4a610bf73234e6614e4a823df397843f63baa9",
+    "vision/reports/reproduction-newtest23.json": "ea13b350616ff0475123bee810f1685574321c76facf66b6e0ef4078116b2e6a",
     "vision/reports/reproduction.json": "f565b4535434a2addf05fe97be678ffa6ef188609b396cb1a3aa86fdc660c590",
     "vision/reports/training-20261116.json": "bab88235766fae3e69017ef4d1bddbf1be53ea39efe684b44d2101ad36da73c7",
-    "vision/reproduce.py": "4fc4063ddcad9c3ca92eb9348a99d24e1f60549c3aa24c75f619b74d72e52014",
-    "vision/service.py": "a167b41eb3b7aacc88e62e0d4f439d4819301470e35054b1e73cf37c0a95e29f",
+    "vision/reports/training-yolo26n.json": "db7ca9799ebbb19c132937a0f87714dede7465ab85757d2a4e929ae2b3c35a66",
+    "vision/reports/yolo26n-custom-decision.json": "65fe247af937cd6d7fd25b59aebe8c56e63c61b72a16c73347e307f2aa738866",
+    "vision/reports/yolo26n-regression23.json": "492c3a54d936db998c5fd935daa1237bee663a6547231af10c6d4f97a10f47ec",
+    "vision/reproduce.py": "fe717179202b3ec1fe4c0edf804c71441f5f7306987884b069c4efe81ec55a6f",
+    "vision/service.py": "ad590214b43ea0fe5f92e972cc08acf76d559ad5d724f475c3d9ee9e87b5cfbf",
     "vision/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "vision/tests/test_calibrate.py": "0445556231b6418a2a4ad5f780b5af11a36526b52a3fed4707666465d393ce28",
-    "vision/tests/test_dataset.py": "5ede96f459f659373c42600e2d45dc7c5a8e4c2dd87b4db0ed4db18677520d20",
+    "vision/tests/test_calibrate.py": "d9d9114cad6d3abb4cfd2aa638b1514c7d94b62e7048fff35b4bae7ee7082ce4",
+    "vision/tests/test_dataset.py": "1a7c5441452db55d6d7f298537bfcb04999be31230de7dbd2a08a31b1bc4e8b6",
     "vision/tests/test_guards.py": "ddb2ef5c2f52834c1e11458650ba5bf0593ad2073813f78593925326c1255721",
     "vision/tests/test_public_review.py": "ff83f44230d061adb123a90db0b58daafd05bec3816d601298026c055fb83755",
     "vision/tests/test_reproduce.py": "352d3e71aa6d0f6caddf594762e3079db0e72ba5a48c32e68ee0f63096ecaf50",
     "vision/tests/test_service.py": "8a73f520febb778ce9707aa9d52e080f031b82a6ac29ff74051ef51973c5edf1",
-    "vision/train.py": "4194e06e9deaa116c94014473d9afb498ef116286b874737371bbc90bc9dddb9"
+    "vision/train.py": "6ee15d04f67226179558c26f9b247419c7868951e16d8fd63f4947c228c8bd14"
   },
-  "ast_nodes": 542,
-  "ast_edges": 1308,
+  "ast_nodes": 547,
+  "ast_edges": 1324,
   "unmodeled_code": [
     "app/static/lessons.json",
     "big_data/output/summary.json",
     "devsecops/monitoring/grafana-dashboard.json",
+    "docs/evidencias/demo-final-http.json",
     "docs/evidencias/documentacao-qa-20261107.json",
     "docs/evidencias/genai-vision-20261116.json",
     "docs/evidencias/hardware-rx6750xt-20261116.json",
@@ -159,12 +169,20 @@
     "vision/data/provenance.example.json",
     "vision/reports/calibration-baseline.json",
     "vision/reports/calibration-improved-640-80.json",
+    "vision/reports/calibration-yolo26n-custom.json",
     "vision/reports/error_analysis.json",
     "vision/reports/improvement-20261116.json",
+    "vision/reports/independent23-frozen.json",
     "vision/reports/inference-http-20261116.json",
     "vision/reports/inference-http-improved.json",
+    "vision/reports/inference-http-yolo26n.json",
+    "vision/reports/pretrained-bases-validation.json",
+    "vision/reports/reproduction-newtest23.json",
     "vision/reports/reproduction.json",
-    "vision/reports/training-20261116.json"
+    "vision/reports/training-20261116.json",
+    "vision/reports/training-yolo26n.json",
+    "vision/reports/yolo26n-custom-decision.json",
+    "vision/reports/yolo26n-regression23.json"
   ],
   "reviewed_semantic_sources": [
     ".dockerignore",
@@ -191,6 +209,7 @@
     "devsecops/terraform/.gitignore",
     "devsecops/terraform/terraform.tfvars.example",
     "docs/ENTREGA_CHECKLIST.md",
+    "docs/MODELOS_VISION.md",
     "docs/PRD_GENAI_VISION.md",
     "docs/README.md",
     "docs/VALIDACAO_GENAI_VISION.md",
@@ -205,6 +224,9 @@
     "genai/PLAN.md",
     "genai/README.md",
     "genai/base/README.md",
+    "genai/notebooks/01_retrieval.ipynb",
+    "genai/notebooks/02_local_llm.ipynb",
+    "genai/notebooks/03_integracao_api.ipynb",
     "genai/reports/error_analysis.md",
     "genai/reports/llm_error_analysis.md",
     "genai/reports/qwen05b-cpu-20261116.json",
@@ -224,10 +246,7 @@
     "vision/requirements-data.txt",
     "vision/requirements.txt"
   ],
-  "stale_semantic_sources": [
-    "genai/notebooks/01_retrieval.ipynb",
-    "genai/notebooks/02_local_llm.ipynb"
-  ],
+  "stale_semantic_sources": [],
   "structural_sources": {
     "IMPLEMENTATION_PLAN.md": {
       "lines": 12,
@@ -235,7 +254,7 @@
     },
     "README.md": {
       "lines": 247,
-      "sha256": "249c5cf526b65dd6bd7e79d616593bd713d9308f9632d3e81cc821a284f1590e"
+      "sha256": "98278bc5e40378142e785747bcfa7351bba1dddab33ccd2777ef740360692e1c"
     },
     "app/static/index.html": {
       "lines": 12,
@@ -266,24 +285,28 @@
       "sha256": "d8df0b06d0a515c5b12e553baab0ec8ab1d495724d962a0165419bc6d3963faa"
     },
     "docs/ENTREGA_CHECKLIST.md": {
-      "lines": 160,
-      "sha256": "75da7f93756b402713a24a4598082fa092aa5a45b080a3a2f6be241f2178351c"
+      "lines": 46,
+      "sha256": "ded2db6e2d44ed45eb6db7a9dc2da5c95171bf61034702d337f7934220e1fde9"
+    },
+    "docs/MODELOS_VISION.md": {
+      "lines": 64,
+      "sha256": "6289eee2bdafb2b59abe1e1845ec9f111a23bb8c97cb874f5a2e3e7d45db089c"
     },
     "docs/PRD_GENAI_VISION.md": {
-      "lines": 88,
-      "sha256": "3512d696fed6b2208081bde2d402af4b09fc0ad2818d23cee448ec61fd577a7e"
+      "lines": 89,
+      "sha256": "51e5b937011e256783c2a2a1f2a3bf4d2778a189d62e13d9970a4ff1f5b30cce"
     },
     "docs/README.md": {
       "lines": 34,
       "sha256": "01daa07f9d2906e428f49f074c88dc3b196942437156a947a0cdacf89ebaded3"
     },
     "docs/VALIDACAO_GENAI_VISION.md": {
-      "lines": 97,
-      "sha256": "441ce1d05802a525a0cd98f232a8c3c592af7a178b67ba9d39da64af221047d5"
+      "lines": 101,
+      "sha256": "e61ac95ecf161bcb218315bda2fe5e93006d7eb0de462539b6535c8986510849"
     },
     "docs/entregas/COMO_USAR_E_GRAVAR.md": {
-      "lines": 71,
-      "sha256": "be5a63c1df43000bd8cfa67a283c861f594dec403722440ff745ac5a694a1987"
+      "lines": 81,
+      "sha256": "e04958b7ea855db66814de05aa9a7131bfad745c100b38b171321327dc12b6f5"
     },
     "docs/entregas/GENAI_RELATORIO.md": {
       "lines": 105,
@@ -291,11 +314,11 @@
     },
     "docs/entregas/ROTEIRO_VIDEOS.md": {
       "lines": 5,
-      "sha256": "45557ac92cef7a445d00032b5d787931e4938872aa880d6c256799be371a6ff2"
+      "sha256": "6e35824046544c025c829cd95c57f1ca106a1ed6d73c860f0170e3045e342990"
     },
     "docs/entregas/VISION_RELATORIO.md": {
-      "lines": 102,
-      "sha256": "9f91c27a25273509bc8023a14ec6598a1f7aeb12c37e3efa94292eca167e0c95"
+      "lines": 108,
+      "sha256": "b2375d3f0554ed606426461e0149e31f0ea24830065dd8fcc7c7c6d47dc642d9"
     },
     "docs/manual_acolhe.md": {
       "lines": 283,
@@ -311,7 +334,7 @@
     },
     "genai/PLAN.md": {
       "lines": 43,
-      "sha256": "4a0316ba647f1e0426908cd81ec4d322898d15eb0cb4c26249899b80f7784c24"
+      "sha256": "1a07d242d15da616b5e06905d387185d573e6844bc23849394e517dfd885457a"
     },
     "genai/README.md": {
       "lines": 45,
@@ -390,12 +413,12 @@
       "sha256": "9b00f331e060382f00fd1ae16586852645b39839be12971dd53365305810a40a"
     },
     "vision/PLAN.md": {
-      "lines": 53,
-      "sha256": "370e64137aa54f25f3f38123ba94c7692808a26446fff886dacd091c12307173"
+      "lines": 49,
+      "sha256": "e0e3e89bde6ce8f77412999895616a430a630e24d3c0e436869c1017c670da98"
     },
     "vision/README.md": {
-      "lines": 43,
-      "sha256": "c123599236861c8eaf78ae4877134bf6f8cd46437f26e418417f6886b7e99ebc"
+      "lines": 44,
+      "sha256": "a1f9b5418c939bc4fcf5bb3815bb798c13b50f3ca5780032de1dc688706925ed"
     },
     "vision/REVIEW_PACKET.md": {
       "lines": 72,
@@ -411,15 +434,15 @@
     },
     "vision/requirements.txt": {
       "lines": 4,
-      "sha256": "0cdfa6237a4664dc70bdfa231848a4c0b7f3fa35b8f0fcb235a471592a21dd54"
+      "sha256": "d3d0501f32ef0ef58cf6d0b3a8430d87f0e496c1ecdbbac06d7d1572d9be82bb"
     },
     "docs/manual_acolhe.pdf": {
       "lines": 393,
       "sha256": "aacd8b1403ddc2a9f3e59132ae798259d5c578f218122ff81980f87179021d87"
     },
     "output/pdf/ACOLHE_VISION.pdf": {
-      "lines": 233,
-      "sha256": "15f2e984e4b831dfba84664e0e0e984e06a61c25804ea3290f603df811abd96d"
+      "lines": 272,
+      "sha256": "91b7165b1f7b070b7411c1cec284308b98d1cc153467930fca7a1badd6a4dcff"
     },
     "app/static/lessons.json": {
       "lines": 1,
@@ -432,6 +455,10 @@
     "devsecops/monitoring/grafana-dashboard.json": {
       "lines": 1,
       "sha256": "94740234db01c95fa5b60f4e18863fc5b811b41ef96004b800555589259907e2"
+    },
+    "docs/evidencias/demo-final-http.json": {
+      "lines": 85,
+      "sha256": "c8e9d488ea828644535c98bb6f3f3aa45e8074a60dc6a9a1655f0a8aa48aa8fb"
     },
     "docs/evidencias/documentacao-qa-20261107.json": {
       "lines": 15,
@@ -462,8 +489,8 @@
       "sha256": "60f9b36310e64d6b5d6fa5c0aff74a6e75cdd5ac077d24ed63037f410191947d"
     },
     "docs/evidencias/validacao-melhoria.json": {
-      "lines": 8,
-      "sha256": "07381e48ea9b60517f442adf3aa8af684a1b07f3b8ccc4cecd46b9c7b76d6fbe"
+      "lines": 27,
+      "sha256": "5e20483a2e870ca349fd737d0a6ca4eb020937154c63f9a791df63c4b427276e"
     },
     "docs/evidencias/verificacao-20261107T133614Z.json": {
       "lines": 71,
@@ -581,13 +608,21 @@
       "lines": 1213,
       "sha256": "93cbfdd6ba851b684d8abf2456add821101dfce93ac7930046054c46aaa2f372"
     },
+    "vision/reports/calibration-yolo26n-custom.json": {
+      "lines": 1213,
+      "sha256": "58d33aa1744afc7450aabe260bd0382829831991b38bf50067e6762779ea367c"
+    },
     "vision/reports/error_analysis.json": {
       "lines": 571,
       "sha256": "284013674d12ae51505150646f417d656eaa96ea9f8572480e3987e547e12cd7"
     },
     "vision/reports/improvement-20261116.json": {
-      "lines": 646,
-      "sha256": "339226b10e6ce170fe71602762bbf18989fe0b4cbc5e31797789092de046e68b"
+      "lines": 867,
+      "sha256": "7e0fb45a35ba4824991267b6a849370466cbffbeb5195b9c424b099d94307c9e"
+    },
+    "vision/reports/independent23-frozen.json": {
+      "lines": 19054,
+      "sha256": "cea83174bcfa9dfe6c7708168d93d971a78ade8021196aa3b146a399f388a838"
     },
     "vision/reports/inference-http-20261116.json": {
       "lines": 81,
@@ -597,6 +632,18 @@
       "lines": 84,
       "sha256": "2df34aa71bd0c3222e7ef4791bf756485ea22be400810748b3b6cad8abe03d00"
     },
+    "vision/reports/inference-http-yolo26n.json": {
+      "lines": 84,
+      "sha256": "fc7c919d8639d766384be648448067fa8c3a4144c0ab46b03f275cf71c0fd35f"
+    },
+    "vision/reports/pretrained-bases-validation.json": {
+      "lines": 3281,
+      "sha256": "3a25e4f61cdd39af20cc71f5bf4a610bf73234e6614e4a823df397843f63baa9"
+    },
+    "vision/reports/reproduction-newtest23.json": {
+      "lines": 3724,
+      "sha256": "ea13b350616ff0475123bee810f1685574321c76facf66b6e0ef4078116b2e6a"
+    },
     "vision/reports/reproduction.json": {
       "lines": 1650,
       "sha256": "f565b4535434a2addf05fe97be678ffa6ef188609b396cb1a3aa86fdc660c590"
@@ -604,6 +651,18 @@
     "vision/reports/training-20261116.json": {
       "lines": 245,
       "sha256": "bab88235766fae3e69017ef4d1bddbf1be53ea39efe684b44d2101ad36da73c7"
+    },
+    "vision/reports/training-yolo26n.json": {
+      "lines": 238,
+      "sha256": "db7ca9799ebbb19c132937a0f87714dede7465ab85757d2a4e929ae2b3c35a66"
+    },
+    "vision/reports/yolo26n-custom-decision.json": {
+      "lines": 235,
+      "sha256": "65fe247af937cd6d7fd25b59aebe8c56e63c61b72a16c73347e307f2aa738866"
+    },
+    "vision/reports/yolo26n-regression23.json": {
+      "lines": 10278,
+      "sha256": "492c3a54d936db998c5fd935daa1237bee663a6547231af10c6d4f97a10f47ec"
     },
     ".dockerignore": {
       "lines": 10,
@@ -614,8 +673,8 @@
       "sha256": "b0d7b4e6517c3891370cb60c97aabee45b102f468a068db89b07cf96a418cc74"
     },
     ".gitignore": {
-      "lines": 54,
-      "sha256": "23c27f94dab51b22a4057364e05021f47f46a7ab9b372142f2af6db223a9bda3"
+      "lines": 55,
+      "sha256": "5cd80909af15444c23a6800cfe9ad53bc48bc75b4941feaad1e04d8603da5ec2"
     },
     "Dockerfile": {
       "lines": 18,
@@ -670,16 +729,16 @@
       "sha256": "f19f7fd542158888b4660bf4dd30febb856376e7eb91880ab82f36c2afb1ddfe"
     },
     "genai/notebooks/01_retrieval.ipynb": {
-      "lines": 192,
-      "sha256": "e87a875616d9e14ee620e3a413aefc38ea6a9cf9eba13d60b69c4d4dfa52c6ee"
+      "lines": 198,
+      "sha256": "af39e8f721b79b79253bfd16f2a3442b9e3de7ac09a35a247ee3849547492501"
     },
     "genai/notebooks/02_local_llm.ipynb": {
       "lines": 96,
-      "sha256": "4c5348cd664c20a235fd95e915d7948eea390aae6c44296c539595656c13a08f"
+      "sha256": "7c90344a4cc3dafc1d39ac45119f73f1c1be6f83bff314482a295decf04c8ded"
     },
     "genai/notebooks/03_integracao_api.ipynb": {
-      "lines": 83,
-      "sha256": "095f86295add11236f2f5647b9383b0b0ed5dc8d67d27090f44037a87488a200"
+      "lines": 81,
+      "sha256": "7a5654c23de9b90f9fb2aa3ea49b5375db373dfb30c563f8a4e2faeb183b65f3"
     },
     "robot/firmware/acolhe_safe/acolhe_safe.ino": {
       "lines": 35,
@@ -696,32 +755,32 @@
   },
   "token_usage": null,
   "token_usage_reason": "Host agent usage not exposed",
-  "graph_nodes": 1039,
-  "graph_edges": 1641,
-  "communities": 130,
+  "graph_nodes": 1062,
+  "graph_edges": 1646,
+  "communities": 151,
   "health": {
-    "node_count": 985,
+    "node_count": 1006,
     "unverified_node_count": 0,
-    "raw_edge_count": 1748,
+    "raw_edge_count": 1754,
     "non_object_edges": 0,
     "missing_endpoint_edges": 0,
-    "dangling_endpoint_edges": 326,
+    "dangling_endpoint_edges": 329,
     "external_reference_edges": 4,
     "self_loop_edges": 0,
-    "valid_candidate_edges": 1418,
+    "valid_candidate_edges": 1421,
     "exact_duplicate_edges": 1,
-    "directed_unique_endpoint_pairs": 1313,
-    "directed_same_endpoint_collapsed_edges": 105,
-    "undirected_unique_endpoint_pairs": 1312,
-    "undirected_same_endpoint_collapsed_edges": 106,
-    "same_endpoint_group_count": 60,
-    "relation_variant_groups": 26,
+    "directed_unique_endpoint_pairs": 1315,
+    "directed_same_endpoint_collapsed_edges": 106,
+    "undirected_unique_endpoint_pairs": 1314,
+    "undirected_same_endpoint_collapsed_edges": 107,
+    "same_endpoint_group_count": 61,
+    "relation_variant_groups": 27,
     "source_file_variant_groups": 0,
     "source_location_variant_groups": 33,
-    "context_variant_groups": 1,
+    "context_variant_groups": 2,
     "post_build_graph_type": "Graph",
-    "post_build_node_count": 1039,
-    "post_build_edge_count": 1641,
+    "post_build_node_count": 1062,
+    "post_build_edge_count": 1646,
     "post_build_error": "",
     "producer_suppression": {
       "path": "C:\\Users\\hyeon\\AppData\\Roaming\\uv\\tools\\graphifyy\\Lib\\site-packages\\graphify\\extract.py",
