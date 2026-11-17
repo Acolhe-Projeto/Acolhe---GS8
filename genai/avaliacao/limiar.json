@@ -1,7 +1,7 @@
 {
   "chosen": 2.0,
-  "corpus_sha256": "6b4e5c617d41577d9d8ba6958f331a5d8a444346a0de803184760bc21f3bb092",
-  "method": "Development grid only, select highest tested threshold retaining full recall before holdout C. IDF term matches plus +2 exact bilingual term bonus. Generation consumes top1; recall@3 is measured separately.",
+  "corpus_sha256": "44bc667247041dd06cd73d0a186df121e60de0df4be0971993b43c5df1c477c8",
+  "method": "Development-only threshold grid remeasured on corpus v3. Highest threshold preserving full recall@1; no holdout used. Historical corpus-v2 report preserved separately.",
   "candidates": [
     {
       "threshold": 0,
@@ -9,7 +9,7 @@
       "recall_at_1": 1.0,
       "recall_at_3": 1.0,
       "negative_cases": 4,
-      "negative_search_hits": 0
+      "negative_search_hits": 4
     },
     {
       "threshold": 1,

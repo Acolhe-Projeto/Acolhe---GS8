@@ -1,3 +1,5 @@
+> Atualização 17/11: GenAI ativo v6/corpus v3; D16 RAG/agente 14/16 na revisão técnica exploratória, revisão humana pendente. Vision: quatro treinos adicionais não sustentaram promoção; modelo ativo e PDF preservados, meta 70%/70% ainda não atingida. Detalhes em [RESULTADOS_NOTURNOS](entregas/RESULTADOS_NOTURNOS.md). Este adendo substitui o perfil GenAI v4 como configuração atual; placares anteriores são históricos.
+
 # Bases leves para Vision — pesquisa e validação local
 
 Revisão17/11/2026. O projeto já fazia transferência de aprendizado a partir do YOLO11n oficial; não treinava do zero. A pergunta agora é se outra base leve oferece vantagem e se a integração/treino cabem nesta máquina.

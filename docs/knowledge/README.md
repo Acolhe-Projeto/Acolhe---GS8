@@ -1,4 +1,4 @@
-> Atualização final17/11: grafo reconstruído com1062 nós,1646 arestas e151 comunidades; nenhuma anotação semântica pendente por hash. PRDs, guias e notebooks atuais revisados. Há referências não resolvidas/relações colapsadas no extrator; SQL/PowerShell recebem índice literal. O último export Obsidian concluiu1213 notas sem avisos de arquivos preservados; JSON/HTML e coverage.json registram a cobertura e os limites do extrator. O mapa não comprova execução ou qualidade por si só.
+> Atualização noturna 17/11: mapa reconstruído após os experimentos. Consulte coverage.json para contagens e fontes semânticas que ficaram desatualizadas: são omitidas, sem renovar hashes por inferência. Código recebe AST e documentos recebem índice literal; isso não equivale a revisão semântica integral.
 
 # Mapa de conhecimento do Acolhe
 

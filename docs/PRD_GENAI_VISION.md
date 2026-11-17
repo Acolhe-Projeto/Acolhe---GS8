@@ -1,3 +1,5 @@
+> Atualização 17/11: GenAI ativo v6/corpus v3; D16 RAG/agente 14/16 na revisão técnica exploratória, revisão humana pendente. Vision: quatro treinos adicionais não sustentaram promoção; modelo ativo e PDF preservados, meta 70%/70% ainda não atingida. Detalhes em [RESULTADOS_NOTURNOS](entregas/RESULTADOS_NOTURNOS.md). Este adendo substitui o perfil GenAI v4 como configuração atual; placares anteriores são históricos.
+
 # PRD — GenAI e Computer Vision
 
 Versão3,17/11/2026. Branch feat/genai-vision. Substitui o planejamento inicial; histórico preservado no Git. Requisitos oficiais: desafioFIAP CitizenTech, páginas24,29–31 e 44. Critérios ponderados e pendências em ENTREGA_CHECKLIST.md.

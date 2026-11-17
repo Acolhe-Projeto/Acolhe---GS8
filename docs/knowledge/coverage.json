@@ -1,7 +1,7 @@
 {
-  "base_commit": "f3ac40b42c15181fa5f99de211dc6b9367b6289c",
+  "base_commit": "1abec5eb7f663f871b6db5fa37a45d5d00b951d8",
   "worktree_snapshot": true,
-  "code_files": 121,
+  "code_files": 139,
   "code_source_hashes": {
     ".github/workflows/devsecops.yml": "b3561ed889f5fc1d5fc68c79d1d2f00738cc302f89a0a7150456960f0f084b5a",
     ".github/workflows/evaluate-python-bases.yml": "66d804bd1e78f5f486aca6e7eeb9c06f0faf79c1ef82a421f3ae591240f6a71b",
@@ -33,6 +33,7 @@
     "docs/build_pdf.py": "116f63997bf7e80a417c1129bef06d0d4b479943fb254af0fa89c98c00158c69",
     "docs/entregas/build_vision_pdf.py": "ef8bb58508c023221eea6619dae45c0ab6af05145d2e6a12e754b19b150c692d",
     "docs/evidencias/demo-final-http.json": "c8e9d488ea828644535c98bb6f3f3aa45e8074a60dc6a9a1655f0a8aa48aa8fb",
+    "docs/evidencias/demo-overnight-http.json": "7b3513d255653e738e3a9e598ea375c8bbc58cf98726cf96addc7da38e6f38e2",
     "docs/evidencias/documentacao-qa-20261107.json": "3cac41440601c7e2790a4a035a48e291897844cf8edfd374d6c43ec2f9aeff95",
     "docs/evidencias/genai-vision-20261116.json": "964f4f5c74c33c224a5fc23ccd68a6b6d2793e1f8eaf556b34d7b716c866b419",
     "docs/evidencias/hardware-rx6750xt-20261116.json": "9b75853952bca81da99740c417297238918ec795dcb8f7b38076b276dcb04553",
@@ -43,28 +44,37 @@
     "docs/evidencias/validacao-melhoria.json": "5e20483a2e870ca349fd737d0a6ca4eb020937154c63f9a791df63c4b427276e",
     "docs/evidencias/verificacao-20261107T133614Z.json": "2fa74f4d585c8000cb5a02b6c859368660361d5251ce717501ad47d5d87d8280",
     "genai/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "genai/avaliacao/limiar.json": "111cf563fdbc58aad91ae09645ab25f3eda270c14703b6d01a946f4ccf991779",
+    "genai/avaliacao/D16-revisao-tecnica.json": "eeb44b3415245dceace8e47cc08c85e658a3138df3a1e59c966a99c67a89ee5f",
+    "genai/avaliacao/limiar-corpus-v2.json": "111cf563fdbc58aad91ae09645ab25f3eda270c14703b6d01a946f4ccf991779",
+    "genai/avaliacao/limiar.json": "68f5918a974178b3c124c637627f07c9a211daeddf2f88b266de6e5638a70d7c",
     "genai/avaliacao/qwen3b-dev20-final.json": "d437a0b4728fd6e7bb3899d1264594d64714eecfba171f3e10bff535e72ef610",
     "genai/avaliacao/qwen3b-independent12-final.json": "3d2e9c8881c33160c9ac2f30272e01dd262d8a1877e0096d301f65b9c25654eb",
     "genai/avaliacao/qwen3b-v3-dev20.json": "97a4284959f396ead261a4ea335c88100dd64278c77f0bdcfda035d7bf8b41f6",
     "genai/avaliacao/qwen3b-v3-holdout12.json": "0e7ae36d7b1af6c70afe981994c15fa90bcd0387d8d5c469b3b219dc1c224b9c",
+    "genai/avaliacao/qwen3b-v4-D16-night.json": "b6d4848d3819f1d1cd0e6801bd889f1b44c7cc9f7975fdc9305dbb531365e94a",
     "genai/avaliacao/qwen3b-v4-dev20.json": "c1baca1a97d4287c44bdad49dc071dd44556559ba7c04d5bbd8e2d8f29f2a6f0",
     "genai/avaliacao/qwen3b-v4-gpu-dev20.json": "d25f67bd5364134d07a4e036d55714074d9d8bee02cd171ed3852a8fd5f7edc0",
     "genai/avaliacao/qwen3b-v4-gpu-holdout12.json": "04d243bd81f3403f180594cb1e02444a13d896c26bd9db71c020767bc73b4ad3",
     "genai/avaliacao/qwen3b-v4-holdout12.json": "eb61a1d38097793a9879af8b810384271c07c25ad1aff9ac25bf92c4daa6b957",
+    "genai/avaliacao/qwen3b-v5-dev20-night.json": "5f8f9bf8ef255812dff6965372da6a22891c8239d8f44f578acc88cee4763b14",
+    "genai/avaliacao/qwen3b-v6-D16-night.json": "d9d76e016ef649bdd34426e4eb52b3aaec88f2bb0ee4ebf8e56f2600c8b84770",
+    "genai/avaliacao/qwen3b-v6-dev20-night.json": "be2b8a9456ee1a1e8d8daffcde3811540c7181ba69c9e1387919c80498964581",
+    "genai/avaliacao/qwen3b-v6-final-dev20.json": "aa429d606a17ca20366773ac505363264f9686759bdab7f3d6004ba0ff39bcf7",
     "genai/avaliacao/retrieval-v1-historico.json": "5429966c33634509d098dd0c8bda747c3b37892e4f5da68f3906f26e78bda79c",
     "genai/avaliacao/revisao_tecnica_v4.json": "4c9c689ece9f0b1dabf0a961efb81826ba1b6417b59e2c2046cea2bc580da72f",
     "genai/avaliacao/teste_dev.json": "99100e6ab71ca2178099ddff6d0b61c9a91e2f0489b598a73eccd04ec56ab671",
     "genai/avaliacao/teste_independente.json": "65f8be48e6fb6ee487455638e2bebd82476cdfa93c7d31dfbc0954a532ae5eeb",
     "genai/avaliacao/teste_independente_B.json": "77f80e9dfba19b312a5ec1b22e46bbe6d2410fc9ff6ee31969f9123a8332f116",
     "genai/avaliacao/teste_independente_C.json": "0ca94feada4daa0c71b020adff5dc7bb3be31eb493d94ea1db472891bbb57f2f",
-    "genai/base/corpus.json": "6b4e5c617d41577d9d8ba6958f331a5d8a444346a0de803184760bc21f3bb092",
-    "genai/base/manifest.json": "c4ec9efaa369cb02c8444935623f431e1ac594d884784bf918f007d01e2e1389",
+    "genai/avaliacao/teste_independente_D.json": "df588b0e25e16527ac1301d141baec06ec56f759ab23553cace9224ad965f400",
+    "genai/avaliacao/v6-frozen-before-D.json": "050c5f734e5e24ae6467c767c222b5816e2a3faa29006208643dc581652c5cb1",
+    "genai/base/corpus.json": "44bc667247041dd06cd73d0a186df121e60de0df4be0971993b43c5df1c477c8",
+    "genai/base/manifest.json": "c2e8b2f747ad306e530b7cc6c7ee6577a4800727f050db161feb8e3a80eb8934",
     "genai/compare.py": "d0936c63257cd88d441870a84c7ba023a0da9523830d2b1afa6dc00d2b9ce515",
-    "genai/data/corpus.json": "6b4e5c617d41577d9d8ba6958f331a5d8a444346a0de803184760bc21f3bb092",
+    "genai/data/corpus.json": "44bc667247041dd06cd73d0a186df121e60de0df4be0971993b43c5df1c477c8",
     "genai/evaluate.py": "5cc91f7e7c0971434c5e3359280fabd2e249dbecc6a88664111fe237d13b978d",
     "genai/execute_notebook.py": "02af21dad46c1016492f823a40117795a42ec19669325fad4d1c0f45ccd2c2b3",
-    "genai/experiment.py": "09b248eceba68c503795441416a34ae72d7e6b2b8aad253c54bc5aeb60b97258",
+    "genai/experiment.py": "43485ced3efecf8be67447310c17746ce0c68fd45e82e02d5c93f494161bc325",
     "genai/local.py": "df6be92b4bd4ed5e73a17d3d36d14fafd9328f787ca7b7338da29cc1cc6a7b95",
     "genai/reports/probes-chat-v2-20261116.json": "09306ba2ecf66d5217e007b12fc31e39e0590bcf4fbc336e27eccfd50322457d",
     "genai/reports/probes-chat-v2-qwen3b-20261116.json": "39b37688b442ca93213565a455b81daed9e34d3f706c097dc50b1ac796f391f4",
@@ -74,10 +84,10 @@
     "genai/reports/retrieval.json": "7bb0b92381648d132079e36360473519f59b482996b5a6ce15e5943f06bf87b4",
     "genai/reports/service-smoke-20261116.json": "f209994019ea4818ed4a04c90bbe3d932d1cf4fa022eeff77aae5c4ca7d48e4b",
     "genai/reports/service-smoke15b-20261116.json": "d7cb19d4a3f3b6de589e5494735f475a4ab6055e4670bfad1da3b89bf53169c9",
-    "genai/service.py": "6f0c95e5be0330ff7fbda853f57d84e9e434b031866d14a901148211092a5fae",
+    "genai/service.py": "07bbe366593515f9789d20edfc488641b78cd04123be0c83b723d533999b7f68",
     "genai/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "genai/tests/test_experiment.py": "bab435fee69b893829501974b5e79bd32c2d0b424afe704f1cd2829ef5d30304",
-    "genai/tests/test_service.py": "428623c33efc4ad1232b42a86e7cf592b069fbb420ed420ae4a57aa2e68e8892",
+    "genai/tests/test_service.py": "c94be23b51fda67e251f5cf42a1a12a1dfabe1c5d8699c775d006420765cb931",
     "robot/__init__.py": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
     "robot/service.py": "2fba8979aef95c93d11d1e4f747e09814912686c1bf60fdc9ffef64541fdbef0",
     "robot/simulator.py": "27ce025171c8473e3269c192f5a42790b097141b03b2c04a98b64951c19a6d39",
@@ -86,10 +96,13 @@
     "rpa/robot.py": "665464ed3722a288ee292684a64d3118f64dd536268fa1d053a36e59dea03a3c",
     "rpa/test_robot.py": "97465334c7c93492bd07c4fb480020c3f0ddd54c84e823a4e4b19a2449ed9caf",
     "scripts/iniciar-demo.ps1": "0402ebc300c95b7b01f4f833c809c715f87edf8b1ba99fcc67e16b7dd2275d34",
+    "scripts/night_worker.py": "b59c86b21a29d1e5690204c0c88eae21e4765b5d2cf14c67577d4e4e9781fe19",
+    "scripts/retomar-noite.ps1": "932ef5e22ae0f7d1a80a9afb6a7afce103fee41e56e078d8e802aeea17a049e0",
     "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "tests/frontend.test.cjs": "85cd70569c39056c41fe6e54676122e66801e3c10a8652295e31cf9bd352ee88",
     "tests/test_core.py": "50498c4d70933c4d153c91b260a461883e1ad6aa4d2562c44de6445d3e04f407",
     "tests/test_http.py": "414c4e7f7ff5b9ef90970cc9db224759de0ecc10fcbfac785b3487cc591e0197",
+    "tests/test_night_worker.py": "45d525fc0611e73865effb579f3558e95b8a5332ceee6ee8913020bdb4f378d2",
     "vision/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "vision/audit.py": "1d864100d23c946182ddd1e91d4b6623c489f18d61667f249e825bdd8c50c8eb",
     "vision/calibrate.py": "de082914944dc35095bdb60cff90d940d6280e2cf3cc72a543728bd2e7c6a331",
@@ -107,6 +120,11 @@
     "vision/reports/inference-http-20261116.json": "6fefc36c479cb6d4cf0f915adeed9b7bb24e5fe85ab184dc6f2f05ae5d870494",
     "vision/reports/inference-http-improved.json": "2df34aa71bd0c3222e7ef4791bf756485ea22be400810748b3b6cad8abe03d00",
     "vision/reports/inference-http-yolo26n.json": "fc7c919d8639d766384be648448067fa8c3a4144c0ab46b03f275cf71c0fd35f",
+    "vision/reports/night-26-freeze10-640-556963bd.json": "3225bf2bc8a533a3686c3caf25855aa88ea61b293b1beaa8cba63ec85cef003a",
+    "vision/reports/night-26-freeze10-960-2cfb335d.json": "893cac722eebdb177e78533f30dfd635eb25e0d109e7b60e3e304a9b34a11c5c",
+    "vision/reports/night-26-freeze22-640-a4a439a9.json": "def1d0e78a6d6fc8897687f0d6116829fe0018353f0d7026a9828d9c14e6ca79",
+    "vision/reports/night-v8-freeze10-640-b5641b11.json": "5d8c1125f213f422bb1a91e6fa3f877f1ffb56cf654f816014f603386141d0dc",
+    "vision/reports/overnight-decision.json": "34556496234cd97c67e8c915dd472d32bfa96ea3c925f5381c2c0e3e0a47cdd7",
     "vision/reports/pretrained-bases-validation.json": "3a25e4f61cdd39af20cc71f5bf4a610bf73234e6614e4a823df397843f63baa9",
     "vision/reports/reproduction-newtest23.json": "ea13b350616ff0475123bee810f1685574321c76facf66b6e0ef4078116b2e6a",
     "vision/reports/reproduction.json": "f565b4535434a2addf05fe97be678ffa6ef188609b396cb1a3aa86fdc660c590",
@@ -118,20 +136,21 @@
     "vision/service.py": "ad590214b43ea0fe5f92e972cc08acf76d559ad5d724f475c3d9ee9e87b5cfbf",
     "vision/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "vision/tests/test_calibrate.py": "d9d9114cad6d3abb4cfd2aa638b1514c7d94b62e7048fff35b4bae7ee7082ce4",
-    "vision/tests/test_dataset.py": "1a7c5441452db55d6d7f298537bfcb04999be31230de7dbd2a08a31b1bc4e8b6",
+    "vision/tests/test_dataset.py": "d8aaa283f03f4830a0b8beb6ee80d2232fcabed64c00de9adc1609437ab87b37",
     "vision/tests/test_guards.py": "ddb2ef5c2f52834c1e11458650ba5bf0593ad2073813f78593925326c1255721",
     "vision/tests/test_public_review.py": "ff83f44230d061adb123a90db0b58daafd05bec3816d601298026c055fb83755",
     "vision/tests/test_reproduce.py": "352d3e71aa6d0f6caddf594762e3079db0e72ba5a48c32e68ee0f63096ecaf50",
     "vision/tests/test_service.py": "8a73f520febb778ce9707aa9d52e080f031b82a6ac29ff74051ef51973c5edf1",
-    "vision/train.py": "6ee15d04f67226179558c26f9b247419c7868951e16d8fd63f4947c228c8bd14"
+    "vision/train.py": "dcc366838a3b6e38be42c0978b2bfd82826767f7e7c30a62f7b1250e89c20fda"
   },
-  "ast_nodes": 547,
-  "ast_edges": 1324,
+  "ast_nodes": 565,
+  "ast_edges": 1377,
   "unmodeled_code": [
     "app/static/lessons.json",
     "big_data/output/summary.json",
     "devsecops/monitoring/grafana-dashboard.json",
     "docs/evidencias/demo-final-http.json",
+    "docs/evidencias/demo-overnight-http.json",
     "docs/evidencias/documentacao-qa-20261107.json",
     "docs/evidencias/genai-vision-20261116.json",
     "docs/evidencias/hardware-rx6750xt-20261116.json",
@@ -141,21 +160,30 @@
     "docs/evidencias/validacao-final.json",
     "docs/evidencias/validacao-melhoria.json",
     "docs/evidencias/verificacao-20261107T133614Z.json",
+    "genai/avaliacao/D16-revisao-tecnica.json",
+    "genai/avaliacao/limiar-corpus-v2.json",
     "genai/avaliacao/limiar.json",
     "genai/avaliacao/qwen3b-dev20-final.json",
     "genai/avaliacao/qwen3b-independent12-final.json",
     "genai/avaliacao/qwen3b-v3-dev20.json",
     "genai/avaliacao/qwen3b-v3-holdout12.json",
+    "genai/avaliacao/qwen3b-v4-D16-night.json",
     "genai/avaliacao/qwen3b-v4-dev20.json",
     "genai/avaliacao/qwen3b-v4-gpu-dev20.json",
     "genai/avaliacao/qwen3b-v4-gpu-holdout12.json",
     "genai/avaliacao/qwen3b-v4-holdout12.json",
+    "genai/avaliacao/qwen3b-v5-dev20-night.json",
+    "genai/avaliacao/qwen3b-v6-D16-night.json",
+    "genai/avaliacao/qwen3b-v6-dev20-night.json",
+    "genai/avaliacao/qwen3b-v6-final-dev20.json",
     "genai/avaliacao/retrieval-v1-historico.json",
     "genai/avaliacao/revisao_tecnica_v4.json",
     "genai/avaliacao/teste_dev.json",
     "genai/avaliacao/teste_independente.json",
     "genai/avaliacao/teste_independente_B.json",
     "genai/avaliacao/teste_independente_C.json",
+    "genai/avaliacao/teste_independente_D.json",
+    "genai/avaliacao/v6-frozen-before-D.json",
     "genai/base/corpus.json",
     "genai/data/corpus.json",
     "genai/reports/probes-chat-v2-20261116.json",
@@ -176,6 +204,11 @@
     "vision/reports/inference-http-20261116.json",
     "vision/reports/inference-http-improved.json",
     "vision/reports/inference-http-yolo26n.json",
+    "vision/reports/night-26-freeze10-640-556963bd.json",
+    "vision/reports/night-26-freeze10-960-2cfb335d.json",
+    "vision/reports/night-26-freeze22-640-a4a439a9.json",
+    "vision/reports/night-v8-freeze10-640-b5641b11.json",
+    "vision/reports/overnight-decision.json",
     "vision/reports/pretrained-bases-validation.json",
     "vision/reports/reproduction-newtest23.json",
     "vision/reports/reproduction.json",
@@ -208,24 +241,16 @@
     "devsecops/README.md",
     "devsecops/terraform/.gitignore",
     "devsecops/terraform/terraform.tfvars.example",
-    "docs/ENTREGA_CHECKLIST.md",
-    "docs/MODELOS_VISION.md",
-    "docs/PRD_GENAI_VISION.md",
     "docs/README.md",
     "docs/VALIDACAO_GENAI_VISION.md",
     "docs/entregas/COMO_USAR_E_GRAVAR.md",
-    "docs/entregas/GENAI_RELATORIO.md",
     "docs/entregas/ROTEIRO_VIDEOS.md",
     "docs/entregas/VISION_RELATORIO.md",
     "docs/manual_acolhe.md",
     "docs/manual_acolhe.pdf",
     "docs/registro_testes.md",
     "docs/roteiros_videos.md",
-    "genai/PLAN.md",
     "genai/README.md",
-    "genai/base/README.md",
-    "genai/notebooks/01_retrieval.ipynb",
-    "genai/notebooks/02_local_llm.ipynb",
     "genai/notebooks/03_integracao_api.ipynb",
     "genai/reports/error_analysis.md",
     "genai/reports/llm_error_analysis.md",
@@ -240,13 +265,22 @@
     "rpa/processo.bpmn",
     "vision/COCO_ASSESSMENT.md",
     "vision/OPEN_IMAGES_ASSESSMENT.md",
-    "vision/PLAN.md",
     "vision/README.md",
     "vision/notebooks/01_train_real.ipynb",
     "vision/requirements-data.txt",
     "vision/requirements.txt"
   ],
-  "stale_semantic_sources": [],
+  "stale_semantic_sources": [
+    "genai/notebooks/01_retrieval.ipynb",
+    "genai/notebooks/02_local_llm.ipynb",
+    "vision/PLAN.md",
+    "docs/PRD_GENAI_VISION.md",
+    "genai/PLAN.md",
+    "docs/ENTREGA_CHECKLIST.md",
+    "docs/entregas/GENAI_RELATORIO.md",
+    "genai/base/README.md",
+    "docs/MODELOS_VISION.md"
+  ],
   "structural_sources": {
     "IMPLEMENTATION_PLAN.md": {
       "lines": 12,
@@ -285,16 +319,16 @@
       "sha256": "d8df0b06d0a515c5b12e553baab0ec8ab1d495724d962a0165419bc6d3963faa"
     },
     "docs/ENTREGA_CHECKLIST.md": {
-      "lines": 46,
-      "sha256": "ded2db6e2d44ed45eb6db7a9dc2da5c95171bf61034702d337f7934220e1fde9"
+      "lines": 48,
+      "sha256": "e7bb25603ca8363b584db4063013031786917208142be3afc1191075bd34eb4f"
     },
     "docs/MODELOS_VISION.md": {
-      "lines": 64,
-      "sha256": "6289eee2bdafb2b59abe1e1845ec9f111a23bb8c97cb874f5a2e3e7d45db089c"
+      "lines": 66,
+      "sha256": "bc77a04ca843fab81dc6576c8e31cb60e4926e70aceef4880a1f3b9d4521f396"
     },
     "docs/PRD_GENAI_VISION.md": {
-      "lines": 89,
-      "sha256": "51e5b937011e256783c2a2a1f2a3bf4d2778a189d62e13d9970a4ff1f5b30cce"
+      "lines": 91,
+      "sha256": "9d68f2d78d2b2365499fddadb872abb7f93fe624e5cb563a04cbad9fde78b01f"
     },
     "docs/README.md": {
       "lines": 34,
@@ -309,12 +343,20 @@
       "sha256": "e04958b7ea855db66814de05aa9a7131bfad745c100b38b171321327dc12b6f5"
     },
     "docs/entregas/GENAI_RELATORIO.md": {
-      "lines": 105,
-      "sha256": "d9329845b54985831e5471de4d2fb0b3774add0ccfb2630245e573298c921972"
+      "lines": 107,
+      "sha256": "d08d55c23fa273cd9ef117c1eae5621b2ab2fe79123e40a0a6b8dec067ce4e5b"
+    },
+    "docs/entregas/RESULTADOS_NOTURNOS.md": {
+      "lines": 51,
+      "sha256": "c9ba2ac8ed54758fb52e2d49a3c55854f44f9555fe47cd34dc3a09dd6aeb8859"
     },
     "docs/entregas/ROTEIRO_VIDEOS.md": {
       "lines": 5,
       "sha256": "6e35824046544c025c829cd95c57f1ca106a1ed6d73c860f0170e3045e342990"
+    },
+    "docs/entregas/TESTAR_AMANHA.md": {
+      "lines": 40,
+      "sha256": "711554f8a9e17dc2c296f0b6d2056f2c26113e6d1211a729773d2bfabf83c4a5"
     },
     "docs/entregas/VISION_RELATORIO.md": {
       "lines": 108,
@@ -333,8 +375,8 @@
       "sha256": "0fe65bfd163b60f4e7e7d6fdf1024d3a2e597048665dd465ec2edc6a55855f54"
     },
     "genai/PLAN.md": {
-      "lines": 43,
-      "sha256": "1a07d242d15da616b5e06905d387185d573e6844bc23849394e517dfd885457a"
+      "lines": 45,
+      "sha256": "3fa3a81f29861c5743f33ddf9e7823bd774ec389a19370c804153db861aade5c"
     },
     "genai/README.md": {
       "lines": 45,
@@ -356,6 +398,10 @@
       "lines": 47,
       "sha256": "e20eb1dac9dfc51064307b48a6662ddba5bd86108bf0b95ec2a4e411372a3564"
     },
+    "genai/avaliacao/qwen3b-v4-D16-night.review.md": {
+      "lines": 59,
+      "sha256": "9f729aec85ba6567d3959e437d3e906215e8551c18300a9ca2d79ab1a3f3e540"
+    },
     "genai/avaliacao/qwen3b-v4-dev20.review.md": {
       "lines": 71,
       "sha256": "e72a022074e00da41664fbfc906a5e80753c5d9b4733cb1da544e3ed82960c94"
@@ -372,9 +418,25 @@
       "lines": 47,
       "sha256": "2a6a6fe37b7b26505c7baf608e2204e3af17ef4cc6d2d5ba2701d63509d7507b"
     },
+    "genai/avaliacao/qwen3b-v5-dev20-night.review.md": {
+      "lines": 71,
+      "sha256": "123ad70003d5c92e529db6d467f8ea75ed6b613aeb0ea3013932e4dbab7e2213"
+    },
+    "genai/avaliacao/qwen3b-v6-D16-night.review.md": {
+      "lines": 59,
+      "sha256": "e14465d47bb0086d9294f8c2fbee8e08a5092437fde3ffd91a12d31822637432"
+    },
+    "genai/avaliacao/qwen3b-v6-dev20-night.review.md": {
+      "lines": 71,
+      "sha256": "75e3942a19dfacd7983e675e1e3185c1600014d9c67868081e244727f8cdc95c"
+    },
+    "genai/avaliacao/qwen3b-v6-final-dev20.review.md": {
+      "lines": 71,
+      "sha256": "1e200cbe4fcff950f0422cf4b1478dfc196dcee37ac36f75e0e7de439dc5744c"
+    },
     "genai/base/README.md": {
-      "lines": 3,
-      "sha256": "3a3bea2499de9df715a478f1ca68652e5a95289ad5825e888c6f6e489d248f8c"
+      "lines": 5,
+      "sha256": "e26352a0a965b8ec7129f99bdeeee00ff6a821cd10f4f7f2653dc7e4483c2095"
     },
     "genai/reports/error_analysis.md": {
       "lines": 12,
@@ -413,8 +475,8 @@
       "sha256": "9b00f331e060382f00fd1ae16586852645b39839be12971dd53365305810a40a"
     },
     "vision/PLAN.md": {
-      "lines": 49,
-      "sha256": "e0e3e89bde6ce8f77412999895616a430a630e24d3c0e436869c1017c670da98"
+      "lines": 51,
+      "sha256": "e5a9df72950ac36a89c64e916fbc56e83575ed33d97f60c1c68bf3b3860fe55a"
     },
     "vision/README.md": {
       "lines": 44,
@@ -460,6 +522,10 @@
       "lines": 85,
       "sha256": "c8e9d488ea828644535c98bb6f3f3aa45e8074a60dc6a9a1655f0a8aa48aa8fb"
     },
+    "docs/evidencias/demo-overnight-http.json": {
+      "lines": 151,
+      "sha256": "7b3513d255653e738e3a9e598ea375c8bbc58cf98726cf96addc7da38e6f38e2"
+    },
     "docs/evidencias/documentacao-qa-20261107.json": {
       "lines": 15,
       "sha256": "3cac41440601c7e2790a4a035a48e291897844cf8edfd374d6c43ec2f9aeff95"
@@ -496,9 +562,17 @@
       "lines": 71,
       "sha256": "2fa74f4d585c8000cb5a02b6c859368660361d5251ce717501ad47d5d87d8280"
     },
-    "genai/avaliacao/limiar.json": {
+    "genai/avaliacao/D16-revisao-tecnica.json": {
+      "lines": 79,
+      "sha256": "eeb44b3415245dceace8e47cc08c85e658a3138df3a1e59c966a99c67a89ee5f"
+    },
+    "genai/avaliacao/limiar-corpus-v2.json": {
       "lines": 55,
       "sha256": "111cf563fdbc58aad91ae09645ab25f3eda270c14703b6d01a946f4ccf991779"
+    },
+    "genai/avaliacao/limiar.json": {
+      "lines": 55,
+      "sha256": "68f5918a974178b3c124c637627f07c9a211daeddf2f88b266de6e5638a70d7c"
     },
     "genai/avaliacao/qwen3b-dev20-final.json": {
       "lines": 2415,
@@ -516,6 +590,10 @@
       "lines": 1538,
       "sha256": "0e7ae36d7b1af6c70afe981994c15fa90bcd0387d8d5c469b3b219dc1c224b9c"
     },
+    "genai/avaliacao/qwen3b-v4-D16-night.json": {
+      "lines": 1853,
+      "sha256": "b6d4848d3819f1d1cd0e6801bd889f1b44c7cc9f7975fdc9305dbb531365e94a"
+    },
     "genai/avaliacao/qwen3b-v4-dev20.json": {
       "lines": 2468,
       "sha256": "c1baca1a97d4287c44bdad49dc071dd44556559ba7c04d5bbd8e2d8f29f2a6f0"
@@ -531,6 +609,22 @@
     "genai/avaliacao/qwen3b-v4-holdout12.json": {
       "lines": 1450,
       "sha256": "eb61a1d38097793a9879af8b810384271c07c25ad1aff9ac25bf92c4daa6b957"
+    },
+    "genai/avaliacao/qwen3b-v5-dev20-night.json": {
+      "lines": 2490,
+      "sha256": "5f8f9bf8ef255812dff6965372da6a22891c8239d8f44f578acc88cee4763b14"
+    },
+    "genai/avaliacao/qwen3b-v6-D16-night.json": {
+      "lines": 1788,
+      "sha256": "d9d76e016ef649bdd34426e4eb52b3aaec88f2bb0ee4ebf8e56f2600c8b84770"
+    },
+    "genai/avaliacao/qwen3b-v6-dev20-night.json": {
+      "lines": 2490,
+      "sha256": "be2b8a9456ee1a1e8d8daffcde3811540c7181ba69c9e1387919c80498964581"
+    },
+    "genai/avaliacao/qwen3b-v6-final-dev20.json": {
+      "lines": 2490,
+      "sha256": "aa429d606a17ca20366773ac505363264f9686759bdab7f3d6004ba0ff39bcf7"
     },
     "genai/avaliacao/retrieval-v1-historico.json": {
       "lines": 137,
@@ -556,13 +650,21 @@
       "lines": 114,
       "sha256": "0ca94feada4daa0c71b020adff5dc7bb3be31eb493d94ea1db472891bbb57f2f"
     },
+    "genai/avaliacao/teste_independente_D.json": {
+      "lines": 135,
+      "sha256": "df588b0e25e16527ac1301d141baec06ec56f759ab23553cace9224ad965f400"
+    },
+    "genai/avaliacao/v6-frozen-before-D.json": {
+      "lines": 11,
+      "sha256": "050c5f734e5e24ae6467c767c222b5816e2a3faa29006208643dc581652c5cb1"
+    },
     "genai/base/corpus.json": {
-      "lines": 118,
-      "sha256": "6b4e5c617d41577d9d8ba6958f331a5d8a444346a0de803184760bc21f3bb092"
+      "lines": 150,
+      "sha256": "44bc667247041dd06cd73d0a186df121e60de0df4be0971993b43c5df1c477c8"
     },
     "genai/data/corpus.json": {
-      "lines": 118,
-      "sha256": "6b4e5c617d41577d9d8ba6958f331a5d8a444346a0de803184760bc21f3bb092"
+      "lines": 150,
+      "sha256": "44bc667247041dd06cd73d0a186df121e60de0df4be0971993b43c5df1c477c8"
     },
     "genai/reports/probes-chat-v2-20261116.json": {
       "lines": 226,
@@ -635,6 +737,26 @@
     "vision/reports/inference-http-yolo26n.json": {
       "lines": 84,
       "sha256": "fc7c919d8639d766384be648448067fa8c3a4144c0ab46b03f275cf71c0fd35f"
+    },
+    "vision/reports/night-26-freeze10-640-556963bd.json": {
+      "lines": 1104,
+      "sha256": "3225bf2bc8a533a3686c3caf25855aa88ea61b293b1beaa8cba63ec85cef003a"
+    },
+    "vision/reports/night-26-freeze10-960-2cfb335d.json": {
+      "lines": 1104,
+      "sha256": "893cac722eebdb177e78533f30dfd635eb25e0d109e7b60e3e304a9b34a11c5c"
+    },
+    "vision/reports/night-26-freeze22-640-a4a439a9.json": {
+      "lines": 1104,
+      "sha256": "def1d0e78a6d6fc8897687f0d6116829fe0018353f0d7026a9828d9c14e6ca79"
+    },
+    "vision/reports/night-v8-freeze10-640-b5641b11.json": {
+      "lines": 1104,
+      "sha256": "5d8c1125f213f422bb1a91e6fa3f877f1ffb56cf654f816014f603386141d0dc"
+    },
+    "vision/reports/overnight-decision.json": {
+      "lines": 465,
+      "sha256": "34556496234cd97c67e8c915dd472d32bfa96ea3c925f5381c2c0e3e0a47cdd7"
     },
     "vision/reports/pretrained-bases-validation.json": {
       "lines": 3281,
@@ -726,15 +848,15 @@
     },
     "genai/base/fontes.csv": {
       "lines": 9,
-      "sha256": "f19f7fd542158888b4660bf4dd30febb856376e7eb91880ab82f36c2afb1ddfe"
+      "sha256": "28e708932fc83708d4ed7ca5327c803ce6b56774473df5d5e61739213ff5d826"
     },
     "genai/notebooks/01_retrieval.ipynb": {
       "lines": 198,
-      "sha256": "af39e8f721b79b79253bfd16f2a3442b9e3de7ac09a35a247ee3849547492501"
+      "sha256": "93dfdbe803f38dbfe1a25cbc6b10a32e484c6473ca5ca9ee2459c5dec347a783"
     },
     "genai/notebooks/02_local_llm.ipynb": {
       "lines": 96,
-      "sha256": "7c90344a4cc3dafc1d39ac45119f73f1c1be6f83bff314482a295decf04c8ded"
+      "sha256": "72c7d8a55ae76612347f3671dee289a895029b188aca56ac888ba95d9b7274e6"
     },
     "genai/notebooks/03_integracao_api.ipynb": {
       "lines": 81,
@@ -755,23 +877,23 @@
   },
   "token_usage": null,
   "token_usage_reason": "Host agent usage not exposed",
-  "graph_nodes": 1062,
-  "graph_edges": 1646,
-  "communities": 151,
+  "graph_nodes": 1104,
+  "graph_edges": 1710,
+  "communities": 166,
   "health": {
-    "node_count": 1006,
+    "node_count": 1046,
     "unverified_node_count": 0,
-    "raw_edge_count": 1754,
+    "raw_edge_count": 1818,
     "non_object_edges": 0,
     "missing_endpoint_edges": 0,
-    "dangling_endpoint_edges": 329,
+    "dangling_endpoint_edges": 355,
     "external_reference_edges": 4,
     "self_loop_edges": 0,
-    "valid_candidate_edges": 1421,
+    "valid_candidate_edges": 1459,
     "exact_duplicate_edges": 1,
-    "directed_unique_endpoint_pairs": 1315,
+    "directed_unique_endpoint_pairs": 1353,
     "directed_same_endpoint_collapsed_edges": 106,
-    "undirected_unique_endpoint_pairs": 1314,
+    "undirected_unique_endpoint_pairs": 1352,
     "undirected_same_endpoint_collapsed_edges": 107,
     "same_endpoint_group_count": 61,
     "relation_variant_groups": 27,
@@ -779,8 +901,8 @@
     "source_location_variant_groups": 33,
     "context_variant_groups": 2,
     "post_build_graph_type": "Graph",
-    "post_build_node_count": 1062,
-    "post_build_edge_count": 1646,
+    "post_build_node_count": 1104,
+    "post_build_edge_count": 1710,
     "post_build_error": "",
     "producer_suppression": {
       "path": "C:\\Users\\hyeon\\AppData\\Roaming\\uv\\tools\\graphifyy\\Lib\\site-packages\\graphify\\extract.py",

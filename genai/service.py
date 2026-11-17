@@ -136,7 +136,7 @@ def grounded_prompt(question, language, hits):
     query_words = set(tokens(question))
     target_language = translation_target(question, language)
     for h in hits:
-        doc = {"id": h["id"], "text": h[language]}
+        doc = {"id": h["id"], "text": h.get('guidance', {}).get(language, h[language])}
         for pair in h.get("translations", []) if target_language else []:
             if set(tokens(pair["portuguese"])) <= query_words or set(tokens(pair["spanish"])) <= query_words:
                 target = pair[target_language]
@@ -147,6 +147,10 @@ def grounded_prompt(question, language, hits):
         documents.append(doc)
     if any(h['id'] == 'crossing' for h in hits):
         instruction += ('Na orientação de travessia, inclua pedir ajuda a um adulto e nunca atravessar sozinho.\n' if language == 'pt' else 'Al orientar sobre cruzar, incluye pedir ayuda a un adulto y nunca cruzar solo.\n')
+    if any(h['id'] == 'lost' for h in hits):
+        instruction += ('Inclua as duas ações essenciais: ficar em local seguro e pedir ajuda a funcionário identificado.\n' if language == 'pt' else 'Incluye ambas acciones esenciales: quedarse en lugar seguro y pedir ayuda a empleado identificado.\n')
+    if not target_language:
+        instruction += ('Não traduza: responda à orientação ou definição pedida em português.\n' if language == 'pt' else 'No traduzcas: responde a la orientación o definición pedida en español.\n')
     return instruction + json.dumps({"question": question, "documents": documents}, ensure_ascii=False)
 
 
@@ -185,4 +189,7 @@ def answer(question, language="pt"):
         # A short generation can omit the prohibition; this is a visible, fixed policy, not LLM text.
         response["warning"] = ("Aviso fixo de segurança: nunca atravesse sozinho. Peça ajuda a um adulto responsável." if language == "pt" else
                                "Aviso fijo de seguridad: nunca cruces solo. Pide ayuda a un adulto responsable.")
+    elif hits[0]['id'] == 'lost':
+        response['warning'] = ('Aviso fixo de segurança: fique em local seguro e peça ajuda a um funcionário identificado.' if language == 'pt' else
+                               'Aviso fijo de seguridad: quédate en un lugar seguro y pide ayuda a un empleado identificado.')
     return response

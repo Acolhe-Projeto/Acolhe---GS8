@@ -5,8 +5,12 @@
     "keywords": "atravessar cruzar calle rua faixa semaforo semáforo outro lado passagem pedestre atravieso acera cruzamento",
     "pt": "Ir para o outro lado da rua é atravessar. Fique na calçada e peça ajuda a um adulto responsável. Use a faixa e respeite o semáforo. Nunca atravesse sozinho.",
     "es": "Pasar al otro lado de la calle es cruzar. Espera en la acera y pide ayuda a un adulto responsable. Usa el paso peatonal y respeta el semáforo. Nunca cruces solo.",
-    "source": "Conteúdo autoral Acolhe, versão 2; revisão pedagógica pendente",
-    "license": "CC-BY-4.0"
+    "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente",
+    "license": "CC-BY-4.0",
+    "guidance": {
+      "pt": "Fique na calçada. Peça ajuda a um adulto responsável. Use a faixa e respeite o semáforo. Nunca atravesse sozinho.",
+      "es": "Espera en la acera. Pide ayuda a un adulto responsable. Usa el paso peatonal y respeta el semáforo. Nunca cruces solo."
+    }
   },
   {
     "id": "lost",
@@ -14,8 +18,12 @@
     "keywords": "perdido perdi ayuda ajuda responsável separado companhia acompanhado acompanhava acompanhar junto comigo cadê cade responsavel perdi perder separado separada",
     "pt": "Se você se perder ou não encontrar quem estava com você, fique em um local seguro e peça ajuda a um funcionário identificado. Não saia com desconhecidos. Procure seu responsável.",
     "es": "Si te pierdes o no encuentras a tu responsable, quédate en un lugar seguro y pide ayuda a un empleado identificado. No te vayas con desconocidos. Busca a tu responsable.",
-    "source": "Conteúdo autoral Acolhe, versão 2; revisão pedagógica pendente",
-    "license": "CC-BY-4.0"
+    "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente",
+    "license": "CC-BY-4.0",
+    "guidance": {
+      "pt": "Fique em um local seguro e peça ajuda a um funcionário identificado. Não saia com desconhecidos. Procure seu responsável.",
+      "es": "Quédate en un lugar seguro y pide ayuda a un empleado identificado. No te vayas con desconocidos. Busca a tu responsable."
+    }
   },
   {
     "id": "backpack",
@@ -23,14 +31,18 @@
     "keywords": "mochila backpack guardar materiais estojo materiais material escolar estuche guardar guardo",
     "pt": "Mochila é uma bolsa para carregar material escolar. Em espanhol também dizemos mochila. Guarde livros, caderno e estojo na mochila.",
     "es": "Mochila es una bolsa para llevar material escolar. En portugués también se dice mochila. Guarda libros, cuaderno y estuche en la mochila.",
-    "source": "Conteúdo autoral Acolhe, versão 2; revisão pedagógica pendente",
+    "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente",
     "license": "CC-BY-4.0",
     "translations": [
       {
         "portuguese": "mochila",
         "spanish": "mochila"
       }
-    ]
+    ],
+    "guidance": {
+      "pt": "Mochila é uma bolsa para carregar material escolar. Guarde livros, caderno e estojo na mochila.",
+      "es": "La mochila es una bolsa para llevar material escolar. Guarda libros, cuaderno y estuche en la mochila."
+    }
   },
   {
     "id": "chair",
@@ -38,14 +50,18 @@
     "keywords": "cadeira silla sentar acomodar acomodo acomodarme asiento assento sentar sentarme",
     "pt": "Cadeira é o objeto usado para sentar ou se acomodar. Em espanhol dizemos silla. Exemplo: Eu sento na cadeira.",
     "es": "Cadeira es la palabra portuguesa para silla, el objeto para sentarse o acomodarse. Ejemplo en portugués: Eu sento na cadeira.",
-    "source": "Conteúdo autoral Acolhe, versão 2; revisão pedagógica pendente",
+    "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente",
     "license": "CC-BY-4.0",
     "translations": [
       {
         "portuguese": "cadeira",
         "spanish": "silla"
       }
-    ]
+    ],
+    "guidance": {
+      "pt": "Cadeira é o objeto usado para sentar ou se acomodar. Eu sento na cadeira.",
+      "es": "La silla es el objeto para sentarse o acomodarse. Puedes sentarte en la silla."
+    }
   },
   {
     "id": "bottle",
@@ -53,14 +69,18 @@
     "keywords": "garrafa botella água agua beber hidratar hidratação hidratacao hidratarme sede sed beber agua",
     "pt": "Garrafa em espanhol é botella. Para falar de se hidratar, usamos o exemplo: Eu bebo água da garrafa.",
     "es": "Garrafa es la palabra portuguesa para botella. Para hablar de hidratarse, usamos el ejemplo en portugués: Eu bebo água da garrafa.",
-    "source": "Conteúdo autoral Acolhe, versão 2; revisão pedagógica pendente",
+    "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente",
     "license": "CC-BY-4.0",
     "translations": [
       {
         "portuguese": "garrafa",
         "spanish": "botella"
       }
-    ]
+    ],
+    "guidance": {
+      "pt": "Para se hidratar, beba água da garrafa.",
+      "es": "Para hidratarte, bebe agua de la botella."
+    }
   },
   {
     "id": "bus",
@@ -68,14 +88,18 @@
     "keywords": "onibus ônibus autobus autobús embarcar transporte",
     "pt": "Ônibus em espanhol é autobús. Espere longe da borda da calçada e embarque com seu responsável. Não corra atrás do ônibus.",
     "es": "Ônibus en español es autobús. Espera lejos del borde de la acera y sube con tu responsable. No corras detrás del autobús.",
-    "source": "Conteúdo autoral Acolhe, versão 2; revisão pedagógica pendente",
+    "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente",
     "license": "CC-BY-4.0",
     "translations": [
       {
         "portuguese": "ônibus",
         "spanish": "autobús"
       }
-    ]
+    ],
+    "guidance": {
+      "pt": "Espere longe da borda da calçada e embarque com seu responsável. Não corra atrás do ônibus.",
+      "es": "Espera lejos del borde de la acera y sube con tu responsable. No corras detrás del autobús."
+    }
   },
   {
     "id": "greeting",
@@ -83,7 +107,7 @@
     "keywords": "ola olá hola bom dia buenos días cumprimentos amanecer manha manhã saludo saludamos saudar saudacao saudação",
     "pt": "Pela manhã ou ao amanhecer, podemos cumprimentar: Olá! Bom dia! Em espanhol: ¡Hola! ¡Buenos días!",
     "es": "Por la mañana o al amanecer saludamos en portugués: Olá! Bom dia! En español: ¡Hola! ¡Buenos días!",
-    "source": "Conteúdo autoral Acolhe, versão 2; revisão pedagógica pendente",
+    "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente",
     "license": "CC-BY-4.0",
     "translations": [
       {
@@ -94,7 +118,11 @@
         "portuguese": "Bom dia",
         "spanish": "Buenos días"
       }
-    ]
+    ],
+    "guidance": {
+      "pt": "Pela manhã ou ao amanhecer, cumprimente: Olá! Bom dia!",
+      "es": "Por la mañana o al amanecer, saluda: ¡Hola! ¡Buenos días!"
+    }
   },
   {
     "id": "book",
@@ -102,7 +130,7 @@
     "keywords": "livro libro caderno cuaderno ler escrever",
     "pt": "Livro em espanhol é libro. Caderno é cuaderno. Exemplo: Eu leio o livro e escrevo no caderno.",
     "es": "Livro en español es libro. Caderno es cuaderno. Ejemplo: Eu leio o livro e escrevo no caderno.",
-    "source": "Conteúdo autoral Acolhe, versão 2; revisão pedagógica pendente",
+    "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente",
     "license": "CC-BY-4.0",
     "translations": [
       {
@@ -113,6 +141,10 @@
         "portuguese": "caderno",
         "spanish": "cuaderno"
       }
-    ]
+    ],
+    "guidance": {
+      "pt": "Leia o livro e escreva no caderno.",
+      "es": "Lee el libro y escribe en el cuaderno."
+    }
   }
 ]

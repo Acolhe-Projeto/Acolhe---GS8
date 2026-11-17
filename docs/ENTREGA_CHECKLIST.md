@@ -1,3 +1,5 @@
+> Atualização 17/11: GenAI ativo v6/corpus v3; D16 RAG/agente 14/16 na revisão técnica exploratória, revisão humana pendente. Vision: quatro treinos adicionais não sustentaram promoção; modelo ativo e PDF preservados, meta 70%/70% ainda não atingida. Detalhes em [RESULTADOS_NOTURNOS](entregas/RESULTADOS_NOTURNOS.md). Este adendo substitui o perfil GenAI v4 como configuração atual; placares anteriores são históricos.
+
 # Checklist atual — GenAI e Vision
 
 Atualizado17/11/2026. Branch feat/genai-vision. Esta versão substitui a auditoria inicial, preservada no histórico Git. Evidência distingue implementação, execução e qualidade; não concede nota.

@@ -15,7 +15,7 @@ class ServiceTests(unittest.TestCase):
         bus = next(row for row in service.CORPUS if row['id']=='bus')
         prompt = service.grounded_prompt('Como espero para embarcar no ônibus?', 'pt', [bus])
         document = json.loads(prompt.rsplit('\n', 1)[-1])['documents'][0]
-        self.assertEqual(document['text'], bus['pt'])
+        self.assertEqual(document['text'], bus['guidance']['pt'])
         self.assertNotIn('vocabulary_fact', document)
         translated = service.grounded_prompt('Como digo ônibus em espanhol?', 'pt', [bus])
         self.assertIn('Em espanhol: autobús', translated)
@@ -23,6 +23,12 @@ class ServiceTests(unittest.TestCase):
     def test_absent_prices_are_refused_without_blocking_pedestrian_word(self):
         self.assertTrue(service.missing_detail('Qual é o preço da passagem?'))
         self.assertFalse(service.missing_detail('Como usar a passagem de pedestres?'))
+
+    def test_lost_policy_is_visible_without_rewriting_model_response(self):
+        with patch.dict('os.environ', {'ACOLHE_OLLAMA_MODEL':'test'}), patch.object(service,'generate',return_value={'answer':'Procure seu responsável.','sources':['lost']}):
+            result = service.answer('Estou perdido')
+        self.assertEqual(result['answer'], 'Procure seu responsável.')
+        self.assertIn('local seguro', result['warning'])
 
     def test_crossing_policy_is_visible_when_generated_answer_omits_it(self):
         with patch.dict('os.environ', {'ACOLHE_OLLAMA_MODEL': 'test'}):
@@ -80,3 +86,7 @@ class ServiceTests(unittest.TestCase):
             self.assertEqual(service.runtime_options()["num_gpu"], -1)
         with patch.dict("os.environ", {"ACOLHE_OLLAMA_NUM_GPU":"auto"}):
             with self.assertRaises(ValueError): service.runtime_options()
+
+    def test_greeting_uses_correct_spanish_accent(self):
+        greeting = next(row for row in service.CORPUS if row["id"] == "greeting")
+        self.assertIn("Buenos d\u00edas", greeting["guidance"]["es"])
