@@ -1,0 +1,4 @@
+record_id,region,language,count,snapshot_date,synthetic
+,Sao Paulo,es,5,2026-11-07,true
+rj,Rio de Janeiro,fr,7,2026-11-07,true
+mg,Minas Gerais,pt,-3,2026-11-07,true
