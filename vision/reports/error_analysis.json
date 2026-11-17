@@ -1,0 +1,571 @@
+{
+  "scope": "Technical analysis of actual held-out predictions at fixed deployment confidence 0.5 and IoU0.5. Native AP uses its own confidence sweep; do not equate these counts to AP.",
+  "ground_truth_objects": 42,
+  "tp": 4,
+  "fp": 1,
+  "fn": 38,
+  "five_observed_misses": [
+    {
+      "image_id": "20553",
+      "file": "images/test/image_0000000.jpg",
+      "class": "bottle",
+      "gt_bbox_xywh": [
+        364.89,
+        132.02999999999997,
+        17.59,
+        35.9
+      ],
+      "best_same_class_iou": 0.4426,
+      "best_same_class_score": 0.46433
+    },
+    {
+      "image_id": "20553",
+      "file": "images/test/image_0000000.jpg",
+      "class": "umbrella",
+      "gt_bbox_xywh": [
+        85.64,
+        142.45000000000002,
+        92.59,
+        112.59
+      ],
+      "best_same_class_iou": 0.8189,
+      "best_same_class_score": 0.00116
+    },
+    {
+      "image_id": "20553",
+      "file": "images/test/image_0000000.jpg",
+      "class": "chair",
+      "gt_bbox_xywh": [
+        123.44,
+        192.65,
+        117.9,
+        103.38
+      ],
+      "best_same_class_iou": 0.5075,
+      "best_same_class_score": 0.00912
+    },
+    {
+      "image_id": "20553",
+      "file": "images/test/image_0000000.jpg",
+      "class": "cup",
+      "gt_bbox_xywh": [
+        362.21,
+        166.89,
+        21.19,
+        25.29
+      ],
+      "best_same_class_iou": 0.3824,
+      "best_same_class_score": 0.00923
+    },
+    {
+      "image_id": "248314",
+      "file": "images/test/image_0000001.jpg",
+      "class": "spoon",
+      "gt_bbox_xywh": [
+        297.88000000000005,
+        245.55999999999997,
+        90.35,
+        64.76
+      ],
+      "best_same_class_iou": 0.2362,
+      "best_same_class_score": 0.00167
+    }
+  ],
+  "all_misses": [
+    {
+      "image_id": "20553",
+      "file": "images/test/image_0000000.jpg",
+      "class": "bottle",
+      "gt_bbox_xywh": [
+        364.89,
+        132.02999999999997,
+        17.59,
+        35.9
+      ],
+      "best_same_class_iou": 0.4426,
+      "best_same_class_score": 0.46433
+    },
+    {
+      "image_id": "20553",
+      "file": "images/test/image_0000000.jpg",
+      "class": "bottle",
+      "gt_bbox_xywh": [
+        391.28,
+        133.41,
+        16.68,
+        58.13
+      ],
+      "best_same_class_iou": 0.6544,
+      "best_same_class_score": 0.32135
+    },
+    {
+      "image_id": "20553",
+      "file": "images/test/image_0000000.jpg",
+      "class": "bottle",
+      "gt_bbox_xywh": [
+        406.57,
+        132.32,
+        11.76,
+        53.88
+      ],
+      "best_same_class_iou": 0.5525,
+      "best_same_class_score": 0.02091
+    },
+    {
+      "image_id": "20553",
+      "file": "images/test/image_0000000.jpg",
+      "class": "umbrella",
+      "gt_bbox_xywh": [
+        85.64,
+        142.45000000000002,
+        92.59,
+        112.59
+      ],
+      "best_same_class_iou": 0.8189,
+      "best_same_class_score": 0.00116
+    },
+    {
+      "image_id": "20553",
+      "file": "images/test/image_0000000.jpg",
+      "class": "chair",
+      "gt_bbox_xywh": [
+        123.44,
+        192.65,
+        117.9,
+        103.38
+      ],
+      "best_same_class_iou": 0.5075,
+      "best_same_class_score": 0.00912
+    },
+    {
+      "image_id": "20553",
+      "file": "images/test/image_0000000.jpg",
+      "class": "cup",
+      "gt_bbox_xywh": [
+        362.21,
+        166.89,
+        21.19,
+        25.29
+      ],
+      "best_same_class_iou": 0.3824,
+      "best_same_class_score": 0.00923
+    },
+    {
+      "image_id": "248314",
+      "file": "images/test/image_0000001.jpg",
+      "class": "chair",
+      "gt_bbox_xywh": [
+        447.64,
+        1.0800000000000143,
+        189.84000000000003,
+        325.75
+      ],
+      "best_same_class_iou": 0.8822,
+      "best_same_class_score": 0.01047
+    },
+    {
+      "image_id": "248314",
+      "file": "images/test/image_0000001.jpg",
+      "class": "spoon",
+      "gt_bbox_xywh": [
+        297.88000000000005,
+        245.55999999999997,
+        90.35,
+        64.76
+      ],
+      "best_same_class_iou": 0.2362,
+      "best_same_class_score": 0.00167
+    },
+    {
+      "image_id": "248314",
+      "file": "images/test/image_0000001.jpg",
+      "class": "bowl",
+      "gt_bbox_xywh": [
+        229.91999999999996,
+        298.02,
+        104.24,
+        84.97
+      ],
+      "best_same_class_iou": 0.858,
+      "best_same_class_score": 0.11086
+    },
+    {
+      "image_id": "248314",
+      "file": "images/test/image_0000001.jpg",
+      "class": "bottle",
+      "gt_bbox_xywh": [
+        367.72,
+        0.0,
+        39.82,
+        83.81
+      ],
+      "best_same_class_iou": 0.6909,
+      "best_same_class_score": 0.24972
+    },
+    {
+      "image_id": "248314",
+      "file": "images/test/image_0000001.jpg",
+      "class": "chair",
+      "gt_bbox_xywh": [
+        538.33,
+        362.29,
+        101.67,
+        117.54
+      ],
+      "best_same_class_iou": 0.9274,
+      "best_same_class_score": 0.35371
+    },
+    {
+      "image_id": "419312",
+      "file": "images/test/image_0000002.jpg",
+      "class": "fork",
+      "gt_bbox_xywh": [
+        165.54,
+        326.01,
+        61.940000000000005,
+        168.92
+      ],
+      "best_same_class_iou": 0.9072,
+      "best_same_class_score": 0.35018
+    },
+    {
+      "image_id": "419312",
+      "file": "images/test/image_0000002.jpg",
+      "class": "bowl",
+      "gt_bbox_xywh": [
+        315.48,
+        0.28000000000000247,
+        59.41,
+        87.31
+      ],
+      "best_same_class_iou": 0.9362,
+      "best_same_class_score": 0.47225
+    },
+    {
+      "image_id": "419312",
+      "file": "images/test/image_0000002.jpg",
+      "class": "bowl",
+      "gt_bbox_xywh": [
+        189.94,
+        0.0,
+        100.66,
+        24.04
+      ],
+      "best_same_class_iou": 0.7009,
+      "best_same_class_score": 0.0108
+    },
+    {
+      "image_id": "419312",
+      "file": "images/test/image_0000002.jpg",
+      "class": "cup",
+      "gt_bbox_xywh": [
+        0.0,
+        0.0,
+        24.0,
+        78.5
+      ],
+      "best_same_class_iou": 0.589,
+      "best_same_class_score": 0.11878
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "clock",
+      "gt_bbox_xywh": [
+        166.51,
+        219.24,
+        23.55,
+        21.92
+      ],
+      "best_same_class_iou": 0.2444,
+      "best_same_class_score": 0.0024
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "chair",
+      "gt_bbox_xywh": [
+        101.18000000000002,
+        172.07,
+        59.870000000000005,
+        87.61
+      ],
+      "best_same_class_iou": 0.6748,
+      "best_same_class_score": 0.01097
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "chair",
+      "gt_bbox_xywh": [
+        581.65,
+        337.69,
+        58.35,
+        125.28
+      ],
+      "best_same_class_iou": 0.7708,
+      "best_same_class_score": 0.02302
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "book",
+      "gt_bbox_xywh": [
+        53.32999999999999,
+        118.74999999999999,
+        7.33,
+        27.46
+      ],
+      "best_same_class_iou": 0.3734,
+      "best_same_class_score": 0.17747
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "book",
+      "gt_bbox_xywh": [
+        47.71,
+        111.57000000000001,
+        8.5,
+        35.36
+      ],
+      "best_same_class_iou": 0.549,
+      "best_same_class_score": 0.17747
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "book",
+      "gt_bbox_xywh": [
+        50.9,
+        164.36,
+        20.620000000000005,
+        27.37
+      ],
+      "best_same_class_iou": 0.4001,
+      "best_same_class_score": 0.06448
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "book",
+      "gt_bbox_xywh": [
+        95.27999999999999,
+        152.28000000000003,
+        5.389999999999999,
+        22.11
+      ],
+      "best_same_class_iou": 0.0772,
+      "best_same_class_score": 0.09793
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "book",
+      "gt_bbox_xywh": [
+        72.37,
+        155.88,
+        11.850000000000001,
+        27.34
+      ],
+      "best_same_class_iou": 0.5006,
+      "best_same_class_score": 0.0792
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "book",
+      "gt_bbox_xywh": [
+        76.97999999999999,
+        196.84,
+        8.79,
+        21.05
+      ],
+      "best_same_class_iou": 0.1619,
+      "best_same_class_score": 0.01112
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "book",
+      "gt_bbox_xywh": [
+        70.65,
+        112.78999999999998,
+        10.25,
+        26.48
+      ],
+      "best_same_class_iou": 0.5456,
+      "best_same_class_score": 0.12383
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "book",
+      "gt_bbox_xywh": [
+        92.75,
+        113.83000000000001,
+        5.11,
+        22.96
+      ],
+      "best_same_class_iou": 0.1199,
+      "best_same_class_score": 0.08627
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "book",
+      "gt_bbox_xywh": [
+        153.91999999999996,
+        174.29,
+        29.020000000000003,
+        4.29
+      ],
+      "best_same_class_iou": 0.1374,
+      "best_same_class_score": 0.02326
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "book",
+      "gt_bbox_xywh": [
+        102.0,
+        146.68,
+        11.129999999999999,
+        25.04
+      ],
+      "best_same_class_iou": 0.5185,
+      "best_same_class_score": 0.09793
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "book",
+      "gt_bbox_xywh": [
+        50.75,
+        155.1,
+        13.02,
+        9.45
+      ],
+      "best_same_class_iou": 0.2858,
+      "best_same_class_score": 0.01785
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "book",
+      "gt_bbox_xywh": [
+        151.92000000000002,
+        184.81,
+        32.38,
+        5.15
+      ],
+      "best_same_class_iou": 0.1613,
+      "best_same_class_score": 0.02999
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "class": "book",
+      "gt_bbox_xywh": [
+        154.49,
+        177.08,
+        29.64,
+        4.01
+      ],
+      "best_same_class_iou": 0.1312,
+      "best_same_class_score": 0.02326
+    },
+    {
+      "image_id": "43314",
+      "file": "images/test/image_0000005.jpg",
+      "class": "backpack",
+      "gt_bbox_xywh": [
+        282.41,
+        124.17000000000002,
+        25.77,
+        70.02
+      ],
+      "best_same_class_iou": 0,
+      "best_same_class_score": null
+    },
+    {
+      "image_id": "393226",
+      "file": "images/test/image_0000039.jpg",
+      "class": "traffic light",
+      "gt_bbox_xywh": [
+        486.22,
+        123.77,
+        9.04,
+        15.589999999999998
+      ],
+      "best_same_class_iou": 0.0,
+      "best_same_class_score": 0.05249
+    },
+    {
+      "image_id": "393226",
+      "file": "images/test/image_0000039.jpg",
+      "class": "traffic light",
+      "gt_bbox_xywh": [
+        586.39,
+        109.32,
+        12.91,
+        21.69
+      ],
+      "best_same_class_iou": 0.0,
+      "best_same_class_score": 0.05249
+    },
+    {
+      "image_id": "393226",
+      "file": "images/test/image_0000039.jpg",
+      "class": "traffic light",
+      "gt_bbox_xywh": [
+        507.02,
+        173.39,
+        6.3,
+        9.84
+      ],
+      "best_same_class_iou": 0.1337,
+      "best_same_class_score": 0.05249
+    },
+    {
+      "image_id": "393226",
+      "file": "images/test/image_0000039.jpg",
+      "class": "traffic light",
+      "gt_bbox_xywh": [
+        449.22,
+        163.33,
+        7.199999999999999,
+        13.9
+      ],
+      "best_same_class_iou": 0.3095,
+      "best_same_class_score": 0.02629
+    },
+    {
+      "image_id": "393226",
+      "file": "images/test/image_0000039.jpg",
+      "class": "traffic light",
+      "gt_bbox_xywh": [
+        495.17,
+        173.06000000000003,
+        8.72,
+        9.54
+      ],
+      "best_same_class_iou": 0.1616,
+      "best_same_class_score": 0.05249
+    },
+    {
+      "image_id": "393226",
+      "file": "images/test/image_0000039.jpg",
+      "class": "traffic light",
+      "gt_bbox_xywh": [
+        432.35,
+        175.00000000000003,
+        11.11,
+        10.06
+      ],
+      "best_same_class_iou": 0.295,
+      "best_same_class_score": 0.0198
+    }
+  ],
+  "quality_validated": false
+}

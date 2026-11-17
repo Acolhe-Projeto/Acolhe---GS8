@@ -1,0 +1,24 @@
+{
+  "models": [
+    {
+      "name": "qwen2.5:3b-instruct",
+      "model": "qwen2.5:3b-instruct",
+      "size": 2085963693,
+      "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "3.1B",
+        "quantization_level": "Q4_K_M"
+      },
+      "expires_at": "2026-11-16T22:46:57.8435121-03:00",
+      "size_vram": 2085963693,
+      "context_length": 2048,
+      "runner": "llamacpp"
+    }
+  ]
+}

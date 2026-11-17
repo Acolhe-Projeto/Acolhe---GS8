@@ -1,0 +1,55 @@
+{
+  "chosen": 2.0,
+  "corpus_sha256": "6b4e5c617d41577d9d8ba6958f331a5d8a444346a0de803184760bc21f3bb092",
+  "method": "Development grid only, select highest tested threshold retaining full recall before holdout C. IDF term matches plus +2 exact bilingual term bonus. Generation consumes top1; recall@3 is measured separately.",
+  "candidates": [
+    {
+      "threshold": 0,
+      "positive_cases": 16,
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "negative_cases": 4,
+      "negative_search_hits": 0
+    },
+    {
+      "threshold": 1,
+      "positive_cases": 16,
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "negative_cases": 4,
+      "negative_search_hits": 0
+    },
+    {
+      "threshold": 1.5,
+      "positive_cases": 16,
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "negative_cases": 4,
+      "negative_search_hits": 0
+    },
+    {
+      "threshold": 2,
+      "positive_cases": 16,
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "negative_cases": 4,
+      "negative_search_hits": 0
+    },
+    {
+      "threshold": 2.2,
+      "positive_cases": 16,
+      "recall_at_1": 0.75,
+      "recall_at_3": 0.75,
+      "negative_cases": 4,
+      "negative_search_hits": 0
+    },
+    {
+      "threshold": 3,
+      "positive_cases": 16,
+      "recall_at_1": 0.75,
+      "recall_at_3": 0.75,
+      "negative_cases": 4,
+      "negative_search_hits": 0
+    }
+  ]
+}

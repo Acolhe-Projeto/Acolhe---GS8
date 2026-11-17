@@ -1,37 +1,6 @@
 {
   "nodes": [
     {
-      "id": "readme_document",
-      "label": "README.md",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "readme_acolhe_pwa_pt_es",
-      "label": "Acolhe PWA PT ES",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "description": "Protótipo local Python stdlib e SQLite com cinco lições, público infantil mediado e dados fictícios; sete disciplinas separadas."
-    },
-    {
-      "id": "readme_pseudonimização_e_retenção",
-      "label": "Pseudonimização e retenção",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "description": "Sessão aleatória não é anonimização; expurgo em operações após sete dias, sem agendador independente."
-    },
-    {
-      "id": "readme_pendências_de_entrega",
-      "label": "Pendências de entrega",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "description": "LLM, treino Vision, validação humana e evidências externas exigem execução real."
-    },
-    {
       "id": "implementation_plan_document",
       "label": "IMPLEMENTATION_PLAN.md",
       "file_type": "document",
@@ -291,29 +260,6 @@
       "description": "Roteiros três/seis minutos com sucesso e falha; simulação nunca é hardware comprovado."
     },
     {
-      "id": "genai_readme_document",
-      "label": "genai/README.md",
-      "file_type": "document",
-      "source_file": "genai/README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "genai_readme_tutor_local_com_fontes",
-      "label": "Tutor local com fontes",
-      "file_type": "concept",
-      "source_file": "genai/README.md",
-      "source_location": null,
-      "description": "Perfil final Qwen2.5 1.5B Instruct CPU,986MB pesos; duas respostas do smoke produto têm fontes, ~6s. Default da PWA segue retrieval_only até ativação explícita. Avaliação humana, RAM máxima e conjunto completo1.5 pendentes."
-    },
-    {
-      "id": "genai_readme_baseline_rag_agente",
-      "label": "Baseline RAG agente",
-      "file_type": "concept",
-      "source_file": "genai/README.md",
-      "source_location": null,
-      "description": "Duas comparações20casos0.5B históricas; subset4casos1.5B: baseline2JSON, RAG4JSON sem fontes, agente4recusas indevidas. Escolha1.5 só pelo ganho funcional do smoke produto; não há superioridade geral."
-    },
-    {
       "id": "genai_reports_error_analysis_document",
       "label": "genai/reports/error_analysis.md",
       "file_type": "document",
@@ -433,37 +379,6 @@
       "source_file": "vision/OPEN_IMAGES_ASSESSMENT.md",
       "source_location": null,
       "description": "Metadados de licença não garantem direito individual; inspeção de privacidade e origem são necessárias antes de uso."
-    },
-    {
-      "id": "vision_readme_document",
-      "label": "vision/README.md",
-      "file_type": "document",
-      "source_file": "vision/README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "vision_readme_doze_classes_educativas",
-      "label": "Doze classes educativas",
-      "file_type": "concept",
-      "source_file": "vision/README.md",
-      "source_location": null,
-      "description": "Doze classes PT/ES preservadas, uso educativo sem inferir cor de sinal ou travessia; upload raw PNG/JPEG no endpoint local, sem armazenamento."
-    },
-    {
-      "id": "vision_readme_treino_customizado_e_split",
-      "label": "Treino customizado e split",
-      "file_type": "concept",
-      "source_file": "vision/README.md",
-      "source_location": null,
-      "description": "YOLO11n CPU 320 batch2 workers0, auditoria antes do runtime, teste reservado e métricas por classe. Dataset real revisado, treino e métricas continuam ausentes."
-    },
-    {
-      "id": "vision_readme_manifesto_e_disponibilidade",
-      "label": "Manifesto e disponibilidade",
-      "file_type": "concept",
-      "source_file": "vision/README.md",
-      "source_location": null,
-      "description": "ready exige manifesto, hash e classes compatíveis; predict em CPU limita 8MiB/20MP. quality_validated permanece falso e nenhum checkpoint foi produzido nesta branch."
     },
     {
       "id": "vision_requirements_document",
@@ -763,76 +678,6 @@
       "source_location": "L11"
     },
     {
-      "id": "vision_plan_document",
-      "label": "vision/PLAN.md",
-      "file_type": "document",
-      "source_file": "vision/PLAN.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "vision_plan_planejamento_vision_cpu",
-      "label": "Planejamento Vision CPU",
-      "file_type": "concept",
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "description": "PRD define 12 classes, preparo COCO local revisado, auditoria e treino CPU nano; sem enunciado oficial completo, metas de qualidade ainda precisam ser fixadas."
-    },
-    {
-      "id": "vision_plan_dados_e_qualidade_pendentes",
-      "label": "Dados e qualidade pendentes",
-      "file_type": "concept",
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "description": "Cobertura por classe/split, origem/licença, fotos sem crianças e análise de duplicatas são pré-requisitos. Hash não reconhece recortes e não comprova direitos."
-    },
-    {
-      "id": "vision_plan_piloto_versus_experimento_final",
-      "label": "Piloto versus experimento final",
-      "file_type": "concept",
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "description": "Uma época valida execução; qualidade exige treino/validação, teste reservado, métricas reais e erros. Não há fotos, pesos nem treino real na branch."
-    },
-    {
-      "id": "docs_prd_genai_vision_document",
-      "label": "docs/PRD_GENAI_VISION.md",
-      "file_type": "document",
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_prd_genai_vision_prd_genai_vision",
-      "label": "PRD GenAI Vision",
-      "file_type": "concept",
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "description": "Escopo desta branch: GenAI leve CPU e Vision customizada, integrações HTTP/PWA e evidências, preservando outras disciplinas. Base sem rubrica oficial."
-    },
-    {
-      "id": "docs_prd_genai_vision_genai_qwen_local_leve",
-      "label": "GenAI Qwen local leve",
-      "file_type": "concept",
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "description": "Qwen2.5 1.5B986MB CPU escolhido após falhas0.5B; smoke produto com fontes em2respostas e ganhoPT. RAGexperimental semfontes e agente4recusas documentados; não comprova qualidade geral."
-    },
-    {
-      "id": "docs_prd_genai_vision_vision_dados_treino_e_integração",
-      "label": "Vision dados treino e integração",
-      "file_type": "concept",
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "description": "Preparar e auditar dados reais, treino nano CPU, teste reservado e upload raw limitado sem persistência. Ausência do checkpoint retorna indisponível."
-    },
-    {
-      "id": "docs_prd_genai_vision_aceitação_com_evidência",
-      "label": "Aceitação com evidência",
-      "file_type": "concept",
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "description": "Conclusão de código requer testes; conclusão acadêmica exige resultados reais, análise de erros e conferência de rubrica, com revisão humana."
-    },
-    {
       "id": "vision_requirements_data_document",
       "label": "vision/requirements-data.txt",
       "file_type": "document",
@@ -846,60 +691,6 @@
       "source_file": "vision/requirements-data.txt",
       "source_location": null,
       "description": "Somente Pillow e PyYAML para preparação e auditoria; não instala Torch ou Ultralytics."
-    },
-    {
-      "id": "genai_plan_document",
-      "label": "genai/PLAN.md",
-      "file_type": "document",
-      "source_file": "genai/PLAN.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "genai_plan_prd_tutor_cpu",
-      "label": "PRD tutor CPU",
-      "file_type": "concept",
-      "source_file": "genai/PLAN.md",
-      "source_location": null,
-      "description": "Tutor PT/ES em oito microlições, perfil final Qwen1.5B CPU; histórico0.5B preservado. Planos/relatórios reproduzíveis e ativação explícita sem nuvem."
-    },
-    {
-      "id": "genai_plan_execução_real_qualidade_pendente",
-      "label": "Execução real qualidade pendente",
-      "file_type": "concept",
-      "source_file": "genai/PLAN.md",
-      "source_location": null,
-      "description": "Duas comparações20casos0.5B, subset4casos1.5B e smokes feitos; falta benchmark completo1.5, fontes/roteamento experimental, revisão humana e RAM máxima."
-    },
-    {
-      "id": "docs_validacao_genai_vision_document",
-      "label": "docs/VALIDACAO_GENAI_VISION.md",
-      "file_type": "document",
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_validacao_genai_vision_evidência_da_branch",
-      "label": "Evidência da branch",
-      "file_type": "concept",
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": null,
-      "description": "Integração HTTP/PWA testada; Brave PT/ES sem upload real, móvel ou offline. Geração real é separada dos testes com mocks."
-    },
-    {
-      "id": "docs_validacao_genai_vision_limite_qwen_experimental",
-      "label": "Limite Qwen experimental",
-      "file_type": "concept",
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": null,
-      "description": "JSON Schema melhorou forma de respostas completas mas decodificação caiu e latência aumentou; não há qualidade global aprovada. Smoke PT ecoou pergunta; ES travessia coerente."
-    },
-    {
-      "id": "docs_validacao_genai_vision_vision_pronta_para_dados",
-      "label": "Vision pronta para dados",
-      "file_type": "concept",
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": null,
-      "description": "Preparo, auditoria, treino CPU parametrizado e upload integrados; sem fotos aprovadas, treino real, checkpoint ou métricas de detecção."
     },
     {
       "id": "genai_reports_llm_error_analysis_document",
@@ -1014,109 +805,97 @@
       "source_file": "genai/reports/service-smoke15b-20261116.json",
       "source_location": null,
       "description": "Dois casos service.answer reais: PT mochila5,696s substância e fontebackpack; ES travessia6,261s fontecrossing mas erroNo cruzes. Perfil986MB CPU não é aprovação humana nem benchmark."
+    },
+    {
+      "id": "final_README_md",
+      "label": "README.md — fechamento",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "description": "Estado final da branch: Qwen3B GPU, Vision treinado e links para relatórios, limitações e pendências."
+    },
+    {
+      "id": "final_genai_README_md",
+      "label": "genai/README.md — fechamento",
+      "file_type": "concept",
+      "source_file": "genai/README.md",
+      "source_location": "L1",
+      "description": "Qwen2.5 3B, GPU explícita, dev20 e holdoutC12; revisão exploratória separada da humana."
+    },
+    {
+      "id": "final_vision_README_md",
+      "label": "vision/README.md — fechamento",
+      "file_type": "concept",
+      "source_file": "vision/README.md",
+      "source_location": "L1",
+      "description": "Treino YOLO11n20 épocasCPU,40 fotos aprovadas, reprodução por hashes; baixa detecção e sem redistribuir fotos/pesos."
+    },
+    {
+      "id": "final_genai_PLAN_md",
+      "label": "genai/PLAN.md — fechamento",
+      "file_type": "concept",
+      "source_file": "genai/PLAN.md",
+      "source_location": "L1",
+      "description": "Planejamento histórico preservado com aviso explícito de resultados finais e pendências atuais."
+    },
+    {
+      "id": "final_vision_PLAN_md",
+      "label": "vision/PLAN.md — fechamento",
+      "file_type": "concept",
+      "source_file": "vision/PLAN.md",
+      "source_location": "L1",
+      "description": "Planejamento histórico preservado; treino e PDF executados, vídeo e revisão ainda pendentes."
+    },
+    {
+      "id": "final_docs_PRD_GENAI_VISION_md",
+      "label": "docs/PRD_GENAI_VISION.md — fechamento",
+      "file_type": "concept",
+      "source_file": "docs/PRD_GENAI_VISION.md",
+      "source_location": "L1",
+      "description": "PRD e diagramas históricos, atualização direciona para evidências finais e checklist oficial."
+    },
+    {
+      "id": "final_docs_VALIDACAO_GENAI_VISION_md",
+      "label": "docs/VALIDACAO_GENAI_VISION.md — fechamento",
+      "file_type": "concept",
+      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
+      "source_location": "L1",
+      "description": "Validações históricas identificadas; atualização direciona para Qwen3B GPU e Vision20 épocasCPU."
+    },
+    {
+      "id": "final_docs_ENTREGA_CHECKLIST_md",
+      "label": "docs/ENTREGA_CHECKLIST.md — fechamento",
+      "file_type": "concept",
+      "source_file": "docs/ENTREGA_CHECKLIST.md",
+      "source_location": "L1",
+      "description": "Critérios oficiais ponderados e auditoria histórica; fechamento exige revisão humana, vídeos e Teams."
+    },
+    {
+      "id": "final_docs_entregas_GENAI_RELATORIO_md",
+      "label": "docs/entregas/GENAI_RELATORIO.md — fechamento",
+      "file_type": "concept",
+      "source_file": "docs/entregas/GENAI_RELATORIO.md",
+      "source_location": "L1",
+      "description": "Relatório formal: mesmo Qwen3B em baseline/RAG/agente; acerto exploratório C12 4/8/9, riscos e cinco erros."
+    },
+    {
+      "id": "final_docs_entregas_ROTEIRO_VIDEOS_md",
+      "label": "docs/entregas/ROTEIRO_VIDEOS.md — fechamento",
+      "file_type": "concept",
+      "source_file": "docs/entregas/ROTEIRO_VIDEOS.md",
+      "source_location": "L1",
+      "description": "Roteiro de demonstrações reais; vídeos não gravados e publicação de fotos requer revisão específica."
+    },
+    {
+      "id": "final_genai_base_README_md",
+      "label": "genai/base/README.md — fechamento",
+      "file_type": "concept",
+      "source_file": "genai/base/README.md",
+      "source_location": "L1",
+      "description": "Índice do snapshot v2 com atribuição; oito documentos bilíngues e revisão pedagógica pendente."
     }
   ],
   "edges": [
-    {
-      "source": "readme_document",
-      "target": "readme_acolhe_pwa_pt_es",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "readme_acolhe_pwa_pt_es",
-      "target": "app_server",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "readme_acolhe_pwa_pt_es",
-      "target": "app_core",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "readme_acolhe_pwa_pt_es",
-      "target": "genai_service",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "readme_acolhe_pwa_pt_es",
-      "target": "vision_service",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "readme_document",
-      "target": "readme_pseudonimização_e_retenção",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "readme_pseudonimização_e_retenção",
-      "target": "app_core",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "readme_document",
-      "target": "readme_pendências_de_entrega",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "readme_pendências_de_entrega",
-      "target": "genai_readme_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "readme_pendências_de_entrega",
-      "target": "vision_readme_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
     {
       "source": "implementation_plan_document",
       "target": "implementation_plan_mvp_integrado",
@@ -1678,46 +1457,6 @@
       "weight": 1.0
     },
     {
-      "source": "genai_readme_document",
-      "target": "genai_readme_tutor_local_com_fontes",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "genai/README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "genai_readme_tutor_local_com_fontes",
-      "target": "genai_service",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "genai/README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "genai_readme_document",
-      "target": "genai_readme_baseline_rag_agente",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "genai/README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "genai_readme_baseline_rag_agente",
-      "target": "genai_compare",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "genai/README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
       "source": "genai_reports_error_analysis_document",
       "target": "genai_reports_error_analysis_cinco_falhas_lexicais_históricas",
       "relation": "references",
@@ -1934,66 +1673,6 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vision/OPEN_IMAGES_ASSESSMENT.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_readme_document",
-      "target": "vision_readme_doze_classes_educativas",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_readme_doze_classes_educativas",
-      "target": "vision_service",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_readme_document",
-      "target": "vision_readme_treino_customizado_e_split",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_readme_treino_customizado_e_split",
-      "target": "vision_train",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_readme_document",
-      "target": "vision_readme_manifesto_e_disponibilidade",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/README.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_readme_manifesto_e_disponibilidade",
-      "target": "vision_service",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/README.md",
       "source_location": null,
       "weight": 1.0
     },
@@ -2328,17 +2007,6 @@
       "weight": 1.0
     },
     {
-      "source": "genai_readme_baseline_rag_agente",
-      "target": "vision_readme_treino_customizado_e_split",
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "genai/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "rationale": "Both require held-out empirical evidence rather than contract tests alone."
-    },
-    {
       "source": "big_data_queries_document",
       "target": "big_data_queries_1",
       "relation": "references",
@@ -2389,266 +2057,6 @@
       "weight": 1.0
     },
     {
-      "source": "vision_plan_document",
-      "target": "vision_plan_planejamento_vision_cpu",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_plan_planejamento_vision_cpu",
-      "target": "vision_prepare",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_plan_planejamento_vision_cpu",
-      "target": "vision_audit",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_plan_planejamento_vision_cpu",
-      "target": "vision_train",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_plan_planejamento_vision_cpu",
-      "target": "vision_readme_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_plan_document",
-      "target": "vision_plan_dados_e_qualidade_pendentes",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_plan_dados_e_qualidade_pendentes",
-      "target": "vision_audit",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_plan_dados_e_qualidade_pendentes",
-      "target": "vision_coco_assessment_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_plan_dados_e_qualidade_pendentes",
-      "target": "vision_open_images_assessment_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_plan_document",
-      "target": "vision_plan_piloto_versus_experimento_final",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "vision_plan_piloto_versus_experimento_final",
-      "target": "vision_train",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vision/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_document",
-      "target": "docs_prd_genai_vision_prd_genai_vision",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_prd_genai_vision",
-      "target": "genai_readme_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_prd_genai_vision",
-      "target": "vision_readme_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_document",
-      "target": "docs_prd_genai_vision_genai_qwen_local_leve",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_genai_qwen_local_leve",
-      "target": "genai_service",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_genai_qwen_local_leve",
-      "target": "genai_compare",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_genai_qwen_local_leve",
-      "target": "genai_experiment",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_document",
-      "target": "docs_prd_genai_vision_vision_dados_treino_e_integração",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_vision_dados_treino_e_integração",
-      "target": "vision_prepare",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_vision_dados_treino_e_integração",
-      "target": "vision_audit",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_vision_dados_treino_e_integração",
-      "target": "vision_train",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_vision_dados_treino_e_integração",
-      "target": "app_server",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_vision_dados_treino_e_integração",
-      "target": "app_static_vision",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_document",
-      "target": "docs_prd_genai_vision_aceitação_com_evidência",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_prd_genai_vision_aceitação_com_evidência",
-      "target": "docs_registro_testes_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
       "source": "vision_requirements_data_document",
       "target": "vision_requirements_data_ambiente_leve_dados_vision",
       "relation": "references",
@@ -2675,176 +2083,6 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "vision/requirements-data.txt",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "genai_plan_document",
-      "target": "genai_plan_prd_tutor_cpu",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "genai/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "genai_plan_prd_tutor_cpu",
-      "target": "genai_service",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "genai/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "genai_plan_prd_tutor_cpu",
-      "target": "genai_local",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "genai/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "genai_plan_prd_tutor_cpu",
-      "target": "genai_experiment",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "genai/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "genai_plan_document",
-      "target": "genai_plan_execução_real_qualidade_pendente",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "genai/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "genai_plan_execução_real_qualidade_pendente",
-      "target": "genai_reports_llm_error_analysis_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "genai/PLAN.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_validacao_genai_vision_document",
-      "target": "docs_validacao_genai_vision_evidência_da_branch",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_validacao_genai_vision_evidência_da_branch",
-      "target": "docs_prd_genai_vision_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_validacao_genai_vision_evidência_da_branch",
-      "target": "tests_test_http",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_validacao_genai_vision_evidência_da_branch",
-      "target": "tests_frontend_test",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_validacao_genai_vision_document",
-      "target": "docs_validacao_genai_vision_limite_qwen_experimental",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_validacao_genai_vision_limite_qwen_experimental",
-      "target": "genai_reports_qwen05b_cpu_20261116_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_validacao_genai_vision_limite_qwen_experimental",
-      "target": "genai_reports_qwen05b_cpu_structured_20261116_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_validacao_genai_vision_limite_qwen_experimental",
-      "target": "genai_reports_service_smoke_20261116_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_validacao_genai_vision_document",
-      "target": "docs_validacao_genai_vision_vision_pronta_para_dados",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_validacao_genai_vision_vision_pronta_para_dados",
-      "target": "vision_plan_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
-      "source_location": null,
-      "weight": 1.0
-    },
-    {
-      "source": "docs_validacao_genai_vision_vision_pronta_para_dados",
-      "target": "vision_readme_document",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/VALIDACAO_GENAI_VISION.md",
       "source_location": null,
       "weight": 1.0
     },
@@ -3102,9 +2340,9 @@
   "hyperedges": [],
   "coverage": {
     "README.md": {
-      "lines": 243,
-      "sha256": "ceea955429572e89479c88c22418718dc7a2ab5018137e6c3a9e8704d2add40c",
-      "review": "Final full source read; reports include every case/result/trace; source stabilized by author."
+      "sha256": "dca71b72b4af8117e47e4b3bca759f4323231dc02af19a5a919fcc77ef9dad96",
+      "lines": 245,
+      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
     },
     "IMPLEMENTATION_PLAN.md": {
       "lines": 12,
@@ -3172,9 +2410,9 @@
       "review": "agent read complete text; PDF extracted all 10 pages; logo visually inspected; SVG source inspected"
     },
     "genai/README.md": {
-      "lines": 76,
-      "sha256": "8f6b6cd54c4e34a8c003ca6240b46fcd92e0a7b20f8c03bc19e50f9042839133",
-      "review": "Final full source read; reports include every case/result/trace; source stabilized by author."
+      "sha256": "cec29bbf1ece11729d0fbb6d73604cc173e60da83be489020c683dbd56813789",
+      "lines": 43,
+      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
     },
     "genai/reports/error_analysis.md": {
       "lines": 12,
@@ -3212,9 +2450,9 @@
       "review": "agent read complete text; PDF extracted all 10 pages; logo visually inspected; SVG source inspected"
     },
     "vision/README.md": {
-      "lines": 68,
-      "sha256": "f6952875c89819528c0b9be094983fce63058c34e925cb1ec9c81eabae3807c4",
-      "review": "full source read in current agent session"
+      "sha256": "f0aae92adcc0a8b9f10e855382e4b314868bfd06a9d2a6968402166c6b3ddc13",
+      "lines": 34,
+      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
     },
     "vision/requirements.txt": {
       "lines": 4,
@@ -3307,14 +2545,14 @@
       "review": "full SQL read; parser returned no symbols"
     },
     "vision/PLAN.md": {
-      "lines": 86,
-      "sha256": "17d20cd9cf538ea97e40f3fff1a09617200f750555e5d018a5ef8bdc0dd897f6",
-      "review": "full source read in current agent session"
+      "sha256": "e1a620d2b18a5decb354ccf6d28d04c6bb3bc5d36cc83be277399b474723a931",
+      "lines": 88,
+      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
     },
     "docs/PRD_GENAI_VISION.md": {
-      "lines": 112,
-      "sha256": "810a1115e9b676eb325289fcbf2e7d8018f15933624e80fb332b7e5ecd995d16",
-      "review": "Final full source read; reports include every case/result/trace; source stabilized by author."
+      "sha256": "68a3f3841aa868780613e0874b5cb7a9becd80d23d4742ba32da430cc349d065",
+      "lines": 114,
+      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
     },
     "vision/requirements-data.txt": {
       "lines": 3,
@@ -3322,14 +2560,14 @@
       "review": "full source read in current agent session"
     },
     "genai/PLAN.md": {
-      "lines": 68,
-      "sha256": "2c1746ef01251cedad7bfb087a282ad572b3f485a728880712e9982b5f1c98fc",
-      "review": "Final full source read; reports include every case/result/trace; source stabilized by author."
+      "sha256": "6632f8cc0d7c5a370ba3ab7315f61a2ba74a4d8af04cff5da1ca67e2e6211822",
+      "lines": 70,
+      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
     },
     "docs/VALIDACAO_GENAI_VISION.md": {
-      "lines": 91,
-      "sha256": "9a4d0e88c8116550a189db13b07723cbb7551d3928534ddafe7391996f33fac7",
-      "review": "Final full source read; reports include every case/result/trace; source stabilized by author."
+      "sha256": "866716cb2f500b97b55304cc961e08fcf6b359af2d8430cf32afe6068fb40d07",
+      "lines": 95,
+      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
     },
     "genai/reports/llm_error_analysis.md": {
       "lines": 85,
@@ -3360,12 +2598,32 @@
       "lines": 41,
       "sha256": "d7cb19d4a3f3b6de589e5494735f475a4ab6055e4670bfad1da3b89bf53169c9",
       "review": "Final full source read; reports include every case/result/trace; source stabilized by author."
+    },
+    "docs/ENTREGA_CHECKLIST.md": {
+      "sha256": "05db84c6cc9708d334870d6548c34de53305e7488d86f95eb42a221d067440da",
+      "lines": 158,
+      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
+    },
+    "docs/entregas/GENAI_RELATORIO.md": {
+      "sha256": "d9329845b54985831e5471de4d2fb0b3774add0ccfb2630245e573298c921972",
+      "lines": 105,
+      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
+    },
+    "docs/entregas/ROTEIRO_VIDEOS.md": {
+      "sha256": "fc291c8352edc245b5c45748510953fee6129e59feedc672c987bce2ae426bf3",
+      "lines": 35,
+      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
+    },
+    "genai/base/README.md": {
+      "sha256": "3a3bea2499de9df715a478f1ca68652e5a95289ad5825e888c6f6e489d248f8c",
+      "lines": 3,
+      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
     }
   },
   "base_commit": "4a2d00f34c3eb570c90cc7b56822eea5f028fc3b",
   "input_tokens": null,
   "output_tokens": null,
   "rebuild_review": {
-    "intentional_removed_nodes": "Old Vision README headings replaced; old blocked diagnostic and temporary review removed; final notebooks/ignore rules reread. --force authorized for this intentional shrink after review."
+    "intentional_removed_nodes": "Replaced superseded 1.5B/CPU and untrained-Vision annotations/headings with reviewed closing status. Changed notebooks remain structural unless hash-verified. --force permits this reviewed replacement, not silent loss."
   }
 }

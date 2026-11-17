@@ -4,9 +4,11 @@
 
 Branch `feat/genai-vision`, a partir da base `4a2d00f`. Consulte o [PRD com diagramas e critérios de aceite](docs/PRD_GENAI_VISION.md), o [plano GenAI](genai/PLAN.md), o [plano Vision](vision/PLAN.md) e a [validação desta branch](docs/VALIDACAO_GENAI_VISION.md). O [mapa Graphify](docs/knowledge/README.md) registra código e documentação de todas as disciplinas para orientar este trabalho.
 
-GenAI usa o modelo local opcional `qwen2.5:1.5b-instruct`, com contexto e saída limitados para CPU. O [guia do módulo](genai/README.md) contém instalação, diagnóstico e comparação reproduzível. A PWA mantém o modo curado quando o modelo não foi habilitado explicitamente.
+GenAI final usa **qwen2.5:3b-instruct** (~1,9GB de pesos), dentro do teto4B solicitado. Comparação real baseline/RAG/agente em20 perguntas de desenvolvimento e12 independentes, com GPU confirmada na RX6750XT. O [relatório GenAI](docs/entregas/GENAI_RELATORIO.md) separa métricas automáticas e revisão técnica exploratória.
 
-Vision agora permite preparar e auditar dados COCO locais, configurar treino CPU e enviar uma imagem de objetos pela PWA (`POST /api/vision/predict`, PNG/JPEG bruto, até 8 MiB, sem armazenamento). Sem checkpoint customizado, retorna 503. Dataset, treino real e aprovação humana de qualidade continuam requisitos de evidência; veja o [guia Vision](vision/README.md).
+Vision executou treino customizado YOLO11n por20 épocas em CPU sobre40 fotos aprovadas. Recall de teste0,2943: piloto demonstrável com qualidade ainda não validada. [PDF Vision](output/pdf/ACOLHE_VISION.pdf), [reprodução e evidências](vision/README.md). As fotos e pesos permanecem locais; uma nova clone precisa reconstruir o lote e treinar para habilitar o detector.
+
+O [checklist da rubrica oficial](docs/ENTREGA_CHECKLIST.md) registra o que falta: revisão da equipe, vídeos publicados e envio no Teams. O [roteiro de demonstração](docs/entregas/ROTEIRO_VIDEOS.md) está preparado. Prazo do enunciado:19/11/2026 às23h55, conferir no Teams.
 
 Para verificar preparação/auditoria e toda a suíte com dependências leves em ambiente isolado:
 

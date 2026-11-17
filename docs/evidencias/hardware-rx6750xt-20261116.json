@@ -1,0 +1,25 @@
+{
+  "observed_at_utc": "2026-11-17T01:08:06.1352927Z",
+  "gpu_name": "AMD Radeon RX 6750 XT",
+  "driver_version": "32.0.21045.16010",
+  "vram_capacity_gib_user_reported": 12,
+  "ollama_version": "0.40.16",
+  "model": "qwen2.5:1.5b-instruct",
+  "options": {
+    "num_gpu": -1,
+    "num_ctx": 2048,
+    "num_predict": 24
+  },
+  "backend_observed_in_log": "Vulkan0",
+  "layers_offloaded": "29/29",
+  "model_buffer_mib": 934.69,
+  "ps_size_vram_bytes": 1108554546,
+  "elapsed_seconds_including_load": 9.683,
+  "eval_tokens": 9,
+  "eval_duration_ns": 387312000,
+  "response": {
+    "ok": true
+  },
+  "scope": "One actual JSON hardware probe. Not a model-quality benchmark. No driver or persistent OS setting changed.",
+  "source": "Ollama /api/chat, /api/ps and local server.log; hardware support docs https://docs.ollama.com/gpu"
+}

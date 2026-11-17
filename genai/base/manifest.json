@@ -1,0 +1,10 @@
+{
+  "created_at": "2026-11-17T01:37:24.546231+00:00",
+  "runtime_source": "genai/data/corpus.json",
+  "sha256": "6b4e5c617d41577d9d8ba6958f331a5d8a444346a0de803184760bc21f3bb092",
+  "version": 2,
+  "documents": 8,
+  "language_chunks": 16,
+  "pedagogical_review": "pending",
+  "license": "CC-BY-4.0 (authorial team corpus)"
+}

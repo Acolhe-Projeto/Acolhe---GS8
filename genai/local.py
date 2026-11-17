@@ -3,12 +3,12 @@ import argparse
 import json
 import urllib.request
 
-from genai.service import DEFAULT_MODEL, LOCAL_OPTIONS
+from genai.service import DEFAULT_MODEL, keep_alive, runtime_options
 
 
 def check(model=DEFAULT_MODEL):
     result = {"model": model, "endpoint": "http://127.0.0.1:11434", "ready": False,
-              "options": LOCAL_OPTIONS, "keep_alive": 0}
+              "options": runtime_options(), "keep_alive": keep_alive()}
     try:
         with urllib.request.urlopen(result["endpoint"] + "/api/tags", timeout=5) as response:
             installed = json.loads(response.read())["models"]

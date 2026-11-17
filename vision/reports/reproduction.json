@@ -1,0 +1,1650 @@
+{
+  "scope": "Exact already reviewed bytes and annotation snapshot; no source photographs included in this file. Historical human review is preserved, not newly asserted by the downloader.",
+  "dataset_fingerprint_sha256": "807dcc346068ebc6f63c7bb687c0b114a9a63347cf10c26915ba4759065df923",
+  "dataset_yaml": "path: .\r\ntrain: images/train\r\nval: images/val\r\ntest: images/test\r\nnames:\r\n- backpack\r\n- chair\r\n- book\r\n- bottle\r\n- cup\r\n- spoon\r\n- fork\r\n- bowl\r\n- clock\r\n- umbrella\r\n- bus\r\n- traffic light\r\nnc: 12\r\n",
+  "provenance": {
+    "source_url": "https://cocodataset.org/",
+    "license": "39 COCO photographs CC-BY2.0; one Commons photograph CC-BY4.0; original COCO annotations CC-BY4.0; proposed agent bbox awaiting review",
+    "real_images": true,
+    "split_method": "Previous untrained pilot; replace tram with Commons bus; move ID393226 train to test to retain traffic-light coverage; before augmentation/training",
+    "class_names": [
+      "backpack",
+      "chair",
+      "book",
+      "bottle",
+      "cup",
+      "spoon",
+      "fork",
+      "bowl",
+      "clock",
+      "umbrella",
+      "bus",
+      "traffic light"
+    ],
+    "packet_sha256": "a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71",
+    "human_approval": "approved",
+    "images": [
+      {
+        "image_id": "20553",
+        "file": "images/test/image_0000000.jpg",
+        "source_url": "https://www.flickr.com/photos/mikecogh/2926009969/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000020553.jpg",
+        "author": "Michael Coghlan",
+        "author_url": "https://www.flickr.com/photos/mikecogh",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "739fee1c09f6d7c1670d2f558f70d2aea2ea6863a964c5a9582ca3bb70a55cb5",
+        "source_page_sha256": "304c7e5dca4576a4414e86eb59861e66852a31e53be5cd25656d115f4050da9f",
+        "source_checked_at": "2026-11-17T01:16:31.493849+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bottle",
+          "chair",
+          "cup",
+          "umbrella"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A teddy bear laying on top of a bed next to a table with beers.\n\n",
+          "A chair with a lot of stuffed animals on it sitting beside a small table.",
+          "Large stuffed animal posed outdoors as if sitting in a chair with beverages on a table.",
+          "The old stuff animal is on an old couch next to bottles.",
+          "a chair with some kind of stuffed animal on it"
+        ],
+        "split": "test",
+        "review_number": 1,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "248314",
+        "file": "images/test/image_0000001.jpg",
+        "source_url": "https://www.flickr.com/photos/t_trace/428244913/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000248314.jpg",
+        "author": "Taiyo FUJII",
+        "author_url": "https://www.flickr.com/photos/t_trace",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "b6b1cf5511ed5a690b596376813360b46b180c3fa8c3c3ef9cead9b5647f87e1",
+        "source_page_sha256": "284800c60d4e2da2b4c64f0a417597aabfedc7c9b61fb0bca5839db87fe3c769",
+        "source_checked_at": "2026-11-17T01:16:27.571587+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bottle",
+          "bowl",
+          "chair",
+          "spoon"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A plate of food placed next to a computer.",
+          "There is a plate full of food in front of the laptop.",
+          "An office desk with computer equipment, calculator, and work papers holds an employee's working lunch of soup, rice, and vegetables.",
+          "Portioned lunch in front of laptop in nice workspace.",
+          "desktop picture with laptop and food container full of food"
+        ],
+        "split": "test",
+        "review_number": 2,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "419312",
+        "file": "images/test/image_0000002.jpg",
+        "source_url": "https://www.flickr.com/photos/dpstyles/3064530534/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000419312.jpg",
+        "author": "dennis crowley",
+        "author_url": "https://www.flickr.com/photos/dpstyles",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "7b953b528b2ae9fdc1c768710a8581c397ea552651ceeab6b59d2603f3223417",
+        "source_page_sha256": "f64e1f0605b54edd1610a13b369094697e55f9c83a85080b291826d930db1b2d",
+        "source_checked_at": "2026-11-17T01:16:36.290643+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bowl",
+          "cup",
+          "fork"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "Full course dinner served on large plate including drinks and dessert.",
+          "Plates loaded with thanksgiving dinner and dessert with two glasses. ",
+          "A dinner plate containing meat with gravy, carrots, bread, and cranberry sauce.",
+          "Two plates of assorted food and two beverages are shown on a table.",
+          "A table with a plate of dinner and something to drink. "
+        ],
+        "split": "test",
+        "review_number": 3,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "900000001",
+        "file": "images/test/image_0000003.jpg",
+        "split": "test",
+        "review_number": 4,
+        "source_url": "https://commons.wikimedia.org/wiki/File:Burlington_Trailways_bus.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Burlington_Trailways_bus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "author": "Znns",
+        "author_url": "https://commons.wikimedia.org/wiki/User:Znns",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "sha256": "297443633fbf2ca0bca6d69f6657ba0ea93cc52d5213ccf416d8f671a8ee9a43",
+        "source_metadata_sha256": "da74ef5a4eaa6a6d10951f7895315a617f43bf22aa2c0750685f4f229c0b8937",
+        "source_checked_at": "2026-11-17T01:32:29.863575+00:00",
+        "license_verification": "Commons imageinfo declares author Znns and CC-BY4.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bus"
+        ],
+        "person_annotations": 0,
+        "person_annotation_source": "Agent visual screening; no person annotations supplied by Commons",
+        "source_dataset": "Wikimedia Commons",
+        "annotation_method": "manual_agent_bbox",
+        "annotation_review": "pending_human",
+        "proposed_bbox_xywh": [
+          720,
+          1040,
+          3408,
+          1296
+        ],
+        "captions": [
+          "One complete red Burlington Trailways road coach; no visible people in agent screening."
+        ],
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "124659",
+        "file": "images/test/image_0000004.jpg",
+        "source_url": "https://www.flickr.com/photos/cherryride/5653997626/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000124659.jpg",
+        "author": "Cherry Ride",
+        "author_url": "https://www.flickr.com/photos/cherryride",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "b22d1dcef9e38af51c21a13438095e72102f2ce72f7c6f3a581b39b84fe9454f",
+        "source_page_sha256": "3351db8a6d0e0af31399b20d2af2a71b244377099c36de902886a5cad0922a6e",
+        "source_checked_at": "2026-11-17T01:16:28.470571+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "book",
+          "chair",
+          "clock"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A living room with a large green couch and office desk.",
+          "A living room displaying family photos  and art.",
+          "A basement living area with different types of furniture.",
+          "A living room scene has photos on a table.",
+          "Fully decorated basement has no people in it."
+        ],
+        "split": "test",
+        "review_number": 5,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "43314",
+        "file": "images/test/image_0000005.jpg",
+        "source_url": "https://www.flickr.com/photos/coppadelledolomiti/4393014030/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000043314.jpg",
+        "author": "Coppa delle Dolomiti",
+        "author_url": "https://www.flickr.com/photos/coppadelledolomiti",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "360eceae3e66803c8e19bf9a45b9498f0d4f6153ae2d6f832cbbdaeb899e393f",
+        "source_page_sha256": "80408a78fb988d878d36a9023094fa15f67ad789c96d5bb84164cc7ca9f21235",
+        "source_checked_at": "2026-11-17T01:16:30.010650+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "backpack"
+        ],
+        "person_annotations": 3,
+        "captions": [
+          "A man flying through the air while riding skis.",
+          "Skier in mid air following loss of balance on mountaintop.",
+          "A man on ski's that is in the air.",
+          "a person on skis doing a trick over the snow ",
+          "A downhill skier doing a trick in front of the camera."
+        ],
+        "split": "test",
+        "review_number": 6,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "175364",
+        "file": "images/val/image_0000006.jpg",
+        "source_url": "https://www.flickr.com/photos/yhaconwy-yharowen/6267025876/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000175364.jpg",
+        "author": "Eric Audige-Soutter",
+        "author_url": "https://www.flickr.com/photos/yhaconwy-yharowen",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "badb2570222f6900a65bfc9d39615216c683ce3c5d03afb85c692a3cf08f323c",
+        "source_page_sha256": "ba2f44d0bab662a1588676857286ac4157ec5078e85a73c3e0e50febf4684318",
+        "source_checked_at": "2026-11-17T01:16:27.571587+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bottle",
+          "bowl",
+          "cup",
+          "spoon"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A kitchen with two stoves, an island, and appliances.",
+          "this is a kitchen with two stoves and a table",
+          "A kitchen with black appliances and open cupboards sits empty. ",
+          "a kitchen view of a table counter top and cabinets",
+          "a room showing a cooker and an oven"
+        ],
+        "split": "val",
+        "review_number": 7,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "529568",
+        "file": "images/val/image_0000007.jpg",
+        "source_url": "https://www.flickr.com/photos/homestilo/8565573049/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000529568.jpg",
+        "author": "homestilo",
+        "author_url": "https://www.flickr.com/photos/homestilo",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "2c97efcc385141e55c77afcf239cf59639637e9155cacf5ac870c87d2a6de42e",
+        "source_page_sha256": "1d62777b3e1378c33577d94ab4c6774d68b5707b879ab32da8abf58d02cf3c99",
+        "source_checked_at": "2026-11-17T01:16:31.484840+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "book",
+          "bowl",
+          "cup"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A big fancy glass chandelier hanging in a small kitchen.",
+          "A kitchen area with a counter, shelves and a television.",
+          "a country kitchen has a blue, wooden table, open shelves and white counters and a white sink.",
+          "A nice kitchen has a large crystal chandelier.",
+          "The old kitchen and the table in it are furnished from wood."
+        ],
+        "split": "val",
+        "review_number": 8,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "249129",
+        "file": "images/val/image_0000008.jpg",
+        "source_url": "https://www.flickr.com/photos/calliope/2113224886/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000249129.jpg",
+        "author": "liz west",
+        "author_url": "https://www.flickr.com/photos/calliope",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "ee3e96944723de59d8741e68c65e0395fec5841a03286563bf005f43a131a786",
+        "source_page_sha256": "64d00e92d55cb008d611db05c7532ddbc7354718846b372acd8d6e49d8664b12",
+        "source_checked_at": "2026-11-17T01:16:36.177646+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "chair",
+          "clock",
+          "cup"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A group of teddy bears sitting at a small table in front of a christmas tree.",
+          "The room is full of stuffed animals arranged in chairs.",
+          "Teddy bears sitting around a table and a christmas tree",
+          "There are stuffed teddy bears sitting on chairs at a table",
+          "There is a table set with stuffed animals"
+        ],
+        "split": "val",
+        "review_number": 9,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "335427",
+        "file": "images/val/image_0000009.jpg",
+        "source_url": "https://www.flickr.com/photos/stone-soup/8092393214/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000335427.jpg",
+        "author": "jules",
+        "author_url": "https://www.flickr.com/photos/stone-soup",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "ea30c8058f6f658dc75d14c252eb0ddaba2b2a796164756585d208b9669cb2fa",
+        "source_page_sha256": "62a1ceaaa17429467e3fcc07f2f7bc22daa2105a0613889e1488e0a474def1e3",
+        "source_checked_at": "2026-11-17T01:16:32.599418+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bowl",
+          "fork",
+          "spoon"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A bowl filled with broccoli soup next to a spoon and fork.",
+          "a bowl of soup with broccoli next to eating utensils. ",
+          "a bowl full of brocoli sitting on a towel with a fork and spoon sitting next to it",
+          "some broccoli in a soup in a bowl",
+          "A bowl full of broth and pieces of broccoli with a spoon and fork."
+        ],
+        "split": "val",
+        "review_number": 10,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "534639",
+        "file": "images/val/image_0000010.jpg",
+        "source_url": "https://www.flickr.com/photos/36217981@N02/10190866013/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000534639.jpg",
+        "author": "Tim Adams",
+        "author_url": "https://www.flickr.com/photos/36217981@N02",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "0e2722b6f071bb72c697fb7083b34f0097c355981e521df0d019413cc7dfffe7",
+        "source_page_sha256": "99c2be0a78c875ca393c9bf14564f0b3628b094fb159bf81377ace14336eb7f2",
+        "source_checked_at": "2026-11-17T01:16:34.580650+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "traffic light"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A modern train running on tracks near a station.",
+          "A large long white train at a station.",
+          "A public transit train at one of its stations.",
+          "A white train traveling down the tracks with expo center on a sign on the front. ",
+          "The metro train is painted white with blue lettering."
+        ],
+        "split": "val",
+        "review_number": 11,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "121506",
+        "file": "images/val/image_0000011.jpg",
+        "source_url": "https://www.flickr.com/photos/bpende/7721233008/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000121506.jpg",
+        "author": "Brad P.",
+        "author_url": "https://www.flickr.com/photos/bpende",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "c343589eeba3701c2e6bc2b7f7f6c65eaaf9b2d998fd0402b90d82bdc69a0325",
+        "source_page_sha256": "6ee55c7a949547b8d829b8874c1076bd4d05242c63b2ab979ec5857a63578fff",
+        "source_checked_at": "2026-11-17T01:16:29.237539+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "chair",
+          "umbrella"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A wooden table with an inverted umbrella on it.",
+          "A beige outdoor umbrella is blown upside down.",
+          "A white umbrella that has been blown up the wrong way.",
+          "An umbrella on a backyard patio is upturned from the wind. ",
+          "A patio umbrella pointed inside out over a picnic table."
+        ],
+        "split": "val",
+        "review_number": 12,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "566758",
+        "file": "images/val/image_0000012.jpg",
+        "source_url": "https://www.flickr.com/photos/pasa/8369612010/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000566758.jpg",
+        "author": "Paul Sableman",
+        "author_url": "https://www.flickr.com/photos/pasa",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "c2548168a658da18c7f19980f8ca53d2564b6378e33d010f3697b808b09e96e3",
+        "source_page_sha256": "b5d1d18a36de5a3a4e8605c3c47fbcb7d79a8f22b1a34ddd1cb5376d4075c015",
+        "source_checked_at": "2026-11-17T01:16:35.298656+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bus"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A school bus is parked on the side of the street.",
+          "A bus parked by a curb on the street ",
+          "A school bus parked next to a curb. ",
+          "The yellow school bus has stopped at the bus stop.",
+          "a school bus on a city street "
+        ],
+        "split": "val",
+        "review_number": 13,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "490515",
+        "file": "images/val/image_0000013.jpg",
+        "source_url": "https://www.flickr.com/photos/mjanicki/4224575445/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000490515.jpg",
+        "author": "Matt Janicki",
+        "author_url": "https://www.flickr.com/photos/mjanicki",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "a6654419cd09f606a15c6120ba95f9976d364841d8499048b98675c27149b6d4",
+        "source_page_sha256": "8a7a15a4714f7f075a07e7304485430f91062535fb4074bbc143cd9a4f73ecf9",
+        "source_checked_at": "2026-11-17T01:16:54.876815+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "backpack"
+        ],
+        "person_annotations": 1,
+        "captions": [
+          "a person riding a snow board falling to the ground",
+          "A man is falling on his back while snowboarding.",
+          "Snow boarder sliding down the hill after falling in the snow",
+          "The skier falls down into the snow while skiing.",
+          "A man riding a snowboard on a snow covered slope."
+        ],
+        "split": "val",
+        "review_number": 14,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "554291",
+        "file": "images/train/image_0000014.jpg",
+        "source_url": "https://www.flickr.com/photos/eiriknewth/256248429/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000554291.jpg",
+        "author": "Eirik Newth",
+        "author_url": "https://www.flickr.com/photos/eiriknewth",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "87cfe902780e460e352a5de8b0ced6a8372dc7317aba136279edf3ff4e0527dc",
+        "source_page_sha256": "8564c02bdee89b44f21008ef12b167981bb163e094d113b994ce44e9956445a3",
+        "source_checked_at": "2026-11-17T01:16:38.216644+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bowl",
+          "chair"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A small kitten standing in a  blue hat on top of a table.",
+          "a cat sitting inside of a plastic bucket",
+          "A cat's image is blurred as he tumbles in a bowl near a food scale and pen and paper on a table.",
+          "A kitty cat jumping out of a blue bowl ",
+          "A kitten climbing out of a blue bowl."
+        ],
+        "split": "train",
+        "review_number": 15,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "352900",
+        "file": "images/train/image_0000015.jpg",
+        "source_url": "https://www.flickr.com/photos/rexroof/3315841832/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000352900.jpg",
+        "author": "Rex Roof",
+        "author_url": "https://www.flickr.com/photos/rexroof",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "9a1477fd6e460794bff330599c0417377e8622f01ef006c9c0b2bd01883a2a05",
+        "source_page_sha256": "c831a7216d2f2c3b142d68ff7bcec59aa8695fc1294e268afa1f6dce8bf2b1a4",
+        "source_checked_at": "2026-11-17T01:16:29.260562+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bowl",
+          "fork"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A plate of noodles and broccoli are shown.",
+          "Fried noodles and broccoli dish on a round plate.",
+          "A very tasty looking dish of pasta with some broccoli.",
+          "A pasta entree with broccoli on a white plate. ",
+          "A plate full of noodles and broccoli, next to a knife and fork."
+        ],
+        "split": "train",
+        "review_number": 16,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "551780",
+        "file": "images/train/image_0000016.jpg",
+        "source_url": "https://www.flickr.com/photos/ell-r-brown/5333676592/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000551780.jpg",
+        "author": "Elliott Brown",
+        "author_url": "https://www.flickr.com/photos/ell-r-brown",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "3d4490937783d48c381caf35e9901cb099ef4bf5a9d1bbd36db9b11ab7ebcb5e",
+        "source_page_sha256": "cc649f73e5988a4e50d6e53fb4d909c859676845000d32dc5787adcaf423a614",
+        "source_checked_at": "2026-11-17T01:16:32.782417+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "clock",
+          "spoon"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A large clock mounted to the side of a building.",
+          "A analogue clock is places next to a sign. ",
+          "a big clock sits on the side of a building ",
+          "A clock  and a spoon atop a commercial building.",
+          "A clock on a building that says 8:25."
+        ],
+        "split": "train",
+        "review_number": 17,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "456292",
+        "file": "images/train/image_0000017.jpg",
+        "source_url": "https://www.flickr.com/photos/glutnix/39673832/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000456292.jpg",
+        "author": "Brett Taylor",
+        "author_url": "https://www.flickr.com/photos/glutnix",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "7e17a306f9e0c9422166a5adc9ee6a91412a37303b1d674f5e16cd7e83965fe6",
+        "source_page_sha256": "8700e75f66db8517b956cae53ea12ae9445e58e08fe03c36895ea47b133cac93",
+        "source_checked_at": "2026-11-17T01:16:43.787560+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bottle"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A cat climbing into a cat door on a wall.",
+          "A picture of a cat on a wall. ",
+          "A picture of a cat going through a cat door has been put on the wall.",
+          "A dirty floor and wall with a black kit going into a trap door.",
+          "Cat going inside house through small opening on door. "
+        ],
+        "split": "train",
+        "review_number": 18,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "8762",
+        "file": "images/train/image_0000018.jpg",
+        "source_url": "https://www.flickr.com/photos/vax-o-matic/4466652187/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000008762.jpg",
+        "author": "Patrick Finnegan",
+        "author_url": "https://www.flickr.com/photos/vax-o-matic",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "8b8aa2412ac3502dbb4b8a7d7987359d4049cf70e7177748e907e3ddfa3211ce",
+        "source_page_sha256": "02656da86ae1527e4bc2b095b29a9e30cbb92466780ce7a977ee5da7b6176f3a",
+        "source_checked_at": "2026-11-17T01:16:47.241449+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "traffic light"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "Street lights and a lit up street sign at an intersection.",
+          "Twilight at a city intersection with lit street signs.",
+          "A dusky evening with a green street light shining.",
+          "A night scene with silhouettes of buildings and some traffic lights over a street",
+          "A stoplight that is flashing green lights at cars."
+        ],
+        "split": "train",
+        "review_number": 19,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "458410",
+        "file": "images/train/image_0000019.jpg",
+        "source_url": "https://www.flickr.com/photos/amy_elizabeth_west/4586518760/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000458410.jpg",
+        "author": "Amy West",
+        "author_url": "https://www.flickr.com/photos/amy_elizabeth_west",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "4f9c9a1750bfad88dfa0b6c882234cb3b4e63e4f8cba661209b65488cdf4f343",
+        "source_page_sha256": "db61c944f068a4a4286442e3624b0137f34e0215cf15e46de1e9138cd2b5ac77",
+        "source_checked_at": "2026-11-17T01:16:28.378334+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "book"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A living room with an old fashioned TV and a couch.",
+          "an image of a very old fashioned living room",
+          "A room with an old sofa, coffee table, lamp and t.v.",
+          "a family room with a couch and a tv",
+          "A 70s themed living room displays an old tv."
+        ],
+        "split": "train",
+        "review_number": 20,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "286553",
+        "file": "images/train/image_0000020.jpg",
+        "source_url": "https://www.flickr.com/photos/18472724@N00/4252543190/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000286553.jpg",
+        "author": "MollySVH",
+        "author_url": "https://www.flickr.com/photos/18472724@N00",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "f37863b16e8789da5ed5f768a16f651883ac31cdcd8a965d1795e0d5456b2314",
+        "source_page_sha256": "d915f119d5b1e86f8379cafa2135670f508777c0a355c57399bd9b4e0b5bda13",
+        "source_checked_at": "2026-11-17T01:16:50.766509+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bottle",
+          "chair",
+          "cup",
+          "fork",
+          "umbrella"
+        ],
+        "person_annotations": 2,
+        "captions": [
+          "A copse of men sitting next to each other at a table.",
+          "two people sitting at a table posing for a photo",
+          "Two people sitting at a table with two pizzas.",
+          "A man and woman posing for a photo with pizza on the table they are sitting at.",
+          "a couple sitting at a table with a couple of pizzas "
+        ],
+        "split": "train",
+        "review_number": 21,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "365655",
+        "file": "images/train/image_0000021.jpg",
+        "source_url": "https://www.flickr.com/photos/andymsmith/9708425604/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000365655.jpg",
+        "author": "Andy S",
+        "author_url": "https://www.flickr.com/photos/andymsmith",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "66762bdbb86e5f1aa51134a1ea4e02c9c70f0e9c3bcb6beae6d25c97e2adb4c9",
+        "source_page_sha256": "c27c6fb4967c52d310cbd889d81ff896e75b0a490f650523e7d4e8f9fb866435",
+        "source_checked_at": "2026-11-17T01:16:35.258644+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bus"
+        ],
+        "person_annotations": 1,
+        "captions": [
+          "Ice explorer bus on a road near mountains.",
+          "This is a Canadian sightseeing bus with a maple leaf advertising on the ",
+          "An all-terrain bus for sight-seeing tourists near a glacier.",
+          "A bus travels down the road next to a mountain.",
+          "One woman standing behind large specialized bus in mountains by glacier."
+        ],
+        "split": "train",
+        "review_number": 22,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "326128",
+        "file": "images/train/image_0000022.jpg",
+        "source_url": "https://www.flickr.com/photos/cplbasilisk/2277537216/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000326128.jpg",
+        "author": "cplbasilisk",
+        "author_url": "https://www.flickr.com/photos/cplbasilisk",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "16fc08c185eeec30bf11d3c0944157279885f938838159e13773e4cfde879618",
+        "source_page_sha256": "aae58ce0b6c8922f6c042d9e8e233f143341996d886a2928ba0d70425a4020f2",
+        "source_checked_at": "2026-11-17T01:16:30.792976+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "backpack"
+        ],
+        "person_annotations": 1,
+        "captions": [
+          "The man is posing for a picture with his snowboard.",
+          "The skier is happy to pose for the picture.",
+          "A man that is standing with a snowboard in the snow.",
+          "A man standing on a snowboard on a mountain peak.",
+          "A person standing in the snow near a snow board."
+        ],
+        "split": "train",
+        "review_number": 23,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "213224",
+        "file": "images/train/image_0000023.jpg",
+        "source_url": "https://www.flickr.com/photos/abbybatchelder/5484827300/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000213224.jpg",
+        "author": "Abigail Batchelder",
+        "author_url": "https://www.flickr.com/photos/abbybatchelder",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "479bfbfb0a42c3b23769dc10bfa7227e0b592f964a576e3461fb085e53ea2d33",
+        "source_page_sha256": "17c2bf146c67e64f359a3f203319c5b7d4a11466723a595507b5ea0809aa6ed6",
+        "source_checked_at": "2026-11-17T01:16:42.635644+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "chair"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A vase filled with flowers next to a smaller vase filled with even more flowers.",
+          "Two vases filled with flowers on a table.",
+          "Two vases of fresh flowers sit on top of the table.",
+          "a small vase and a large vase of flowers on a table",
+          "A wooden table holding two vases of flowers."
+        ],
+        "split": "train",
+        "review_number": 24,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "167353",
+        "file": "images/train/image_0000024.jpg",
+        "source_url": "https://www.flickr.com/photos/ell-r-brown/7178592902/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000167353.jpg",
+        "author": "Elliott Brown",
+        "author_url": "https://www.flickr.com/photos/ell-r-brown",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "8e6737773e7548e3fc299c7dc5e255b5997c0b05e08423f016b277719e8232a0",
+        "source_page_sha256": "a177051a7a1c23e1ed9bfa9cfaff9b7666240b8f44ff4b4e1336d5df0de9ef2f",
+        "source_checked_at": "2026-11-17T01:16:41.895645+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "clock"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "An old wooden  clock attached to the wall",
+          "A large brown wooden clock mounted to a wall.",
+          "The grandfather clock is many years old and worn.",
+          "A very old antique clock on a wall.",
+          "An old clock hangs on the wall and gives the time."
+        ],
+        "split": "train",
+        "review_number": 25,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "578500",
+        "file": "images/train/image_0000025.jpg",
+        "source_url": "https://www.flickr.com/photos/kairosphoto/4376919410/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000578500.jpg",
+        "author": "KairosPhotography",
+        "author_url": "https://www.flickr.com/photos/kairosphoto",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "7b0c55d345757ae8431fde2b2900ba6d49f27bbf50e19033564555ce5588fd75",
+        "source_page_sha256": "eb9cbfbf6d2e6e5ef403b7f0c2498e31f3da3ba26708e597d33cdb88f99f2981",
+        "source_checked_at": "2026-11-17T01:16:44.499251+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "chair"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "a living room that has some couches and tables in it",
+          "A living room with the walls painted orange-red color.  ",
+          "The room has red walls with a blue chair",
+          "The room has red wall, white carpet and matching furniture.",
+          "A well-lit and well-decorated living room shows a glimpse of a glass front door through the corridor. "
+        ],
+        "split": "train",
+        "review_number": 26,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "99053",
+        "file": "images/train/image_0000026.jpg",
+        "source_url": "https://www.flickr.com/photos/djackmanson/5884430904/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000099053.jpg",
+        "author": "Caspia Jackmanson",
+        "author_url": "https://www.flickr.com/photos/djackmanson",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "a4e8405077a8f93115116f548e7d59b29a092a6ac2f749732a525e7b82c2f35a",
+        "source_page_sha256": "c9229022cbc433f1e77cd47d1a3c3532ad9f418d93d590bc8de23294983db5d6",
+        "source_checked_at": "2026-11-17T01:16:29.254538+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bowl",
+          "fork"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A bowl of noodles, meat and broccoli with a fork.",
+          "A bowl of noodles, meat, broccoli and carrots in a sauce with a fork.",
+          "A bowl full of chinese food with a fork",
+          "A bowl of food that looks like worms and some greens.\n",
+          "A yellow and black bowl holding noodles, beef and broccoli."
+        ],
+        "split": "train",
+        "review_number": 27,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "191761",
+        "file": "images/train/image_0000027.jpg",
+        "source_url": "https://www.flickr.com/photos/plindberg/63857259/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000191761.jpg",
+        "author": "Peter Lindberg",
+        "author_url": "https://www.flickr.com/photos/plindberg",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "26c0697f27e653a634840879f24189a8326ffaf72da758b2a9b8cf5271c2fd34",
+        "source_page_sha256": "61f10b05e03f3750f438f663567e1f19695c217a972023cd74afbc1ff19a2b82",
+        "source_checked_at": "2026-11-17T01:16:41.175645+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bowl"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A plate of bananas and sliced oranges covered in butterflies.",
+          "Large moths atop a plate of bananas and citrus.",
+          "A dish with some orange slices and something else.",
+          "A plate topped with moths and rotten fruit.",
+          "A couple of butter flies on a plate with lemons."
+        ],
+        "split": "train",
+        "review_number": 28,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "369771",
+        "file": "images/train/image_0000028.jpg",
+        "source_url": "https://www.flickr.com/photos/goblinbox/7250057624/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000369771.jpg",
+        "author": "goblinbox_(queen_of_ad_hoc_bento)",
+        "author_url": "https://www.flickr.com/photos/goblinbox",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "8ed9962ca66e9a4d548d512729653ca38de8cba46bed1a37be61b65736d90ce0",
+        "source_page_sha256": "c6984393d281a7f4e024520029881c03ea2de87f742708591518917177464443",
+        "source_checked_at": "2026-11-17T01:16:29.326282+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bowl",
+          "fork"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "Arrows show what to do with the bowls of food.",
+          "A close up food in plastic containers with a blue plastic fork.",
+          "Two plastic containers sitting on top of a wooden table.",
+          "Two dishes of food and several blue arrows.",
+          "THERE IS SOME SORT OF VEGETABLES IN A BOWL "
+        ],
+        "split": "train",
+        "review_number": 29,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "544565",
+        "file": "images/train/image_0000029.jpg",
+        "source_url": "https://www.flickr.com/photos/davidberkowitz/8637201534/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000544565.jpg",
+        "author": "David Berkowitz",
+        "author_url": "https://www.flickr.com/photos/davidberkowitz",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "2ac6b4e9e1b53277db20fab701366dbfa6271d5f0749fade0c3b8cf115d085bf",
+        "source_page_sha256": "783c142a9d5aaa7d154591140133e39a3373c818526014656be9c7ddd2fd778a",
+        "source_checked_at": "2026-11-17T01:16:46.310256+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "spoon"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A with plate with a chocolate pastry and whip cream. ",
+          "a plate of scones covered with chocolate sauce",
+          "There is no image here to provide a caption for.",
+          "A plate filled with pastry on a table.",
+          "a tray with pastries drizzled with chocolate and whip cream"
+        ],
+        "split": "train",
+        "review_number": 30,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "105014",
+        "file": "images/train/image_0000030.jpg",
+        "source_url": "https://www.flickr.com/photos/gamene/6933079123/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000105014.jpg",
+        "author": "gamene",
+        "author_url": "https://www.flickr.com/photos/gamene",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "f35e364bb8237ad5609f4e3a11220996b8417bd5241216aae82510f8ea368c14",
+        "source_page_sha256": "2f256d90877178efa6ae77b4979b0d994ec7306c7d74d1d6a92d554b25e9df19",
+        "source_checked_at": "2026-11-17T01:16:39.357644+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bowl",
+          "fork"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "a salad that looks like a boat is next to a fork",
+          "A bowl full of food sitting on a table next to a fork that rests on top of a circular disk.",
+          "A large salad bowl with a fork on the side on a flowered table..",
+          "A small lunch box with various vegetables and a fork",
+          "A salad is in a red container and has lettuce, tomatoes and bits of carrots in it."
+        ],
+        "split": "train",
+        "review_number": 31,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "233139",
+        "file": "images/train/image_0000031.jpg",
+        "source_url": "https://www.flickr.com/photos/mujitra/6449253229/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000233139.jpg",
+        "author": "MIKI Yoshihito",
+        "author_url": "https://www.flickr.com/photos/mujitra",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "b01f830541abca2fc5ff1227f8d622c7a9b2856a6232b422ca9aff09f493ec89",
+        "source_page_sha256": "ddd1e9e673dca15d8fceba57b0151137aeb3f28d19c917179a0b439c76dce45c",
+        "source_checked_at": "2026-11-17T01:16:41.869645+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "clock"
+        ],
+        "person_annotations": 0,
+        "captions": [
+          "A display of clocks inside a shop window.",
+          "Two clocks are hung on a wall behind a glass sign.",
+          "Two clocks with different times and a sign in an foreign language. ",
+          "Two square clocks behind a window with Asian writing on it.",
+          "Two stone clocks are sitting on a shelf."
+        ],
+        "split": "train",
+        "review_number": 32,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "186624",
+        "file": "images/train/image_0000032.jpg",
+        "source_url": "https://www.flickr.com/photos/sparker/9272267604/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000186624.jpg",
+        "author": "Steve Parker",
+        "author_url": "https://www.flickr.com/photos/sparker",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "b041e6c1451614e6a7a117291e6519729d38e292cf448cfbe5dab313f3aaa587",
+        "source_page_sha256": "cdda7894cb517dae4bbea8ff72bb17a4f7c203ece35e4b511186479f22b530f9",
+        "source_checked_at": "2026-11-17T01:16:35.318645+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "backpack"
+        ],
+        "person_annotations": 1,
+        "captions": [
+          "Someone is standing near a train that is parked. ",
+          "A train parked inside of a train station next to a person.",
+          "A long locomotive train parked in a station next to a person.",
+          "a woman stands next to a parked train ",
+          "a person standing next to a green and black train"
+        ],
+        "split": "train",
+        "review_number": 33,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "30504",
+        "file": "images/train/image_0000033.jpg",
+        "source_url": "https://www.flickr.com/photos/luigimengato/5320611177/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000030504.jpg",
+        "author": "Luigi Mengato",
+        "author_url": "https://www.flickr.com/photos/luigimengato",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "6a07fb2882010ba47140c43ffd7cd4a51331f197666ea9837b43bc077e88f552",
+        "source_page_sha256": "85c41f426febbf97c951693856cd4383e5710021075144263e36b35f1a0fc130",
+        "source_checked_at": "2026-11-17T01:16:55.663792+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "backpack"
+        ],
+        "person_annotations": 1,
+        "captions": [
+          "A person riding skis down a snow covered slope.",
+          "A person going up a snow hill on skis.",
+          "A person cross-country skiing on a winters day.",
+          "A person cross country skis through the snow. ",
+          "A tall man is on snow skis on a pathway."
+        ],
+        "split": "train",
+        "review_number": 34,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "345356",
+        "file": "images/train/image_0000034.jpg",
+        "source_url": "https://www.flickr.com/photos/phuson/195983274/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000345356.jpg",
+        "author": "Phu Son",
+        "author_url": "https://www.flickr.com/photos/phuson",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "6747504c0e3c993e6bf493a19bbd343e65685b2bfcd656302f1d5ab828c2a109",
+        "source_page_sha256": "c0fc9990325418e1c82fa99ba387a9cbf5669feabb24c9d7c18643b57d8f607e",
+        "source_checked_at": "2026-11-17T01:16:52.297425+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bottle",
+          "cup",
+          "spoon"
+        ],
+        "person_annotations": 2,
+        "captions": [
+          "A man in a gray shirt holds his phone as he sits by a man in a white t-shirt.",
+          "Adult males sitting at table during meal in restaurant.",
+          "A couple of guys that were eating and are now on their cell phones.",
+          "A pair of men sitting at a table in a diner.",
+          "two males at a table with food and one has a cellphone"
+        ],
+        "split": "train",
+        "review_number": 35,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "455597",
+        "file": "images/train/image_0000035.jpg",
+        "source_url": "https://www.flickr.com/photos/librarygroover/6594914093/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000455597.jpg",
+        "author": "Librarygroover",
+        "author_url": "https://www.flickr.com/photos/librarygroover",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "80bcfb867bb4a1b510ac914ee5a64703f410da01b05435d14bcf21be0ab0d74e",
+        "source_page_sha256": "510334ff0246c5ead79254535fa8583de71f6fd064bb3ed7d4b41ad66091b13c",
+        "source_checked_at": "2026-11-17T01:16:59.379162+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bottle",
+          "bowl",
+          "cup",
+          "spoon"
+        ],
+        "person_annotations": 2,
+        "captions": [
+          "a person in a kitchen with a stove some pots and pans",
+          "A woman is standing in a professional kitchen.",
+          "A worker passes through a cluttered restaurant kitchen.",
+          "Some people are working in the kitchen and cooking. ",
+          "a woman in a congested kitchen in ahotel"
+        ],
+        "split": "train",
+        "review_number": 36,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "301718",
+        "file": "images/train/image_0000036.jpg",
+        "source_url": "https://www.flickr.com/photos/goblinbox/9132300748/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000301718.jpg",
+        "author": "goblinbox_(queen_of_ad_hoc_bento)",
+        "author_url": "https://www.flickr.com/photos/goblinbox",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "54a5a90b270b5ae95672c8ed2947867efabe7acf977d89c985cd1e909a58b1be",
+        "source_page_sha256": "39f40aa40c2137fc9501eddd6e8422365b7e70b1f3ef92dd1707190aa3e352c6",
+        "source_checked_at": "2026-11-17T01:16:52.400437+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bottle",
+          "bowl",
+          "cup",
+          "fork"
+        ],
+        "person_annotations": 2,
+        "captions": [
+          "A table topped with a plate of food next to eating utensils.",
+          "A table with three plates with food and a man and a woman both holding utensil near plates.",
+          "two people seated at a dining table with a plate of food before them",
+          "there are two people sitting at a table eating",
+          "Two people sitting at a table eating.  "
+        ],
+        "split": "train",
+        "review_number": 37,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "142620",
+        "file": "images/train/image_0000037.jpg",
+        "source_url": "https://www.flickr.com/photos/delainahaslam/9756491185/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000142620.jpg",
+        "author": "Delaina Haslam",
+        "author_url": "https://www.flickr.com/photos/delainahaslam",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "0f3dd713a8c98734879b3108ac6a160877b031831048330a0fc09cedfdf1dd80",
+        "source_page_sha256": "a8cdc25041c68caaa24ff31ff6f849aa70e3d3eeccd2c1c07c0affdbffc0b290",
+        "source_checked_at": "2026-11-17T01:17:01.035831+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "bottle",
+          "bowl",
+          "chair",
+          "cup",
+          "spoon"
+        ],
+        "person_annotations": 1,
+        "captions": [
+          "A man that is  sitting down on a bench in front of a table.",
+          "a man that is sitting in front of a picnic table",
+          "A man sitting at a table outside eating a meal.",
+          "A man eating out on a table and bench.",
+          "The man is sitting outside with food on the table."
+        ],
+        "split": "train",
+        "review_number": 38,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "366884",
+        "file": "images/train/image_0000038.jpg",
+        "source_url": "https://www.flickr.com/photos/mandiees/3939243337/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000366884.jpg",
+        "author": "Mandie S",
+        "author_url": "https://www.flickr.com/photos/mandiees",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "7d41c97dc524e33c5005651a44c75e6629d9f7b05b48b9b430b76db77765e0a8",
+        "source_page_sha256": "dc2f4102221d0ae8e5a520956672cf17ef1186ddc65313ebc8054d082a46392a",
+        "source_checked_at": "2026-11-17T01:16:54.793838+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "book",
+          "chair"
+        ],
+        "person_annotations": 1,
+        "captions": [
+          "A man sitting at a computer desk in front of a monitor.",
+          "a full sized mirror reflecting a man sitting at a desk ",
+          "an image of a dog sitting on a sitting ",
+          "A room with a mirrored closet, keyboard and a dog on a bed.",
+          "a bedroom with a man at a computer in the reflection."
+        ],
+        "split": "train",
+        "review_number": 39,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      },
+      {
+        "image_id": "393226",
+        "file": "images/test/image_0000039.jpg",
+        "source_url": "https://www.flickr.com/photos/mrbd/7321339838/",
+        "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000393226.jpg",
+        "author": "Mr. Brian",
+        "author_url": "https://www.flickr.com/photos/mrbd",
+        "license": "https://creativecommons.org/licenses/by/2.0/",
+        "sha256": "7cfb2fecb604d1f7e5429ab118ecda7fe84c296067ce8038a89e7ea8af836a0f",
+        "source_page_sha256": "278f44d2c059aa062992b1a0423c5d85249c1244adb23da305f48c65a329c71b",
+        "source_checked_at": "2026-11-17T01:16:56.378920+00:00",
+        "license_verification": "Current Flickr ImageObject declares CC-BY 2.0; human legal review pending",
+        "privacy_reviewed": true,
+        "reviewed_at": "2026-11-17T01:37:59.042146+00:00",
+        "target_classes": [
+          "traffic light"
+        ],
+        "person_annotations": 1,
+        "captions": [
+          "A man who is walking across the street.",
+          "A busy intersection with an ice cream truck driving by.",
+          "a man walks behind an ice cream truck ",
+          "A man is crossing a street near an icecream truck.",
+          "The man is walking behind the concession bus."
+        ],
+        "split": "test",
+        "review_number": 40,
+        "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+        "reviewer": "Responsável humano nesta conversa",
+        "approval_reference": "Autorização explícita do usuário em 16/11/2026 America/Sao_Paulo: Aprovo o lote e o treino, pode treinar na gpu para ser mais rapido. Pacote V2 a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71 e bbox apresentados."
+      }
+    ],
+    "annotations_file": "instances_subset.json",
+    "annotations_sha256": "37d796f2419202ded238aa7e92c19c391c9238101adf7c53b6bd490acfd2906d",
+    "previous_packet_sha256": "bbeef75d329a72ded4635c22c80c9c2435b5e02a7087bf0374417963f8e6bdb9",
+    "removed_image_ids": [
+      "514376"
+    ],
+    "manual_annotation_image_ids": [
+      "900000001"
+    ],
+    "approved_packet_sha256": "a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71"
+  },
+  "images": [
+    {
+      "image_id": "20553",
+      "file": "images/test/image_0000000.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000020553.jpg",
+      "sha256": "739fee1c09f6d7c1670d2f558f70d2aea2ea6863a964c5a9582ca3bb70a55cb5",
+      "label_file": "labels/test/image_0000000.txt",
+      "label_text": "3 0.74737 0.3999466666666666 0.03518 0.09573333333333332\r\n3 0.79924 0.43326666666666663 0.03336 0.15501333333333334\r\n3 0.8249 0.4246933333333333 0.02352 0.14368\r\n9 0.26387 0.5299866666666667 0.18518 0.30024\r\n1 0.36478 0.6515733333333333 0.2358 0.27568\r\n4 0.74561 0.47875999999999996 0.04238 0.06744\r\n"
+    },
+    {
+      "image_id": "248314",
+      "file": "images/test/image_0000001.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000248314.jpg",
+      "sha256": "b6b1cf5511ed5a690b596376813360b46b180c3fa8c3c3ef9cead9b5647f87e1",
+      "label_file": "labels/test/image_0000001.txt",
+      "label_text": "1 0.8477499999999999 0.34157291666666667 0.296625 0.6786458333333333\r\n5 0.5360234375 0.5790416666666667 0.141171875 0.13491666666666668\r\n7 0.44068749999999995 0.7093854166666667 0.162875 0.17702083333333332\r\n3 0.6056718750000001 0.08730208333333334 0.06221875 0.17460416666666667\r\n1 0.9205703125000001 0.8772083333333334 0.158859375 0.244875\r\n"
+    },
+    {
+      "image_id": "419312",
+      "file": "images/test/image_0000002.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000419312.jpg",
+      "sha256": "7b953b528b2ae9fdc1c768710a8581c397ea552651ceeab6b59d2603f3223417",
+      "label_file": "labels/test/image_0000002.txt",
+      "label_text": "4 0.12378666666666667 0.30467 0.24757333333333334 0.3311\r\n4 0.17846666666666666 0.15766000000000002 0.25767999999999996 0.27416\r\n6 0.5240266666666666 0.8209399999999999 0.16517333333333334 0.33784\r\n7 0.9204933333333334 0.08787 0.15842666666666666 0.17462\r\n7 0.64072 0.02404 0.26842666666666665 0.04808\r\n4 0.032 0.0785 0.064 0.157\r\n"
+    },
+    {
+      "image_id": "900000001",
+      "file": "images/test/image_0000003.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Burlington_Trailways_bus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "297443633fbf2ca0bca6d69f6657ba0ea93cc52d5213ccf416d8f671a8ee9a43",
+      "label_file": "labels/test/image_0000003.txt",
+      "label_text": "10 0.5391459074733096 0.5626666666666666 0.7580071174377224 0.432\r\n"
+    },
+    {
+      "image_id": "124659",
+      "file": "images/test/image_0000004.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000124659.jpg",
+      "sha256": "b22d1dcef9e38af51c21a13438095e72102f2ce72f7c6f3a581b39b84fe9454f",
+      "label_file": "labels/test/image_0000004.txt",
+      "label_text": "8 0.2785703125 0.47958333333333336 0.036796875 0.04566666666666667\r\n1 0.148328125 0.51921875 0.13609374999999999 0.2289375\r\n1 0.20486718750000002 0.44973958333333336 0.093546875 0.18252083333333333\r\n1 0.9544140624999999 0.8340208333333333 0.091171875 0.261\r\n2 0.0890546875 0.27599999999999997 0.011453125 0.05720833333333333\r\n2 0.0811875 0.26927083333333335 0.01328125 0.07366666666666667\r\n2 0.095640625 0.37092708333333335 0.032218750000000004 0.05702083333333333\r\n2 0.1530859375 0.34028125000000004 0.008421874999999999 0.0460625\r\n2 0.1223359375 0.35322916666666665 0.018515625 0.05695833333333333\r\n2 0.1271484375 0.4320104166666667 0.013734374999999998 0.043854166666666666\r\n2 0.11839843750000001 0.2625625 0.016015625 0.05516666666666667\r\n2 0.1489140625 0.26106250000000003 0.007984375 0.04783333333333333\r\n2 0.26317187499999994 0.3675729166666667 0.04534375 0.0089375\r\n2 0.16807031249999999 0.3316666666666667 0.017390625 0.05216666666666667\r\n2 0.08946875 0.33296875 0.02034375 0.0196875\r\n2 0.262671875 0.39038541666666665 0.05059375000000001 0.010729166666666668\r\n2 0.264546875 0.37309375 0.0463125 0.008354166666666666\r\n"
+    },
+    {
+      "image_id": "43314",
+      "file": "images/test/image_0000005.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000043314.jpg",
+      "sha256": "360eceae3e66803c8e19bf9a45b9498f0d4f6153ae2d6f832cbbdaeb899e393f",
+      "label_file": "labels/test/image_0000005.txt",
+      "label_text": "0 0.5905900000000001 0.42335106382978727 0.05154 0.18622340425531914\r\n"
+    },
+    {
+      "image_id": "175364",
+      "file": "images/val/image_0000006.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000175364.jpg",
+      "sha256": "badb2570222f6900a65bfc9d39615216c683ce3c5d03afb85c692a3cf08f323c",
+      "label_file": "labels/val/image_0000006.txt",
+      "label_text": "3 0.4041530944625407 0.16317787418655097 0.024592833876221496 0.07511930585683298\r\n3 0.38912052117263846 0.2812255965292842 0.019706840390879478 0.057462039045553144\r\n4 0.08219055374592835 0.3005531453362256 0.025521172638436482 0.05182212581344903\r\n3 0.3852768729641694 0.1591214750542299 0.020749185667752443 0.09121475054229934\r\n4 0.7435912052117264 0.2878091106290673 0.031091205211726383 0.0368763557483731\r\n5 0.5686807817589576 0.4530368763557484 0.021563517915309447 0.049978308026030364\r\n7 0.9416938110749187 0.7293058568329719 0.07312703583061889 0.07071583514099783\r\n4 0.6984609120521172 0.18912147505422994 0.013403908794788274 0.0279175704989154\r\n4 0.7132084690553745 0.18681127982646423 0.017394136807817588 0.02945770065075922\r\n4 0.7374348534201954 0.1864533622559653 0.019136807817589578 0.026355748373101954\r\n4 0.7572964169381108 0.17892624728850326 0.009315960912052118 0.026355748373101954\r\n"
+    },
+    {
+      "image_id": "529568",
+      "file": "images/val/image_0000007.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000529568.jpg",
+      "sha256": "2c97efcc385141e55c77afcf239cf59639637e9155cacf5ac870c87d2a6de42e",
+      "label_file": "labels/val/image_0000007.txt",
+      "label_text": "4 0.16144791666666666 0.4641796875 0.0393125 0.030046875\r\n4 0.22610416666666666 0.4664765624999999 0.03654166666666667 0.025265625000000003\r\n4 0.15572916666666667 0.3703359375 0.033499999999999995 0.052359375\r\n7 0.1711875 0.7500078125 0.05683333333333333 0.026140625\r\n7 0.17402083333333335 0.736765625 0.05679166666666667 0.0135625\r\n7 0.1716458333333333 0.7270312499999999 0.055374999999999994 0.01803125\r\n2 0.8128645833333333 0.42170312499999996 0.017895833333333333 0.06846875\r\n4 0.19202083333333334 0.46485937499999996 0.03170833333333333 0.026718750000000003\r\n4 0.23130208333333335 0.38249999999999995 0.026229166666666668 0.04425\r\n7 0.061093749999999995 0.46966406250000003 0.0599375 0.015734375000000002\r\n7 0.061375 0.460546875 0.06108333333333334 0.0026875\r\n7 0.11239583333333332 0.4558984375 0.03558333333333333 0.010234375\r\n2 0.7908020833333332 0.423203125 0.025354166666666667 0.068125\r\n4 0.10683333333333334 0.46900781249999995 0.04054166666666667 0.018640625\r\n4 0.18020833333333333 0.4624453125 0.006583333333333333 0.015640625\r\n4 0.6441770833333333 0.4302031250000001 0.020104166666666666 0.02434375\r\n7 0.06257291666666667 0.44343750000000004 0.0623125 0.03215625\r\n2 0.7764270833333333 0.417671875 0.0490625 0.08128125\r\n2 0.8305625 0.42532812499999995 0.019166666666666665 0.06771875000000001\r\n"
+    },
+    {
+      "image_id": "249129",
+      "file": "images/val/image_0000008.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000249129.jpg",
+      "sha256": "ee3e96944723de59d8741e68c65e0395fec5841a03286563bf005f43a131a786",
+      "label_file": "labels/val/image_0000008.txt",
+      "label_text": "1 0.3890390625 0.7225058548009368 0.140171875 0.3028571428571428\r\n1 0.22185156250000002 0.6158196721311475 0.137515625 0.2997423887587822\r\n1 0.7348984375000001 0.3527634660421546 0.144671875 0.37377049180327865\r\n1 0.9212890625 0.7800117096018735 0.157421875 0.26953161592505853\r\n4 0.336984375 0.4835480093676815 0.0190625 0.041896955503512884\r\n1 0.5963125 0.6261241217798595 0.13828125 0.19796252927400468\r\n1 0.055570312499999996 0.44886416861826695 0.10635937499999999 0.1611943793911007\r\n8 0.9268046875 0.23378220140515224 0.019140625 0.052341920374707265\r\n"
+    },
+    {
+      "image_id": "335427",
+      "file": "images/val/image_0000009.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000335427.jpg",
+      "sha256": "ea30c8058f6f658dc75d14c252eb0ddaba2b2a796164756585d208b9669cb2fa",
+      "label_file": "labels/val/image_0000009.txt",
+      "label_text": "6 0.254828125 0.6247209821428571 0.36809375 0.7281026785714285\r\n5 0.19248437499999999 0.6523325892857142 0.37015625 0.6716741071428572\r\n7 0.675734375 0.40318080357142855 0.61778125 0.7848437500000001\r\n"
+    },
+    {
+      "image_id": "534639",
+      "file": "images/val/image_0000010.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000534639.jpg",
+      "sha256": "0e2722b6f071bb72c697fb7083b34f0097c355981e521df0d019413cc7dfffe7",
+      "label_file": "labels/val/image_0000010.txt",
+      "label_text": "11 0.9700312499999999 0.39068421052631574 0.01021875 0.039599999999999996\r\n11 0.8723125000000002 0.22734736842105266 0.03384375 0.07772631578947369\r\n"
+    },
+    {
+      "image_id": "121506",
+      "file": "images/val/image_0000011.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000121506.jpg",
+      "sha256": "c343589eeba3701c2e6bc2b7f7f6c65eaaf9b2d998fd0402b90d82bdc69a0325",
+      "label_file": "labels/val/image_0000011.txt",
+      "label_text": "9 0.5494362745098039 0.25886437908496734 0.7932516339869281 0.32135620915032675\r\n1 0.7707271241830066 0.8706372549019606 0.24354575163398695 0.18584967320261436\r\n1 0.18005718954248368 0.8409722222222221 0.2979248366013072 0.20465686274509803\r\n"
+    },
+    {
+      "image_id": "566758",
+      "file": "images/val/image_0000012.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000566758.jpg",
+      "sha256": "c2548168a658da18c7f19980f8ca53d2564b6378e33d010f3697b808b09e96e3",
+      "label_file": "labels/val/image_0000012.txt",
+      "label_text": "10 0.4366562500000001 0.4774791666666667 0.77534375 0.51125\r\n"
+    },
+    {
+      "image_id": "490515",
+      "file": "images/val/image_0000013.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000490515.jpg",
+      "sha256": "a6654419cd09f606a15c6120ba95f9976d364841d8499048b98675c27149b6d4",
+      "label_file": "labels/val/image_0000013.txt",
+      "label_text": "0 0.38917968750000004 0.42605386416861823 0.074984375 0.17187353629976582\r\n"
+    },
+    {
+      "image_id": "554291",
+      "file": "images/train/image_0000014.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000554291.jpg",
+      "sha256": "87cfe902780e460e352a5de8b0ced6a8372dc7317aba136279edf3ff4e0527dc",
+      "label_file": "labels/train/image_0000014.txt",
+      "label_text": "7 0.546609375 0.5313434579439252 0.507625 0.8082943925233644\r\n7 0.243953125 0.23839953271028036 0.1588125 0.12820093457943924\r\n1 0.8536171875 0.3169275700934579 0.29276562500000003 0.48184579439252334\r\n"
+    },
+    {
+      "image_id": "352900",
+      "file": "images/train/image_0000015.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000352900.jpg",
+      "sha256": "9a1477fd6e460794bff330599c0417377e8622f01ef006c9c0b2bd01883a2a05",
+      "label_file": "labels/train/image_0000015.txt",
+      "label_text": "6 0.035234375 0.15637002341920372 0.07046875 0.14548009367681497\r\n7 0.5015000000000001 0.5342622950819672 0.9970000000000001 0.9146135831381733\r\n"
+    },
+    {
+      "image_id": "551780",
+      "file": "images/train/image_0000016.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000551780.jpg",
+      "sha256": "3d4490937783d48c381caf35e9901cb099ef4bf5a9d1bbd36db9b11ab7ebcb5e",
+      "label_file": "labels/train/image_0000016.txt",
+      "label_text": "8 0.5316328125 0.47851041666666666 0.312546875 0.7108958333333334\r\n5 0.11819531250000001 0.30690625 0.074828125 0.18797916666666667\r\n"
+    },
+    {
+      "image_id": "456292",
+      "file": "images/train/image_0000017.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000456292.jpg",
+      "sha256": "7e17a306f9e0c9422166a5adc9ee6a91412a37303b1d674f5e16cd7e83965fe6",
+      "label_file": "labels/train/image_0000017.txt",
+      "label_text": "3 0.8448958333333334 0.8692890625 0.09629166666666666 0.168421875\r\n"
+    },
+    {
+      "image_id": "8762",
+      "file": "images/train/image_0000018.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000008762.jpg",
+      "sha256": "8b8aa2412ac3502dbb4b8a7d7987359d4049cf70e7177748e907e3ddfa3211ce",
+      "label_file": "labels/train/image_0000018.txt",
+      "label_text": "11 0.107328125 0.27240046838407495 0.033187499999999995 0.1436768149882904\r\n11 0.27296875000000004 0.29394613583138174 0.03609375 0.09065573770491804\r\n11 0.7984453125 0.553384074941452 0.021640625 0.026627634660421545\r\n11 0.7893828125 0.46692037470725994 0.031421875 0.09819672131147542\r\n11 0.7650546874999999 0.5562529274004684 0.014515624999999999 0.038969555035128806\r\n"
+    },
+    {
+      "image_id": "458410",
+      "file": "images/train/image_0000019.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000458410.jpg",
+      "sha256": "4f9c9a1750bfad88dfa0b6c882234cb3b4e63e4f8cba661209b65488cdf4f343",
+      "label_file": "labels/train/image_0000019.txt",
+      "label_text": "2 0.0318359375 0.5459999999999999 0.059828124999999996 0.010375\r\n2 0.013132812500000002 0.5606770833333333 0.019515625 0.015729166666666666\r\n2 0.0710234375 0.5068020833333333 0.038546875 0.0080625\r\n2 0.10965624999999998 0.5068125 0.04328125 0.029208333333333333\r\n2 0.01715625 0.5064166666666666 0.033375 0.036375000000000005\r\n2 0.0704296875 0.53271875 0.08442187500000001 0.025812500000000002\r\n2 0.049109375 0.49507291666666664 0.01103125 0.0201875\r\n"
+    },
+    {
+      "image_id": "286553",
+      "file": "images/train/image_0000020.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000286553.jpg",
+      "sha256": "f37863b16e8789da5ed5f768a16f651883ac31cdcd8a965d1795e0d5456b2314",
+      "label_file": "labels/train/image_0000020.txt",
+      "label_text": "3 0.06214062499999999 0.8951041666666667 0.090875 0.20958333333333332\r\n3 0.01490625 0.89909375 0.0298125 0.2018125\r\n9 0.046656249999999996 0.40199999999999997 0.0565625 0.21866666666666665\r\n9 0.0821484375 0.41190625000000003 0.05795312500000001 0.2151875\r\n1 0.7205703125 0.9113229166666666 0.099203125 0.15022916666666666\r\n1 0.0556171875 0.6791458333333333 0.062421875 0.23466666666666666\r\n4 0.4145546875 0.7435833333333333 0.047203125 0.11595833333333333\r\n6 0.305765625 0.8386666666666667 0.12875 0.09874999999999999\r\n6 0.44535937499999995 0.8212395833333334 0.1676875 0.02814583333333333\r\n4 0.014218749999999999 0.90859375 0.026250000000000002 0.18189583333333334\r\n4 0.350859375 0.9665729166666668 0.10628125 0.06685416666666667\r\n"
+    },
+    {
+      "image_id": "365655",
+      "file": "images/train/image_0000021.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000365655.jpg",
+      "sha256": "66762bdbb86e5f1aa51134a1ea4e02c9c70f0e9c3bcb6beae6d25c97e2adb4c9",
+      "label_file": "labels/train/image_0000021.txt",
+      "label_text": "10 0.3921953125 0.5608196721311476 0.643140625 0.36711943793911006\r\n"
+    },
+    {
+      "image_id": "326128",
+      "file": "images/train/image_0000022.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000326128.jpg",
+      "sha256": "16fc08c185eeec30bf11d3c0944157279885f938838159e13773e4cfde879618",
+      "label_file": "labels/train/image_0000022.txt",
+      "label_text": "0 0.6866770833333333 0.525375 0.25327083333333333 0.27868750000000003\r\n"
+    },
+    {
+      "image_id": "213224",
+      "file": "images/train/image_0000023.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000213224.jpg",
+      "sha256": "479bfbfb0a42c3b23769dc10bfa7227e0b592f964a576e3461fb085e53ea2d33",
+      "label_file": "labels/train/image_0000023.txt",
+      "label_text": "1 0.05418032786885246 0.6327578125 0.10836065573770493 0.104296875\r\n1 0.9523770491803277 0.6311249999999999 0.09524590163934427 0.17096875\r\n1 0.0585480093676815 0.6984375 0.117096018735363 0.046875\r\n"
+    },
+    {
+      "image_id": "167353",
+      "file": "images/train/image_0000024.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000167353.jpg",
+      "sha256": "8e6737773e7548e3fc299c7dc5e255b5997c0b05e08423f016b277719e8232a0",
+      "label_file": "labels/train/image_0000024.txt",
+      "label_text": "8 0.3286979166666667 0.52940625 0.6573958333333334 0.9411875000000001\r\n"
+    },
+    {
+      "image_id": "578500",
+      "file": "images/train/image_0000025.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000578500.jpg",
+      "sha256": "7b0c55d345757ae8431fde2b2900ba6d49f27bbf50e19033564555ce5588fd75",
+      "label_file": "labels/train/image_0000025.txt",
+      "label_text": "1 0.3382421875 0.546051724137931 0.038859375 0.12741379310344828\r\n1 0.2668203125 0.5634310344827586 0.041421875000000004 0.18948275862068967\r\n1 0.2125 0.5662413793103449 0.059187500000000004 0.19551724137931034\r\n1 0.3116953125 0.5561379310344827 0.022171875 0.16158620689655173\r\n1 0.889609375 0.6993275862068966 0.22078125 0.6013448275862069\r\n"
+    },
+    {
+      "image_id": "99053",
+      "file": "images/train/image_0000026.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000099053.jpg",
+      "sha256": "a4e8405077a8f93115116f548e7d59b29a092a6ac2f749732a525e7b82c2f35a",
+      "label_file": "labels/train/image_0000026.txt",
+      "label_text": "6 0.8155703125 0.27192307692307693 0.368859375 0.5438461538461539\r\n7 0.51621875 0.5599910554561717 0.91465625 0.8292128801431127\r\n"
+    },
+    {
+      "image_id": "191761",
+      "file": "images/train/image_0000027.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000191761.jpg",
+      "sha256": "26c0697f27e653a634840879f24189a8326ffaf72da758b2a9b8cf5271c2fd34",
+      "label_file": "labels/train/image_0000027.txt",
+      "label_text": "7 0.54298 0.4775333333333333 0.91404 0.8067466666666666\r\n"
+    },
+    {
+      "image_id": "369771",
+      "file": "images/train/image_0000028.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000369771.jpg",
+      "sha256": "8ed9962ca66e9a4d548d512729653ca38de8cba46bed1a37be61b65736d90ce0",
+      "label_file": "labels/train/image_0000028.txt",
+      "label_text": "6 0.2662890625 0.42209375000000005 0.532578125 0.1528125\r\n7 0.2806171875 0.5546875 0.554484375 0.8719166666666667\r\n7 0.7698046875 0.38052083333333336 0.46039062499999994 0.74025\r\n"
+    },
+    {
+      "image_id": "544565",
+      "file": "images/train/image_0000029.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000544565.jpg",
+      "sha256": "2ac6b4e9e1b53277db20fab701366dbfa6271d5f0749fade0c3b8cf115d085bf",
+      "label_file": "labels/train/image_0000029.txt",
+      "label_text": "5 0.033125 0.5394765625 0.064875 0.055265625\r\n"
+    },
+    {
+      "image_id": "105014",
+      "file": "images/train/image_0000030.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000105014.jpg",
+      "sha256": "f35e364bb8237ad5609f4e3a11220996b8417bd5241216aae82510f8ea368c14",
+      "label_file": "labels/train/image_0000030.txt",
+      "label_text": "6 0.6732552693208431 0.8353125 0.3352693208430913 0.32937500000000003\r\n7 0.4311241217798595 0.4146015625 0.7275409836065574 0.635953125\r\n"
+    },
+    {
+      "image_id": "233139",
+      "file": "images/train/image_0000031.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000233139.jpg",
+      "sha256": "b01f830541abca2fc5ff1227f8d622c7a9b2856a6232b422ca9aff09f493ec89",
+      "label_file": "labels/train/image_0000031.txt",
+      "label_text": "8 0.21840625 0.6089695550351287 0.27525 0.4125526932084309\r\n8 0.917390625 0.635632318501171 0.16221875 0.3143091334894614\r\n"
+    },
+    {
+      "image_id": "186624",
+      "file": "images/train/image_0000032.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000186624.jpg",
+      "sha256": "b041e6c1451614e6a7a117291e6519729d38e292cf448cfbe5dab313f3aaa587",
+      "label_file": "labels/train/image_0000032.txt",
+      "label_text": "0 0.14154687500000002 0.5904701627486437 0.03609375 0.05294755877034358\r\n"
+    },
+    {
+      "image_id": "30504",
+      "file": "images/train/image_0000033.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000030504.jpg",
+      "sha256": "6a07fb2882010ba47140c43ffd7cd4a51331f197666ea9837b43bc077e88f552",
+      "label_file": "labels/train/image_0000033.txt",
+      "label_text": "0 0.7201770833333333 0.3206328125 0.20372916666666668 0.204640625\r\n"
+    },
+    {
+      "image_id": "345356",
+      "file": "images/train/image_0000034.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000345356.jpg",
+      "sha256": "6747504c0e3c993e6bf493a19bbd343e65685b2bfcd656302f1d5ab828c2a109",
+      "label_file": "labels/train/image_0000034.txt",
+      "label_text": "3 0.19629687499999998 0.45237499999999997 0.02071875 0.09429166666666666\r\n4 0.56971875 0.8989270833333334 0.1105 0.20214583333333333\r\n4 0.43025781249999995 0.5925833333333334 0.050265625 0.06170833333333334\r\n5 0.037390625000000004 0.9730833333333334 0.07475000000000001 0.05383333333333333\r\n4 0.3950546875 0.6102187499999999 0.035171875000000005 0.02822916666666667\r\n4 0.6592578125 0.5769791666666666 0.033453125 0.05425\r\n"
+    },
+    {
+      "image_id": "455597",
+      "file": "images/train/image_0000035.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000455597.jpg",
+      "sha256": "80bcfb867bb4a1b510ac914ee5a64703f410da01b05435d14bcf21be0ab0d74e",
+      "label_file": "labels/train/image_0000035.txt",
+      "label_text": "3 0.7492265625 0.4115807174887892 0.042171875 0.10746636771300448\r\n3 0.8555234374999999 0.4186547085201794 0.049609375 0.10955156950672645\r\n7 0.306078125 0.3810089686098655 0.0433125 0.022690582959641253\r\n7 0.47397656250000003 0.38213004484304935 0.032328125 0.010941704035874439\r\n7 0.34718750000000004 0.34378923766816144 0.0366875 0.007533632286995515\r\n7 0.30915624999999997 0.3419618834080717 0.038906249999999996 0.015179372197309415\r\n7 0.3049921875 0.35597533632287 0.043796875 0.027152466367713003\r\n4 0.2765859375 0.37246636771300445 0.016609375000000003 0.026412556053811657\r\n5 0.7167109375 0.6127017937219731 0.046390625000000005 0.04908071748878924\r\n4 0.88634375 0.40915919282511215 0.032125 0.1155829596412556\r\n5 0.724359375 0.5984080717488789 0.0868125 0.07982062780269059\r\n"
+    },
+    {
+      "image_id": "301718",
+      "file": "images/train/image_0000036.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000301718.jpg",
+      "sha256": "54a5a90b270b5ae95672c8ed2947867efabe7acf977d89c985cd1e909a58b1be",
+      "label_file": "labels/train/image_0000036.txt",
+      "label_text": "3 0.38234375000000004 0.4680703125 0.1234375 0.279765625\r\n3 0.10498958333333333 0.5035625 0.09877083333333332 0.1696875\r\n4 0.06591666666666667 0.613921875 0.11983333333333333 0.294375\r\n6 0.7580729166666667 0.47302343750000003 0.06702083333333334 0.041421875000000004\r\n7 0.23725 0.535328125 0.176375 0.07065625\r\n6 0.15266666666666667 0.394578125 0.122125 0.07828125\r\n"
+    },
+    {
+      "image_id": "142620",
+      "file": "images/train/image_0000037.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000142620.jpg",
+      "sha256": "0f3dd713a8c98734879b3108ac6a160877b031831048330a0fc09cedfdf1dd80",
+      "label_file": "labels/train/image_0000037.txt",
+      "label_text": "3 0.20228125000000002 0.6094483568075117 0.058875 0.26255868544600935\r\n1 0.39353125 0.4380633802816902 0.29234375 0.3873943661971831\r\n1 0.893390625 0.6229107981220657 0.21321875 0.7123474178403756\r\n4 0.40197656249999997 0.7344718309859155 0.068984375 0.09392018779342723\r\n4 0.296015625 0.943450704225352 0.077625 0.11309859154929577\r\n4 0.3959453125 0.9454342723004695 0.074015625 0.10913145539906104\r\n5 0.32959375 0.7502230046948357 0.06215625 0.027769953051643193\r\n7 0.203234375 0.880387323943662 0.09440625 0.11406103286384978\r\n7 0.4754609375 0.8183215962441315 0.157890625 0.12762910798122065\r\n3 0.1548125 0.7526291079812206 0.07775 0.18605633802816904\r\n5 0.227734375 0.8329460093896713 0.1086875 0.10481220657276995\r\n"
+    },
+    {
+      "image_id": "366884",
+      "file": "images/train/image_0000038.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000366884.jpg",
+      "sha256": "7d41c97dc524e33c5005651a44c75e6629d9f7b05b48b9b430b76db77765e0a8",
+      "label_file": "labels/train/image_0000038.txt",
+      "label_text": "1 0.679109375 0.47554166666666664 0.08496875000000001 0.16404166666666667\r\n2 0.08526562499999998 0.20400000000000001 0.06825 0.10066666666666667\r\n2 0.016492187499999998 0.5202291666666666 0.032984374999999996 0.06699999999999999\r\n2 0.0199140625 0.35046875000000005 0.039796874999999995 0.020520833333333332\r\n2 0.46153125 0.4164791666666667 0.0325 0.03308333333333333\r\n2 0.6075234375 0.4369375 0.020703125 0.006500000000000001\r\n2 0.031109375 0.21698958333333335 0.0405625 0.0680625\r\n2 0.018046874999999997 0.3713020833333333 0.03471875 0.020479166666666666\r\n"
+    },
+    {
+      "image_id": "393226",
+      "file": "images/test/image_0000039.jpg",
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000393226.jpg",
+      "sha256": "7cfb2fecb604d1f7e5429ab118ecda7fe84c296067ce8038a89e7ea8af836a0f",
+      "label_file": "labels/test/image_0000039.txt",
+      "label_text": "11 0.76678125 0.27409374999999997 0.014124999999999999 0.03247916666666666\r\n11 0.9263203125 0.25034375 0.020171875 0.045187500000000005\r\n11 0.7971406249999999 0.37147916666666664 0.00984375 0.0205\r\n11 0.7075312500000001 0.35475 0.01125 0.028958333333333332\r\n11 0.780515625 0.3704791666666667 0.013625000000000002 0.019874999999999997\r\n11 0.6842265625 0.3750625 0.017359375 0.020958333333333336\r\n"
+    }
+  ]
+}

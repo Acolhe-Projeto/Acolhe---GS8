@@ -1,3 +1,7 @@
+> **Checks finais:104 testes Python e14 testes Node passaram; sintaxe JS e git diff --check conferidos. Evidência em docs/evidencias/validacao-final.json.**
+
+> **Atualização de fechamento:** este documento preserva o planejamento e os registros iniciais. O estado atual e a rubrica oficial estão em docs/ENTREGA_CHECKLIST.md; resultados finais estão em docs/entregas/GENAI_RELATORIO.md e VISION_RELATORIO.md. GenAI final é Qwen2.5 3B com comparação real dev20/holdoutC12 em GPU; Vision treinou20 épocas em CPU sobre40 fotos aprovadas e tem PDF final. Referências abaixo a1.5B, rubrica ausente ou treino pendente são históricas e foram superadas. Revisão humana, vídeos e Teams permanecem pendentes.
+
 # Validação da branch GenAI/Vision — 16/11/2026
 
 Repositório `Acolhe-Projeto/Acolhe---GS8`, base `4a2d00f34c3eb570c90cc7b56822eea5f028fc3b`, branch `feat/genai-vision`. As mudanças se concentram em GenAI, Vision, integração HTTP/PWA, seus testes e documentação. Os outros módulos foram lidos para o mapa e exercitados pela suíte de regressão.

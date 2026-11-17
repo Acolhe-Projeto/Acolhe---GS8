@@ -1,7 +1,7 @@
 {
-  "base_commit": "4a2d00f34c3eb570c90cc7b56822eea5f028fc3b",
+  "base_commit": "a988d73f6a7e51731efb8c1d5a2da8cae2359af1",
   "worktree_snapshot": true,
-  "code_files": 71,
+  "code_files": 103,
   "code_source_hashes": {
     ".github/workflows/devsecops.yml": "b3561ed889f5fc1d5fc68c79d1d2f00738cc302f89a0a7150456960f0f084b5a",
     ".github/workflows/evaluate-python-bases.yml": "66d804bd1e78f5f486aca6e7eeb9c06f0faf79c1ef82a421f3ae591240f6a71b",
@@ -31,27 +31,50 @@
     "devsecops/semgrep.yml": "01dc5e35e0e3f59a56c8cf8d2ec22caa9cd783ef46727c2a0dff054f6a6c28e7",
     "devsecops/terraform/main.tf": "a720bfdc5a3f1641be7e3132dad7af776391d9f3e276273d93199653d993462f",
     "docs/build_pdf.py": "116f63997bf7e80a417c1129bef06d0d4b479943fb254af0fa89c98c00158c69",
+    "docs/entregas/build_vision_pdf.py": "6e9d9fc37458c3f519d982cf30d2f1b5106b83053c0de221165aae39c4bbe2aa",
     "docs/evidencias/documentacao-qa-20261107.json": "3cac41440601c7e2790a4a035a48e291897844cf8edfd374d6c43ec2f9aeff95",
     "docs/evidencias/genai-vision-20261116.json": "964f4f5c74c33c224a5fc23ccd68a6b6d2793e1f8eaf556b34d7b716c866b419",
+    "docs/evidencias/hardware-rx6750xt-20261116.json": "9b75853952bca81da99740c417297238918ec795dcb8f7b38076b276dcb04553",
+    "docs/evidencias/qwen3b-gpu-runtime-20261116.json": "ab7acb967557e352f4111d8d28310611d36b96b7278b0438cc14c0166c5853c3",
     "docs/evidencias/revisao-sessao-copy-20261107T165112Z.json": "609d165b018ec4abcc6bfb056aab2f9bb2126c2f3013a9a7163f4ff0b3d57bf6",
+    "docs/evidencias/validacao-final.json": "60f9b36310e64d6b5d6fa5c0aff74a6e75cdd5ac077d24ed63037f410191947d",
     "docs/evidencias/verificacao-20261107T133614Z.json": "2fa74f4d585c8000cb5a02b6c859368660361d5251ce717501ad47d5d87d8280",
     "genai/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "genai/compare.py": "ed9c314ff2a2c1842893b12d8b78d13caa658cb0a5edf27ff0c418995bba7a26",
-    "genai/data/corpus.json": "701e419cd660c82ec99f412e1e38ec4d5d6d98c78f08a9658aff48545bab80f2",
+    "genai/avaliacao/limiar.json": "111cf563fdbc58aad91ae09645ab25f3eda270c14703b6d01a946f4ccf991779",
+    "genai/avaliacao/qwen3b-dev20-final.json": "d437a0b4728fd6e7bb3899d1264594d64714eecfba171f3e10bff535e72ef610",
+    "genai/avaliacao/qwen3b-independent12-final.json": "3d2e9c8881c33160c9ac2f30272e01dd262d8a1877e0096d301f65b9c25654eb",
+    "genai/avaliacao/qwen3b-v3-dev20.json": "97a4284959f396ead261a4ea335c88100dd64278c77f0bdcfda035d7bf8b41f6",
+    "genai/avaliacao/qwen3b-v3-holdout12.json": "0e7ae36d7b1af6c70afe981994c15fa90bcd0387d8d5c469b3b219dc1c224b9c",
+    "genai/avaliacao/qwen3b-v4-dev20.json": "c1baca1a97d4287c44bdad49dc071dd44556559ba7c04d5bbd8e2d8f29f2a6f0",
+    "genai/avaliacao/qwen3b-v4-gpu-dev20.json": "d25f67bd5364134d07a4e036d55714074d9d8bee02cd171ed3852a8fd5f7edc0",
+    "genai/avaliacao/qwen3b-v4-gpu-holdout12.json": "04d243bd81f3403f180594cb1e02444a13d896c26bd9db71c020767bc73b4ad3",
+    "genai/avaliacao/qwen3b-v4-holdout12.json": "eb61a1d38097793a9879af8b810384271c07c25ad1aff9ac25bf92c4daa6b957",
+    "genai/avaliacao/retrieval-v1-historico.json": "5429966c33634509d098dd0c8bda747c3b37892e4f5da68f3906f26e78bda79c",
+    "genai/avaliacao/revisao_tecnica_v4.json": "4c9c689ece9f0b1dabf0a961efb81826ba1b6417b59e2c2046cea2bc580da72f",
+    "genai/avaliacao/teste_dev.json": "99100e6ab71ca2178099ddff6d0b61c9a91e2f0489b598a73eccd04ec56ab671",
+    "genai/avaliacao/teste_independente.json": "65f8be48e6fb6ee487455638e2bebd82476cdfa93c7d31dfbc0954a532ae5eeb",
+    "genai/avaliacao/teste_independente_B.json": "77f80e9dfba19b312a5ec1b22e46bbe6d2410fc9ff6ee31969f9123a8332f116",
+    "genai/avaliacao/teste_independente_C.json": "0ca94feada4daa0c71b020adff5dc7bb3be31eb493d94ea1db472891bbb57f2f",
+    "genai/base/corpus.json": "6b4e5c617d41577d9d8ba6958f331a5d8a444346a0de803184760bc21f3bb092",
+    "genai/base/manifest.json": "c4ec9efaa369cb02c8444935623f431e1ac594d884784bf918f007d01e2e1389",
+    "genai/compare.py": "d0936c63257cd88d441870a84c7ba023a0da9523830d2b1afa6dc00d2b9ce515",
+    "genai/data/corpus.json": "6b4e5c617d41577d9d8ba6958f331a5d8a444346a0de803184760bc21f3bb092",
     "genai/evaluate.py": "5cc91f7e7c0971434c5e3359280fabd2e249dbecc6a88664111fe237d13b978d",
     "genai/execute_notebook.py": "3a8327a6eec4c2f84e7022e0d23bed627619b67378f7082846d9f61420da4ca2",
-    "genai/experiment.py": "a6402f37b94ae7089595e17d196fe5d62678f6eb962226383b704937ed756cc2",
-    "genai/local.py": "66b9ca128a5b1a7ffb985c820c6eb027950cbc9b503d9c5f6db6b364dbce69b7",
+    "genai/experiment.py": "09b248eceba68c503795441416a34ae72d7e6b2b8aad253c54bc5aeb60b97258",
+    "genai/local.py": "df6be92b4bd4ed5e73a17d3d36d14fafd9328f787ca7b7338da29cc1cc6a7b95",
+    "genai/reports/probes-chat-v2-20261116.json": "09306ba2ecf66d5217e007b12fc31e39e0590bcf4fbc336e27eccfd50322457d",
+    "genai/reports/probes-chat-v2-qwen3b-20261116.json": "39b37688b442ca93213565a455b81daed9e34d3f706c097dc50b1ac796f391f4",
     "genai/reports/qwen05b-cpu-20261116.json": "925d142634545137a575f538048f729f0e42301b54258e4017cacae8a0083735",
     "genai/reports/qwen05b-cpu-structured-20261116.json": "7f9231367c3d8126117d3fdc6beeb6a790b13c2e4aaf3475933305b5d87a859d",
     "genai/reports/qwen15b-cpu-subset4-20261116.json": "db0b04624848246d888b1eaa0e068e10f8828f483679b84e0cb1c89936bae327",
-    "genai/reports/retrieval.json": "5429966c33634509d098dd0c8bda747c3b37892e4f5da68f3906f26e78bda79c",
+    "genai/reports/retrieval.json": "7bb0b92381648d132079e36360473519f59b482996b5a6ce15e5943f06bf87b4",
     "genai/reports/service-smoke-20261116.json": "f209994019ea4818ed4a04c90bbe3d932d1cf4fa022eeff77aae5c4ca7d48e4b",
     "genai/reports/service-smoke15b-20261116.json": "d7cb19d4a3f3b6de589e5494735f475a4ab6055e4670bfad1da3b89bf53169c9",
-    "genai/service.py": "8bd8cc296b8bb703c4a02c3797fa20940acfb685e1875a54ade006822c27073b",
+    "genai/service.py": "6f0c95e5be0330ff7fbda853f57d84e9e434b031866d14a901148211092a5fae",
     "genai/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "genai/tests/test_experiment.py": "ae592034b1b2a61c97f4b5082f94e1280fd088e1f9fe7b2ef98b30a5e215d8b6",
-    "genai/tests/test_service.py": "f01f63786f97d7f824bb79afc0ecbf91d6aeaca94b51db0485612a03a550fa38",
+    "genai/tests/test_experiment.py": "278d6ea0b8532f1f9b580eaa3b5f758addb68caae8d48b947d63a90c3c6aad23",
+    "genai/tests/test_service.py": "428623c33efc4ad1232b42a86e7cf592b069fbb420ed420ae4a57aa2e68e8892",
     "robot/__init__.py": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
     "robot/service.py": "2fba8979aef95c93d11d1e4f747e09814912686c1bf60fdc9ffef64541fdbef0",
     "robot/simulator.py": "27ce025171c8473e3269c192f5a42790b097141b03b2c04a98b64951c19a6d39",
@@ -68,31 +91,65 @@
     "vision/data/dataset.example.yaml": "1128a78f43feb2c53d34db4c98652b8a519c78b21ff773ebf3abdc3c23b99677",
     "vision/data/provenance.example.json": "c8de387611be70de40a38e8b229611767e033d60753a7169977fda227c78688c",
     "vision/prepare.py": "17b686c4c53758e6c6d09a0f88681dada01ff2b6525c0cf4a8f70b177c7fc61c",
+    "vision/public_review.py": "afd487fc8cf7c1398323d9bf70d0fe97ee8954bcdd1d42c7ba2b1cd80ecab185",
+    "vision/replace_review_bus.py": "4487eef530379bc974905943689cd1a2a4151b78fae68ebf80752873eea10025",
+    "vision/reports/error_analysis.json": "284013674d12ae51505150646f417d656eaa96ea9f8572480e3987e547e12cd7",
+    "vision/reports/inference-http-20261116.json": "6fefc36c479cb6d4cf0f915adeed9b7bb24e5fe85ab184dc6f2f05ae5d870494",
+    "vision/reports/reproduction.json": "f565b4535434a2addf05fe97be678ffa6ef188609b396cb1a3aa86fdc660c590",
+    "vision/reports/training-20261116.json": "bab88235766fae3e69017ef4d1bddbf1be53ea39efe684b44d2101ad36da73c7",
+    "vision/reproduce.py": "4fc4063ddcad9c3ca92eb9348a99d24e1f60549c3aa24c75f619b74d72e52014",
     "vision/service.py": "dc3c63c090d3a32905b5771a667117706c0b44d263d87c6c6e2735663cef8226",
     "vision/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "vision/tests/test_dataset.py": "5ede96f459f659373c42600e2d45dc7c5a8e4c2dd87b4db0ed4db18677520d20",
     "vision/tests/test_guards.py": "ddb2ef5c2f52834c1e11458650ba5bf0593ad2073813f78593925326c1255721",
-    "vision/tests/test_service.py": "9a0fd7449134fbd523ab993fed1f2637942e554593a2f452381d043a128c2547",
+    "vision/tests/test_public_review.py": "ff83f44230d061adb123a90db0b58daafd05bec3816d601298026c055fb83755",
+    "vision/tests/test_reproduce.py": "352d3e71aa6d0f6caddf594762e3079db0e72ba5a48c32e68ee0f63096ecaf50",
+    "vision/tests/test_service.py": "8a73f520febb778ce9707aa9d52e080f031b82a6ac29ff74051ef51973c5edf1",
     "vision/train.py": "b4a91d2c3270b9daec3b499241c823dccab89c41bd8c19c8cf41ef00e51453b4"
   },
-  "ast_nodes": 461,
-  "ast_edges": 1035,
+  "ast_nodes": 526,
+  "ast_edges": 1258,
   "unmodeled_code": [
     "app/static/lessons.json",
     "big_data/output/summary.json",
     "devsecops/monitoring/grafana-dashboard.json",
     "docs/evidencias/documentacao-qa-20261107.json",
     "docs/evidencias/genai-vision-20261116.json",
+    "docs/evidencias/hardware-rx6750xt-20261116.json",
+    "docs/evidencias/qwen3b-gpu-runtime-20261116.json",
     "docs/evidencias/revisao-sessao-copy-20261107T165112Z.json",
+    "docs/evidencias/validacao-final.json",
     "docs/evidencias/verificacao-20261107T133614Z.json",
+    "genai/avaliacao/limiar.json",
+    "genai/avaliacao/qwen3b-dev20-final.json",
+    "genai/avaliacao/qwen3b-independent12-final.json",
+    "genai/avaliacao/qwen3b-v3-dev20.json",
+    "genai/avaliacao/qwen3b-v3-holdout12.json",
+    "genai/avaliacao/qwen3b-v4-dev20.json",
+    "genai/avaliacao/qwen3b-v4-gpu-dev20.json",
+    "genai/avaliacao/qwen3b-v4-gpu-holdout12.json",
+    "genai/avaliacao/qwen3b-v4-holdout12.json",
+    "genai/avaliacao/retrieval-v1-historico.json",
+    "genai/avaliacao/revisao_tecnica_v4.json",
+    "genai/avaliacao/teste_dev.json",
+    "genai/avaliacao/teste_independente.json",
+    "genai/avaliacao/teste_independente_B.json",
+    "genai/avaliacao/teste_independente_C.json",
+    "genai/base/corpus.json",
     "genai/data/corpus.json",
+    "genai/reports/probes-chat-v2-20261116.json",
+    "genai/reports/probes-chat-v2-qwen3b-20261116.json",
     "genai/reports/qwen05b-cpu-20261116.json",
     "genai/reports/qwen05b-cpu-structured-20261116.json",
     "genai/reports/qwen15b-cpu-subset4-20261116.json",
     "genai/reports/retrieval.json",
     "genai/reports/service-smoke-20261116.json",
     "genai/reports/service-smoke15b-20261116.json",
-    "vision/data/provenance.example.json"
+    "vision/data/provenance.example.json",
+    "vision/reports/error_analysis.json",
+    "vision/reports/inference-http-20261116.json",
+    "vision/reports/reproduction.json",
+    "vision/reports/training-20261116.json"
   ],
   "reviewed_semantic_sources": [
     ".dockerignore",
@@ -118,17 +175,19 @@
     "devsecops/README.md",
     "devsecops/terraform/.gitignore",
     "devsecops/terraform/terraform.tfvars.example",
+    "docs/ENTREGA_CHECKLIST.md",
     "docs/PRD_GENAI_VISION.md",
     "docs/README.md",
     "docs/VALIDACAO_GENAI_VISION.md",
+    "docs/entregas/GENAI_RELATORIO.md",
+    "docs/entregas/ROTEIRO_VIDEOS.md",
     "docs/manual_acolhe.md",
     "docs/manual_acolhe.pdf",
     "docs/registro_testes.md",
     "docs/roteiros_videos.md",
     "genai/PLAN.md",
     "genai/README.md",
-    "genai/notebooks/01_retrieval.ipynb",
-    "genai/notebooks/02_local_llm.ipynb",
+    "genai/base/README.md",
     "genai/reports/error_analysis.md",
     "genai/reports/llm_error_analysis.md",
     "genai/reports/qwen05b-cpu-20261116.json",
@@ -148,15 +207,18 @@
     "vision/requirements-data.txt",
     "vision/requirements.txt"
   ],
-  "stale_semantic_sources": [],
+  "stale_semantic_sources": [
+    "genai/notebooks/01_retrieval.ipynb",
+    "genai/notebooks/02_local_llm.ipynb"
+  ],
   "structural_sources": {
     "IMPLEMENTATION_PLAN.md": {
       "lines": 12,
       "sha256": "1e1584be981066c60cece8e3054d219657c0a7491e3f48780506f427b71ed135"
     },
     "README.md": {
-      "lines": 243,
-      "sha256": "ceea955429572e89479c88c22418718dc7a2ab5018137e6c3a9e8704d2add40c"
+      "lines": 245,
+      "sha256": "dca71b72b4af8117e47e4b3bca759f4323231dc02af19a5a919fcc77ef9dad96"
     },
     "app/static/index.html": {
       "lines": 12,
@@ -186,17 +248,33 @@
       "lines": 57,
       "sha256": "d8df0b06d0a515c5b12e553baab0ec8ab1d495724d962a0165419bc6d3963faa"
     },
+    "docs/ENTREGA_CHECKLIST.md": {
+      "lines": 158,
+      "sha256": "05db84c6cc9708d334870d6548c34de53305e7488d86f95eb42a221d067440da"
+    },
     "docs/PRD_GENAI_VISION.md": {
-      "lines": 112,
-      "sha256": "810a1115e9b676eb325289fcbf2e7d8018f15933624e80fb332b7e5ecd995d16"
+      "lines": 114,
+      "sha256": "68a3f3841aa868780613e0874b5cb7a9becd80d23d4742ba32da430cc349d065"
     },
     "docs/README.md": {
       "lines": 34,
       "sha256": "01daa07f9d2906e428f49f074c88dc3b196942437156a947a0cdacf89ebaded3"
     },
     "docs/VALIDACAO_GENAI_VISION.md": {
-      "lines": 91,
-      "sha256": "9a4d0e88c8116550a189db13b07723cbb7551d3928534ddafe7391996f33fac7"
+      "lines": 95,
+      "sha256": "866716cb2f500b97b55304cc961e08fcf6b359af2d8430cf32afe6068fb40d07"
+    },
+    "docs/entregas/GENAI_RELATORIO.md": {
+      "lines": 105,
+      "sha256": "d9329845b54985831e5471de4d2fb0b3774add0ccfb2630245e573298c921972"
+    },
+    "docs/entregas/ROTEIRO_VIDEOS.md": {
+      "lines": 35,
+      "sha256": "fc291c8352edc245b5c45748510953fee6129e59feedc672c987bce2ae426bf3"
+    },
+    "docs/entregas/VISION_RELATORIO.md": {
+      "lines": 94,
+      "sha256": "9fc61c0ea0c848cda3b33ae3640c324da4fe8c8dc63925d6fd8612836b434daa"
     },
     "docs/manual_acolhe.md": {
       "lines": 283,
@@ -211,12 +289,48 @@
       "sha256": "0fe65bfd163b60f4e7e7d6fdf1024d3a2e597048665dd465ec2edc6a55855f54"
     },
     "genai/PLAN.md": {
-      "lines": 68,
-      "sha256": "2c1746ef01251cedad7bfb087a282ad572b3f485a728880712e9982b5f1c98fc"
+      "lines": 70,
+      "sha256": "6632f8cc0d7c5a370ba3ab7315f61a2ba74a4d8af04cff5da1ca67e2e6211822"
     },
     "genai/README.md": {
-      "lines": 76,
-      "sha256": "8f6b6cd54c4e34a8c003ca6240b46fcd92e0a7b20f8c03bc19e50f9042839133"
+      "lines": 43,
+      "sha256": "cec29bbf1ece11729d0fbb6d73604cc173e60da83be489020c683dbd56813789"
+    },
+    "genai/avaliacao/qwen3b-dev20-final.review.md": {
+      "lines": 71,
+      "sha256": "5505b3acf5f7793dc938075bab759bf7013036310dde632e7bb702cc924fb857"
+    },
+    "genai/avaliacao/qwen3b-independent12-final.review.md": {
+      "lines": 47,
+      "sha256": "c298bc78542a62b0e950a17909b57bc598ff03b55c47ef7ac14055385300bba7"
+    },
+    "genai/avaliacao/qwen3b-v3-dev20.review.md": {
+      "lines": 71,
+      "sha256": "acb1da4c43b1e9f5d66df763adf3f53a1c179c8a524cd1fe9bc75b00ab74c6d6"
+    },
+    "genai/avaliacao/qwen3b-v3-holdout12.review.md": {
+      "lines": 47,
+      "sha256": "e20eb1dac9dfc51064307b48a6662ddba5bd86108bf0b95ec2a4e411372a3564"
+    },
+    "genai/avaliacao/qwen3b-v4-dev20.review.md": {
+      "lines": 71,
+      "sha256": "e72a022074e00da41664fbfc906a5e80753c5d9b4733cb1da544e3ed82960c94"
+    },
+    "genai/avaliacao/qwen3b-v4-gpu-dev20.review.md": {
+      "lines": 71,
+      "sha256": "02cbe4347b20d9316ebbffee429b0d1e11fedcf4ec9f70fd6189a022c49c1b92"
+    },
+    "genai/avaliacao/qwen3b-v4-gpu-holdout12.review.md": {
+      "lines": 47,
+      "sha256": "d01bbda1e5a3bf63575e5f5995c47b115929b4f74d7b27e70bff58dc78ac2f80"
+    },
+    "genai/avaliacao/qwen3b-v4-holdout12.review.md": {
+      "lines": 47,
+      "sha256": "2a6a6fe37b7b26505c7baf608e2204e3af17ef4cc6d2d5ba2701d63509d7507b"
+    },
+    "genai/base/README.md": {
+      "lines": 3,
+      "sha256": "3a3bea2499de9df715a478f1ca68652e5a95289ad5825e888c6f6e489d248f8c"
     },
     "genai/reports/error_analysis.md": {
       "lines": 12,
@@ -255,12 +369,20 @@
       "sha256": "9b00f331e060382f00fd1ae16586852645b39839be12971dd53365305810a40a"
     },
     "vision/PLAN.md": {
-      "lines": 86,
-      "sha256": "17d20cd9cf538ea97e40f3fff1a09617200f750555e5d018a5ef8bdc0dd897f6"
+      "lines": 88,
+      "sha256": "e1a620d2b18a5decb354ccf6d28d04c6bb3bc5d36cc83be277399b474723a931"
     },
     "vision/README.md": {
-      "lines": 68,
-      "sha256": "f6952875c89819528c0b9be094983fce63058c34e925cb1ec9c81eabae3807c4"
+      "lines": 34,
+      "sha256": "f0aae92adcc0a8b9f10e855382e4b314868bfd06a9d2a6968402166c6b3ddc13"
+    },
+    "vision/REVIEW_PACKET.md": {
+      "lines": 72,
+      "sha256": "98891cc4b98b19d9162ba24d7dd2271240eca36d6119c8a813bbd9d088aa3fbb"
+    },
+    "vision/reports/ERROR_ANALYSIS.md": {
+      "lines": 15,
+      "sha256": "af657b5f576e60c85d022944fd42918d0aabb433474fbb9d68bc20dec90f217f"
     },
     "vision/requirements-data.txt": {
       "lines": 3,
@@ -273,6 +395,10 @@
     "docs/manual_acolhe.pdf": {
       "lines": 393,
       "sha256": "aacd8b1403ddc2a9f3e59132ae798259d5c578f218122ff81980f87179021d87"
+    },
+    "output/pdf/ACOLHE_VISION.pdf": {
+      "lines": 194,
+      "sha256": "a69bfb9a083981070209ec07ee726048fab7903092ec916e19a74c9a9ce1deee"
     },
     "app/static/lessons.json": {
       "lines": 1,
@@ -294,17 +420,101 @@
       "lines": 39,
       "sha256": "964f4f5c74c33c224a5fc23ccd68a6b6d2793e1f8eaf556b34d7b716c866b419"
     },
+    "docs/evidencias/hardware-rx6750xt-20261116.json": {
+      "lines": 25,
+      "sha256": "9b75853952bca81da99740c417297238918ec795dcb8f7b38076b276dcb04553"
+    },
+    "docs/evidencias/qwen3b-gpu-runtime-20261116.json": {
+      "lines": 24,
+      "sha256": "ab7acb967557e352f4111d8d28310611d36b96b7278b0438cc14c0166c5853c3"
+    },
     "docs/evidencias/revisao-sessao-copy-20261107T165112Z.json": {
       "lines": 46,
       "sha256": "609d165b018ec4abcc6bfb056aab2f9bb2126c2f3013a9a7163f4ff0b3d57bf6"
+    },
+    "docs/evidencias/validacao-final.json": {
+      "lines": 24,
+      "sha256": "60f9b36310e64d6b5d6fa5c0aff74a6e75cdd5ac077d24ed63037f410191947d"
     },
     "docs/evidencias/verificacao-20261107T133614Z.json": {
       "lines": 71,
       "sha256": "2fa74f4d585c8000cb5a02b6c859368660361d5251ce717501ad47d5d87d8280"
     },
+    "genai/avaliacao/limiar.json": {
+      "lines": 55,
+      "sha256": "111cf563fdbc58aad91ae09645ab25f3eda270c14703b6d01a946f4ccf991779"
+    },
+    "genai/avaliacao/qwen3b-dev20-final.json": {
+      "lines": 2415,
+      "sha256": "d437a0b4728fd6e7bb3899d1264594d64714eecfba171f3e10bff535e72ef610"
+    },
+    "genai/avaliacao/qwen3b-independent12-final.json": {
+      "lines": 1455,
+      "sha256": "3d2e9c8881c33160c9ac2f30272e01dd262d8a1877e0096d301f65b9c25654eb"
+    },
+    "genai/avaliacao/qwen3b-v3-dev20.json": {
+      "lines": 2461,
+      "sha256": "97a4284959f396ead261a4ea335c88100dd64278c77f0bdcfda035d7bf8b41f6"
+    },
+    "genai/avaliacao/qwen3b-v3-holdout12.json": {
+      "lines": 1538,
+      "sha256": "0e7ae36d7b1af6c70afe981994c15fa90bcd0387d8d5c469b3b219dc1c224b9c"
+    },
+    "genai/avaliacao/qwen3b-v4-dev20.json": {
+      "lines": 2468,
+      "sha256": "c1baca1a97d4287c44bdad49dc071dd44556559ba7c04d5bbd8e2d8f29f2a6f0"
+    },
+    "genai/avaliacao/qwen3b-v4-gpu-dev20.json": {
+      "lines": 2515,
+      "sha256": "d25f67bd5364134d07a4e036d55714074d9d8bee02cd171ed3852a8fd5f7edc0"
+    },
+    "genai/avaliacao/qwen3b-v4-gpu-holdout12.json": {
+      "lines": 1453,
+      "sha256": "04d243bd81f3403f180594cb1e02444a13d896c26bd9db71c020767bc73b4ad3"
+    },
+    "genai/avaliacao/qwen3b-v4-holdout12.json": {
+      "lines": 1450,
+      "sha256": "eb61a1d38097793a9879af8b810384271c07c25ad1aff9ac25bf92c4daa6b957"
+    },
+    "genai/avaliacao/retrieval-v1-historico.json": {
+      "lines": 137,
+      "sha256": "5429966c33634509d098dd0c8bda747c3b37892e4f5da68f3906f26e78bda79c"
+    },
+    "genai/avaliacao/revisao_tecnica_v4.json": {
+      "lines": 1536,
+      "sha256": "4c9c689ece9f0b1dabf0a961efb81826ba1b6417b59e2c2046cea2bc580da72f"
+    },
+    "genai/avaliacao/teste_dev.json": {
+      "lines": 186,
+      "sha256": "99100e6ab71ca2178099ddff6d0b61c9a91e2f0489b598a73eccd04ec56ab671"
+    },
+    "genai/avaliacao/teste_independente.json": {
+      "lines": 114,
+      "sha256": "65f8be48e6fb6ee487455638e2bebd82476cdfa93c7d31dfbc0954a532ae5eeb"
+    },
+    "genai/avaliacao/teste_independente_B.json": {
+      "lines": 114,
+      "sha256": "77f80e9dfba19b312a5ec1b22e46bbe6d2410fc9ff6ee31969f9123a8332f116"
+    },
+    "genai/avaliacao/teste_independente_C.json": {
+      "lines": 114,
+      "sha256": "0ca94feada4daa0c71b020adff5dc7bb3be31eb493d94ea1db472891bbb57f2f"
+    },
+    "genai/base/corpus.json": {
+      "lines": 118,
+      "sha256": "6b4e5c617d41577d9d8ba6958f331a5d8a444346a0de803184760bc21f3bb092"
+    },
     "genai/data/corpus.json": {
-      "lines": 74,
-      "sha256": "701e419cd660c82ec99f412e1e38ec4d5d6d98c78f08a9658aff48545bab80f2"
+      "lines": 118,
+      "sha256": "6b4e5c617d41577d9d8ba6958f331a5d8a444346a0de803184760bc21f3bb092"
+    },
+    "genai/reports/probes-chat-v2-20261116.json": {
+      "lines": 226,
+      "sha256": "09306ba2ecf66d5217e007b12fc31e39e0590bcf4fbc336e27eccfd50322457d"
+    },
+    "genai/reports/probes-chat-v2-qwen3b-20261116.json": {
+      "lines": 226,
+      "sha256": "39b37688b442ca93213565a455b81daed9e34d3f706c097dc50b1ac796f391f4"
     },
     "genai/reports/qwen05b-cpu-20261116.json": {
       "lines": 1361,
@@ -319,8 +529,8 @@
       "sha256": "db0b04624848246d888b1eaa0e068e10f8828f483679b84e0cb1c89936bae327"
     },
     "genai/reports/retrieval.json": {
-      "lines": 137,
-      "sha256": "5429966c33634509d098dd0c8bda747c3b37892e4f5da68f3906f26e78bda79c"
+      "lines": 120,
+      "sha256": "7bb0b92381648d132079e36360473519f59b482996b5a6ce15e5943f06bf87b4"
     },
     "genai/reports/service-smoke-20261116.json": {
       "lines": 41,
@@ -333,6 +543,22 @@
     "vision/data/provenance.example.json": {
       "lines": 33,
       "sha256": "c8de387611be70de40a38e8b229611767e033d60753a7169977fda227c78688c"
+    },
+    "vision/reports/error_analysis.json": {
+      "lines": 571,
+      "sha256": "284013674d12ae51505150646f417d656eaa96ea9f8572480e3987e547e12cd7"
+    },
+    "vision/reports/inference-http-20261116.json": {
+      "lines": 81,
+      "sha256": "6fefc36c479cb6d4cf0f915adeed9b7bb24e5fe85ab184dc6f2f05ae5d870494"
+    },
+    "vision/reports/reproduction.json": {
+      "lines": 1650,
+      "sha256": "f565b4535434a2addf05fe97be678ffa6ef188609b396cb1a3aa86fdc660c590"
+    },
+    "vision/reports/training-20261116.json": {
+      "lines": 245,
+      "sha256": "bab88235766fae3e69017ef4d1bddbf1be53ea39efe684b44d2101ad36da73c7"
     },
     ".dockerignore": {
       "lines": 10,
@@ -394,13 +620,21 @@
       "lines": 5,
       "sha256": "301536fd13465f021016c952b6d697707e335e0fbdb89bd470be1faafea0080a"
     },
+    "genai/base/fontes.csv": {
+      "lines": 9,
+      "sha256": "f19f7fd542158888b4660bf4dd30febb856376e7eb91880ab82f36c2afb1ddfe"
+    },
     "genai/notebooks/01_retrieval.ipynb": {
-      "lines": 209,
-      "sha256": "531f94b17a3d95c0f95eea63d06c8d5490c0ba239702b2e6a2f4bf37333115a4"
+      "lines": 192,
+      "sha256": "e87a875616d9e14ee620e3a413aefc38ea6a9cf9eba13d60b69c4d4dfa52c6ee"
     },
     "genai/notebooks/02_local_llm.ipynb": {
-      "lines": 84,
-      "sha256": "a5679619911108ea6a816c36cbf38e24157c114325f9a68a23d333e24998c18a"
+      "lines": 96,
+      "sha256": "4c5348cd664c20a235fd95e915d7948eea390aae6c44296c539595656c13a08f"
+    },
+    "genai/notebooks/03_integracao_api.ipynb": {
+      "lines": 83,
+      "sha256": "095f86295add11236f2f5647b9383b0b0ed5dc8d67d27090f44037a87488a200"
     },
     "robot/firmware/acolhe_safe/acolhe_safe.ino": {
       "lines": 35,
@@ -417,32 +651,32 @@
   },
   "token_usage": null,
   "token_usage_reason": "Host agent usage not exposed",
-  "graph_nodes": 864,
-  "graph_edges": 1406,
-  "communities": 65,
+  "graph_nodes": 1014,
+  "graph_edges": 1591,
+  "communities": 133,
   "health": {
-    "node_count": 815,
+    "node_count": 960,
     "unverified_node_count": 0,
-    "raw_edge_count": 1508,
+    "raw_edge_count": 1697,
     "non_object_edges": 0,
     "missing_endpoint_edges": 0,
-    "dangling_endpoint_edges": 231,
+    "dangling_endpoint_edges": 311,
     "external_reference_edges": 4,
     "self_loop_edges": 0,
-    "valid_candidate_edges": 1273,
+    "valid_candidate_edges": 1382,
     "exact_duplicate_edges": 1,
-    "directed_unique_endpoint_pairs": 1173,
-    "directed_same_endpoint_collapsed_edges": 100,
-    "undirected_unique_endpoint_pairs": 1172,
-    "undirected_same_endpoint_collapsed_edges": 101,
-    "same_endpoint_group_count": 56,
-    "relation_variant_groups": 21,
+    "directed_unique_endpoint_pairs": 1278,
+    "directed_same_endpoint_collapsed_edges": 104,
+    "undirected_unique_endpoint_pairs": 1277,
+    "undirected_same_endpoint_collapsed_edges": 105,
+    "same_endpoint_group_count": 59,
+    "relation_variant_groups": 25,
     "source_file_variant_groups": 0,
-    "source_location_variant_groups": 34,
+    "source_location_variant_groups": 33,
     "context_variant_groups": 1,
     "post_build_graph_type": "Graph",
-    "post_build_node_count": 864,
-    "post_build_edge_count": 1406,
+    "post_build_node_count": 1014,
+    "post_build_edge_count": 1591,
     "post_build_error": "",
     "producer_suppression": {
       "path": "C:\\Users\\hyeon\\AppData\\Roaming\\uv\\tools\\graphifyy\\Lib\\site-packages\\graphify\\extract.py",

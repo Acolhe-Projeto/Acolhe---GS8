@@ -1,3 +1,5 @@
+> Atualização final: grafo reconstruído com1.014 nós,1.591 arestas e133 comunidades; HTML e vault Obsidian regenerados. Cobertura distingue semântica revisada de estrutura literal, com duas anotações antigas excluídas por hash alterado. Há referências AST não resolvidas/relações colapsadas; ver relatório, sem usar ausência de aresta como prova. O enunciado oficial foi localizado em Downloads e auditado em docs/ENTREGA_CHECKLIST.md. As descrições “na base” abaixo são históricas; resultados atuais constam dos relatórios GenAI/Vision.
+
 # Mapa de conhecimento do Acolhe
 
 Mapa gerado nesta branch com **Graphify 0.9.111**, a partir do clone de `Acolhe-Projeto/Acolhe---GS8`, base `4a2d00f34c3eb570c90cc7b56822eea5f028fc3b`. O mapa acompanha também as alterações da árvore de trabalho durante a implementação: o commit-base sozinho não identifica todos os arquivos analisados. Os hashes de cobertura e os caminhos de origem permitem revisar cada anotação.

@@ -14,7 +14,7 @@ from genai.execute_notebook import llm_notebook
 class ExperimentTests(unittest.TestCase):
     def test_cpu_payload_and_explicit_model(self):
         response = MagicMock()
-        response.__enter__.return_value.read.return_value = b'{"response":"{\\"answer\\":\\"ola\\",\\"sources\\":[]}"}'
+        response.__enter__.return_value.read.return_value = json.dumps({"message": {"content": json.dumps({"answer":"ola", "sources":[]})}}).encode()
         with patch("urllib.request.urlopen", return_value=response) as request:
             service.generate("test", service.DEFAULT_MODEL)
         payload = json.loads(request.call_args.args[0].data)
