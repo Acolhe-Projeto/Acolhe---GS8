@@ -22,6 +22,7 @@ def upload_lote(chegada, day, vol, profile):
     for folder, prefix in (('ibge', 'municipios'), ('obmigra', 'indicadores')):
         src = Path(chegada) / folder / f'{prefix}_{day}.csv'
         if not src.is_file(): raise FileNotFoundError(f'{src} nao existe; rode a coleta (Airflow ou big_data.chegada)')
+        cli('fs', 'mkdir', f'dbfs:{vol}/input/chegada/{folder}', profile=profile, parse=False)  # fs cp does not create folders
         dest = f'dbfs:{vol}/input/chegada/{folder}/{src.name}'
         exists = subprocess.run(['databricks', 'fs', 'ls', dest, '-p', profile], capture_output=True).returncode == 0
         if not exists: cli('fs', 'cp', str(src), dest, profile=profile, parse=False)
