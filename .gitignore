@@ -35,6 +35,8 @@ node_modules/
 /big_data/staging/
 # Landing zone of the daily collection (samples are versioned in big_data/amostras/)
 /big_data/chegada/
+# Intermediate HTML of the PDF generator (PDFs are versioned)
+/docs/entregas/*.html
 # Runtime output; retain only the reviewed synthetic demo summary required by Docker
 /big_data/output/*
 !/big_data/output/summary.json

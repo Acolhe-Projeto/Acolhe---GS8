@@ -47,7 +47,7 @@ A entrega Maker ainda depende do vídeo, das evidências físicas e da publicaç
 
 - Integrações: recuperação lexical de conteúdo curado, Ollama e voz local no Maker, contrato de visão, robô físico USB e simulador separado, pipeline de dados e RPA local.
 
-- Infraestrutura preparada: Docker/Compose, GitHub Actions, Terraform Azure e métricas Prometheus. Configuração não equivale a infraestrutura executada.
+- Infraestrutura em produção: URL pública https://acolhe-gs8.ambitiousbeach-2f5aaa39.canadacentral.azurecontainerapps.io, criada por Terraform no Azure Container Apps (canadacentral, 0 a 1 réplica, HTTPS, SQLite persistente em Azure Files). A imagem Docker (Alpine, usuário não root) passa por GitHub Actions com Gitleaks, Semgrep e Trivy a cada push, e o deploy é automático pela `main` via OIDC. Métricas Prometheus com os 4 sinais de ouro no Grafana. Detalhes e evidências em [devsecops/README.md](devsecops/README.md).
 
 - Documentação oficial no GitHub: [guia Maker](robot/README.md), [manual Markdown](docs/manual_acolhe.md) e [registro de testes](docs/registro_testes.md). O PDF é material complementar e não substitui a entrega Maker no GitHub.
 

@@ -2,7 +2,7 @@
  "title": "Acolhe - Four Golden Signals",
  "uid": "acolhe-signals",
  "schemaVersion": 39,
- "version": 2,
+ "version": 3,
  "refresh": "15s",
  "time": {
   "from": "now-30m",
@@ -79,7 +79,9 @@
    ],
    "fieldConfig": {
     "defaults": {
-     "unit": "percentunit"
+     "unit": "percentunit",
+     "min": 0,
+     "max": 1
     },
     "overrides": []
    }
