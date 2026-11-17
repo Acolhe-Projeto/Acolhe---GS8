@@ -1,0 +1,8 @@
+2026-11-17 19:28:13,907 INFO report_started
+2026-11-17 19:28:13,908 INFO decision status=progresso_adequado review=-
+2026-11-17 19:28:13,909 INFO report_completed attempts=5
+2026-11-17 19:28:13,930 INFO report_started
+2026-11-17 19:28:13,931 INFO decision status=reforco_recomendado review=mobilidade
+2026-11-17 19:28:13,932 INFO report_completed attempts=8
+2026-11-17 19:28:13,943 INFO report_started
+2026-11-17 19:28:13,943 ERROR report_failed type=FileNotFoundError

@@ -1,5 +1,12 @@
 # DevSecOps Acolhe
 
+## Integrantes
+- Tomáz Versolato Carballo, RM 551417
+- Rony Ken Nagai, RM 551549
+- Aksel Viktor Caminha Rae, RM 99011
+- Ian Xavier Kuraoka, RM 98860
+
+
 ## Execução local
 Na raiz, `python -m app.server` inicia a aplicação (porta 8080). `docker compose up --build` é o caminho container. `docker compose --profile monitoring up --build` acrescenta Prometheus em http://localhost:9090. A aplicação fica restrita ao loopback do host na porta 8080. Container não root, filesystem somente leitura no Compose, capabilities removidas e no-new-privileges. Não foi possível executar Docker aqui: daemon indisponível; estes arquivos ainda exigem build e smoke test.
 

@@ -1,7 +1,7 @@
 name: Acolhe DevSecOps
 on:
+  # Every push on any branch runs build + Gitleaks + Semgrep + Trivy; deploy stays main-only.
   push:
-    branches: [main]
   pull_request:
   workflow_dispatch:
     inputs:

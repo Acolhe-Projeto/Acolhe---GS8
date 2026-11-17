@@ -12,6 +12,8 @@
 *.p12
 *.pfx
 *.log
+# Reviewed RPA log samples (aggregate events only, no identifiers) are versioned
+!/rpa/logs/*.log
 # Python and local tooling
 __pycache__/
 *.py[cod]

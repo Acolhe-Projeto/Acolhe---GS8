@@ -1,5 +1,12 @@
 # Big Data: Acolhe
 
+## Integrantes
+- Tomáz Versolato Carballo, RM 551417
+- Rony Ken Nagai, RM 551549
+- Aksel Viktor Caminha Rae, RM 99011
+- Ian Xavier Kuraoka, RM 98860
+
+
 ## Estado e honestidade dos dados
 Executado localmente em Python 3.12 + SQLite. Os indicadores de demanda/servicos do MVP sao inteiramente SINTETICOS: nao representam refugiados reais, demanda real nem capacidade de atendimento. Duas fontes logicas de demonstracao (`demand` e `services`), nao duas bases publicas ja integradas. Referencias oficiais adicionais foram adquiridas separadamente em official_snapshots; veja OFFICIAL_SOURCES.md. Nao houve execucao Airflow ou Databricks, nem criacao de conta/cluster. Isso permanece pendente para evidencia academica.
 

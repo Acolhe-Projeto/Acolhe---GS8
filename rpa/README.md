@@ -1,5 +1,12 @@
 # RPA em Python: relatorio agregado de aprendizagem
 
+## Integrantes
+- Tomáz Versolato Carballo, RM 551417
+- Rony Ken Nagai, RM 551549
+- Aksel Viktor Caminha Rae, RM 99011
+- Ian Xavier Kuraoka, RM 98860
+
+
 ## PDD (Process Definition Document)
 Objetivo: retirar a consolidacao manual de progresso sem transmitir dados a terceiros. Dono do processo: equipe Acolhe. Entrada: SQLite local `data/acolhe.db`, tabelas sessions(id,language,created_at) e attempts(id,session_id,lesson_id,correct,created_at). Saida: progress.json, progress.md e robot.log em rpa/output. Credenciais: nenhuma. Disparo: comando manual; agendamento nao foi ativado.
 
@@ -34,6 +41,11 @@ A evidencia fica em `rpa/evidence/<timestamp>/` (e2e.json, robot.log, progress.m
 
 Agendamento: `--every N` repete a cada N segundos, e `--runs` limita o numero de execucoes. Para usar o agendador do sistema, rode no Windows `schtasks /Create /SC HOURLY /TN AcolheRPA /TR "python -B -m rpa.robot"` com a pasta do projeto como diretorio de trabalho, ou no Linux uma linha de cron. O agendamento no sistema nao foi ativado por esta equipe.
 `processo.bpmn` agora traz o gateway da regra de negocio e coordenadas BPMNDI; abre direto em bpmn.io ou no Camunda Modeler para o print do PDF.
+
+## Dados duplicados e inconsistentes
+Antes de agregar, o robô percorre cada tentativa num laço e aplica quatro regras de consistência: sessão inexistente, lição desconhecida, valor de acerto fora de 0/1 e tentativa duplicada (mesma sessão e mesmo `request_id`). As linhas inconsistentes ficam fora dos totais, contadas por motivo em `progress.json` (`data_quality`) e registradas como `WARNING inconsistent_rows` no log, sem IDs. Teste: `test_inconsistent_and_duplicate_rows_are_skipped_and_logged`.
+
+Amostra de log real (sucesso, decisão e falha) em `rpa/logs/`, sem identificadores.
 
 ## Testes e aceite
 Os testes usam banco temporario sintetico. Verificam calculo e ausencia de IDs no arquivo, mais falha por banco inexistente sem criar banco. Para evidencia integrada: inicie app, responda quiz, rode comando acima, confira totais e log. Nao apresentar o teste sintetico como execucao com dados de usuarios reais. Pendencias: captura em video, avaliacao do professor sobre Python em substituicao a ferramenta RPA, e agendamento apenas se solicitado.
