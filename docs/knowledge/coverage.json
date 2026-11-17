@@ -1,7 +1,7 @@
 {
-  "base_commit": "1abec5eb7f663f871b6db5fa37a45d5d00b951d8",
+  "base_commit": "168766f7d5b9cb20bb2706caab081dffebfc3447",
   "worktree_snapshot": true,
-  "code_files": 139,
+  "code_files": 142,
   "code_source_hashes": {
     ".github/workflows/devsecops.yml": "b3561ed889f5fc1d5fc68c79d1d2f00738cc302f89a0a7150456960f0f084b5a",
     ".github/workflows/evaluate-python-bases.yml": "66d804bd1e78f5f486aca6e7eeb9c06f0faf79c1ef82a421f3ae591240f6a71b",
@@ -42,6 +42,7 @@
     "docs/evidencias/roteiro-http-real.json": "87cb00c42de4c6b2c049735cfd1c85119ec1311d743dc6f993346f54600a3a37",
     "docs/evidencias/validacao-final.json": "60f9b36310e64d6b5d6fa5c0aff74a6e75cdd5ac077d24ed63037f410191947d",
     "docs/evidencias/validacao-melhoria.json": "5e20483a2e870ca349fd737d0a6ca4eb020937154c63f9a791df63c4b427276e",
+    "docs/evidencias/validacao-noturna.json": "a6f76b834e5f333f746edfc41b38bb66086c7488200d1cb9055002b716dcba87",
     "docs/evidencias/verificacao-20261107T133614Z.json": "2fa74f4d585c8000cb5a02b6c859368660361d5251ce717501ad47d5d87d8280",
     "genai/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "genai/avaliacao/D16-revisao-tecnica.json": "eeb44b3415245dceace8e47cc08c85e658a3138df3a1e59c966a99c67a89ee5f",
@@ -76,6 +77,7 @@
     "genai/execute_notebook.py": "02af21dad46c1016492f823a40117795a42ec19669325fad4d1c0f45ccd2c2b3",
     "genai/experiment.py": "43485ced3efecf8be67447310c17746ce0c68fd45e82e02d5c93f494161bc325",
     "genai/local.py": "df6be92b4bd4ed5e73a17d3d36d14fafd9328f787ca7b7338da29cc1cc6a7b95",
+    "genai/model_manifest.json": "54c18544fc41adbf682b321e279b7034cb0d15c42ecb5ba3c6026348e8da417a",
     "genai/reports/probes-chat-v2-20261116.json": "09306ba2ecf66d5217e007b12fc31e39e0590bcf4fbc336e27eccfd50322457d",
     "genai/reports/probes-chat-v2-qwen3b-20261116.json": "39b37688b442ca93213565a455b81daed9e34d3f706c097dc50b1ac796f391f4",
     "genai/reports/qwen05b-cpu-20261116.json": "925d142634545137a575f538048f729f0e42301b54258e4017cacae8a0083735",
@@ -109,12 +111,13 @@
     "vision/data/dataset.example.yaml": "1128a78f43feb2c53d34db4c98652b8a519c78b21ff773ebf3abdc3c23b99677",
     "vision/data/provenance.example.json": "c8de387611be70de40a38e8b229611767e033d60753a7169977fda227c78688c",
     "vision/prepare.py": "17b686c4c53758e6c6d09a0f88681dada01ff2b6525c0cf4a8f70b177c7fc61c",
-    "vision/public_review.py": "afd487fc8cf7c1398323d9bf70d0fe97ee8954bcdd1d42c7ba2b1cd80ecab185",
+    "vision/public_review.py": "ce2d8d4627d393e57b85409d95226e27380c3404aeb9a12d2b9dd1d268a5e99f",
     "vision/replace_review_bus.py": "4487eef530379bc974905943689cd1a2a4151b78fae68ebf80752873eea10025",
     "vision/reports/calibration-baseline.json": "477fc76c10eb95ffd89174cfd4bd6548309a97ffe2261b458b5b47b1c9963358",
     "vision/reports/calibration-improved-640-80.json": "93cbfdd6ba851b684d8abf2456add821101dfce93ac7930046054c46aaa2f372",
     "vision/reports/calibration-yolo26n-custom.json": "58d33aa1744afc7450aabe260bd0382829831991b38bf50067e6762779ea367c",
     "vision/reports/error_analysis.json": "284013674d12ae51505150646f417d656eaa96ea9f8572480e3987e547e12cd7",
+    "vision/reports/expansion70-proposal.json": "bc5339e04a117281e55a77554e644ecd817a3ed236c586e4b06e118d11c5aadb",
     "vision/reports/improvement-20261116.json": "7e0fb45a35ba4824991267b6a849370466cbffbeb5195b9c424b099d94307c9e",
     "vision/reports/independent23-frozen.json": "cea83174bcfa9dfe6c7708168d93d971a78ade8021196aa3b146a399f388a838",
     "vision/reports/inference-http-20261116.json": "6fefc36c479cb6d4cf0f915adeed9b7bb24e5fe85ab184dc6f2f05ae5d870494",
@@ -138,13 +141,13 @@
     "vision/tests/test_calibrate.py": "d9d9114cad6d3abb4cfd2aa638b1514c7d94b62e7048fff35b4bae7ee7082ce4",
     "vision/tests/test_dataset.py": "d8aaa283f03f4830a0b8beb6ee80d2232fcabed64c00de9adc1609437ab87b37",
     "vision/tests/test_guards.py": "ddb2ef5c2f52834c1e11458650ba5bf0593ad2073813f78593925326c1255721",
-    "vision/tests/test_public_review.py": "ff83f44230d061adb123a90db0b58daafd05bec3816d601298026c055fb83755",
+    "vision/tests/test_public_review.py": "04079cc368f124fe6ccd4eda62f130278c70765d28cde5ed8bac094233089ace",
     "vision/tests/test_reproduce.py": "352d3e71aa6d0f6caddf594762e3079db0e72ba5a48c32e68ee0f63096ecaf50",
     "vision/tests/test_service.py": "8a73f520febb778ce9707aa9d52e080f031b82a6ac29ff74051ef51973c5edf1",
     "vision/train.py": "dcc366838a3b6e38be42c0978b2bfd82826767f7e7c30a62f7b1250e89c20fda"
   },
   "ast_nodes": 565,
-  "ast_edges": 1377,
+  "ast_edges": 1378,
   "unmodeled_code": [
     "app/static/lessons.json",
     "big_data/output/summary.json",
@@ -159,6 +162,7 @@
     "docs/evidencias/roteiro-http-real.json",
     "docs/evidencias/validacao-final.json",
     "docs/evidencias/validacao-melhoria.json",
+    "docs/evidencias/validacao-noturna.json",
     "docs/evidencias/verificacao-20261107T133614Z.json",
     "genai/avaliacao/D16-revisao-tecnica.json",
     "genai/avaliacao/limiar-corpus-v2.json",
@@ -186,6 +190,7 @@
     "genai/avaliacao/v6-frozen-before-D.json",
     "genai/base/corpus.json",
     "genai/data/corpus.json",
+    "genai/model_manifest.json",
     "genai/reports/probes-chat-v2-20261116.json",
     "genai/reports/probes-chat-v2-qwen3b-20261116.json",
     "genai/reports/qwen05b-cpu-20261116.json",
@@ -199,6 +204,7 @@
     "vision/reports/calibration-improved-640-80.json",
     "vision/reports/calibration-yolo26n-custom.json",
     "vision/reports/error_analysis.json",
+    "vision/reports/expansion70-proposal.json",
     "vision/reports/improvement-20261116.json",
     "vision/reports/independent23-frozen.json",
     "vision/reports/inference-http-20261116.json",
@@ -250,7 +256,6 @@
     "docs/manual_acolhe.pdf",
     "docs/registro_testes.md",
     "docs/roteiros_videos.md",
-    "genai/README.md",
     "genai/notebooks/03_integracao_api.ipynb",
     "genai/reports/error_analysis.md",
     "genai/reports/llm_error_analysis.md",
@@ -271,6 +276,7 @@
     "vision/requirements.txt"
   ],
   "stale_semantic_sources": [
+    "genai/README.md",
     "genai/notebooks/01_retrieval.ipynb",
     "genai/notebooks/02_local_llm.ipynb",
     "vision/PLAN.md",
@@ -327,8 +333,8 @@
       "sha256": "bc77a04ca843fab81dc6576c8e31cb60e4926e70aceef4880a1f3b9d4521f396"
     },
     "docs/PRD_GENAI_VISION.md": {
-      "lines": 91,
-      "sha256": "9d68f2d78d2b2365499fddadb872abb7f93fe624e5cb563a04cbad9fde78b01f"
+      "lines": 93,
+      "sha256": "10616f262fa9e27b133692c94457d9eb2f2db4184984ead1ec08292af707d0fb"
     },
     "docs/README.md": {
       "lines": 34,
@@ -348,7 +354,7 @@
     },
     "docs/entregas/RESULTADOS_NOTURNOS.md": {
       "lines": 51,
-      "sha256": "c9ba2ac8ed54758fb52e2d49a3c55854f44f9555fe47cd34dc3a09dd6aeb8859"
+      "sha256": "78112d0468d279b0fa40327b6ff1b2ebb6495e5eca6c82a02750be2e4179ee1f"
     },
     "docs/entregas/ROTEIRO_VIDEOS.md": {
       "lines": 5,
@@ -357,6 +363,10 @@
     "docs/entregas/TESTAR_AMANHA.md": {
       "lines": 40,
       "sha256": "711554f8a9e17dc2c296f0b6d2056f2c26113e6d1211a729773d2bfabf83c4a5"
+    },
+    "docs/entregas/VISION_EXPANSAO70.md": {
+      "lines": 21,
+      "sha256": "069a745c02c42a6e2e41ea753c5610a4a29dab7535f0e42e1f97adf9096074f5"
     },
     "docs/entregas/VISION_RELATORIO.md": {
       "lines": 108,
@@ -379,8 +389,8 @@
       "sha256": "3fa3a81f29861c5743f33ddf9e7823bd774ec389a19370c804153db861aade5c"
     },
     "genai/README.md": {
-      "lines": 45,
-      "sha256": "d9be1caf1d22f7cc2a731a728ef24fa2afa29d227d8efae401b5004a46eec03c"
+      "lines": 49,
+      "sha256": "71d9fb366a85b004afd96678521baa950724883f65ee0da75a3380ae02b5328d"
     },
     "genai/avaliacao/qwen3b-dev20-final.review.md": {
       "lines": 71,
@@ -475,8 +485,8 @@
       "sha256": "9b00f331e060382f00fd1ae16586852645b39839be12971dd53365305810a40a"
     },
     "vision/PLAN.md": {
-      "lines": 51,
-      "sha256": "e5a9df72950ac36a89c64e916fbc56e83575ed33d97f60c1c68bf3b3860fe55a"
+      "lines": 53,
+      "sha256": "5f8b26ed46505ce8c82980f2617d5a50654d63edb5eee90852435a719f8dea3a"
     },
     "vision/README.md": {
       "lines": 44,
@@ -557,6 +567,10 @@
     "docs/evidencias/validacao-melhoria.json": {
       "lines": 27,
       "sha256": "5e20483a2e870ca349fd737d0a6ca4eb020937154c63f9a791df63c4b427276e"
+    },
+    "docs/evidencias/validacao-noturna.json": {
+      "lines": 10,
+      "sha256": "a6f76b834e5f333f746edfc41b38bb66086c7488200d1cb9055002b716dcba87"
     },
     "docs/evidencias/verificacao-20261107T133614Z.json": {
       "lines": 71,
@@ -666,6 +680,10 @@
       "lines": 150,
       "sha256": "44bc667247041dd06cd73d0a186df121e60de0df4be0971993b43c5df1c477c8"
     },
+    "genai/model_manifest.json": {
+      "lines": 18,
+      "sha256": "54c18544fc41adbf682b321e279b7034cb0d15c42ecb5ba3c6026348e8da417a"
+    },
     "genai/reports/probes-chat-v2-20261116.json": {
       "lines": 226,
       "sha256": "09306ba2ecf66d5217e007b12fc31e39e0590bcf4fbc336e27eccfd50322457d"
@@ -717,6 +735,10 @@
     "vision/reports/error_analysis.json": {
       "lines": 571,
       "sha256": "284013674d12ae51505150646f417d656eaa96ea9f8572480e3987e547e12cd7"
+    },
+    "vision/reports/expansion70-proposal.json": {
+      "lines": 75,
+      "sha256": "bc5339e04a117281e55a77554e644ecd817a3ed236c586e4b06e118d11c5aadb"
     },
     "vision/reports/improvement-20261116.json": {
       "lines": 867,
@@ -877,23 +899,23 @@
   },
   "token_usage": null,
   "token_usage_reason": "Host agent usage not exposed",
-  "graph_nodes": 1104,
-  "graph_edges": 1710,
-  "communities": 166,
+  "graph_nodes": 1108,
+  "graph_edges": 1714,
+  "communities": 168,
   "health": {
-    "node_count": 1046,
+    "node_count": 1050,
     "unverified_node_count": 0,
-    "raw_edge_count": 1818,
+    "raw_edge_count": 1822,
     "non_object_edges": 0,
     "missing_endpoint_edges": 0,
-    "dangling_endpoint_edges": 355,
+    "dangling_endpoint_edges": 356,
     "external_reference_edges": 4,
     "self_loop_edges": 0,
-    "valid_candidate_edges": 1459,
+    "valid_candidate_edges": 1462,
     "exact_duplicate_edges": 1,
-    "directed_unique_endpoint_pairs": 1353,
+    "directed_unique_endpoint_pairs": 1356,
     "directed_same_endpoint_collapsed_edges": 106,
-    "undirected_unique_endpoint_pairs": 1352,
+    "undirected_unique_endpoint_pairs": 1355,
     "undirected_same_endpoint_collapsed_edges": 107,
     "same_endpoint_group_count": 61,
     "relation_variant_groups": 27,
@@ -901,8 +923,8 @@
     "source_location_variant_groups": 33,
     "context_variant_groups": 2,
     "post_build_graph_type": "Graph",
-    "post_build_node_count": 1104,
-    "post_build_edge_count": 1710,
+    "post_build_node_count": 1108,
+    "post_build_edge_count": 1714,
     "post_build_error": "",
     "producer_suppression": {
       "path": "C:\\Users\\hyeon\\AppData\\Roaming\\uv\\tools\\graphifyy\\Lib\\site-packages\\graphify\\extract.py",
