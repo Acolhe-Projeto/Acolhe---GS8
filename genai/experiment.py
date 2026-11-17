@@ -32,7 +32,7 @@ def run(model=DEFAULT_MODEL, limit=None, dataset=None, progress=None):
     dataset_record = json.loads(dataset.read_text(encoding="utf-8"))
     selected_cases = dataset_record["cases"][:limit]
     report = {"created_at": datetime.now(timezone.utc).isoformat(), "model": model,
-              "protocol": "chat_bounded_v4",
+              "protocol": "chat_intent_v5",
               "model_digest": status.get("digest"), "python": platform.python_version(),
               "corpus_sha256": hashlib.sha256((Path(__file__).parent / "data/corpus.json").read_bytes()).hexdigest(),
               "options": runtime_options(), "keep_alive": keep_alive(), "preflight": status,

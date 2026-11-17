@@ -170,7 +170,7 @@ class DatasetTests(unittest.TestCase):
 
 class TrainingOptionsTests(unittest.TestCase):
     def test_invalid_cpu_options_fail_before_data_or_runtime(self):
-        for options in ({"imgsz":33},{"batch":0},{"workers":-1},{"device":""},{"base_model":"https://untrusted.invalid/model.pt"}):
+        for options in ({"imgsz":33},{"batch":0},{"workers":-1},{"device":""},{"base_model":"https://untrusted.invalid/model.pt"},{"freeze":-1},{"freeze":23}):
             with self.subTest(options=options), patch.object(train,"validate_dataset") as validate:
                 with self.assertRaises(ValueError): train.train("missing","missing",**options)
                 validate.assert_not_called()

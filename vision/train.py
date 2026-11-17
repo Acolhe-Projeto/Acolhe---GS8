@@ -61,9 +61,11 @@ def reserve_output(path):
     return path
 
 
-def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=320, batch=2, workers=0, base_model="yolo11n.pt"):
+def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=320, batch=2, workers=0, base_model="yolo11n.pt", freeze=0):
     if base_model not in {"yolo11n.pt", "yolov8n.pt", "yolo26n.pt"}:
         raise ValueError("Choose an explicitly supported official nano base model")
+    if type(freeze) is not int or not 0 <= freeze <= 22:
+        raise ValueError("freeze must be an integer between0 and22")
     if type(epochs) is not int or epochs < 1:
         raise ValueError("epochs must be a positive integer")
     if type(imgsz) is not int or imgsz < 32 or imgsz % 32:
@@ -86,7 +88,7 @@ def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=32
     resolved_data.write_text(yaml.safe_dump(config, sort_keys=False), encoding="utf-8")
     model = YOLO(base_model)
     model.train(data=str(resolved_data), epochs=epochs, imgsz=imgsz, batch=batch, device=device,
-                workers=workers, cache=False, seed=42, deterministic=True,
+                workers=workers, cache=False, seed=42, deterministic=True, freeze=freeze,
                 project=str(root/"runs"), name=out.name, exist_ok=False)
     best = Path(model.trainer.best)
     evaluation = YOLO(str(best)).val(data=str(resolved_data), split="test", imgsz=imgsz,
@@ -102,7 +104,7 @@ def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=32
                  for i, class_id in enumerate(evaluation.box.ap_class_index)
                  for name in [metadata["class_names"][int(class_id)]]}
     metadata.update(trained_on_real_images=True, epochs=epochs, model=Path(base_model).stem,
-                    device=device, imgsz=imgsz, batch=batch, workers=workers, seed=42,
+                    device=device, imgsz=imgsz, batch=batch, workers=workers, seed=42, freeze=freeze,
                     inference={"conf": 0.5, "imgsz": imgsz},
                     quality_validated=False, dataset_audit=dataset_audit,
                     evaluation_directory=str(evaluation.save_dir), per_class_metrics=per_class,
@@ -130,6 +132,7 @@ if __name__ == "__main__":
     p.add_argument("--batch", type=int, default=2)
     p.add_argument("--workers", type=int, default=0)
     p.add_argument("--base-model", choices=["yolo11n.pt", "yolov8n.pt", "yolo26n.pt"], default="yolo11n.pt")
+    p.add_argument("--freeze", type=int, default=0)
     a=p.parse_args()
     print(json.dumps(train(a.dataset,a.provenance,a.epochs,a.output,device=a.device,
-                           imgsz=a.imgsz,batch=a.batch,workers=a.workers,base_model=a.base_model),indent=2))
+                           imgsz=a.imgsz,batch=a.batch,workers=a.workers,base_model=a.base_model,freeze=a.freeze),indent=2))

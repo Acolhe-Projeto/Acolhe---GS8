@@ -1,9 +1,29 @@
 import unittest
+import json
 from unittest.mock import patch
 from genai import service
 from genai.evaluate import recall_at
 
 class ServiceTests(unittest.TestCase):
+    def test_translation_target_respects_explicit_language_and_intent(self):
+        self.assertEqual(service.translation_target('Como se diz cadeira em espanhol?', 'pt'), 'spanish')
+        self.assertEqual(service.translation_target('¿Cómo se dice botella en portugués?', 'es'), 'portuguese')
+        self.assertEqual(service.translation_target('Como digo silla?', 'pt'), 'portuguese')
+        self.assertIsNone(service.translation_target('Como espero para embarcar no ônibus?', 'pt'))
+
+    def test_bus_guidance_keeps_document_instead_of_vocabulary_word(self):
+        bus = next(row for row in service.CORPUS if row['id']=='bus')
+        prompt = service.grounded_prompt('Como espero para embarcar no ônibus?', 'pt', [bus])
+        document = json.loads(prompt.rsplit('\n', 1)[-1])['documents'][0]
+        self.assertEqual(document['text'], bus['pt'])
+        self.assertNotIn('vocabulary_fact', document)
+        translated = service.grounded_prompt('Como digo ônibus em espanhol?', 'pt', [bus])
+        self.assertIn('Em espanhol: autobús', translated)
+
+    def test_absent_prices_are_refused_without_blocking_pedestrian_word(self):
+        self.assertTrue(service.missing_detail('Qual é o preço da passagem?'))
+        self.assertFalse(service.missing_detail('Como usar a passagem de pedestres?'))
+
     def test_crossing_policy_is_visible_when_generated_answer_omits_it(self):
         with patch.dict('os.environ', {'ACOLHE_OLLAMA_MODEL': 'test'}):
             with patch.object(service, 'generate', return_value={'answer': 'Use a faixa.', 'sources': ['crossing']}):

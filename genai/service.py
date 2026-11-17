@@ -94,8 +94,8 @@ def input_guard(question):
 
 
 def missing_detail(question):
-    # The eight curated lessons contain no colors, phone numbers, timetables or weather.
-    return bool(set(tokens(question)) & {"cor", "color", "telefone", "telefono", "numero", "numeros", "horario", "horarios", "quantos", "quantas", "cuantos", "cuantas", "temperatura", "graus", "chuva", "lluvia"})
+    # These lessons contain no colors, prices, phone numbers, timetables or weather.
+    return bool(set(tokens(question)) & {"cor", "color", "telefone", "telefono", "numero", "numeros", "horario", "horarios", "quantos", "quantas", "cuantos", "cuantas", "temperatura", "graus", "chuva", "lluvia", "preco", "precio", "tarifa", "custa", "cuesta", "valor"})
 
 
 def is_refusal(text):
@@ -114,24 +114,39 @@ def unsafe_output(answer):
     return False
 
 
+def translation_target(question, language):
+    plain = ''.join(c for c in unicodedata.normalize('NFKD', question.casefold()) if not unicodedata.combining(c))
+    explicit = re.search(r'\b(?:em|en|para(?: o| el)?)\s+(portugues|espanhol|espanol|castellano)\b', plain)
+    intent = explicit or re.search(r'\b(?:como (?:se )?(?:digo|dizer|diz|dice|decir|falo)|traduza|traduce|traduzir|traducir|significa)\b', plain)
+    if not intent:
+        return None
+    if explicit:
+        return 'portuguese' if explicit.group(1) == 'portugues' else 'spanish'
+    return 'portuguese' if language == 'pt' else 'spanish'
+
+
 def grounded_prompt(question, language, hits):
     instruction = ("Resposta curta em português. A pergunta é sobre acolhimento e trajeto escolar supervisionado. "
-                   "Use as frases do documento mais relevante; não acrescente fatos nem repita a pergunta. "
+                   "Responda à ação pedida com os fatos do documento; não acrescente fatos nem repita a pergunta. Não reduza uma orientação a uma palavra de vocabulário. "
                    "Se existir vocabulary_fact, responda com essa tradução. Retorne JSON answer até240caracteres e sources com UM id.\n" if language == "pt" else
                    "Respuesta breve en español. La pregunta trata de acogida y camino escolar acompañado. "
-                   "Usa las frases del documento más relevante; no añadas hechos ni repitas la pregunta. "
+                   "Responde a la acción solicitada con los hechos del documento; no añadas hechos ni repitas la pregunta. No reduzcas una orientación a una palabra de vocabulario. "
                    "Si existe vocabulary_fact, responde con esa traducción. Devuelve JSON answer hasta240caracteres y sources con UN id.\n")
     documents = []
     query_words = set(tokens(question))
+    target_language = translation_target(question, language)
     for h in hits:
         doc = {"id": h["id"], "text": h[language]}
-        for pair in h.get("translations", []):
+        for pair in h.get("translations", []) if target_language else []:
             if set(tokens(pair["portuguese"])) <= query_words or set(tokens(pair["spanish"])) <= query_words:
-                target = pair["portuguese"] if language == "pt" else pair["spanish"]
-                doc["vocabulary_fact"] = ("Em português: " if language == "pt" else "En español: ") + target
+                target = pair[target_language]
+                label = ('Em português: ' if target_language == 'portuguese' else 'Em espanhol: ') if language == 'pt' else ('En portugués: ' if target_language == 'portuguese' else 'En español: ')
+                doc["vocabulary_fact"] = label + target
                 doc["text"] = doc["vocabulary_fact"]
                 break
         documents.append(doc)
+    if any(h['id'] == 'crossing' for h in hits):
+        instruction += ('Na orientação de travessia, inclua pedir ajuda a um adulto e nunca atravessar sozinho.\n' if language == 'pt' else 'Al orientar sobre cruzar, incluye pedir ayuda a un adulto y nunca cruzar solo.\n')
     return instruction + json.dumps({"question": question, "documents": documents}, ensure_ascii=False)
 
 
