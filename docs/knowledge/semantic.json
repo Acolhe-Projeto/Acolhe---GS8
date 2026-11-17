@@ -807,68 +807,12 @@
       "description": "Dois casos service.answer reais: PT mochila5,696s substância e fontebackpack; ES travessia6,261s fontecrossing mas erroNo cruzes. Perfil986MB CPU não é aprovação humana nem benchmark."
     },
     {
-      "id": "final_README_md",
-      "label": "README.md — fechamento",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "description": "Estado final da branch: Qwen3B GPU, Vision treinado e links para relatórios, limitações e pendências."
-    },
-    {
-      "id": "final_genai_README_md",
-      "label": "genai/README.md — fechamento",
-      "file_type": "concept",
-      "source_file": "genai/README.md",
-      "source_location": "L1",
-      "description": "Qwen2.5 3B, GPU explícita, dev20 e holdoutC12; revisão exploratória separada da humana."
-    },
-    {
-      "id": "final_vision_README_md",
-      "label": "vision/README.md — fechamento",
-      "file_type": "concept",
-      "source_file": "vision/README.md",
-      "source_location": "L1",
-      "description": "Treino YOLO11n20 épocasCPU,40 fotos aprovadas, reprodução por hashes; baixa detecção e sem redistribuir fotos/pesos."
-    },
-    {
-      "id": "final_genai_PLAN_md",
-      "label": "genai/PLAN.md — fechamento",
-      "file_type": "concept",
-      "source_file": "genai/PLAN.md",
-      "source_location": "L1",
-      "description": "Planejamento histórico preservado com aviso explícito de resultados finais e pendências atuais."
-    },
-    {
-      "id": "final_vision_PLAN_md",
-      "label": "vision/PLAN.md — fechamento",
-      "file_type": "concept",
-      "source_file": "vision/PLAN.md",
-      "source_location": "L1",
-      "description": "Planejamento histórico preservado; treino e PDF executados, vídeo e revisão ainda pendentes."
-    },
-    {
-      "id": "final_docs_PRD_GENAI_VISION_md",
-      "label": "docs/PRD_GENAI_VISION.md — fechamento",
-      "file_type": "concept",
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": "L1",
-      "description": "PRD e diagramas históricos, atualização direciona para evidências finais e checklist oficial."
-    },
-    {
       "id": "final_docs_VALIDACAO_GENAI_VISION_md",
       "label": "docs/VALIDACAO_GENAI_VISION.md — fechamento",
       "file_type": "concept",
       "source_file": "docs/VALIDACAO_GENAI_VISION.md",
       "source_location": "L1",
-      "description": "Validações históricas identificadas; atualização direciona para Qwen3B GPU e Vision20 épocasCPU."
-    },
-    {
-      "id": "final_docs_ENTREGA_CHECKLIST_md",
-      "label": "docs/ENTREGA_CHECKLIST.md — fechamento",
-      "file_type": "concept",
-      "source_file": "docs/ENTREGA_CHECKLIST.md",
-      "source_location": "L1",
-      "description": "Critérios oficiais ponderados e auditoria histórica; fechamento exige revisão humana, vídeos e Teams."
+      "description": "Validação atual108Python/14Node, HTTP e GenAIUI; Vision80épocas promovido e métricas históricas separadas de teste novo pendente. Registro inicial preservado como histórico."
     },
     {
       "id": "final_docs_entregas_GENAI_RELATORIO_md",
@@ -879,20 +823,92 @@
       "description": "Relatório formal: mesmo Qwen3B em baseline/RAG/agente; acerto exploratório C12 4/8/9, riscos e cinco erros."
     },
     {
-      "id": "final_docs_entregas_ROTEIRO_VIDEOS_md",
-      "label": "docs/entregas/ROTEIRO_VIDEOS.md — fechamento",
-      "file_type": "concept",
-      "source_file": "docs/entregas/ROTEIRO_VIDEOS.md",
-      "source_location": "L1",
-      "description": "Roteiro de demonstrações reais; vídeos não gravados e publicação de fotos requer revisão específica."
-    },
-    {
       "id": "final_genai_base_README_md",
       "label": "genai/base/README.md — fechamento",
       "file_type": "concept",
       "source_file": "genai/base/README.md",
       "source_location": "L1",
       "description": "Índice do snapshot v2 com atribuição; oito documentos bilíngues e revisão pedagógica pendente."
+    },
+    {
+      "id": "final_README_md",
+      "label": "README.md — estado atual",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "description": "Estado atual: GenAI3B local, Vision80épocas640 e guia rápido; meta de qualidade ainda não atingida."
+    },
+    {
+      "id": "final_genai_README_md",
+      "label": "genai/README.md — estado atual",
+      "file_type": "concept",
+      "source_file": "genai/README.md",
+      "source_location": "L1",
+      "description": "Qwen3B com avaliação congelada; roteiro curto e três perguntas verificadas por HTTP; conteúdo pode errar."
+    },
+    {
+      "id": "final_vision_README_md",
+      "label": "vision/README.md — estado atual",
+      "file_type": "concept",
+      "source_file": "vision/README.md",
+      "source_location": "L1",
+      "description": "Versão ativa80épocas640/confiança0.10 escolhida pela validação; teste histórico recall52.4 e precisão51.2; novos dados aguardam revisão."
+    },
+    {
+      "id": "final_genai_PLAN_md",
+      "label": "genai/PLAN.md — estado atual",
+      "file_type": "concept",
+      "source_file": "genai/PLAN.md",
+      "source_location": "L1",
+      "description": "PRD atual: oito microlições, Qwen3B, UI RAG e agente comparativo, métricas e pendências humanas."
+    },
+    {
+      "id": "final_vision_PLAN_md",
+      "label": "vision/PLAN.md — estado atual",
+      "file_type": "concept",
+      "source_file": "vision/PLAN.md",
+      "source_location": "L1",
+      "description": "PRD atual: treino customizado, calibração por validação, promoção e meta80/80 ainda não atingida; novo teste23fotos pendente."
+    },
+    {
+      "id": "final_docs_PRD_GENAI_VISION_md",
+      "label": "docs/PRD_GENAI_VISION.md — estado atual",
+      "file_type": "concept",
+      "source_file": "docs/PRD_GENAI_VISION.md",
+      "source_location": "L1",
+      "description": "PRD integrado atual com arquitetura real, requisitos oficiais, roadmap, evidências e limites; substitui versão inicial."
+    },
+    {
+      "id": "final_docs_ENTREGA_CHECKLIST_md",
+      "label": "docs/ENTREGA_CHECKLIST.md — estado atual",
+      "file_type": "concept",
+      "source_file": "docs/ENTREGA_CHECKLIST.md",
+      "source_location": "L1",
+      "description": "Atualização80épocas e rubrica oficial; vídeos, revisão e Teams pendentes; auditoria antiga preservada como histórica."
+    },
+    {
+      "id": "final_docs_entregas_VISION_RELATORIO_md",
+      "label": "docs/entregas/VISION_RELATORIO.md — estado atual",
+      "file_type": "concept",
+      "source_file": "docs/entregas/VISION_RELATORIO.md",
+      "source_location": "L1",
+      "description": "Relatório atual80épocas: resumo250 e objetivo50 palavras, tabela nativa e operacional separadas, testes históricos e limitações."
+    },
+    {
+      "id": "final_docs_entregas_COMO_USAR_E_GRAVAR_md",
+      "label": "docs/entregas/COMO_USAR_E_GRAVAR.md — estado atual",
+      "file_type": "concept",
+      "source_file": "docs/entregas/COMO_USAR_E_GRAVAR.md",
+      "source_location": "L1",
+      "description": "Guia para abrir aplicativo via script, botões reais, roteiroGenAI90segundos e Vision1minuto; sem alegar tudo correto."
+    },
+    {
+      "id": "final_docs_entregas_ROTEIRO_VIDEOS_md",
+      "label": "docs/entregas/ROTEIRO_VIDEOS.md — estado atual",
+      "file_type": "concept",
+      "source_file": "docs/entregas/ROTEIRO_VIDEOS.md",
+      "source_location": "L1",
+      "description": "Índice direciona ao roteiro curto atual e alerta para evitar métricas antigas."
     }
   ],
   "edges": [
@@ -2340,9 +2356,9 @@
   "hyperedges": [],
   "coverage": {
     "README.md": {
-      "sha256": "dca71b72b4af8117e47e4b3bca759f4323231dc02af19a5a919fcc77ef9dad96",
-      "lines": 245,
-      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
+      "sha256": "249c5cf526b65dd6bd7e79d616593bd713d9308f9632d3e81cc821a284f1590e",
+      "lines": 247,
+      "review": "Current source authored/reviewed during improvement session; execution reports distinguished from proposed targets."
     },
     "IMPLEMENTATION_PLAN.md": {
       "lines": 12,
@@ -2410,9 +2426,9 @@
       "review": "agent read complete text; PDF extracted all 10 pages; logo visually inspected; SVG source inspected"
     },
     "genai/README.md": {
-      "sha256": "cec29bbf1ece11729d0fbb6d73604cc173e60da83be489020c683dbd56813789",
-      "lines": 43,
-      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
+      "sha256": "d9be1caf1d22f7cc2a731a728ef24fa2afa29d227d8efae401b5004a46eec03c",
+      "lines": 45,
+      "review": "Current source authored/reviewed during improvement session; execution reports distinguished from proposed targets."
     },
     "genai/reports/error_analysis.md": {
       "lines": 12,
@@ -2450,9 +2466,9 @@
       "review": "agent read complete text; PDF extracted all 10 pages; logo visually inspected; SVG source inspected"
     },
     "vision/README.md": {
-      "sha256": "f0aae92adcc0a8b9f10e855382e4b314868bfd06a9d2a6968402166c6b3ddc13",
-      "lines": 34,
-      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
+      "sha256": "c123599236861c8eaf78ae4877134bf6f8cd46437f26e418417f6886b7e99ebc",
+      "lines": 43,
+      "review": "Current source authored/reviewed during improvement session; execution reports distinguished from proposed targets."
     },
     "vision/requirements.txt": {
       "lines": 4,
@@ -2545,14 +2561,14 @@
       "review": "full SQL read; parser returned no symbols"
     },
     "vision/PLAN.md": {
-      "sha256": "e1a620d2b18a5decb354ccf6d28d04c6bb3bc5d36cc83be277399b474723a931",
-      "lines": 88,
-      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
+      "sha256": "370e64137aa54f25f3f38123ba94c7692808a26446fff886dacd091c12307173",
+      "lines": 53,
+      "review": "Current source authored/reviewed during improvement session; execution reports distinguished from proposed targets."
     },
     "docs/PRD_GENAI_VISION.md": {
-      "sha256": "68a3f3841aa868780613e0874b5cb7a9becd80d23d4742ba32da430cc349d065",
-      "lines": 114,
-      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
+      "sha256": "3512d696fed6b2208081bde2d402af4b09fc0ad2818d23cee448ec61fd577a7e",
+      "lines": 88,
+      "review": "Current source authored/reviewed during improvement session; execution reports distinguished from proposed targets."
     },
     "vision/requirements-data.txt": {
       "lines": 3,
@@ -2560,13 +2576,13 @@
       "review": "full source read in current agent session"
     },
     "genai/PLAN.md": {
-      "sha256": "6632f8cc0d7c5a370ba3ab7315f61a2ba74a4d8af04cff5da1ca67e2e6211822",
-      "lines": 70,
-      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
+      "sha256": "4a0316ba647f1e0426908cd81ec4d322898d15eb0cb4c26249899b80f7784c24",
+      "lines": 43,
+      "review": "Current source authored/reviewed during improvement session; execution reports distinguished from proposed targets."
     },
     "docs/VALIDACAO_GENAI_VISION.md": {
-      "sha256": "866716cb2f500b97b55304cc961e08fcf6b359af2d8430cf32afe6068fb40d07",
-      "lines": 95,
+      "sha256": "441ce1d05802a525a0cd98f232a8c3c592af7a178b67ba9d39da64af221047d5",
+      "lines": 97,
       "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
     },
     "genai/reports/llm_error_analysis.md": {
@@ -2600,9 +2616,9 @@
       "review": "Final full source read; reports include every case/result/trace; source stabilized by author."
     },
     "docs/ENTREGA_CHECKLIST.md": {
-      "sha256": "05db84c6cc9708d334870d6548c34de53305e7488d86f95eb42a221d067440da",
-      "lines": 158,
-      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
+      "sha256": "75da7f93756b402713a24a4598082fa092aa5a45b080a3a2f6be241f2178351c",
+      "lines": 160,
+      "review": "Current source authored/reviewed during improvement session; execution reports distinguished from proposed targets."
     },
     "docs/entregas/GENAI_RELATORIO.md": {
       "sha256": "d9329845b54985831e5471de4d2fb0b3774add0ccfb2630245e573298c921972",
@@ -2610,20 +2626,30 @@
       "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
     },
     "docs/entregas/ROTEIRO_VIDEOS.md": {
-      "sha256": "fc291c8352edc245b5c45748510953fee6129e59feedc672c987bce2ae426bf3",
-      "lines": 35,
-      "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
+      "sha256": "45557ac92cef7a445d00032b5d787931e4938872aa880d6c256799be371a6ff2",
+      "lines": 5,
+      "review": "Current source authored/reviewed during improvement session; execution reports distinguished from proposed targets."
     },
     "genai/base/README.md": {
       "sha256": "3a3bea2499de9df715a478f1ca68652e5a95289ad5825e888c6f6e489d248f8c",
       "lines": 3,
       "review": "Current status authored/reviewed in closing session; historical paragraphs explicitly identified, not re-certified as current execution."
+    },
+    "docs/entregas/VISION_RELATORIO.md": {
+      "sha256": "9f91c27a25273509bc8023a14ec6598a1f7aeb12c37e3efa94292eca167e0c95",
+      "lines": 102,
+      "review": "Current source authored/reviewed during improvement session; execution reports distinguished from proposed targets."
+    },
+    "docs/entregas/COMO_USAR_E_GRAVAR.md": {
+      "sha256": "be5a63c1df43000bd8cfa67a283c861f594dec403722440ff745ac5a694a1987",
+      "lines": 71,
+      "review": "Current source authored/reviewed during improvement session; execution reports distinguished from proposed targets."
     }
   },
   "base_commit": "4a2d00f34c3eb570c90cc7b56822eea5f028fc3b",
   "input_tokens": null,
   "output_tokens": null,
   "rebuild_review": {
-    "intentional_removed_nodes": "Replaced superseded 1.5B/CPU and untrained-Vision annotations/headings with reviewed closing status. Changed notebooks remain structural unless hash-verified. --force permits this reviewed replacement, not silent loss."
+    "intentional_removed_nodes": "Three PRDs rewritten with current architecture and measured80epoch result; superseded heading nodes may be removed. Historical source versions remain in Git; --force only for these reviewed replacements."
   }
 }

@@ -1,0 +1,646 @@
+{
+  "active_version": "YOLO11n80epochs640_conf0.10",
+  "selection": "Candidate chosen by higher validation microF1 after per-model confidence calibration; no test-based model selection.",
+  "same_dataset_as_initial": true,
+  "test_scope": "Historical7 images/42objects; already examined during error analysis. Not a new independent test.",
+  "quality_validated": false,
+  "target": {
+    "recall": 0.8,
+    "precision": 0.8,
+    "min_class_recall": 0.6,
+    "achieved": false
+  },
+  "old": {
+    "epochs": 20,
+    "imgsz": 320,
+    "checkpoint_sha256": "b441e1490d6bbcb0aa173aca4589fc809ed6f42c263ee559c8424466413914a1",
+    "test_metrics": {
+      "metrics/precision(B)": 0.7258310054777279,
+      "metrics/recall(B)": 0.2943382095363479,
+      "metrics/mAP50(B)": 0.3877717803030303,
+      "metrics/mAP50-95(B)": 0.2963520203545113,
+      "fitness": 0.2963520203545113
+    },
+    "per_class_metrics": {
+      "backpack": {
+        "precision": 1.0,
+        "recall": 0.0,
+        "map50": 0.0,
+        "map50_95": 0.0
+      },
+      "chair": {
+        "precision": 0.6273002179258671,
+        "recall": 0.3333333333333333,
+        "map50": 0.47533333333333333,
+        "map50_95": 0.29430644122383254
+      },
+      "book": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "map50": 0.0873030303030303,
+        "map50_95": 0.00873030303030303
+      },
+      "bottle": {
+        "precision": 0.41026123184633867,
+        "recall": 0.365391847769508,
+        "map50": 0.34125,
+        "map50_95": 0.11775
+      },
+      "cup": {
+        "precision": 0.582536645944485,
+        "recall": 0.5,
+        "map50": 0.645,
+        "map50_95": 0.48774999999999996
+      },
+      "spoon": {
+        "precision": 1.0,
+        "recall": 0.0,
+        "map50": 0.0,
+        "map50_95": 0.0
+      },
+      "fork": {
+        "precision": 0.8923829587216926,
+        "recall": 1.0,
+        "map50": 0.995,
+        "map50_95": 0.8955
+      },
+      "bowl": {
+        "precision": 0.7132417837966948,
+        "recall": 0.3333333333333333,
+        "map50": 0.616875,
+        "map50_95": 0.5084375000000001
+      },
+      "clock": {
+        "precision": 1.0,
+        "recall": 0.0,
+        "map50": 0.0,
+        "map50_95": 0.0
+      },
+      "umbrella": {
+        "precision": 1.0,
+        "recall": 0.0,
+        "map50": 0.4975,
+        "map50_95": 0.34825
+      },
+      "bus": {
+        "precision": 0.4842492274976555,
+        "recall": 1.0,
+        "map50": 0.995,
+        "map50_95": 0.8955
+      },
+      "traffic light": {
+        "precision": 1.0,
+        "recall": 0.0,
+        "map50": 0.0,
+        "map50_95": 0.0
+      }
+    }
+  },
+  "active": {
+    "epochs": 80,
+    "imgsz": 640,
+    "batch": 2,
+    "workers": 0,
+    "device": "cpu",
+    "seed": 42,
+    "checkpoint_sha256": "5935a4aae2c40282be3f5c41ff9796202d4d6ad4d09333d3e335f709a8936879",
+    "test_metrics": {
+      "metrics/precision(B)": 0.6425646453508281,
+      "metrics/recall(B)": 0.5465005303963726,
+      "metrics/mAP50(B)": 0.621233164983165,
+      "metrics/mAP50-95(B)": 0.46221727664263085,
+      "fitness": 0.46221727664263085
+    },
+    "per_class_metrics": {
+      "backpack": {
+        "precision": 1.0,
+        "recall": 0.0,
+        "map50": 0.16583333333333333,
+        "map50_95": 0.06633333333333333
+      },
+      "chair": {
+        "precision": 0.4476061807457772,
+        "recall": 0.6666666666666666,
+        "map50": 0.6212500000000001,
+        "map50_95": 0.358409375
+      },
+      "book": {
+        "precision": 0.3004090106203098,
+        "recall": 0.3076923076923077,
+        "map50": 0.25603174603174605,
+        "map50_95": 0.04224408848008163
+      },
+      "bottle": {
+        "precision": 0.4667922894923319,
+        "recall": 0.6669807237308297,
+        "map50": 0.545909090909091,
+        "map50_95": 0.4879545454545456
+      },
+      "cup": {
+        "precision": 0.6304447877612108,
+        "recall": 0.75,
+        "map50": 0.7539285714285716,
+        "map50_95": 0.5846290726817043
+      },
+      "spoon": {
+        "precision": 0.5934862640893066,
+        "recall": 1.0,
+        "map50": 0.995,
+        "map50_95": 0.8955
+      },
+      "fork": {
+        "precision": 0.5127530701036749,
+        "recall": 1.0,
+        "map50": 0.995,
+        "map50_95": 0.796
+      },
+      "bowl": {
+        "precision": 0.5408098272860138,
+        "recall": 0.6666666666666666,
+        "map50": 0.584761904761905,
+        "map50_95": 0.4980000000000002
+      },
+      "clock": {
+        "precision": 1.0,
+        "recall": 0.0,
+        "map50": 0.995,
+        "map50_95": 0.6965
+      },
+      "umbrella": {
+        "precision": 1.0,
+        "recall": 0.0,
+        "map50": 0.0,
+        "map50_95": 0.0
+      },
+      "bus": {
+        "precision": 0.5651156381984603,
+        "recall": 1.0,
+        "map50": 0.995,
+        "map50_95": 0.8955
+      },
+      "traffic light": {
+        "precision": 0.6533586759128531,
+        "recall": 0.5,
+        "map50": 0.5470833333333334,
+        "map50_95": 0.22553690476190474
+      }
+    },
+    "inference": {
+      "conf": 0.1,
+      "imgsz": 640
+    }
+  },
+  "calibration_reports": [
+    "vision/reports/calibration-baseline.json",
+    "vision/reports/calibration-improved-640-80.json"
+  ],
+  "validation_comparison": {
+    "initial": {
+      "confidence": 0.1,
+      "iou": 0.5,
+      "tp": 11,
+      "fp": 13,
+      "fn": 37,
+      "precision": 0.4583333333333333,
+      "recall": 0.22916666666666666,
+      "f1": 0.3055555555555556,
+      "per_class": [
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 6,
+          "fp": 2,
+          "fn": 2,
+          "precision": 0.75,
+          "recall": 0.75,
+          "f1": 0.75
+        },
+        {
+          "tp": 1,
+          "fp": 1,
+          "fn": 3,
+          "precision": 0.5,
+          "recall": 0.25,
+          "f1": 0.3333333333333333
+        },
+        {
+          "tp": 0,
+          "fp": 3,
+          "fn": 3,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 0,
+          "fp": 3,
+          "fn": 15,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 1,
+          "fp": 3,
+          "fn": 1,
+          "precision": 0.25,
+          "recall": 0.5,
+          "f1": 0.3333333333333333
+        },
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 1,
+          "fp": 0,
+          "fn": 8,
+          "precision": 1.0,
+          "recall": 0.1111111111111111,
+          "f1": 0.2
+        },
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666
+        },
+        {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      ]
+    },
+    "active": {
+      "confidence": 0.1,
+      "iou": 0.5,
+      "tp": 15,
+      "fp": 23,
+      "fn": 33,
+      "precision": 0.39473684210526316,
+      "recall": 0.3125,
+      "f1": 0.3488372093023256,
+      "per_class": [
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 4,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        },
+        {
+          "tp": 3,
+          "fp": 3,
+          "fn": 1,
+          "precision": 0.5,
+          "recall": 0.75,
+          "f1": 0.6
+        },
+        {
+          "tp": 0,
+          "fp": 4,
+          "fn": 3,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 2,
+          "fp": 7,
+          "fn": 13,
+          "precision": 0.2222222222222222,
+          "recall": 0.13333333333333333,
+          "f1": 0.16666666666666666
+        },
+        {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 2,
+          "fp": 4,
+          "fn": 7,
+          "precision": 0.3333333333333333,
+          "recall": 0.2222222222222222,
+          "f1": 0.26666666666666666
+        },
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666
+        },
+        {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        {
+          "tp": 1,
+          "fp": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      ]
+    }
+  },
+  "operating_test_comparison": {
+    "initial_conf0.50": {
+      "tp": 4,
+      "fp": 1,
+      "fn": 38,
+      "recall": 0.09523809523809523,
+      "precision": 0.8
+    },
+    "initial_calibrated": {
+      "confidence": 0.1,
+      "iou": 0.5,
+      "tp": 11,
+      "fp": 17,
+      "fn": 31,
+      "precision": 0.39285714285714285,
+      "recall": 0.2619047619047619,
+      "f1": 0.3142857142857143,
+      "per_class": [
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 2,
+          "fp": 1,
+          "fn": 4,
+          "precision": 0.6666666666666666,
+          "recall": 0.3333333333333333,
+          "f1": 0.4444444444444444
+        },
+        {
+          "tp": 1,
+          "fp": 11,
+          "fn": 12,
+          "precision": 0.08333333333333333,
+          "recall": 0.07692307692307693,
+          "f1": 0.08
+        },
+        {
+          "tp": 1,
+          "fp": 2,
+          "fn": 3,
+          "precision": 0.3333333333333333,
+          "recall": 0.25,
+          "f1": 0.2857142857142857
+        },
+        {
+          "tp": 3,
+          "fp": 1,
+          "fn": 1,
+          "precision": 0.75,
+          "recall": 0.75,
+          "f1": 0.75
+        },
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        {
+          "tp": 2,
+          "fp": 1,
+          "fn": 1,
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666,
+          "f1": 0.6666666666666666
+        },
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666
+        },
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 6,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      ]
+    },
+    "active_calibrated": {
+      "confidence": 0.1,
+      "iou": 0.5,
+      "tp": 22,
+      "fp": 21,
+      "fn": 20,
+      "precision": 0.5116279069767442,
+      "recall": 0.5238095238095238,
+      "f1": 0.5176470588235295,
+      "per_class": [
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 4,
+          "fp": 4,
+          "fn": 2,
+          "precision": 0.5,
+          "recall": 0.6666666666666666,
+          "f1": 0.5714285714285714
+        },
+        {
+          "tp": 4,
+          "fp": 10,
+          "fn": 9,
+          "precision": 0.2857142857142857,
+          "recall": 0.3076923076923077,
+          "f1": 0.2962962962962963
+        },
+        {
+          "tp": 2,
+          "fp": 3,
+          "fn": 2,
+          "precision": 0.4,
+          "recall": 0.5,
+          "f1": 0.4444444444444444
+        },
+        {
+          "tp": 3,
+          "fp": 1,
+          "fn": 1,
+          "precision": 0.75,
+          "recall": 0.75,
+          "f1": 0.75
+        },
+        {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        {
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666
+        },
+        {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1": 0.8571428571428571
+        },
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        {
+          "tp": 3,
+          "fp": 1,
+          "fn": 3,
+          "precision": 0.75,
+          "recall": 0.5,
+          "f1": 0.6
+        }
+      ]
+    }
+  },
+  "new_test": {
+    "status": "awaiting_human_review",
+    "images": 23,
+    "packet_sha256": "099377b49d06316d31c089e1d3f2892050d331181d56dfe2abe5f97a5b62905f"
+  },
+  "runtime_note": "80epochs CPU completed; peakRAM not measured for this run. Previous737MiB pertains only to initial run."
+}

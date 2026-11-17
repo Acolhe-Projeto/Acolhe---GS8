@@ -101,6 +101,7 @@ def train(dataset, provenance, epochs=40, output=None, *, device="cpu", imgsz=32
                  for name in [metadata["class_names"][int(class_id)]]}
     metadata.update(trained_on_real_images=True, epochs=epochs, model="yolo11n",
                     device=device, imgsz=imgsz, batch=batch, workers=workers, seed=42,
+                    inference={"conf": 0.5, "imgsz": imgsz},
                     quality_validated=False, dataset_audit=dataset_audit,
                     evaluation_directory=str(evaluation.save_dir), per_class_metrics=per_class,
                     dataset_yaml_sha256=hashlib.sha256(data.read_bytes()).hexdigest(),

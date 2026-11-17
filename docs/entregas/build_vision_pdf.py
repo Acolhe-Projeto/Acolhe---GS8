@@ -26,7 +26,8 @@ def render(output):
     pdfmetrics.registerFont(TTFont('AcolheBold', 'C:/Windows/Fonts/arialbd.ttf'))
     pdfmetrics.registerFontFamily('Acolhe', normal='Acolhe', bold='AcolheBold')
     styles = {
-        'body': ParagraphStyle('body', fontName='Acolhe', fontSize=10, leading=14, spaceAfter=8),
+        'body': ParagraphStyle('body', fontName='Acolhe', fontSize=10, leading=14, spaceAfter=8,
+                               allowWidows=0, allowOrphans=0),
         'title': ParagraphStyle('title', fontName='AcolheBold', fontSize=21, leading=26, spaceAfter=18),
         'heading': ParagraphStyle('heading', fontName='AcolheBold', fontSize=13, leading=17,
                                   spaceBefore=14, spaceAfter=8, keepWithNext=True,
@@ -45,7 +46,10 @@ def render(output):
         if not table_rows:
             return
         cells = [[Paragraph(html.escape(cell), styles['body']) for cell in row] for row in table_rows]
-        table = Table(cells, colWidths=[155, 86, 86, 86, 86], repeatRows=1)
+        columns = len(cells[0])
+        if columns < 2 or any(len(row) != columns for row in cells):
+            raise ValueError('Report table must have consistent columns')
+        table = Table(cells, colWidths=[155] + [344/(columns-1)]*(columns-1), repeatRows=1)
         table.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),colors.HexColor('#e1eee9')),
                                   ('GRID',(0,0),(-1,-1),0.3,colors.HexColor('#b9cbc4')),
                                   ('VALIGN',(0,0),(-1,-1),'TOP')]))

@@ -1,0 +1,8 @@
+{
+  "python_tests_passed": 108,
+  "python_tests_failed": 0,
+  "node_tests_passed": 14,
+  "real_http": ["docs/evidencias/roteiro-http-real.json", "vision/reports/inference-http-improved.json"],
+  "browser": "GenAI question, local_llm_rag mode, source and fixed warning visibly verified in Brave. Vision file upload automation required extension file permission; no security settings changed. Vision verified by actual HTTP.",
+  "quality": "No human semantic review or new23-photo test approval fabricated. Historical test only; target80percent precision/recall not achieved."
+}

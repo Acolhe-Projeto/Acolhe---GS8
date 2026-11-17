@@ -1,114 +1,88 @@
-> **Atualização de fechamento:** este documento preserva o planejamento e os registros iniciais. O estado atual e a rubrica oficial estão em docs/ENTREGA_CHECKLIST.md; resultados finais estão em docs/entregas/GENAI_RELATORIO.md e VISION_RELATORIO.md. GenAI final é Qwen2.5 3B com comparação real dev20/holdoutC12 em GPU; Vision treinou20 épocas em CPU sobre40 fotos aprovadas e tem PDF final. Referências abaixo a1.5B, rubrica ausente ou treino pendente são históricas e foram superadas. Revisão humana, vídeos e Teams permanecem pendentes.
-
 # PRD — GenAI e Computer Vision
 
-Data: 16/11/2026. Branch: `feat/genai-vision`. Base: `4a2d00f`.
+Versão 2, revisão de 16/11/2026, branch feat/genai-vision. Este documento substitui o planejamento inicial; versões anteriores permanecem no histórico Git. Fonte de requisitos: desafio FIAP CitizenTech, páginas 24,29–31 e44; matriz ponderada em ENTREGA_CHECKLIST.md.
 
-## Problema e objetivo
+## Problema, usuários e escopo
 
-Acolhe ensina vocabulário português/espanhol e orientações educativas de mobilidade a crianças de 6–10 anos acompanhadas por um adulto. A base entrega a PWA, mas o tutor usa recuperação sem geração por padrão e a visão não tem dados nem checkpoint. O objetivo desta branch é entregar fluxos reproduzíveis de GenAI leve e visão customizada, com integração e evidências que distingam implementação, execução e qualidade.
+Acolhe apoia acolhimento linguístico PT/ES e orientações educativas de mobilidade no trajeto escolar. Um adulto acompanha a atividade. GenAI responde consultando conteúdo atribuído; Vision apresenta vocabulário a partir de objetos em fotos selecionadas. O protótipo usa adultos/dados fictícios, sem interpretar semáforos como permissão de travessia ou tomar decisões de segurança.
 
-O escopo vem do código e documentação disponíveis, não de uma rubrica oficial fornecida nesta conversa. Requisitos de treinamento obrigatório, quantidade de imagens e vídeos devem ser conferidos com os enunciados antes da entrega.
+## Jornadas e demonstração
 
-## Usuários e jornadas
+1. Iniciar Ollama e scripts/iniciar-demo.ps1; abrir o endereço indicado no terminal.
+2. Em Caminho seguro, perguntar, conferir resposta/fonte/aviso e alternar PT/ES. Uma pergunta sem informação na base deve receber recusa.
+3. Em Para educadores → Objetos que ensinam, selecionar PNG/JPEG e reconhecer objetos; ler nome PT/ES e confiança.
+4. Consultar os resultados, erros e limitações nos relatórios antes de gravar. Guia operacional e roteiro curto: entregas/COMO_USAR_E_GRAVAR.md.
 
-- Adulto/educador faz pergunta em PT/ES, recebe resposta curta com fontes ou recusa explícita.
-- Adulto seleciona uma fotografia de objetos, solicita reconhecimento e lê o vocabulário PT/ES. A aplicação não liga a câmera nem guarda a fotografia.
-- Aluno responsável executa avaliações e reúne notebooks, métricas, erros e demonstração sem declarar resultados que não executou.
-
-## Arquitetura de produto
+## Arquitetura atual
 
 ```mermaid
 flowchart LR
-    Adulto[Adulto acompanhando a atividade] --> PWA[PWA PT/ES]
-    PWA -->|Pergunta JSON| API[Servidor HTTP local]
-    API --> R[Recuperação lexical]
-    R --> C[Corpus autoral PT/ES]
-    R -->|Contexto limitado| L[Ollama local: Qwen2.5 1.5B]
-    L --> V[Validação de JSON e fontes]
-    V -->|Resposta ou recusa| PWA
-    PWA -->|PNG/JPEG até 8 MiB| API
-    API --> Y[Vision: checkpoint customizado verificado]
-    Y -->|Objetos e vocabulário PT/ES| PWA
-    Y -. Ausência ou falha .-> U[503: indisponível]
+    A[Adulto em atividade supervisionada] --> UI[PWA PT/ES]
+    UI -->|Pergunta| API[API Python local]
+    API --> G[Guardas e busca lexical com limiar]
+    C[Oito microlições atribuídas] --> G
+    G --> L[Ollama Qwen2.5 3B]
+    L --> J[Validação JSON e IDs]
+    J --> UI
+    G --> R[Recusa explícita]
+    R --> UI
+    UI -->|PNG/JPEG até8MiB| API
+    API --> V[YOLO11n customizado em CPU]
+    M[Manifesto: hash, classes e parâmetros] --> V
+    V -->|Objetos, PT/ES e confiança| UI
 ```
 
-## GenAI: requisitos e decisões
+O aplicativo usa RAG. Baseline e agente retrieve/refuse são variantes de avaliação, com rastros reais; não se apresentam como três modos selecionáveis na UI. Aviso fixo de travessia aparece separado da resposta LLM. Falhas não são substituídas por saídas fictícias. Uploads não são gravados.
 
-| ID | Requisito | Critério de aceite |
+## Requisitos e critérios verificáveis
+
+| ID | Requisito | Aceite/evidência |
 |---|---|---|
-| G01 | Reutilizar corpus/recuperação existentes | Sem modelo, resposta identificada como `retrieval_only` |
-| G02 | Modelo local pequeno em CPU | Qwen2.5 1.5B Instruct quantizado, contexto/saída limitados; configuração e diagnóstico reproduzíveis |
-| G03 | Geração ancorada | Fontes restritas aos IDs recuperados, JSON validado e falha explícita |
-| G04 | Comparar baseline, RAG e agente | Mesmas perguntas PT/ES, modelo, configuração e corpus; guardar latências, respostas e erros |
-| G05 | Avaliação honesta | Métricas automáticas separadas de revisão humana; registrar erros reais, nunca preenchidos artificialmente |
-| G06 | Integrar com PWA existente | `/api/assistant` mantém contrato e identifica modo/modelo |
+| G01 | Domínio, gabarito e casos sem resposta | Mobilidade educativa; dev20 e holdoutC12 rotulados |
+| G02 | Base em trechos atribuídos | Oito documentos bilíngues, IDs, fonte/licença e snapshot em genai/base/ |
+| G03 | Recuperação mensurável | Recall@1/@3 e limiar2.0 justificado em desenvolvimento; não confundir com acerto da resposta |
+| G04 | Geração fundamentada integrada | JSON, fonte e recusa na API/UI; erros semânticos preservados e revisão humana pendente |
+| G05 | Especialização comparada | Agente real versus RAG simples e baseline com o mesmo Qwen3B; LoRA não é obrigatório |
+| G06 | Placar e cinco erros | Resultados por caso, análise técnica identificada e propostas; sem pontuações humanas inventadas |
+| V01 | Dados reais e revisão | Inventário individual, hashes, aprovação humana e splits sem duplicatas binárias |
+| V02 | Treino customizado rastreável | YOLO11n; ambiente, pesos/hash, configuração e avaliação reais |
+| V03 | Melhorar recall sem esconder falsos positivos | Selecionar configuração/limiar pela validação; divulgar precisão, recall e resultados por classe |
+| V04 | Inferência coerente com avaliação | Confidence/imgsz no manifesto, validação de limites, teste HTTP real |
+| V05 | Relatório e demonstração | PDF com resumo250/objetivo50 palavras; vídeo real com URL pública |
 
-Modelo escolhido após teste: [`qwen2.5:1.5b-instruct`](https://ollama.com/library/qwen2.5:1.5b-instruct), 1,54 bilhão de parâmetros, Q4_K_M e download de aproximadamente 986 MB. A tentativa inicial com 0.5B (398 MB) falhou em conteúdo e formato; seus relatórios foram preservados para justificar a escolha. No smoke, 1.5B respondeu substantivamente à pergunta de mochila em PT, que 0.5B apenas repetia, e à travessia em ES, com cerca de seis segundos por resposta em CPU. Essa escolha se aplica ao RAG do produto; o experimento de quatro casos ainda mostrou fontes omitidas no RAG experimental e recusas indevidas do agente. Não há superioridade geral nem aprovação de qualidade. Família com PT/ES, licença Apache 2.0 nessa variante. Usar CPU, contexto 2048 e resposta curta; qualidade precisa ser medida. O runtime Ollama ocupa espaço adicional. Não há necessidade de fine-tuning para este primeiro incremento; RAG com oito microlições é a base de comparação.
+## Estado comprovado
 
-```mermaid
-sequenceDiagram
-    actor E as Educador
-    participant UI as PWA
-    participant API as API local
-    participant R as Recuperação
-    participant L as LLM local
-    E->>UI: Pergunta em PT/ES
-    UI->>API: POST /api/assistant
-    API->>API: Validar entrada e escopo
-    API->>R: Buscar trechos
-    alt Modelo configurado e trechos disponíveis
-        API->>L: Pergunta + trechos como dados
-        L-->>API: JSON com answer e sources
-        API->>API: Validar JSON/IDs e proteções
-    else Sem modelo
-        R-->>API: Texto curado, retrieval_only
-    end
-    API-->>UI: Resposta com fontes ou recusa
-    UI-->>E: Modo e fontes visíveis
-```
+GenAI final: Qwen2.5:3b-instruct, Q4_K_M,3,09B, aproximadamente1,9GB de pesos, licença Qwen Research. GPU verificada no Ollama; contexto2048, saída256, temperatura0, seed 42. CPU continua disponível. Desenvolvimento: recall de busca16/16; revisão técnica de respostas baseline/RAG/agente5/20,16/20,16/20. HoldoutC12:4/12,8/12,9/12. São julgamentos exploratórios do agente, não avaliação humana cega.
 
-## Vision: requisitos e decisões
+Vision inicial:40 fotos aprovadas,25/8/7,97/48/42 objetos,20 épocasCPU com resolução 320. Recall nativo médio0,2943; no limiar do aplicativo0,5 foram4/42 objetos encontrados, com1 falso positivo. As duas métricas usam agregações/pontos de operação diferentes.
 
-| ID | Requisito | Critério de aceite |
-|---|---|---|
-| V01 | Preparar dataset real para as 12 classes | Inventário de procedência/licença e caixas YOLO válidas |
-| V02 | Evitar vazamento entre splits | Separação determinística antes de augmentation; auditoria de IDs e hashes |
-| V03 | Treinar com orçamento pequeno | Reutilizar YOLO11n, CPU, batch/imgsz/epochs configuráveis; smoke test não equivale a qualidade |
-| V04 | Avaliar em teste separado | Métricas reais agregadas e por classe, matriz e catálogo de erros |
-| V05 | Verificar artefato | Checkpoint, hash, manifesto e ordem das classes antes de inferência |
-| V06 | Integrar inferência na PWA | Upload explícito PNG/JPEG, limite 8 MiB, resposta PT/ES, 503 sem modelo |
-| V07 | Limitar função educativa | Não inferir identidade, cor do sinal ou decisão de travessia; não persistir imagem |
+## Rodada de melhoria de Vision
 
-Preservar YOLO11n evita introduzir outra stack de visão. Dados reais e revisão de direitos são pré-requisitos: os exemplos versionados não são um dataset. A auditoria automatiza consistência e rastreabilidade, mas não substitui revisão humana da imagem e da licença. Pesos COCO prontos não serão apresentados como treino customizado. Consulte também a [licença Ultralytics](https://www.ultralytics.com/license).
+- Experimento fixado antes dos resultados:80 épocas, resolução 640, batch 2, workers 0, seed 42, mesmas fotos aprovadas; preservar checkpoint20 épocas.
+- Calibrar limiar em grade somente na validação, maximizando F1 micro; desempatar por precisão e depois confiança maior.
+- Comparar candidatos pela validação antes de escolher o modelo ativo. Publicar contagens TP/FP/FN, métricas por classe e parâmetros efetivos.
+- Preparar novo teste de23 fotos sem IDs do lote original; aguarda revisão humana. Não treinar nem escolher hiperparâmetros com essas fotos. Sem aprovação não alegar teste independente novo.
+- Metas locais: recall≥80%, precisão≥80%, nenhuma classe abaixo de60% de recall. São metas propostas para o protótipo, não números da rubrica nem resultado já alcançado. Amostras pequenas não validam produção.
+
+O manifesto final e vision/reports/ identificam a versão ativa e os resultados executados. Maior resolução/mais épocas podem melhorar ou piorar; a escolha depende da validação. O novo teste tem pouca cobertura de ônibus e não substitui expansão equilibrada do treino.
 
 ```mermaid
 flowchart TD
-    A[Imagens e anotações reais autorizadas] --> B[Inventário: origem, licença e créditos]
-    B --> C[Filtrar e remapear 12 classes]
-    C --> D[Separar treino/val/teste por identidade]
-    D --> E[Auditar caixas, contagens e duplicatas]
-    E --> F[Treinar YOLO nano em CPU]
-    F --> G[Selecionar checkpoint pela validação]
-    G --> H[Avaliar uma vez no teste separado]
-    H --> I[Manifesto + hash + métricas + erros]
-    I --> J[Serviço de inferência e PWA]
+    D[Dados aprovados: treino e validação] --> T[Experimento80 épocas com resolução 640]
+    T --> B[Melhor checkpoint pela validação]
+    B --> C[Grade de confiança na validação]
+    O[Modelo20 épocas com resolução 320] --> C
+    C --> S[Escolher por F1 de validação]
+    S --> F[Congelar modelo e limiar]
+    N[Novas fotos e revisão humana] --> E[Teste novo sem ajustes posteriores]
+    F --> E
+    E --> P[Publicar métricas, erros e limitações]
 ```
 
-## Plano de execução e dependências
+## Entrega e dependências restantes
 
-1. **Conhecer a base:** clonar, criar branch e executar suíte original; gerar grafo de código/documentação, HTML, relatório e vault Obsidian.
-2. **GenAI:** perfil leve e diagnóstico → comparação reproduzível → execução real se runtime disponível → revisão humana bilíngue.
-3. **Vision:** preparação e auditoria do dataset → treino configurável → avaliação/artefatos; em paralelo, integrar HTTP/PWA e testar indisponibilidade/contrato com stubs identificados.
-4. **Integrar e verificar:** suíte Python/Node, teste HTTP, evidências e atualização do grafo após as mudanças.
-5. **Fechar entrega:** executar treino real com dados revisados, revisar erros/modelo e gravar vídeos. Estes itens dependem das evidências, não apenas do código.
+Relatórios e código publicados na branch; fotografias e pesos continuam locais. Novo clone reconstrói os dados e treina. Vídeos ainda precisam ser gravados, revisados e publicados; exibição pública de fotos exige revisão específica. Conferir nomes/RMs, conteúdo pedagógico e links, depois enviar em cada Teams até19/11 às23h55 conforme o horário do ambiente. Não há previsão de nota nem certificação de segurança/LGPD.
 
-Os detalhes operacionais e checklists por matéria estão em [GenAI](../genai/PLAN.md) e [Vision](../vision/PLAN.md). O estado final de execução fica em [registro da branch](VALIDACAO_GENAI_VISION.md).
+## Resultado da rodada executada
 
-## Fora do escopo desta branch
-
-Alterar Big Data, BI, RPA, robótica, infraestrutura/deploy ou as regras de sessões. Não coletar dados de crianças, publicar pesos/datasets privados, treinar um modelo de linguagem do zero, habilitar serviços cloud ou declarar qualidade pedagógica sem revisão.
-
-## Riscos e critérios de conclusão
-
-Mesmo um modelo 1.5B pode gerar português/espanhol ruim ou citações sem suporte textual; a validação de IDs não mede factualidade. Treino CPU pode ser demorado; reduzir imagem/batch serve para execução inicial, com impacto de qualidade medido no teste. O código só está concluído quando os testes passam; a entrega acadêmica só está comprovada quando existem resultados reais, análise de erros e os itens exigidos na rubrica.
+80 épocas com resolução 640 concluídas. O candidato foi promovido por F1micro de validação0,3488 versus0,3056 do modelo inicial calibrado. Versão ativa: confiança 0,10, resolução 640; checkpoint5935a4aa…. Teste histórico: recall nativo54,65%, mAP50 de 62,12%; no limiar da aplicação,22TP/21FP/20FN, recall52,38%, precisão51,16%. Baseline original no limiar0,5:4TP/1FP/38FN. Comparação justa com baseline também calibrado0,1:11TP/17FP/31FN. Meta de 80%/80% ainda não atingida. Novo teste23 fotos segue aguardando revisão humana; nenhuma imagem nova entrou no treino. Evidências em vision/reports/improvement-20261116.json e calibration-improved-640-80.json.

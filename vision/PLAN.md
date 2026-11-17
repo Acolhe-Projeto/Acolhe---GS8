@@ -1,88 +1,53 @@
-> **Atualização de fechamento:** este documento preserva o planejamento e os registros iniciais. O estado atual e a rubrica oficial estão em docs/ENTREGA_CHECKLIST.md; resultados finais estão em docs/entregas/GENAI_RELATORIO.md e VISION_RELATORIO.md. GenAI final é Qwen2.5 3B com comparação real dev20/holdoutC12 em GPU; Vision treinou20 épocas em CPU sobre40 fotos aprovadas e tem PDF final. Referências abaixo a1.5B, rubrica ausente ou treino pendente são históricas e foram superadas. Revisão humana, vídeos e Teams permanecem pendentes.
+# PRD — Vision
 
-# PRD e plano de Computer Vision — 2026-11-16
+Versão 2, 16/11/2026. Problema: apresentar nomes PT/ES de objetos em fotos selecionadas por adulto. Mantidas 12 classes: mochila, cadeira, livro, garrafa, copo, colher, garfo, tigela, relógio, guarda-chuva, ônibus e semáforo. Não inferir rosto, identidade, cor do sinal ou permissão para atravessar.
 
-## Problema e resultado esperado
+## Requisitos oficiais e estado
 
-Uma pessoa em acolhimento linguístico vê um objeto cotidiano e aprende seu nome em português/espanhol. O MVP detecta somente as 12 classes já estabelecidas, informa quando o modelo não existe e mantém as fotos fora do armazenamento do aplicativo. Não interpreta semáforos para autorizar travessia.
+Página 44 exige treino customizado de arquitetura adequada, código/documentação, PDF e vídeo funcionando. Não fixa recall, quantidade de fotos, classes ou épocas. PDF vale até5pontos e vídeo até5pontos; pontuação depende do professor.
 
-O público desta fase são adultos em demonstração acadêmica com dados autorizados. Adequação a crianças e validade pedagógica exigem avaliação independente. Nenhuma rubrica disciplinar completa foi encontrada na pasta vision; este plano cobre as pendências documentadas na base, não afirma conformidade com critérios externos não fornecidos.
-
-## Base, lacunas e entregas
-
-| Item | Base encontrada | Implementação nesta branch | Aceite / restante |
-|---|---|---|---|
-| Contrato PT/ES | 12 classes, `status()`/`predict(bytes)` | Inferência CPU 320; imagens inválidas geram erro claro; sem gravação | Testes do contrato passam; falta inferência real |
-| Dados | Exemplos YAML/procedência; avaliações históricas COCO/Open Images | `prepare.py`: conversão de COCO local revisado, classes na ordem correta, saída nova | Roundtrip unitário passa; faltam fotografias licenciadas e revisadas |
-| Auditoria | Nomes/YAML declarados, sem verificar conteúdo | `audit.py`: pixels legíveis, hashes, caixas, inventário, duplicação, cobertura por split | Treino só prossegue após auditoria; curadoria jurídica/visual permanece humana |
-| Hardware | Treino 640 sem opções de consumo | CPU, imagem 320, batch 2, workers 0, sem cache; parâmetros explícitos | Medir memória e tempo em piloto real antes de ampliar |
-| Treino | Transferência YOLO11n e cópia exclusiva de best.pt | Auditoria anterior ao runtime; YAML absoluto; configuração e fingerprint no manifesto | Executar piloto de 1 época e depois experimento final com dados adequados |
-| Avaliação | Somente métricas globais | Teste reservado, métricas por classe, plots/JSON e diretório rastreável | Produzir métricas reais; não atribuir resultados de mocks ao modelo |
-| Erros | Pendência descritiva | Checklist ligado à pasta real de avaliação | Analisar erros reais por classe/condição, sem ajustar no teste |
-| Integração | Apenas status exposto em HTTP na base | PWA PT/ES e `POST /api/vision/predict` com imagem raw, implementados na integração da branch | Limite 8 MiB e erros explícitos; inferência real depende do checkpoint |
-
-## Requisitos e critérios verificáveis
-
-1. **V01 — corpus rastreável:** cada imagem tem ID original, autor, URL, licença, data de revisão, SHA-256 e declaração de revisão de privacidade. Imagens com crianças identificáveis são excluídas pela curadoria. Ausência de qualquer campo bloqueia o preparo.
-2. **V02 — separação honesta:** imagens originais são atribuídas a treino/val/teste antes de qualquer transformação. As 12 classes têm caixas em cada split. Conteúdo binário repetido bloqueia o treino. Recortes/recompressões exigem comparação humana adicional.
-3. **V03 — dados válidos:** dimensões da foto original batem com COCO; caixas têm dimensões positivas e ficam dentro da imagem. Nenhum path escapa da raiz; não são executados downloads do YAML.
-4. **V04 — experimento reproduzível:** seed 42, opções CPU, fingerprint dos dados, hash dos pesos e caminho de avaliação ficam registrados. Arquivos anteriores não são sobrescritos.
-5. **V05 — avaliação auditável:** precisão, recall e mAP50/mAP50-95 globais/por classe vêm de `val(split=test)`. A matriz de confusão e as predições acompanham o relatório. Não há meta numérica de qualidade inventada; definir metas após revisar dataset/rubrica e antes do experimento final.
-6. **V06 — experiência honesta:** sem checkpoint treinado verificado, retorna indisponível. Imagens inválidas e limite de tamanho têm erro explícito. Nenhum objeto retorna uma lista vazia, sem inventar detecção.
-7. **V07 — limites pedagógicos:** rótulos PT/ES consistentes; nenhum reconhecimento de identidade nem decisão de travessia; imagens de uso não são persistidas.
-
-## Fluxo de dados e evidências
+- Implementado: dadosCOCO→YOLO, auditoria, revisão vinculada a hashes, treino real, teste, manifesto/hash/classes e inferência HTTP/PWA sem gravar upload.
+- Piloto inicial:40 fotos aprovadas,25/8/7,20 épocasCPU com resolução 320; métricas reais preservadas.
+- Melhoria concluída:80 épocasCPU com resolução 640 sobre treino aprovado; confiança selecionada pela validação e modelo anterior preservado. Resultados e limites registrados abaixo.
+- Novo teste:23 fotos distintas propostas para revisão; não usar antes da aprovação e nunca para escolher configuração.
 
 ```mermaid
 flowchart LR
-    A[Anotações COCO locais] --> P[prepare.py]
-    I[Fotografias locais autorizadas] --> P
-    H[Revisão humana e splits declarados] --> P
-    P --> D[YOLO e inventário de procedência]
-    D --> AU[audit.py]
-    AU -->|falha| B[Corrigir dados antes do treino]
-    AU -->|passa| T[YOLO11n CPU: treino e validação]
-    T --> E[Teste reservado]
-    E --> M[Métricas por classe, matriz e erros]
-    M --> R[Revisão humana de qualidade]
-    T --> C[Checkpoint e manifesto com hashes]
-    C --> S[Serviço PT/ES]
-    R -. avaliação independente .-> S
+    I[Imagens e caixas] --> R[Procedência e revisão humana]
+    R --> A[Auditoria e splits]
+    A --> T[TreinoYOLO11n]
+    T --> V[Checkpoint por validação]
+    V --> C[Calibrar confiança pela validação]
+    C --> F[Congelar configuração]
+    F --> E[Teste separado e erros]
+    E --> M[Manifesto: hash, classes, conf e imgsz]
+    M --> P[UploadPWA e vocabulárioPT/ES]
 ```
 
-```mermaid
-sequenceDiagram
-    actor Usuario
-    participant App
-    participant Servico as vision.service
-    participant Modelo as Checkpoint customizado local
-    Usuario->>App: Selecionar imagem autorizada
-    App->>Servico: predict(bytes), com limite de upload
-    Servico->>Modelo: Verificar manifesto, hash e classes
-    alt Modelo ausente ou incompatível
-        Servico-->>App: ModelUnavailable
-        App-->>Usuario: Visão indisponível
-    else Modelo carregável
-        Servico->>Servico: Decodificar e limitar imagem
-        Servico->>Modelo: Inferência CPU, save=False
-        Modelo-->>Servico: Caixas e confiança
-        Servico-->>App: Classes PT/ES ou lista vazia
-        App-->>Usuario: Vocabulário e aviso educativo
-    end
-```
+## Aceite técnico
 
-## Execução ordenada
+| ID | Critério | Verificação |
+|---|---|---|
+| V01 | Dados rastreáveis | Licença/autoria/URL/hash, aprovação e caixas válidas |
+| V02 | Splits sem vazamento | IDs e bytes distintos; augmentations somente no treino; similaridade perceptual ainda não auditada |
+| V03 | Treino customizado | Ambiente, configuração, hash e histórico reais; não chamar pesos genéricos de treino próprio |
+| V04 | Qualidade medida | Precisão/recall/mAP nativo e contagens em IoU0.5 no limiar da aplicação; resultados por classe |
+| V05 | Escolha sem teste | Grade de confiança maximiza F1 micro na validação; congelar antes do teste novo |
+| V06 | Serviço coerente | Validar manifesto e usar conf/imgsz medidos, PNG/JPEG≤8MiB, sem gravar fotos |
+| V07 | Relatório | PDF com resumo250/objetivo50 palavras, método, resultados e limites; vídeo real ainda pendente |
 
-**Concluído nesta branch:** preparação local, auditoria, parâmetros CPU, artefatos de avaliação e regressões, além do endpoint de inferência e interface PWA PT/ES integrados no app. Testes executados com dependências leves; sem dataset/pesos baixados.
+Meta local proposta: recall≥80%, precisão≥80%, nenhuma classe abaixo de60%; divulgar denominadores. Não é requisito numérico da FIAP nem prova de prontidão para crianças. O teste inicial7 fotos/42 objetos é insuficiente; o novo23 fotos ainda terá classes pouco representadas.
 
-**Próxima etapa dependente de dados:** selecionar um conjunto pequeno que cubra as 12 classes em todos os splits. Como planejamento inicial, buscar 20/5/5 imagens distintas por classe em treino/val/teste (uma imagem pode conter várias classes), revisar distribuição e ampliar conforme erros. Essa quantidade é um ponto de partida do piloto, não uma promessa estatística nem exigência da rubrica.
+## Plano de evolução
 
-**Piloto:** instalar runtime CPU em ambiente isolado; executar uma época em `vision/artifacts-pilot-01`; medir tempo/RAM e verificar se todos os artefatos são gerados. Se o custo for alto, reduzir batch para 1, mantendo as classes/splits; não simular treinamento.
+1. Executar o experimento80 épocas com resolução 640 sem mudar os splits aprovados.
+2. Calibrar baseline e candidato somente em validação; escolher pelo F1, precisão e desempenho por classe. Preservar original e histórico.
+3. Avaliar em teste novo após revisão humana; relatar ganho e perdas, sem esconder classes zeradas.
+4. Se não atingir a meta, ampliar treino para100–200 objetos por classe como primeira rodada, com variedade e anotações completas; obter revisão real de cada lote. Não substituir dados por duplicação/augmentations no teste.
+5. Atualizar relatório/PDF, roteiro de gravação e serviço com a versão escolhida.
 
-**Experimento final:** fixar critérios de qualidade e parâmetros com treino/validação; executar teste somente após a escolha. Catalogar erros reais, integrar inferência ao app e gravar demonstração com adultos e fotos autorizadas. Uma mudança motivada por erro de teste exige novo holdout para uma avaliação independente.
+CPU é a stack PyTorch instalada; OllamaGPU não implicaYOLOGPU. Não alterar drivers como atalho. Os pesos/fotos continuam locais; novo clone precisa reproduzir dados e treino. Guia para usuário: docs/entregas/COMO_USAR_E_GRAVAR.md. Evidências e configuração ativa: vision/reports/. Vídeo, revisão da equipe e Teams permanecem pendentes.
 
-## Riscos e limites
+## Resultado da rodada executada
 
-CPU pode ser lenta e 320 pode perder objetos pequenos. Cobertura estrutural não garante diversidade; SHA-256 não detecta fotos recortadas e não comprova direitos autorais. Metadados de revisão são declarações humanas. O checkpoint `.pt` deve vir de fonte confiável. A licença Ultralytics precisa ser revisada antes de redistribuir. `quality_validated=false` permanece explícito até revisão de qualidade independente; este trabalho não fabricou resultados de treino.
-
-Referências: [YOLO11](https://docs.ultralytics.com/models/yolo11/), [parâmetros de treino](https://docs.ultralytics.com/modes/train/), [validação e métricas](https://docs.ultralytics.com/modes/val/), [formato de detecção](https://docs.ultralytics.com/datasets/detect/).
+80 épocas com resolução 640 concluídas. O candidato foi promovido por F1micro de validação0,3488 versus0,3056 do modelo inicial calibrado. Versão ativa: confiança 0,10, resolução 640; checkpoint5935a4aa…. Teste histórico: recall nativo54,65%, mAP50 de 62,12%; no limiar da aplicação,22TP/21FP/20FN, recall52,38%, precisão51,16%. Baseline original no limiar0,5:4TP/1FP/38FN. Comparação justa com baseline também calibrado0,1:11TP/17FP/31FN. Meta de 80%/80% ainda não atingida. Novo teste23 fotos segue aguardando revisão humana; nenhuma imagem nova entrou no treino. Evidências em vision/reports/improvement-20261116.json e calibration-improved-640-80.json.

@@ -4,6 +4,8 @@ Modelo final **qwen2.5:3b-instruct**, Q4_K_M, 3,09B parâmetros (~1,9 GB de peso
 
 O [relatório formal](../docs/entregas/GENAI_RELATORIO.md) reúne tarefa, equipe, diagramas, fontes, placar, erros e limitações. [Checklist oficial](../docs/ENTREGA_CHECKLIST.md). Os históricos 0.5B/1.5B e CPU permanecem identificados; não são o perfil final GPU.
 
+Para abrir os dois módulos e gravar em cerca de90segundos, use o [guia rápido](../docs/entregas/COMO_USAR_E_GRAVAR.md) e scripts/iniciar-demo.ps1. As três perguntas do roteiro foram verificadas por HTTP real em docs/evidencias/roteiro-http-real.json.
+
 ## Executar na raiz
 
 Instale Python 3.12 e Ollama. O servidor e GenAI usam biblioteca padrão; dependências de Vision são opcionais para GenAI.

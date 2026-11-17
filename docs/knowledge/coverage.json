@@ -1,7 +1,7 @@
 {
-  "base_commit": "a988d73f6a7e51731efb8c1d5a2da8cae2359af1",
+  "base_commit": "44066f85040fba9161e869902728144b1afd0635",
   "worktree_snapshot": true,
-  "code_files": 103,
+  "code_files": 112,
   "code_source_hashes": {
     ".github/workflows/devsecops.yml": "b3561ed889f5fc1d5fc68c79d1d2f00738cc302f89a0a7150456960f0f084b5a",
     ".github/workflows/evaluate-python-bases.yml": "66d804bd1e78f5f486aca6e7eeb9c06f0faf79c1ef82a421f3ae591240f6a71b",
@@ -31,13 +31,15 @@
     "devsecops/semgrep.yml": "01dc5e35e0e3f59a56c8cf8d2ec22caa9cd783ef46727c2a0dff054f6a6c28e7",
     "devsecops/terraform/main.tf": "a720bfdc5a3f1641be7e3132dad7af776391d9f3e276273d93199653d993462f",
     "docs/build_pdf.py": "116f63997bf7e80a417c1129bef06d0d4b479943fb254af0fa89c98c00158c69",
-    "docs/entregas/build_vision_pdf.py": "6e9d9fc37458c3f519d982cf30d2f1b5106b83053c0de221165aae39c4bbe2aa",
+    "docs/entregas/build_vision_pdf.py": "ef8bb58508c023221eea6619dae45c0ab6af05145d2e6a12e754b19b150c692d",
     "docs/evidencias/documentacao-qa-20261107.json": "3cac41440601c7e2790a4a035a48e291897844cf8edfd374d6c43ec2f9aeff95",
     "docs/evidencias/genai-vision-20261116.json": "964f4f5c74c33c224a5fc23ccd68a6b6d2793e1f8eaf556b34d7b716c866b419",
     "docs/evidencias/hardware-rx6750xt-20261116.json": "9b75853952bca81da99740c417297238918ec795dcb8f7b38076b276dcb04553",
     "docs/evidencias/qwen3b-gpu-runtime-20261116.json": "ab7acb967557e352f4111d8d28310611d36b96b7278b0438cc14c0166c5853c3",
     "docs/evidencias/revisao-sessao-copy-20261107T165112Z.json": "609d165b018ec4abcc6bfb056aab2f9bb2126c2f3013a9a7163f4ff0b3d57bf6",
+    "docs/evidencias/roteiro-http-real.json": "87cb00c42de4c6b2c049735cfd1c85119ec1311d743dc6f993346f54600a3a37",
     "docs/evidencias/validacao-final.json": "60f9b36310e64d6b5d6fa5c0aff74a6e75cdd5ac077d24ed63037f410191947d",
+    "docs/evidencias/validacao-melhoria.json": "07381e48ea9b60517f442adf3aa8af684a1b07f3b8ccc4cecd46b9c7b76d6fbe",
     "docs/evidencias/verificacao-20261107T133614Z.json": "2fa74f4d585c8000cb5a02b6c859368660361d5251ce717501ad47d5d87d8280",
     "genai/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "genai/avaliacao/limiar.json": "111cf563fdbc58aad91ae09645ab25f3eda270c14703b6d01a946f4ccf991779",
@@ -82,33 +84,40 @@
     "rpa/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "rpa/robot.py": "665464ed3722a288ee292684a64d3118f64dd536268fa1d053a36e59dea03a3c",
     "rpa/test_robot.py": "97465334c7c93492bd07c4fb480020c3f0ddd54c84e823a4e4b19a2449ed9caf",
+    "scripts/iniciar-demo.ps1": "d0510a5c2fae94c13956ff84cfa15965472fbb998b211a595725cc704322bc15",
     "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "tests/frontend.test.cjs": "85cd70569c39056c41fe6e54676122e66801e3c10a8652295e31cf9bd352ee88",
     "tests/test_core.py": "50498c4d70933c4d153c91b260a461883e1ad6aa4d2562c44de6445d3e04f407",
     "tests/test_http.py": "6e491a700e4df7146f193013065ae41dafbcb2c90a5d5e4ce88fd9fb1eb944be",
     "vision/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "vision/audit.py": "1d864100d23c946182ddd1e91d4b6623c489f18d61667f249e825bdd8c50c8eb",
+    "vision/calibrate.py": "d7694f9ac915caad3932f0071dc8f8c81de4d0b0a4ab2898f9a63841dc879e5b",
     "vision/data/dataset.example.yaml": "1128a78f43feb2c53d34db4c98652b8a519c78b21ff773ebf3abdc3c23b99677",
     "vision/data/provenance.example.json": "c8de387611be70de40a38e8b229611767e033d60753a7169977fda227c78688c",
     "vision/prepare.py": "17b686c4c53758e6c6d09a0f88681dada01ff2b6525c0cf4a8f70b177c7fc61c",
     "vision/public_review.py": "afd487fc8cf7c1398323d9bf70d0fe97ee8954bcdd1d42c7ba2b1cd80ecab185",
     "vision/replace_review_bus.py": "4487eef530379bc974905943689cd1a2a4151b78fae68ebf80752873eea10025",
+    "vision/reports/calibration-baseline.json": "477fc76c10eb95ffd89174cfd4bd6548309a97ffe2261b458b5b47b1c9963358",
+    "vision/reports/calibration-improved-640-80.json": "93cbfdd6ba851b684d8abf2456add821101dfce93ac7930046054c46aaa2f372",
     "vision/reports/error_analysis.json": "284013674d12ae51505150646f417d656eaa96ea9f8572480e3987e547e12cd7",
+    "vision/reports/improvement-20261116.json": "339226b10e6ce170fe71602762bbf18989fe0b4cbc5e31797789092de046e68b",
     "vision/reports/inference-http-20261116.json": "6fefc36c479cb6d4cf0f915adeed9b7bb24e5fe85ab184dc6f2f05ae5d870494",
+    "vision/reports/inference-http-improved.json": "2df34aa71bd0c3222e7ef4791bf756485ea22be400810748b3b6cad8abe03d00",
     "vision/reports/reproduction.json": "f565b4535434a2addf05fe97be678ffa6ef188609b396cb1a3aa86fdc660c590",
     "vision/reports/training-20261116.json": "bab88235766fae3e69017ef4d1bddbf1be53ea39efe684b44d2101ad36da73c7",
     "vision/reproduce.py": "4fc4063ddcad9c3ca92eb9348a99d24e1f60549c3aa24c75f619b74d72e52014",
-    "vision/service.py": "dc3c63c090d3a32905b5771a667117706c0b44d263d87c6c6e2735663cef8226",
+    "vision/service.py": "a167b41eb3b7aacc88e62e0d4f439d4819301470e35054b1e73cf37c0a95e29f",
     "vision/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "vision/tests/test_calibrate.py": "0445556231b6418a2a4ad5f780b5af11a36526b52a3fed4707666465d393ce28",
     "vision/tests/test_dataset.py": "5ede96f459f659373c42600e2d45dc7c5a8e4c2dd87b4db0ed4db18677520d20",
     "vision/tests/test_guards.py": "ddb2ef5c2f52834c1e11458650ba5bf0593ad2073813f78593925326c1255721",
     "vision/tests/test_public_review.py": "ff83f44230d061adb123a90db0b58daafd05bec3816d601298026c055fb83755",
     "vision/tests/test_reproduce.py": "352d3e71aa6d0f6caddf594762e3079db0e72ba5a48c32e68ee0f63096ecaf50",
     "vision/tests/test_service.py": "8a73f520febb778ce9707aa9d52e080f031b82a6ac29ff74051ef51973c5edf1",
-    "vision/train.py": "b4a91d2c3270b9daec3b499241c823dccab89c41bd8c19c8cf41ef00e51453b4"
+    "vision/train.py": "4194e06e9deaa116c94014473d9afb498ef116286b874737371bbc90bc9dddb9"
   },
-  "ast_nodes": 526,
-  "ast_edges": 1258,
+  "ast_nodes": 542,
+  "ast_edges": 1308,
   "unmodeled_code": [
     "app/static/lessons.json",
     "big_data/output/summary.json",
@@ -118,7 +127,9 @@
     "docs/evidencias/hardware-rx6750xt-20261116.json",
     "docs/evidencias/qwen3b-gpu-runtime-20261116.json",
     "docs/evidencias/revisao-sessao-copy-20261107T165112Z.json",
+    "docs/evidencias/roteiro-http-real.json",
     "docs/evidencias/validacao-final.json",
+    "docs/evidencias/validacao-melhoria.json",
     "docs/evidencias/verificacao-20261107T133614Z.json",
     "genai/avaliacao/limiar.json",
     "genai/avaliacao/qwen3b-dev20-final.json",
@@ -146,8 +157,12 @@
     "genai/reports/service-smoke-20261116.json",
     "genai/reports/service-smoke15b-20261116.json",
     "vision/data/provenance.example.json",
+    "vision/reports/calibration-baseline.json",
+    "vision/reports/calibration-improved-640-80.json",
     "vision/reports/error_analysis.json",
+    "vision/reports/improvement-20261116.json",
     "vision/reports/inference-http-20261116.json",
+    "vision/reports/inference-http-improved.json",
     "vision/reports/reproduction.json",
     "vision/reports/training-20261116.json"
   ],
@@ -179,8 +194,10 @@
     "docs/PRD_GENAI_VISION.md",
     "docs/README.md",
     "docs/VALIDACAO_GENAI_VISION.md",
+    "docs/entregas/COMO_USAR_E_GRAVAR.md",
     "docs/entregas/GENAI_RELATORIO.md",
     "docs/entregas/ROTEIRO_VIDEOS.md",
+    "docs/entregas/VISION_RELATORIO.md",
     "docs/manual_acolhe.md",
     "docs/manual_acolhe.pdf",
     "docs/registro_testes.md",
@@ -217,8 +234,8 @@
       "sha256": "1e1584be981066c60cece8e3054d219657c0a7491e3f48780506f427b71ed135"
     },
     "README.md": {
-      "lines": 245,
-      "sha256": "dca71b72b4af8117e47e4b3bca759f4323231dc02af19a5a919fcc77ef9dad96"
+      "lines": 247,
+      "sha256": "249c5cf526b65dd6bd7e79d616593bd713d9308f9632d3e81cc821a284f1590e"
     },
     "app/static/index.html": {
       "lines": 12,
@@ -249,32 +266,36 @@
       "sha256": "d8df0b06d0a515c5b12e553baab0ec8ab1d495724d962a0165419bc6d3963faa"
     },
     "docs/ENTREGA_CHECKLIST.md": {
-      "lines": 158,
-      "sha256": "05db84c6cc9708d334870d6548c34de53305e7488d86f95eb42a221d067440da"
+      "lines": 160,
+      "sha256": "75da7f93756b402713a24a4598082fa092aa5a45b080a3a2f6be241f2178351c"
     },
     "docs/PRD_GENAI_VISION.md": {
-      "lines": 114,
-      "sha256": "68a3f3841aa868780613e0874b5cb7a9becd80d23d4742ba32da430cc349d065"
+      "lines": 88,
+      "sha256": "3512d696fed6b2208081bde2d402af4b09fc0ad2818d23cee448ec61fd577a7e"
     },
     "docs/README.md": {
       "lines": 34,
       "sha256": "01daa07f9d2906e428f49f074c88dc3b196942437156a947a0cdacf89ebaded3"
     },
     "docs/VALIDACAO_GENAI_VISION.md": {
-      "lines": 95,
-      "sha256": "866716cb2f500b97b55304cc961e08fcf6b359af2d8430cf32afe6068fb40d07"
+      "lines": 97,
+      "sha256": "441ce1d05802a525a0cd98f232a8c3c592af7a178b67ba9d39da64af221047d5"
+    },
+    "docs/entregas/COMO_USAR_E_GRAVAR.md": {
+      "lines": 71,
+      "sha256": "be5a63c1df43000bd8cfa67a283c861f594dec403722440ff745ac5a694a1987"
     },
     "docs/entregas/GENAI_RELATORIO.md": {
       "lines": 105,
       "sha256": "d9329845b54985831e5471de4d2fb0b3774add0ccfb2630245e573298c921972"
     },
     "docs/entregas/ROTEIRO_VIDEOS.md": {
-      "lines": 35,
-      "sha256": "fc291c8352edc245b5c45748510953fee6129e59feedc672c987bce2ae426bf3"
+      "lines": 5,
+      "sha256": "45557ac92cef7a445d00032b5d787931e4938872aa880d6c256799be371a6ff2"
     },
     "docs/entregas/VISION_RELATORIO.md": {
-      "lines": 94,
-      "sha256": "9fc61c0ea0c848cda3b33ae3640c324da4fe8c8dc63925d6fd8612836b434daa"
+      "lines": 102,
+      "sha256": "9f91c27a25273509bc8023a14ec6598a1f7aeb12c37e3efa94292eca167e0c95"
     },
     "docs/manual_acolhe.md": {
       "lines": 283,
@@ -289,12 +310,12 @@
       "sha256": "0fe65bfd163b60f4e7e7d6fdf1024d3a2e597048665dd465ec2edc6a55855f54"
     },
     "genai/PLAN.md": {
-      "lines": 70,
-      "sha256": "6632f8cc0d7c5a370ba3ab7315f61a2ba74a4d8af04cff5da1ca67e2e6211822"
+      "lines": 43,
+      "sha256": "4a0316ba647f1e0426908cd81ec4d322898d15eb0cb4c26249899b80f7784c24"
     },
     "genai/README.md": {
-      "lines": 43,
-      "sha256": "cec29bbf1ece11729d0fbb6d73604cc173e60da83be489020c683dbd56813789"
+      "lines": 45,
+      "sha256": "d9be1caf1d22f7cc2a731a728ef24fa2afa29d227d8efae401b5004a46eec03c"
     },
     "genai/avaliacao/qwen3b-dev20-final.review.md": {
       "lines": 71,
@@ -369,12 +390,12 @@
       "sha256": "9b00f331e060382f00fd1ae16586852645b39839be12971dd53365305810a40a"
     },
     "vision/PLAN.md": {
-      "lines": 88,
-      "sha256": "e1a620d2b18a5decb354ccf6d28d04c6bb3bc5d36cc83be277399b474723a931"
+      "lines": 53,
+      "sha256": "370e64137aa54f25f3f38123ba94c7692808a26446fff886dacd091c12307173"
     },
     "vision/README.md": {
-      "lines": 34,
-      "sha256": "f0aae92adcc0a8b9f10e855382e4b314868bfd06a9d2a6968402166c6b3ddc13"
+      "lines": 43,
+      "sha256": "c123599236861c8eaf78ae4877134bf6f8cd46437f26e418417f6886b7e99ebc"
     },
     "vision/REVIEW_PACKET.md": {
       "lines": 72,
@@ -397,8 +418,8 @@
       "sha256": "aacd8b1403ddc2a9f3e59132ae798259d5c578f218122ff81980f87179021d87"
     },
     "output/pdf/ACOLHE_VISION.pdf": {
-      "lines": 194,
-      "sha256": "a69bfb9a083981070209ec07ee726048fab7903092ec916e19a74c9a9ce1deee"
+      "lines": 233,
+      "sha256": "15f2e984e4b831dfba84664e0e0e984e06a61c25804ea3290f603df811abd96d"
     },
     "app/static/lessons.json": {
       "lines": 1,
@@ -432,9 +453,17 @@
       "lines": 46,
       "sha256": "609d165b018ec4abcc6bfb056aab2f9bb2126c2f3013a9a7163f4ff0b3d57bf6"
     },
+    "docs/evidencias/roteiro-http-real.json": {
+      "lines": 109,
+      "sha256": "87cb00c42de4c6b2c049735cfd1c85119ec1311d743dc6f993346f54600a3a37"
+    },
     "docs/evidencias/validacao-final.json": {
       "lines": 24,
       "sha256": "60f9b36310e64d6b5d6fa5c0aff74a6e75cdd5ac077d24ed63037f410191947d"
+    },
+    "docs/evidencias/validacao-melhoria.json": {
+      "lines": 8,
+      "sha256": "07381e48ea9b60517f442adf3aa8af684a1b07f3b8ccc4cecd46b9c7b76d6fbe"
     },
     "docs/evidencias/verificacao-20261107T133614Z.json": {
       "lines": 71,
@@ -544,13 +573,29 @@
       "lines": 33,
       "sha256": "c8de387611be70de40a38e8b229611767e033d60753a7169977fda227c78688c"
     },
+    "vision/reports/calibration-baseline.json": {
+      "lines": 1213,
+      "sha256": "477fc76c10eb95ffd89174cfd4bd6548309a97ffe2261b458b5b47b1c9963358"
+    },
+    "vision/reports/calibration-improved-640-80.json": {
+      "lines": 1213,
+      "sha256": "93cbfdd6ba851b684d8abf2456add821101dfce93ac7930046054c46aaa2f372"
+    },
     "vision/reports/error_analysis.json": {
       "lines": 571,
       "sha256": "284013674d12ae51505150646f417d656eaa96ea9f8572480e3987e547e12cd7"
     },
+    "vision/reports/improvement-20261116.json": {
+      "lines": 646,
+      "sha256": "339226b10e6ce170fe71602762bbf18989fe0b4cbc5e31797789092de046e68b"
+    },
     "vision/reports/inference-http-20261116.json": {
       "lines": 81,
       "sha256": "6fefc36c479cb6d4cf0f915adeed9b7bb24e5fe85ab184dc6f2f05ae5d870494"
+    },
+    "vision/reports/inference-http-improved.json": {
+      "lines": 84,
+      "sha256": "2df34aa71bd0c3222e7ef4791bf756485ea22be400810748b3b6cad8abe03d00"
     },
     "vision/reports/reproduction.json": {
       "lines": 1650,
@@ -651,32 +696,32 @@
   },
   "token_usage": null,
   "token_usage_reason": "Host agent usage not exposed",
-  "graph_nodes": 1014,
-  "graph_edges": 1591,
-  "communities": 133,
+  "graph_nodes": 1039,
+  "graph_edges": 1641,
+  "communities": 130,
   "health": {
-    "node_count": 960,
+    "node_count": 985,
     "unverified_node_count": 0,
-    "raw_edge_count": 1697,
+    "raw_edge_count": 1748,
     "non_object_edges": 0,
     "missing_endpoint_edges": 0,
-    "dangling_endpoint_edges": 311,
+    "dangling_endpoint_edges": 326,
     "external_reference_edges": 4,
     "self_loop_edges": 0,
-    "valid_candidate_edges": 1382,
+    "valid_candidate_edges": 1418,
     "exact_duplicate_edges": 1,
-    "directed_unique_endpoint_pairs": 1278,
-    "directed_same_endpoint_collapsed_edges": 104,
-    "undirected_unique_endpoint_pairs": 1277,
-    "undirected_same_endpoint_collapsed_edges": 105,
-    "same_endpoint_group_count": 59,
-    "relation_variant_groups": 25,
+    "directed_unique_endpoint_pairs": 1313,
+    "directed_same_endpoint_collapsed_edges": 105,
+    "undirected_unique_endpoint_pairs": 1312,
+    "undirected_same_endpoint_collapsed_edges": 106,
+    "same_endpoint_group_count": 60,
+    "relation_variant_groups": 26,
     "source_file_variant_groups": 0,
     "source_location_variant_groups": 33,
     "context_variant_groups": 1,
     "post_build_graph_type": "Graph",
-    "post_build_node_count": 1014,
-    "post_build_edge_count": 1591,
+    "post_build_node_count": 1039,
+    "post_build_edge_count": 1641,
     "post_build_error": "",
     "producer_suppression": {
       "path": "C:\\Users\\hyeon\\AppData\\Roaming\\uv\\tools\\graphifyy\\Lib\\site-packages\\graphify\\extract.py",

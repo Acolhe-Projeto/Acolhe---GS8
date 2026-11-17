@@ -1,4 +1,4 @@
-> Atualização final: grafo reconstruído com1.014 nós,1.591 arestas e133 comunidades; HTML e vault Obsidian regenerados. Cobertura distingue semântica revisada de estrutura literal, com duas anotações antigas excluídas por hash alterado. Há referências AST não resolvidas/relações colapsadas; ver relatório, sem usar ausência de aresta como prova. O enunciado oficial foi localizado em Downloads e auditado em docs/ENTREGA_CHECKLIST.md. As descrições “na base” abaixo são históricas; resultados atuais constam dos relatórios GenAI/Vision.
+> Atualização da melhoria: grafo reconstruído com1.039 nós,1.641 arestas e130 comunidades. PRDs atuais, guia rápido, calibração e serviço foram indexados. Duas anotações antigas de notebooks permanecem excluídas por hash alterado. O extrator tem referências não resolvidas/relações colapsadas; o exportador Obsidian preservou duas notas preexistentes e avisou que o vault pode ficar incompleto. O JSON/HTML e coverage.json registram a cobertura; não se afirma compreensão completa nem execução de tudo que aparece no mapa.
 
 # Mapa de conhecimento do Acolhe
 
