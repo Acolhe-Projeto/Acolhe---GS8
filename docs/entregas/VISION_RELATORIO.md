@@ -4,6 +4,8 @@
 
 Versão ativa: YOLO26n customizado por 80 épocas em CPU, resolução 640, confiança 0,15 escolhida pela validação. As versões YOLO11n foram preservadas. O lote 23 foi aprovado para teste local; sua avaliação posterior à escolha da nova arquitetura é regressão diagnóstica em conjunto já exposto, sem alegação de novo teste cego. A meta70%/70% ainda não foi atingida. Fotografias e pesos permanecem locais; vídeo e envio acadêmico ainda dependem da equipe.
 
+Resumo e métricas principais abaixo descrevem a versão ativa preservada. A ampliação posterior para70treino/20validação foi concluída e comparada; veja a seção específica antes da conclusão.
+
 ## Integrantes
 
 - Tomáz Versolato Carballo - RM 551417
@@ -38,7 +40,7 @@ O treino e a detecção usaramCPU. A GPUAMD usada pelo Ollama é outra stack e n
 3. O usuário aprovou23 fotos novas exclusivamente para teste local, hash 099377b4…. O conjunto final56 tem25 treino/8val/23 teste e 97/48/66 objetos. Pixels, caixas e splits de treino/validação ficaram inalterados; não há IDs/bytes em comum entre as 40 iniciais e 23 novas. O novo fingerprint é4b18ed3a…. Reconstrução offline foi auditada.
 4. A primeira avaliação23 foi congelada paraYOLO11n no commitccdd7d7 e preservada em independent23-frozen.json. Após observar esse teste, a comparação de novas arquiteturas usa somente as 8 de validação para seleção. Qualquer medição posterior no23 é regressão em teste exposto, não nova evidência cega. A origemCOCO também impede alegar independência de todo desenvolvimento dos pesos-base.
 5. Três bases oficiais pré-treinadas foram comparadas em CPU com resolução 640 na validação, com remapeamento por nome para12 classes. YOLO26n teve F1 micro de 0,4667, contra 0,3636/0,4286 das outras bases. Essa referência não substitui treinamento customizado. RF-DETRNano foi pesquisado, sem instalação/benchmark nesta rodada; detalhes e fontes em docs/MODELOS_VISION.md.
-6. Treinou-seYOLO26n customizado por 80 épocas,640, batch 2, workers 0, seed 42, CPU, transferindo pesos oficiais, sobre as 25 fotos aprovadas. Duração de treino registrada:0,199 h (~12 min). Checkpoint selecionado pela validação. Grade de confiança 0,05–0,80 escolheu0,15 por maior F1 micro, desempate por precisão e maior confiança; resultado0,4675 versus0,3488 do YOLO11n 80. A promoção foi registrada antes da regressão em yolo26n-custom-decision.json. Não houve ajustes após os resultados23.
+6. Treinou-seYOLO26n customizado por 80 épocas,640, batch 2, workers 0, seed 42, CPU, transferindo pesos oficiais, sobre as 25 fotos aprovadas. Duração de treino registrada:0,199 h (~12 min). Checkpoint selecionado pela validação. Grade de confiança 0,05–0,80 escolheu0,15 por maior F1 micro, desempate por precisão e maior confiança; resultado0,4675 versus0,3488 do YOLO11n 80. A promoção foi registrada antes da regressão em yolo26n-custom-decision.json. Naquela rodada, não houve ajustes após os resultados23.
 7. Manifesto, hash, classes e parâmetros foram conferidos pela API. Checkpoint007a199a…. A requisiçãoHTTP real de demonstração reconheceu ônibus/autobús com confiança 0,9479, sem gravar a imagem; evidência em inference-http-yolo26n.json. Essa foto de demonstração é histórica e não substitui a avaliação agregada.
 
 ## Exemplos de resultados e avaliação
@@ -85,6 +87,23 @@ Cinco erros reais do modelo ativo:
 | 313130 | chair | 0.7995 | 0.1134 |
 
 As 32 falhas e as predições por imagem estão em vision/reports/yolo26n-regression23.json. Esses casos têm caixas candidatas próximas, mas confiança abaixo do limiar. Escassez de exemplos variados, escala e calibração são hipóteses, não causas comprovadas. A próxima rodada deve ampliar treino e reservar outro teste final; não ajustar com este conjunto já examinado. O lote de 23 fotos foi autorizado somente para teste local, sem treino/publicação de fotos.
+
+## Ampliação posterior: 70 imagens de treino e 20 de validação
+
+Após aprovação explícita do pacote 29569624…, preparou-se um conjunto com 70 imagens de treino, 20 de validação e as 23 de teste históricas, com 524, 210 e 66 objetos anotados, respectivamente. São 85 fotos novas e cinco já aprovadas, com seus splits preservados. Os pixels e rótulos das 23 fotos continuaram inalterados. Elas não foram usadas para treinar nem escolher parâmetros. Direitos, autorias, caixas e hashes foram registrados. A reconstrução offline foi auditada, com fingerprint 680186e4….
+
+A adaptação com todas as camadas livres foi encerrada após 33 épocas por estagnação na validação; seu checkpoint escolhido foi o da época 1. Outra adaptação congelou 22 camadas por 67 épocas. As duas somaram 100 épocas em CPU, resolução 640, batch 2, workers 0 e seed 42. O teste foi adiado em ambas. Checkpoints e confiança foram escolhidos na validação. A regra de implantação, registrada antes da comparação final, exigia não regredir precisão nem recall do ativo e aumentar F1 em pelo menos 0,02. Nenhum limiar dos novos candidatos passou.
+
+| Configuração na mesma validação de 20 fotos | Precisão | Recall | F1 |
+|---|---:|---:|---:|
+| Ativo, confiança 0,15 |61,3%|46,7%|0,5297|
+| Ativo, maior F1 da grade, confiança 0,10 |53,3%|53,8%|0,5355|
+| Novo, camadas livres, 33 épocas, confiança 0,15 |52,8%|49,0%|0,5086|
+| Novo, 22 camadas congeladas, 67 épocas, confiança 0,15 |59,3%|47,1%|0,5252|
+
+O modelo anterior foi mantido. Não houve nova avaliação das 23 fotos para esses candidatos. Na validação, 95 dos 210 objetos ficam menores que 32 x 32 pixels ao ajustar as fotos para 640. Cenas com muitos objetos e classes comuns predominam. Isso descreve uma dificuldade, sem comprovar causalidade. Mais anotações não demonstraram ganho nesta rodada. A próxima expansão deve melhorar escala e diversidade, reforçar classes raras e reservar um novo teste sem exposição. A meta de 70% nas duas métricas segue pendente.
+
+Relatórios: expansion70-decision.json, expansion70-*-val20.json e expansion70-object-sizes.json. Reprodução: reproduction-train70.json. Fotografias e pesos permanecem locais.
 
 ## Conclusão
 

@@ -1,0 +1,126 @@
+{
+  "status": {
+    "ready": true,
+    "mode": "custom_model",
+    "reason": null,
+    "classes": {
+      "backpack": {
+        "pt": "mochila",
+        "es": "mochila"
+      },
+      "chair": {
+        "pt": "cadeira",
+        "es": "silla"
+      },
+      "book": {
+        "pt": "livro",
+        "es": "libro"
+      },
+      "bottle": {
+        "pt": "garrafa",
+        "es": "botella"
+      },
+      "cup": {
+        "pt": "copo",
+        "es": "vaso"
+      },
+      "spoon": {
+        "pt": "colher",
+        "es": "cuchara"
+      },
+      "fork": {
+        "pt": "garfo",
+        "es": "tenedor"
+      },
+      "bowl": {
+        "pt": "tigela",
+        "es": "cuenco"
+      },
+      "clock": {
+        "pt": "relógio",
+        "es": "reloj"
+      },
+      "umbrella": {
+        "pt": "guarda-chuva",
+        "es": "paraguas"
+      },
+      "bus": {
+        "pt": "ônibus",
+        "es": "autobús"
+      },
+      "traffic light": {
+        "pt": "semáforo",
+        "es": "semáforo"
+      }
+    },
+    "inference": {
+      "conf": 0.15,
+      "imgsz": 640
+    },
+    "verification": "checkpoint_hash_classes_and_load",
+    "quality_validated": false
+  },
+  "01-onibus.jpg": {
+    "detections": [
+      {
+        "class": "bus",
+        "pt": "ônibus",
+        "es": "autobús",
+        "confidence": 0.9479,
+        "xyxy": [
+          850.3543090820312,
+          1029.38427734375,
+          4117.22119140625,
+          2328.454345703125
+        ]
+      }
+    ],
+    "mode": "custom_model",
+    "warning": "Vocabulário educativo. Não decide se uma travessia é segura.",
+    "stores_image": false
+  },
+  "02-mesa-garfo-tigela.jpg": {
+    "detections": [
+      {
+        "class": "bowl",
+        "pt": "tigela",
+        "es": "cuenco",
+        "confidence": 0.6649,
+        "xyxy": [
+          211.70574951171875,
+          4.323028564453125,
+          627.9566650390625,
+          397.5831298828125
+        ]
+      },
+      {
+        "class": "spoon",
+        "pt": "colher",
+        "es": "cuchara",
+        "confidence": 0.6028,
+        "xyxy": [
+          5.636688232421875,
+          144.77252197265625,
+          218.9610137939453,
+          423.78173828125
+        ]
+      },
+      {
+        "class": "fork",
+        "pt": "garfo",
+        "es": "tenedor",
+        "confidence": 0.2075,
+        "xyxy": [
+          59.48460388183594,
+          115.314453125,
+          232.25331115722656,
+          416.5770263671875
+        ]
+      }
+    ],
+    "mode": "custom_model",
+    "warning": "Vocabulário educativo. Não decide se uma travessia é segura.",
+    "stores_image": false
+  },
+  "active_checkpoint_sha256": "007a199a43a6944699c43d26b23e30e5a2e25933b106181ed56a8243aa3b2e31"
+}

@@ -1,4 +1,4 @@
-> Nova rodada preparada:70treino+20validação, lote aprovado pelo usuário; treino iniciado, resultados pendentes. [Plano e critérios](../docs/entregas/VISION_EXPANSAO70.md).
+> Nova rodada preparada:70treino+20validação, lote aprovado;100épocas concluídas, candidatos sem ganho útil e modelo ativo preservado. [Plano e critérios](../docs/entregas/VISION_EXPANSAO70.md).
 
 > Atualização 17/11: GenAI ativo v6/corpus v3; D16 RAG/agente 14/16 na revisão técnica exploratória, revisão humana pendente. Vision: quatro treinos adicionais não sustentaram promoção; modelo ativo e PDF preservados, meta 70%/70% ainda não atingida. Detalhes em [RESULTADOS_NOTURNOS](../docs/entregas/RESULTADOS_NOTURNOS.md). Este adendo substitui o perfil GenAI v4 como configuração atual; placares anteriores são históricos.
 

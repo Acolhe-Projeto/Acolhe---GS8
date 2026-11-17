@@ -1,7 +1,7 @@
 {
-  "base_commit": "168766f7d5b9cb20bb2706caab081dffebfc3447",
+  "base_commit": "6fe6339345c3b2554c09c01a5c455a2bec5522b9",
   "worktree_snapshot": true,
-  "code_files": 142,
+  "code_files": 150,
   "code_source_hashes": {
     ".github/workflows/devsecops.yml": "b3561ed889f5fc1d5fc68c79d1d2f00738cc302f89a0a7150456960f0f084b5a",
     ".github/workflows/evaluate-python-bases.yml": "66d804bd1e78f5f486aca6e7eeb9c06f0faf79c1ef82a421f3ae591240f6a71b",
@@ -35,6 +35,7 @@
     "docs/evidencias/demo-final-http.json": "c8e9d488ea828644535c98bb6f3f3aa45e8074a60dc6a9a1655f0a8aa48aa8fb",
     "docs/evidencias/demo-overnight-http.json": "7b3513d255653e738e3a9e598ea375c8bbc58cf98726cf96addc7da38e6f38e2",
     "docs/evidencias/documentacao-qa-20261107.json": "3cac41440601c7e2790a4a035a48e291897844cf8edfd374d6c43ec2f9aeff95",
+    "docs/evidencias/expansion70-final-runtime.json": "950a556c67d5b00ba244a1e7276558270786e875d476081061b0c16ec800c87e",
     "docs/evidencias/genai-vision-20261116.json": "964f4f5c74c33c224a5fc23ccd68a6b6d2793e1f8eaf556b34d7b716c866b419",
     "docs/evidencias/hardware-rx6750xt-20261116.json": "9b75853952bca81da99740c417297238918ec795dcb8f7b38076b276dcb04553",
     "docs/evidencias/qwen3b-gpu-runtime-20261116.json": "ab7acb967557e352f4111d8d28310611d36b96b7278b0438cc14c0166c5853c3",
@@ -117,7 +118,13 @@
     "vision/reports/calibration-improved-640-80.json": "93cbfdd6ba851b684d8abf2456add821101dfce93ac7930046054c46aaa2f372",
     "vision/reports/calibration-yolo26n-custom.json": "58d33aa1744afc7450aabe260bd0382829831991b38bf50067e6762779ea367c",
     "vision/reports/error_analysis.json": "284013674d12ae51505150646f417d656eaa96ea9f8572480e3987e547e12cd7",
-    "vision/reports/expansion70-proposal.json": "bc5339e04a117281e55a77554e644ecd817a3ed236c586e4b06e118d11c5aadb",
+    "vision/reports/expansion70-all-layers-val20.json": "11f10223a3f44a45cdcefbaf292044c425c62447fb1b046cc74be7b6b28f9eae",
+    "vision/reports/expansion70-baseline-val20.json": "c17a9aff0b3116b4910281dc1ccac214a9c201b13531f2e3b068b1a1bfb0d341",
+    "vision/reports/expansion70-decision.json": "8fa2e24d3b983cada847f498662d159550b1973e87c1f004684f3a1f2215a0fd",
+    "vision/reports/expansion70-freeze22-val20.json": "e1f32633796d93a8fea3a8f32be4239269949e7982e3a0b40372d860274b903a",
+    "vision/reports/expansion70-object-sizes.json": "22428f3a996f996300ec8d979b2d66f8d6eec647e1f49c1d3e189ae0bb705614",
+    "vision/reports/expansion70-proposal.json": "838ada1aa7b5d24b0e2beffcabe587388c9bcca421fc4bd19f9d4575ac0c569d",
+    "vision/reports/expansion70-selection-protocol.json": "483ce1698bbf8a13cfec16f7e51613225f17d926138853fa7c3a3a45c37eea6b",
     "vision/reports/improvement-20261116.json": "7e0fb45a35ba4824991267b6a849370466cbffbeb5195b9c424b099d94307c9e",
     "vision/reports/independent23-frozen.json": "cea83174bcfa9dfe6c7708168d93d971a78ade8021196aa3b146a399f388a838",
     "vision/reports/inference-http-20261116.json": "6fefc36c479cb6d4cf0f915adeed9b7bb24e5fe85ab184dc6f2f05ae5d870494",
@@ -130,6 +137,7 @@
     "vision/reports/overnight-decision.json": "34556496234cd97c67e8c915dd472d32bfa96ea3c925f5381c2c0e3e0a47cdd7",
     "vision/reports/pretrained-bases-validation.json": "3a25e4f61cdd39af20cc71f5bf4a610bf73234e6614e4a823df397843f63baa9",
     "vision/reports/reproduction-newtest23.json": "ea13b350616ff0475123bee810f1685574321c76facf66b6e0ef4078116b2e6a",
+    "vision/reports/reproduction-train70.json": "7c1ed28791cc56369b253c21685a20ce52a4e61cfb52daa2b34c8da0be852247",
     "vision/reports/reproduction.json": "f565b4535434a2addf05fe97be678ffa6ef188609b396cb1a3aa86fdc660c590",
     "vision/reports/training-20261116.json": "bab88235766fae3e69017ef4d1bddbf1be53ea39efe684b44d2101ad36da73c7",
     "vision/reports/training-yolo26n.json": "db7ca9799ebbb19c132937a0f87714dede7465ab85757d2a4e929ae2b3c35a66",
@@ -139,12 +147,12 @@
     "vision/service.py": "ad590214b43ea0fe5f92e972cc08acf76d559ad5d724f475c3d9ee9e87b5cfbf",
     "vision/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "vision/tests/test_calibrate.py": "d9d9114cad6d3abb4cfd2aa638b1514c7d94b62e7048fff35b4bae7ee7082ce4",
-    "vision/tests/test_dataset.py": "d8aaa283f03f4830a0b8beb6ee80d2232fcabed64c00de9adc1609437ab87b37",
+    "vision/tests/test_dataset.py": "3366ed74a7f66dd407a1e8fb18e2049e1bb3b08ba139f6ab89c6b92af540340c",
     "vision/tests/test_guards.py": "ddb2ef5c2f52834c1e11458650ba5bf0593ad2073813f78593925326c1255721",
     "vision/tests/test_public_review.py": "04079cc368f124fe6ccd4eda62f130278c70765d28cde5ed8bac094233089ace",
     "vision/tests/test_reproduce.py": "352d3e71aa6d0f6caddf594762e3079db0e72ba5a48c32e68ee0f63096ecaf50",
     "vision/tests/test_service.py": "8a73f520febb778ce9707aa9d52e080f031b82a6ac29ff74051ef51973c5edf1",
-    "vision/train.py": "dcc366838a3b6e38be42c0978b2bfd82826767f7e7c30a62f7b1250e89c20fda"
+    "vision/train.py": "59926e20b02591794564b8e0d985c095e5d16b8d3676df44512aa4853f3d706b"
   },
   "ast_nodes": 565,
   "ast_edges": 1378,
@@ -155,6 +163,7 @@
     "docs/evidencias/demo-final-http.json",
     "docs/evidencias/demo-overnight-http.json",
     "docs/evidencias/documentacao-qa-20261107.json",
+    "docs/evidencias/expansion70-final-runtime.json",
     "docs/evidencias/genai-vision-20261116.json",
     "docs/evidencias/hardware-rx6750xt-20261116.json",
     "docs/evidencias/qwen3b-gpu-runtime-20261116.json",
@@ -204,7 +213,13 @@
     "vision/reports/calibration-improved-640-80.json",
     "vision/reports/calibration-yolo26n-custom.json",
     "vision/reports/error_analysis.json",
+    "vision/reports/expansion70-all-layers-val20.json",
+    "vision/reports/expansion70-baseline-val20.json",
+    "vision/reports/expansion70-decision.json",
+    "vision/reports/expansion70-freeze22-val20.json",
+    "vision/reports/expansion70-object-sizes.json",
     "vision/reports/expansion70-proposal.json",
+    "vision/reports/expansion70-selection-protocol.json",
     "vision/reports/improvement-20261116.json",
     "vision/reports/independent23-frozen.json",
     "vision/reports/inference-http-20261116.json",
@@ -217,6 +232,7 @@
     "vision/reports/overnight-decision.json",
     "vision/reports/pretrained-bases-validation.json",
     "vision/reports/reproduction-newtest23.json",
+    "vision/reports/reproduction-train70.json",
     "vision/reports/reproduction.json",
     "vision/reports/training-20261116.json",
     "vision/reports/training-yolo26n.json",
@@ -251,7 +267,6 @@
     "docs/VALIDACAO_GENAI_VISION.md",
     "docs/entregas/COMO_USAR_E_GRAVAR.md",
     "docs/entregas/ROTEIRO_VIDEOS.md",
-    "docs/entregas/VISION_RELATORIO.md",
     "docs/manual_acolhe.md",
     "docs/manual_acolhe.pdf",
     "docs/registro_testes.md",
@@ -285,6 +300,7 @@
     "docs/ENTREGA_CHECKLIST.md",
     "docs/entregas/GENAI_RELATORIO.md",
     "genai/base/README.md",
+    "docs/entregas/VISION_RELATORIO.md",
     "docs/MODELOS_VISION.md"
   ],
   "structural_sources": {
@@ -325,8 +341,8 @@
       "sha256": "d8df0b06d0a515c5b12e553baab0ec8ab1d495724d962a0165419bc6d3963faa"
     },
     "docs/ENTREGA_CHECKLIST.md": {
-      "lines": 48,
-      "sha256": "e7bb25603ca8363b584db4063013031786917208142be3afc1191075bd34eb4f"
+      "lines": 50,
+      "sha256": "1ba60d8913e10de1c496deffdb4368bb7c546fdf12e022f46483e906a3d42598"
     },
     "docs/MODELOS_VISION.md": {
       "lines": 66,
@@ -334,7 +350,7 @@
     },
     "docs/PRD_GENAI_VISION.md": {
       "lines": 93,
-      "sha256": "10616f262fa9e27b133692c94457d9eb2f2db4184984ead1ec08292af707d0fb"
+      "sha256": "30e3769c01b1da794487268280b9f10dcb39b6fbf56d9c3ebd94d492653137bb"
     },
     "docs/README.md": {
       "lines": 34,
@@ -365,12 +381,12 @@
       "sha256": "711554f8a9e17dc2c296f0b6d2056f2c26113e6d1211a729773d2bfabf83c4a5"
     },
     "docs/entregas/VISION_EXPANSAO70.md": {
-      "lines": 21,
-      "sha256": "069a745c02c42a6e2e41ea753c5610a4a29dab7535f0e42e1f97adf9096074f5"
+      "lines": 61,
+      "sha256": "a72d62cb8b26ba288629546677bcf51502a854872702d39147dca5f858b640d2"
     },
     "docs/entregas/VISION_RELATORIO.md": {
-      "lines": 108,
-      "sha256": "b2375d3f0554ed606426461e0149e31f0ea24830065dd8fcc7c7c6d47dc642d9"
+      "lines": 127,
+      "sha256": "64657ca1641dcfcc37dda75314a04357099579bbefa5ddd1e009ddacfef7eab6"
     },
     "docs/manual_acolhe.md": {
       "lines": 283,
@@ -486,7 +502,7 @@
     },
     "vision/PLAN.md": {
       "lines": 53,
-      "sha256": "5f8b26ed46505ce8c82980f2617d5a50654d63edb5eee90852435a719f8dea3a"
+      "sha256": "f1d3af792ec3ff350d1f987663b0b837efa80b1cd32e3dc5628d480c1691945e"
     },
     "vision/README.md": {
       "lines": 44,
@@ -513,8 +529,8 @@
       "sha256": "aacd8b1403ddc2a9f3e59132ae798259d5c578f218122ff81980f87179021d87"
     },
     "output/pdf/ACOLHE_VISION.pdf": {
-      "lines": 272,
-      "sha256": "91b7165b1f7b070b7411c1cec284308b98d1cc153467930fca7a1badd6a4dcff"
+      "lines": 320,
+      "sha256": "63d482e82fa0f1d682c60c02629afa7d63f92646072955415a8ce0ca86940470"
     },
     "app/static/lessons.json": {
       "lines": 1,
@@ -539,6 +555,10 @@
     "docs/evidencias/documentacao-qa-20261107.json": {
       "lines": 15,
       "sha256": "3cac41440601c7e2790a4a035a48e291897844cf8edfd374d6c43ec2f9aeff95"
+    },
+    "docs/evidencias/expansion70-final-runtime.json": {
+      "lines": 126,
+      "sha256": "950a556c67d5b00ba244a1e7276558270786e875d476081061b0c16ec800c87e"
     },
     "docs/evidencias/genai-vision-20261116.json": {
       "lines": 39,
@@ -736,9 +756,33 @@
       "lines": 571,
       "sha256": "284013674d12ae51505150646f417d656eaa96ea9f8572480e3987e547e12cd7"
     },
+    "vision/reports/expansion70-all-layers-val20.json": {
+      "lines": 1104,
+      "sha256": "11f10223a3f44a45cdcefbaf292044c425c62447fb1b046cc74be7b6b28f9eae"
+    },
+    "vision/reports/expansion70-baseline-val20.json": {
+      "lines": 1104,
+      "sha256": "c17a9aff0b3116b4910281dc1ccac214a9c201b13531f2e3b068b1a1bfb0d341"
+    },
+    "vision/reports/expansion70-decision.json": {
+      "lines": 366,
+      "sha256": "8fa2e24d3b983cada847f498662d159550b1973e87c1f004684f3a1f2215a0fd"
+    },
+    "vision/reports/expansion70-freeze22-val20.json": {
+      "lines": 1104,
+      "sha256": "e1f32633796d93a8fea3a8f32be4239269949e7982e3a0b40372d860274b903a"
+    },
+    "vision/reports/expansion70-object-sizes.json": {
+      "lines": 91,
+      "sha256": "22428f3a996f996300ec8d979b2d66f8d6eec647e1f49c1d3e189ae0bb705614"
+    },
     "vision/reports/expansion70-proposal.json": {
-      "lines": 75,
-      "sha256": "bc5339e04a117281e55a77554e644ecd817a3ed236c586e4b06e118d11c5aadb"
+      "lines": 81,
+      "sha256": "838ada1aa7b5d24b0e2beffcabe587388c9bcca421fc4bd19f9d4575ac0c569d"
+    },
+    "vision/reports/expansion70-selection-protocol.json": {
+      "lines": 117,
+      "sha256": "483ce1698bbf8a13cfec16f7e51613225f17d926138853fa7c3a3a45c37eea6b"
     },
     "vision/reports/improvement-20261116.json": {
       "lines": 867,
@@ -787,6 +831,10 @@
     "vision/reports/reproduction-newtest23.json": {
       "lines": 3724,
       "sha256": "ea13b350616ff0475123bee810f1685574321c76facf66b6e0ef4078116b2e6a"
+    },
+    "vision/reports/reproduction-train70.json": {
+      "lines": 7765,
+      "sha256": "7c1ed28791cc56369b253c21685a20ce52a4e61cfb52daa2b34c8da0be852247"
     },
     "vision/reports/reproduction.json": {
       "lines": 1650,
@@ -899,23 +947,23 @@
   },
   "token_usage": null,
   "token_usage_reason": "Host agent usage not exposed",
-  "graph_nodes": 1108,
-  "graph_edges": 1714,
-  "communities": 168,
+  "graph_nodes": 1118,
+  "graph_edges": 1717,
+  "communities": 178,
   "health": {
-    "node_count": 1050,
+    "node_count": 1060,
     "unverified_node_count": 0,
-    "raw_edge_count": 1822,
+    "raw_edge_count": 1825,
     "non_object_edges": 0,
     "missing_endpoint_edges": 0,
     "dangling_endpoint_edges": 356,
     "external_reference_edges": 4,
     "self_loop_edges": 0,
-    "valid_candidate_edges": 1462,
+    "valid_candidate_edges": 1465,
     "exact_duplicate_edges": 1,
-    "directed_unique_endpoint_pairs": 1356,
+    "directed_unique_endpoint_pairs": 1359,
     "directed_same_endpoint_collapsed_edges": 106,
-    "undirected_unique_endpoint_pairs": 1355,
+    "undirected_unique_endpoint_pairs": 1358,
     "undirected_same_endpoint_collapsed_edges": 107,
     "same_endpoint_group_count": 61,
     "relation_variant_groups": 27,
@@ -923,8 +971,8 @@
     "source_location_variant_groups": 33,
     "context_variant_groups": 2,
     "post_build_graph_type": "Graph",
-    "post_build_node_count": 1108,
-    "post_build_edge_count": 1714,
+    "post_build_node_count": 1118,
+    "post_build_edge_count": 1717,
     "post_build_error": "",
     "producer_suppression": {
       "path": "C:\\Users\\hyeon\\AppData\\Roaming\\uv\\tools\\graphifyy\\Lib\\site-packages\\graphify\\extract.py",

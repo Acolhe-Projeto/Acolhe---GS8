@@ -73,5 +73,9 @@
   },
   "source_acquisition": "HTTP429 stopped online acquisition. Final packet assembled entirely from verified cache; no rate-limit bypass.",
   "approval_reference": "Aprovo o lote e o treino local",
-  "dataset_fingerprint_sha256": "680186e488f3189b421f910e89a0010cecb836fa75d0232d7148e54313eb46ac"
+  "dataset_fingerprint_sha256": "680186e488f3189b421f910e89a0010cecb836fa75d0232d7148e54313eb46ac",
+  "training_completed": true,
+  "training_promoted": false,
+  "completed_epochs_total": 100,
+  "decision_report": "expansion70-decision.json"
 }

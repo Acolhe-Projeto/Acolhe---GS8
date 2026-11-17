@@ -1,3 +1,5 @@
+> Rodada adicional concluída: 70 treino / 20 validação, 524 / 210 objetos, 100 épocas entre duas configurações. Os candidatos não melhoraram o modelo ativo, que foi preservado. Detalhes: entregas/VISION_EXPANSAO70.md.
+
 > Atualização 17/11: GenAI ativo v6/corpus v3; D16 RAG/agente 14/16 na revisão técnica exploratória, revisão humana pendente. Vision: quatro treinos adicionais não sustentaram promoção; modelo ativo e PDF preservados, meta 70%/70% ainda não atingida. Detalhes em [RESULTADOS_NOTURNOS](entregas/RESULTADOS_NOTURNOS.md). Este adendo substitui o perfil GenAI v4 como configuração atual; placares anteriores são históricos.
 
 # Checklist atual — GenAI e Vision
