@@ -1,0 +1,53 @@
+{
+  "task_date_local": "2026-11-17",
+  "recorded_at_utc": "2026-11-17T14:40:38.922396+00:00",
+  "cause": "Ollama service was not running; connection refused at 127.0.0.1:11434",
+  "resolution": "Started existing ollama.exe serve hidden; no model download or application restart",
+  "ollama_version": "0.32.1",
+  "model": "qwen3:4b",
+  "app_smoke_test": {
+    "answer": "Olá, sou Acolhe, seu tutor de português brasileiro para acolhimento linguístico.",
+    "mode": "local_llm_rag",
+    "elapsed_seconds": 11.81,
+    "wav_bytes": 188064,
+    "valid_riff_wav": true,
+    "errors": [],
+    "motor_test": null
+  },
+  "robot": {
+    "connected": true,
+    "port": "COM5",
+    "version": "ACOLHE_V2",
+    "sensor": {
+      "sensor": "DHT11",
+      "valid": true,
+      "temperature": 26.5,
+      "humidity": 50.0,
+      "age_seconds": 1.1
+    },
+    "lcd_ok": true,
+    "lcd_enabled": true,
+    "board": "UNO",
+    "motor_control": "direction_only",
+    "motors_enabled": true,
+    "calibrations": {
+      "head": {
+        "motor": "head",
+        "duration_ms": 100,
+        "direction": 1
+      },
+      "arm": {
+        "motor": "arm",
+        "duration_ms": 100,
+        "direction": 1
+      }
+    },
+    "error": null,
+    "activity": null,
+    "ack": "config",
+    "physical_verified": false
+  },
+  "motor_motion_confirmed_by_operator": true,
+  "system_verifies_motion": false,
+  "microphone_or_audible_playback_verified_by_agent": false
+}

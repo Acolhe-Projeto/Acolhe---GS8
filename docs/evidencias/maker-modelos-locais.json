@@ -1,0 +1,140 @@
+{
+  "kind": "synthetic_audio_real_local_models",
+  "recorded_at_utc": "2026-11-11T15:23:34.984412+00:00",
+  "physical_verified": false,
+  "microphone_tested": false,
+  "audible_playback_verified": false,
+  "sensor_source": "explicit test fixtures, not physical DHT11",
+  "model": "qwen3:4b",
+  "semantic_review": "pending_human_review",
+  "latency_target_seconds": 10,
+  "latency_target_met_in_all_cases": false,
+  "source_sha256": {
+    "voice.py": "b8a4005e99c611fc753150cc5daa379670b2179daf3d2bf91b79c055ded74e25",
+    "hardware.py": "55d1324b10e4e7e311fe771f7469a753ff82211070da987722e09f1be27a239a"
+  },
+  "results": [
+    {
+      "input": "Olá, qual é o seu nome?",
+      "sensor_fixture": {
+        "valid": false
+      },
+      "physical_verified": false,
+      "transcript": "Olá, qual é o seu nome?",
+      "answer": "Olá! Sou Acolhe, seu tutor de português brasileiro para acolhimento linguístico.",
+      "mode": "local_llm_rag",
+      "model": "qwen3:4b",
+      "sensor": {
+        "valid": false
+      },
+      "sources": [
+        "greeting",
+        "bus",
+        "lost"
+      ],
+      "errors": [],
+      "elapsed_seconds": 9.14,
+      "output_audio_seconds": 4.57,
+      "output_wav_bytes": 201492,
+      "passed": true,
+      "semantic_review": "pending_human_review",
+      "total_seconds": 9.62
+    },
+    {
+      "input": "Como atravessar a rua com segurança?",
+      "sensor_fixture": {
+        "valid": false
+      },
+      "physical_verified": false,
+      "transcript": "como atravessar a rua com segurança.",
+      "answer": "Para atravessar a rua com segurança, fique na calçada e peça ajuda a um adulto responsável. Use a faixa e respeite o semáide.",
+      "mode": "local_llm_rag",
+      "model": "qwen3:4b",
+      "sensor": {
+        "valid": false
+      },
+      "sources": [
+        "crossing",
+        "bus",
+        "lost"
+      ],
+      "errors": [],
+      "elapsed_seconds": 15.26,
+      "output_audio_seconds": 7.46,
+      "output_wav_bytes": 328980,
+      "passed": true,
+      "semantic_review": "pending_human_review",
+      "total_seconds": 15.81
+    },
+    {
+      "input": "Como está a temperatura da sala?",
+      "sensor_fixture": {
+        "valid": true,
+        "temperature": 26,
+        "humidity": 52
+      },
+      "physical_verified": false,
+      "transcript": "como está a temperatura da sala.",
+      "answer": "O sensor mediu 26 graus Celsius e 52 por cento de umidade. A temperatura da sala está quente.",
+      "mode": "local_llm_rag",
+      "model": "qwen3:4b",
+      "sensor": {
+        "valid": true,
+        "temperature": 26,
+        "humidity": 52
+      },
+      "sources": [],
+      "errors": [],
+      "elapsed_seconds": 5.42,
+      "output_audio_seconds": 6.62,
+      "output_wav_bytes": 292116,
+      "passed": true,
+      "semantic_review": "pending_human_review",
+      "total_seconds": 5.88
+    },
+    {
+      "input": "Como está a umidade?",
+      "sensor_fixture": {
+        "valid": false
+      },
+      "physical_verified": false,
+      "transcript": "como está a umidade.",
+      "answer": "A leitura do sensor está indisponível; não consigo informar as condições da sala. O sensor está indisponível.",
+      "mode": "local_llm_rag",
+      "model": "qwen3:4b",
+      "sensor": {
+        "valid": false
+      },
+      "sources": [],
+      "errors": [],
+      "elapsed_seconds": 6.2,
+      "output_audio_seconds": 6.27,
+      "output_wav_bytes": 276756,
+      "passed": true,
+      "semantic_review": "pending_human_review",
+      "total_seconds": 6.69
+    },
+    {
+      "input": "Qual é a cotação da bolsa hoje?",
+      "sensor_fixture": {
+        "valid": false
+      },
+      "physical_verified": false,
+      "transcript": "Qual é a cotação da bolsa hoje?",
+      "answer": "Posso ajudar com as atividades de português e com a temperatura e a umidade medidas na sala. Vamos aprender uma palavra?",
+      "mode": "refusal",
+      "model": null,
+      "sensor": {
+        "valid": false
+      },
+      "sources": [],
+      "errors": [],
+      "elapsed_seconds": 2.33,
+      "output_audio_seconds": 6.56,
+      "output_wav_bytes": 289556,
+      "passed": true,
+      "semantic_review": "pending_human_review",
+      "total_seconds": 2.8
+    }
+  ]
+}

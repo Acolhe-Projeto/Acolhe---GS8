@@ -1,4 +1,9 @@
-@echo off
-cd /d "%~dp0"
-python -m app.server
-pause
+@echo off
+setlocal
+cd /d "%~dp0"
+if exist .venv\Scripts\python.exe (
+    .venv\Scripts\python.exe -m app.server
+) else (
+    python -m app.server
+)
+pause

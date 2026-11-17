@@ -70,5 +70,23 @@
     "es": "Livro en español es libro. Caderno es cuaderno. Ejemplo: Eu leio o livro e escrevo no caderno.",
     "source": "Conteúdo autoral Acolhe, versão 1; revisão pedagógica pendente",
     "license": "CC-BY-4.0"
+  },
+  {
+    "id": "thanks",
+    "title": "Agradecer",
+    "keywords": "gracias obrigado obrigada agradecer agradecimento",
+    "pt": "Para agradecer, diga obrigado ou obrigada. Em espanhol: gracias. Exemplo: Obrigado pela ajuda!",
+    "es": "Para agradecer en portugués, di obrigado u obrigada. En español: gracias.",
+    "source": "Conteúdo autoral Acolhe, versão 1; revisão pedagógica pendente",
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "please",
+    "title": "Pedir com gentileza",
+    "keywords": "por favor pedir educadamente gentileza permiso licenca",
+    "pt": "Use por favor ao pedir algo. Exemplo: Pode me ajudar, por favor? Para passar, diga: Com licença.",
+    "es": "Usa por favor al pedir algo. En portugués: Pode me ajudar, por favor? Para pasar, di: Com licença.",
+    "source": "Conteúdo autoral Acolhe, versão 1; revisão pedagógica pendente",
+    "license": "CC-BY-4.0"
   }
 ]
