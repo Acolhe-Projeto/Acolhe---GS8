@@ -66,7 +66,8 @@ def initial_checkpoint(artifacts, base_model):
     if (manifest.get("trained_on_real_images") is not True or manifest.get("model") != Path(base_model).stem
             or digest != manifest.get("checkpoint_sha256")):
         raise ValueError("Initial checkpoint must match its real-training manifest, model and hash")
-    return checkpoint, {"checkpoint_sha256": digest, "source_epochs": manifest.get("epochs"),
+    return checkpoint, {"checkpoint_sha256": digest, "source_epochs_max": manifest.get("epochs"),
+                        "source_epochs_completed": manifest.get("epochs_completed"),
                         "source_model": manifest["model"], "optimizer_resumed": False}
 
 

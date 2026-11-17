@@ -1,0 +1,409 @@
+{
+  "model": "YOLO26m",
+  "parameters_before_inference": 21791392,
+  "weights_bytes": 44036761,
+  "checkpoint_sha256": "3eff4c911170b189d5904b52adde2390f877f0d105a95c092a4b3496653c3bd5",
+  "inference": {
+    "conf": 0.25,
+    "imgsz": 960
+  },
+  "dataset": {
+    "train": 91,
+    "val": 27,
+    "test": 23,
+    "train_objects": 613,
+    "val_objects": 247,
+    "test_objects": 66
+  },
+  "validation": {
+    "confidence": 0.25,
+    "iou": 0.5,
+    "tp": 166,
+    "fp": 70,
+    "fn": 81,
+    "precision": 0.7033898305084746,
+    "recall": 0.6720647773279352,
+    "f1": 0.6873706004140787,
+    "per_class": [
+      {
+        "tp": 2,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6666666666666666
+      },
+      {
+        "tp": 23,
+        "fp": 5,
+        "fn": 6,
+        "precision": 0.8214285714285714,
+        "recall": 0.7931034482758621,
+        "f1": 0.8070175438596491
+      },
+      {
+        "tp": 24,
+        "fp": 9,
+        "fn": 10,
+        "precision": 0.7272727272727273,
+        "recall": 0.7058823529411765,
+        "f1": 0.7164179104477612
+      },
+      {
+        "tp": 26,
+        "fp": 12,
+        "fn": 6,
+        "precision": 0.6842105263157895,
+        "recall": 0.8125,
+        "f1": 0.7428571428571429
+      },
+      {
+        "tp": 33,
+        "fp": 23,
+        "fn": 20,
+        "precision": 0.5892857142857143,
+        "recall": 0.6226415094339622,
+        "f1": 0.6055045871559633
+      },
+      {
+        "tp": 9,
+        "fp": 5,
+        "fn": 10,
+        "precision": 0.6428571428571429,
+        "recall": 0.47368421052631576,
+        "f1": 0.5454545454545454
+      },
+      {
+        "tp": 7,
+        "fp": 1,
+        "fn": 6,
+        "precision": 0.875,
+        "recall": 0.5384615384615384,
+        "f1": 0.6666666666666666
+      },
+      {
+        "tp": 25,
+        "fp": 9,
+        "fn": 11,
+        "precision": 0.7352941176470589,
+        "recall": 0.6944444444444444,
+        "f1": 0.7142857142857143
+      },
+      {
+        "tp": 4,
+        "fp": 1,
+        "fn": 3,
+        "precision": 0.8,
+        "recall": 0.5714285714285714,
+        "f1": 0.6666666666666666
+      },
+      {
+        "tp": 5,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.8333333333333334,
+        "recall": 0.7142857142857143,
+        "f1": 0.7692307692307693
+      },
+      {
+        "tp": 6,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      {
+        "tp": 2,
+        "fp": 4,
+        "fn": 3,
+        "precision": 0.3333333333333333,
+        "recall": 0.4,
+        "f1": 0.36363636363636365
+      }
+    ]
+  },
+  "validation_macro_recall": 0.6313693158164654,
+  "reference_validation": {
+    "confidence": 0.15,
+    "iou": 0.5,
+    "tp": 115,
+    "fp": 66,
+    "fn": 132,
+    "precision": 0.6353591160220995,
+    "recall": 0.46558704453441296,
+    "f1": 0.5373831775700935,
+    "per_class": [
+      {
+        "tp": 0,
+        "fp": 1,
+        "fn": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      {
+        "tp": 25,
+        "fp": 9,
+        "fn": 4,
+        "precision": 0.7352941176470589,
+        "recall": 0.8620689655172413,
+        "f1": 0.7936507936507936
+      },
+      {
+        "tp": 16,
+        "fp": 4,
+        "fn": 18,
+        "precision": 0.8,
+        "recall": 0.47058823529411764,
+        "f1": 0.5925925925925926
+      },
+      {
+        "tp": 19,
+        "fp": 6,
+        "fn": 13,
+        "precision": 0.76,
+        "recall": 0.59375,
+        "f1": 0.6666666666666666
+      },
+      {
+        "tp": 17,
+        "fp": 25,
+        "fn": 36,
+        "precision": 0.40476190476190477,
+        "recall": 0.32075471698113206,
+        "f1": 0.35789473684210527
+      },
+      {
+        "tp": 3,
+        "fp": 1,
+        "fn": 16,
+        "precision": 0.75,
+        "recall": 0.15789473684210525,
+        "f1": 0.2608695652173913
+      },
+      {
+        "tp": 4,
+        "fp": 1,
+        "fn": 9,
+        "precision": 0.8,
+        "recall": 0.3076923076923077,
+        "f1": 0.4444444444444444
+      },
+      {
+        "tp": 16,
+        "fp": 14,
+        "fn": 20,
+        "precision": 0.5333333333333333,
+        "recall": 0.4444444444444444,
+        "f1": 0.48484848484848486
+      },
+      {
+        "tp": 5,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.7142857142857143,
+        "f1": 0.8333333333333334
+      },
+      {
+        "tp": 4,
+        "fp": 2,
+        "fn": 3,
+        "precision": 0.6666666666666666,
+        "recall": 0.5714285714285714,
+        "f1": 0.6153846153846154
+      },
+      {
+        "tp": 5,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.625,
+        "f1": 0.7692307692307693
+      },
+      {
+        "tp": 1,
+        "fp": 3,
+        "fn": 4,
+        "precision": 0.25,
+        "recall": 0.2,
+        "f1": 0.2222222222222222
+      }
+    ]
+  },
+  "reference_macro_recall": 0.4389923077071362,
+  "regression23": {
+    "confidence": 0.25,
+    "iou": 0.5,
+    "tp": 41,
+    "fp": 19,
+    "fn": 25,
+    "precision": 0.6833333333333333,
+    "recall": 0.6212121212121212,
+    "f1": 0.6507936507936508,
+    "per_class": [
+      {
+        "tp": 2,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1": 0.5714285714285714
+      },
+      {
+        "tp": 4,
+        "fp": 2,
+        "fn": 3,
+        "precision": 0.6666666666666666,
+        "recall": 0.5714285714285714,
+        "f1": 0.6153846153846154
+      },
+      {
+        "tp": 6,
+        "fp": 6,
+        "fn": 6,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5
+      },
+      {
+        "tp": 3,
+        "fp": 3,
+        "fn": 2,
+        "precision": 0.5,
+        "recall": 0.6,
+        "f1": 0.5454545454545454
+      },
+      {
+        "tp": 2,
+        "fp": 3,
+        "fn": 1,
+        "precision": 0.4,
+        "recall": 0.6666666666666666,
+        "f1": 0.5
+      },
+      {
+        "tp": 3,
+        "fp": 1,
+        "fn": 1,
+        "precision": 0.75,
+        "recall": 0.75,
+        "f1": 0.75
+      },
+      {
+        "tp": 2,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8
+      },
+      {
+        "tp": 6,
+        "fp": 2,
+        "fn": 1,
+        "precision": 0.75,
+        "recall": 0.8571428571428571,
+        "f1": 0.8
+      },
+      {
+        "tp": 3,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571
+      },
+      {
+        "tp": 2,
+        "fp": 2,
+        "fn": 2,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5
+      },
+      {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      {
+        "tp": 6,
+        "fp": 0,
+        "fn": 4,
+        "precision": 1.0,
+        "recall": 0.6,
+        "f1": 0.75
+      }
+    ]
+  },
+  "regression_macro_recall": 0.6551587301587302,
+  "target_met": false,
+  "quality_validated": false,
+  "epochs_completed": {
+    "old80": 9,
+    "new70": 9,
+    "official": 9,
+    "medium": 5
+  },
+  "test_policy": "ONE diagnostic regression on already-exposed23test after frozen validation-only decision. Not blind independent evidence. No further tuning after this result.",
+  "decision_frozen_at_utc": "2026-11-17T10:11:01.657089+00:00",
+  "test_evaluated_at_utc": "2026-11-17T10:11:39.756124+00:00",
+  "five_observed_misses": [
+    {
+      "image_id": "182417",
+      "class": "cup",
+      "closest_iou": 0.1077957021148619,
+      "confidence": 0.0384410135447979,
+      "observation": "Localization belowIoU0.5",
+      "not_a_proven_cause": true
+    },
+    {
+      "image_id": "30213",
+      "class": "bottle",
+      "closest_iou": 0.9550049968243294,
+      "confidence": 0.24563539028167725,
+      "observation": "Closest same-class candidate below operating confidence or assigned to another gold object",
+      "not_a_proven_cause": true
+    },
+    {
+      "image_id": "533206",
+      "class": "fork",
+      "closest_iou": 0.8589663303876148,
+      "confidence": 0.1555446982383728,
+      "observation": "Closest same-class candidate below operating confidence or assigned to another gold object",
+      "not_a_proven_cause": true
+    },
+    {
+      "image_id": "17182",
+      "class": "book",
+      "closest_iou": 0.6948583547763184,
+      "confidence": 0.1542297750711441,
+      "observation": "Closest same-class candidate below operating confidence or assigned to another gold object",
+      "not_a_proven_cause": true
+    },
+    {
+      "image_id": "313130",
+      "class": "chair",
+      "closest_iou": 0.8463921915010331,
+      "confidence": 0.08563278615474701,
+      "observation": "Closest same-class candidate below operating confidence or assigned to another gold object",
+      "not_a_proven_cause": true
+    }
+  ],
+  "http": {
+    "latency_seconds": [
+      0.9528438000124879,
+      0.9826438000018243,
+      0.8607429999974556,
+      0.9548834999877727,
+      0.9765405000071041
+    ],
+    "median_seconds": 0.9548834999877727,
+    "max_seconds": 0.9826438000018243
+  }
+}

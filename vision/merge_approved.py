@@ -52,7 +52,14 @@ def merge(sources, heldout, output):
     meta = {**inventories[heldout], 'images': records, 'source_audits': source_audits,
             'split_method': 'Union of approved train/val preserving membership; test exclusively from fixed heldout. Duplicate identical IDs merged, conflicting labels/splits rejected.',
             'human_approval': 'Composition of individually approved source records; no new blanket approval fabricated.'}
-    meta.pop('annotations_sha256', None)
+    meta['source_approvals'] = [
+        {'dataset': root.name,
+         'source_provenance_sha256': hashlib.sha256((root/'provenance.json').read_bytes()).hexdigest(),
+         'declared_packet_hashes': sorted(set(inventories[root].get('approved_source_packets', []) +
+             ([inventories[root]['approved_packet_sha256']] if inventories[root].get('approved_packet_sha256') else [])))}
+        for root in dict.fromkeys([*sources, heldout])]
+    for key in ('annotations_sha256', 'annotations_file', 'packet_sha256', 'approved_packet_sha256', 'approved_source_packets'):
+        meta.pop(key, None)
     (output/'provenance.json').write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding='utf-8')
     checked = audit(output/'dataset.yaml', output/'provenance.json')
     (output/'audit.json').write_text(json.dumps(checked, indent=2), encoding='utf-8')

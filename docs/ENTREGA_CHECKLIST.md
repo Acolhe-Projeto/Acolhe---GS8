@@ -1,50 +1,54 @@
-> Rodada adicional concluída: 70 treino / 20 validação, 524 / 210 objetos, 100 épocas entre duas configurações. Os candidatos não melhoraram o modelo ativo, que foi preservado. Detalhes: entregas/VISION_EXPANSAO70.md.
-
-> Atualização 17/11: GenAI ativo v6/corpus v3; D16 RAG/agente 14/16 na revisão técnica exploratória, revisão humana pendente. Vision: quatro treinos adicionais não sustentaram promoção; modelo ativo e PDF preservados, meta 70%/70% ainda não atingida. Detalhes em [RESULTADOS_NOTURNOS](entregas/RESULTADOS_NOTURNOS.md). Este adendo substitui o perfil GenAI v4 como configuração atual; placares anteriores são históricos.
-
 # Checklist atual — GenAI e Vision
 
-Atualizado17/11/2026. Branch feat/genai-vision. Esta versão substitui a auditoria inicial, preservada no histórico Git. Evidência distingue implementação, execução e qualidade; não concede nota.
+Atualizado em 17/11/2026, branch feat/genai-vision. Implementação, execução, qualidade e submissão são estados diferentes; este documento não concede nota.
 
 ## Fonte oficial e prazo
 
-Desafio-FIAP-GS-CitizenTech4ES,60páginas, SHA256236c35530bc23f3f6c48211f022862ff5d1458f17ad2d813e1f9d5130b696c87. Fonte local em Downloads. Páginas24,29–31 e 44 conferidas. Prazo19/11 às23h55, no Teams de cada disciplina; um integrante envia, links públicos funcionando durante correção. Conferir horário no ambienteFIAP.
+Desafio FIAP GS CitizenTech 4ES, 60 páginas, SHA256 236c35530bc23f3f6c48211f022862ff5d1458f17ad2d813e1f9d5130b696c87. Páginas 24, 29–31 e 44 conferidas. Prazo do PDF: 19/11 às 23h55, no Teams de cada disciplina, por um integrante; links públicos funcionando na correção. Conferir o horário no ambiente FIAP.
 
-## GenAI — pesos da página30
+## GenAI — página 30
 
-| ID | Peso | Critério | Estado atual / o que falta |
+| ID | Peso | Critério | Estado |
 |---|---:|---|---|
-| G01 |0,5| Tarefa e gabarito, incluindo não consta | Implementado: mobilidade educativa, dev20/holdoutC12 e negativas; revisar conteúdo com humanos |
-| G02 |1,0| Base em trechos com fonte | Oito documentos bilíngues, atribuição/licença, base/ e CSV; revisão pedagógica pendente |
-| G03 |1,0| Recall@1/@3 e limiar justificado | Medidos16/16 no desenvolvimento, limiar2.0; não confundir com acerto da resposta |
-| G04 |2,0| JSON, citação e recusa fundamentada | API/UI reais e contratos válidos; falhas semânticas preservadas, sem afirmar perfeição |
-| G05 |2,0| LoRA ou agente versus RAG | Agente real retrieve/refuse comparado; LoRA não é pendência obrigatória |
-| G06 |2,0| Placar de três configurações interpretado | MesmoQwen3B, dev20/C12; julgamento técnico do agente separado de revisão humana |
-| G07 |1,0| Cinco erros e correção proposta | Relatório rastreia erros reais; não foram inventados cinco casos para completar tabela |
-| G08 |0,5| README/reprodutibilidade | Publicados comandos/base/avaliacao/notebooks/API e perfil; conferir execução/links finais |
+| G01 |0,5| Tarefa e gabarito com não consta | Implementados; dev20 e casos congelados, incluindo D16 |
+| G02 |1,0| Base em trechos com fonte | Oito documentos bilíngues, corpus v3; revisão pedagógica pendente |
+| G03 |1,0| Recall@1/@3 e limiar | 16/16 no desenvolvimento; limiar 2,0 reavaliado; não é acurácia da resposta |
+| G04 |2,0| JSON, fontes e recusa | LLM Qwen3B local e API/UI reais; guardas e falhas semânticas documentadas |
+| G05 |2,0| LoRA ou agente versus RAG | Agente retrieve/refuse real comparado; não há LoRA nem pesos treinados pela equipe |
+| G06 |2,0| Placar interpretado de três configurações | D16: 7/16 baseline, 14/16 RAG e agente, na revisão técnica exploratória |
+| G07 |1,0| Cinco erros e correções | Casos reais e respostas brutas preservados; revisão humana pendente |
+| G08 |0,5| README e reprodução | Modelo/digest, comandos, base, avaliação e notebooks publicados |
 
-Total10pontos conforme rubrica, sem previsão de nota. Relatório de página31 já contém equipe/RMs, ficha, Mermaid, base/licenças, placar, erros e conclusão. **Falta gravar/publicar vídeo e incluir URL real**, além de revisão final da equipe e envio no Teams. Revisão humana é necessária para qualificar os julgamentos atuais; não foi inventada uma pontuação adicional para isso.
+O PDF usa a expressão treinar LLM local no objetivo; o item G05 admite explicitamente LoRA ou agente. Foi seguida a alternativa de agente, sem apresentar isso como fine-tuning dos pesos. Relatório contém equipe/RMs, arquitetura, fontes/licenças, placares, erros e conclusão. Falta revisão final da equipe, vídeo publicado com URL real e envio.
 
-Modelo finalQwen2.5:3b-instruct, abaixo de 4B, com GPU verificada. Revisão técnica de conteúdo emC12:baseline4/12, RAG8/12, agente9/12; não é acurácia humana cega. Guia rápido/roteiro90segundos: entregas/COMO_USAR_E_GRAVAR.md.
+## Vision — página 44
 
-## Vision — página44
-
-| Item | Peso / origem | Estado atual / o que falta |
+| Item | Peso / origem | Estado |
 |---|---|---|
-| Treinamento customizado | Objetivo oficial | ExecutadoYOLO11n e YOLO26n; ativoYOLO26n 80 épocas640CPU, confiança 0,15 pela validação |
-| GitHub código/documentação | Entregável | Branch publicada; fotos/pesos locais, instruções e metadados/rótulos para reconstrução |
-| PDF específico | Até5pontos | Título, equipe, resumo250palavras, introdução, objetivo50palavras, ferramentas, método, resultados e conclusão; renderização conferida |
-| Vídeo funcionando | Até5pontos | Pendente gravação, revisão, publicação e URL real; roteiro pronto |
+| Treino customizado | Objetivo oficial | YOLO26m ativo, 91 treino / 27 validação; cinco épocas concluídas de máximo 12; checkpoint escolhido na primeira |
+| Comparação de fine-tuning | Evidência adicional | Checkpoints nano antigo/recente e controle, nove épocas cada; fase M registrada separadamente |
+| GitHub | Entregável | Código, metadados, rótulos e comandos; fotos e pesos locais |
+| PDF específico | Até 5 pontos | Atualizado: resumo 250 palavras, objetivo 50, equipe, método, ferramentas, resultados e conclusão |
+| Vídeo funcionando | Até 5 pontos | Roteiro e API reais; gravação/publicação e URL pendentes |
 
-Não há recall mínimo, número de fotos/classes/épocas ou duração de vídeo fixados na página44. **Meta local aprovada:70% de recall e 70% de precisão**, ainda não atingida. Na regressão23 já examinada:YOLO26n teve recall51,5%, precisão60,7%, F1 de 0,5574. Foi promovido por validação antes dessa medição. Não chamar regressão em teste exposto de nova avaliação independente. quality_validated=false.
+Perfil efetivo: CPU, 960 pixels e confiança 0,25. Na mesma validação: precisão 70,3%, recall 67,2%, macrorecall 63,1%. Na regressão exposta de 23 fotos: precisão 68,3%, recall 62,1%, 41 TP / 19 FP / 25 FN. São ganhos agregados frente ao nano anterior, com regressões em algumas classes. Meta conjunta observada no lote básico13; não é prova de desempenho geral. A rubrica não fixa recall, número de fotos/classes/épocas ou duração do vídeo. quality_validated=false.
 
-Dados:40 fotos iniciais aprovadas; mais23 aprovadas exclusivamente para teste local. Treino25/val8 inalterados; teste 23 com 66 objetos. Não usar23 para treino ou publicar as fotos sem revisão da exibição. Modelos e resultados anteriores preservados.
+A decisão foi congelada antes da regressão; a emenda do objetivo balanceado veio após observar desenvolvimento e foi divulgada. Não chamar esse processo de teste cego independente. Fonte COCO e casos já examinados limitam generalização. Relatórios: vision/reports/finetune91-summary.json e ft91-medium-regression23.json.
 
 ## Ações restantes
 
-1. Revisar nomes/RMs, conteúdoGenAI, gabaritos/respostas e relatórios; fichas humanas não foram preenchidas pelo agente.
-2. Gravar os dois vídeos reais, revisar imagem/voz/créditos e publicar em destino da equipe. Inserir URLs nos relatórios e regenerar PDF se necessário.
-3. Conferir acesso sem login aos links e enviar em cada Teams até o prazo. Guardar comprovante.
-4. Para perseguir70%/70%, ampliar treino equilibrado e reservar outro teste final; não reusar teste 23 para escolher nova configuração. Isso é melhoria de qualidade, não novo critério numérico imposto pelo PDF.
+1. Revisar nomes/RMs, conteúdo, gabaritos/respostas e relatórios com a equipe. Fichas de revisão humana não foram preenchidas pelo agente.
+2. Gravar os dois vídeos, revisar imagem/voz/créditos, publicar no destino da equipe e inserir URLs reais. Regenerar PDF se alterar seu conteúdo.
+3. Conferir acesso sem login e enviar em cada Teams até o prazo. Guardar comprovante.
+4. Perseguir qualidade com dados mais claros e nova avaliação reservada. Lote futuro de 50 fotos proposto: 26 treino / 11 validação / 13 teste, aprovado e usado no experimento 117; candidato não promovido. Não reutilizar a autorização anterior para essas fotos. Critérios/limites em vision/reports/simple-next-proposal.json.
 
-SSO e escritaGitHub resolvidos. Aprovações dos lotes40 e 23 já registradas; não solicitar novamente o mesmo uso. O sistema não gravou/publicou vídeos nem enviou entregas ao Teams.
+As aprovações dos lotes anteriores e a escrita GitHub estão resolvidas; não solicitar novamente o mesmo uso. Os ensaios locais atuais funcionam. O sistema não gravou/publicou vídeos nem enviou entregas ao Teams.
+
+
+## Resultado final da expansão aprovada
+
+O lote50 foi aprovado e compôs117treino/38validação/13teste, sem qualquer imagem dos23antigos. A adaptação117completou7épocas, mas o perfil equilibrado teveP71,5/R71,5 na validação, contraP72,7/R71,5 doM91; nenhum candidato passou a regra de promoção. O modelo ativo permanece treinado nas91fotos originais.
+
+A decisão foi congelada antes do teste13. Uma avaliação única registrou52TP21FP20FN: precisão71,2%,recall72,2%,F10,7172; meta observada nesse pequeno conjunto básico. Macrorecall86,0%;12/13imagens tiveram ao menos um alvo primário correto, indicador suplementar que NÃO substituiP/Rglobais. Não é ganho causado pelo treino117 e não comprova generalização; fonteCOCO pode sobrepor pré-treino. As23complexas continuam com68,3%P/62,1%R, sem nova avaliação.
+
+Não há aprovação de fotos pendente desta rodada. Restam revisão da equipe, vídeos, links reais e envio acadêmico. Perfil/erros/fontes completos em entregas/VISION_FINETUNING.md, vision/reports/finetune117-summary.json e ft117-reserved13.json. quality_validated=false permanece correto.

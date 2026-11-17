@@ -197,9 +197,13 @@ class DatasetTests(unittest.TestCase):
         self.assertFalse(kwargs['resume']); model.val.assert_not_called()
         self.assertEqual(result['epochs_completed'],9)
         self.assertEqual(result['warm_start']['checkpoint_sha256'],manifest['checkpoint_sha256'])
+        self.assertEqual(result['warm_start']['source_epochs_max'],80)
+        self.assertIsNone(result['warm_start']['source_epochs_completed'])
         from vision.calibrate import calibrate
         with patch.dict("sys.modules", {"ultralytics":runtime}), patch("vision.calibrate.collect",return_value=[]) as collect:
-            calibration=calibrate(parent,self.data,self.provenance,self.root/"calibration.json",imgsz=960)
+            calibration=calibrate(parent,self.data,self.provenance,self.root/"calibration.json",imgsz=960,confidence=.25,dense_grid=True)
+        self.assertEqual(len(calibration['validation_grid']),76)
+        self.assertEqual(calibration['selected']['confidence'],.25)
         self.assertEqual(calibration['imgsz'],960)
         self.assertEqual(calibration['trained_imgsz'],640)
         self.assertEqual(collect.call_args.args[-1],960)
@@ -209,9 +213,16 @@ class DatasetTests(unittest.TestCase):
 
     def test_merge_deduplicates_without_changing_splits_or_labels(self):
         from vision.merge_approved import merge
+        metadata=json.loads(self.provenance.read_text())
+        metadata.update(packet_sha256='a'*64,approved_packet_sha256='a'*64,annotations_file='source-only.json')
+        self.provenance.write_text(json.dumps(metadata))
         result = merge([self.root,self.root], self.root, self.root/"merged")
         self.assertEqual([result['splits'][s]['images'] for s in ('train','val','test')], [12,12,12])
         merged=json.loads((self.root/"merged/provenance.json").read_text(encoding='utf-8'))
+        self.assertNotIn('approved_packet_sha256',merged)
+        self.assertNotIn('packet_sha256',merged)
+        self.assertNotIn('annotations_file',merged)
+        self.assertEqual(merged['source_approvals'][0]['declared_packet_hashes'],['a'*64])
         original={r['image_id']:r for r in self.records}
         for record in merged['images']:
             old=original[record['image_id']]

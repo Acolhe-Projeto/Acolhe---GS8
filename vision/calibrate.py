@@ -63,7 +63,7 @@ def collect(model, root, config, split, imgsz):
     return images
 
 
-def calibrate(artifacts, dataset, provenance, output, evaluate_test=False, imgsz=None):
+def calibrate(artifacts, dataset, provenance, output, evaluate_test=False, imgsz=None, confidence=None, dense_grid=False):
     from vision.audit import audit
     from vision.train import load_dataset_config
     from ultralytics import YOLO
@@ -80,15 +80,18 @@ def calibrate(artifacts, dataset, provenance, output, evaluate_test=False, imgsz
         raise ValueError('Checkpoint hash mismatch')
     from vision.service import inference_options
     size = manifest['imgsz'] if imgsz is None else imgsz
-    inference_options({'inference': {'conf': .5, 'imgsz': size}})
+    inference_options({'inference': {'conf': .5 if confidence is None else confidence, 'imgsz': size}})
     model = YOLO(str(checkpoint))
     validation = collect(model, root, config, 'val', size)
-    grid = [score(validation, c) for c in [0.05, 0.10, 0.15, 0.20, 0.25, 0.35, 0.50, 0.65, 0.80]]
-    chosen = max(grid, key=lambda r: (r['f1'], r['precision'], r['confidence']))
+    thresholds = [i/100 for i in range(5,81)] if dense_grid else [0.05, 0.10, 0.15, 0.20, 0.25, 0.35, 0.50, 0.65, 0.80]
+    grid = [score(validation, c) for c in thresholds]
+    chosen = max(grid, key=lambda r: (r['f1'], r['precision'], r['confidence'])) if confidence is None else score(validation, confidence)
     report = {'selection_rule': 'Maximum micro F1 on validation; ties precision then higher confidence. IoU0.5, one-to-one same-class matching.',
               'checkpoint_sha256': digest, 'dataset_fingerprint_sha256': checked['dataset_fingerprint_sha256'],
               'imgsz': size, 'trained_imgsz': manifest['imgsz'], 'class_names': manifest['class_names'], 'validation_images': len(validation),
               'validation_grid': grid, 'selected': chosen, 'quality_validated': False}
+    if confidence is not None:
+        report['selection_rule'] = 'Explicit operating point chosen in development; validate on validation only, never optimize on test.'
     if evaluate_test:
         test = collect(model, root, config, 'test', size)
         report.update(test_images=len(test), test=score(test, chosen['confidence']))
@@ -119,10 +122,12 @@ if __name__ == '__main__':
     parser.add_argument('--provenance', required=True)
     parser.add_argument('--output', required=True)
     parser.add_argument('--imgsz', type=int, help='Validation/inference size; training resolution stays unchanged')
+    parser.add_argument('--dense-grid', action='store_true', help='Validation confidence0.05..0.80 in steps0.01')
+    parser.add_argument('--confidence', type=float, help='Explicit development operating point for reproducible activation')
     parser.add_argument('--evaluate-test', action='store_true', help='Only after validation selection is frozen')
     parser.add_argument('--activate', action='store_true', help='Apply the validation-selected confidence/image size to this artifact manifest')
     args = parser.parse_args()
-    result = calibrate(args.artifacts, args.dataset, args.provenance, args.output, args.evaluate_test, args.imgsz)
+    result = calibrate(args.artifacts, args.dataset, args.provenance, args.output, args.evaluate_test, args.imgsz, args.confidence, args.dense_grid)
     if args.activate:
         activate(args.artifacts, result)
     print(json.dumps({k: result[k] for k in ('selected', 'test') if k in result}, indent=2))

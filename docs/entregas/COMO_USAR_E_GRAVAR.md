@@ -10,7 +10,7 @@ cd D:\GS2026\Acolhe---GS8
 .\scripts\iniciar-demo.ps1
 ```
 
-3. Mantenha o terminal aberto e copie o endereço **Acolhe:** impresso nele. O script usa a primeira porta livre a partir de 8080; a verificação final nesta máquina abriu http://127.0.0.1:8083.
+3. Mantenha o terminal aberto e copie o endereço **Acolhe:** impresso nele. O script usa a primeira porta livre a partir de 8080; a verificação atual nesta máquina usou http://127.0.0.1:8084.
 4. Para escolher outra faixa, rode `.\scripts\iniciar-demo.ps1 -Porta 8090`. Ele verifica11portas a partir da indicada; use o endereço que o terminal imprimir. Duas instâncias não podem mais compartilhar a mesma porta no Windows.
 
 Esse comando habilita Qwen3B local com offload automático de GPU e memória aquecida por dois minutos. O detector usa CPU. A primeira pergunta pode demorar mais. Encerrar o servidor não encerra o aplicativo Ollama.
@@ -33,7 +33,7 @@ Se aparecer **retrieval_only**, o servidor foi iniciado sem a variável do model
 | Pergunta de travessia e resposta | “O Qwen de três bilhões de parâmetros consulta nossa base. A interface mostra a fonte e um aviso fixo para procurar um adulto.” |
 | Trocar para espanhol e perguntar sobre estar perdido | “A mesma aplicação também responde em espanhol.” |
 | Perguntar sobre chuva | “Quando a informação não existe na base ou está fora do escopo, o aplicativo recusa.” |
-| Abrir GENAI_RELATORIO.md no GitHub, no placar | “Comparamos o mesmo modelo sem contexto, com RAG e com agente. Na revisão técnica de doze casos, tivemos quatro, oito e nove acertos. Os erros e as correções propostas estão registrados; a revisão humana ainda está pendente.” |
+| Abrir GENAI_RELATORIO.md no GitHub, no placar atual v6/D16 | “Comparamos o mesmo modelo sem contexto, com RAG e com agente. Na revisão técnica dos dezesseis casos atuais, tivemos sete, quatorze e quatorze acertos. Ainda existem duas falhas de recuperação; a revisão humana está pendente.” |
 
 RAG significa gerar uma resposta consultando documentos. Não diga que está tudo correto: ainda existem erros de idioma, intenção e omissão. Não houve LoRA; o critério permite agente. Não precisa mostrar treinamento ou código inteiro na gravação.
 
@@ -50,8 +50,8 @@ Para um ensaio local, a foto de ônibus já aprovada está em `vision/data/publi
 ## Roteiro Vision: aproximadamente um minuto
 
 1. “Aqui identificamos objetos e mostramos o nome em português e espanhol.” Selecione e envie a foto.
-2. Mostre o resultado real. “Este detector YOLO26n recebeu treinamento customizado com imagens públicas revisadas, usando transferência de aprendizado.”
-3. Abra o relatório Vision e mostre a tabela da versão ativa. “O YOLO26n foi treinado por 80 épocas. Nas23 fotos já examinadas, o diagnóstico deu recall51,5% e precisão60,7%. A meta70%/70% ainda não foi atingida; precisamos ampliar o treino.” Não apresente esse diagnóstico posterior como novo teste cego.
+2. Mostre o resultado real. “Este detector YOLO26m recebeu treinamento customizado com imagens públicas revisadas, usando transferência de aprendizado.”
+3. Abra o relatório Vision e mostre a tabela da versão ativa. “O YOLO26m foi adaptado com 91 fotos de treino e selecionado pela validação. Nas 23 fotos já examinadas, o diagnóstico teve recall de 62,1% e precisão de 68,3%. No novo lote básico de 13 fotos reservado, tivemos precisão de 71,2% e recall de 72,2%. É um conjunto diferente e pequeno; o modelo ainda erra.” Não apresente esse diagnóstico posterior como novo teste cego.
 4. “É um piloto pequeno, com erros documentados. Não identifica rostos nem decide se uma travessia é segura.”
 
 Os PRDs e relatórios explicam os dados, arquitetura, teste e falhas. O roteiro curto demonstra funcionamento; os documentos fornecem o restante da evidência solicitada pelo PDF.

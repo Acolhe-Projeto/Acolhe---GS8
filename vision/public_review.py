@@ -77,7 +77,14 @@ def fingerprint(records):
     return hashlib.sha256(json.dumps(fields, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
-def build(root, train=4, val=1, test=1, excluded=(), cached_only=False, source_split="val2017", minimum_train_images=0, minimum_val_images=0):
+def clear_targets(image, boxes, categories):
+    """Primary targets for a basic-object packet: >=128px long and >=16px short at640."""
+    scale = 640 / max(image['width'], image['height'])
+    return sorted({categories[b['category_id']] for b in boxes
+                   if max(b['bbox'][2:])*scale >= 128 and min(b['bbox'][2:])*scale >= 16})
+
+
+def build(root, train=4, val=1, test=1, excluded=(), cached_only=False, source_split="val2017", minimum_train_images=0, minimum_val_images=0, simple_objects=False):
     from PIL import Image, ImageDraw, ImageFont
     if (any(type(n) is not int or n < 1 for n in (train, val)) or type(test) is not int or test < 0
             or any(type(n) is not int or n < 0 for n in (minimum_train_images, minimum_val_images))
@@ -104,7 +111,11 @@ def build(root, train=4, val=1, test=1, excluded=(), cached_only=False, source_s
         if people and not re.search(r"\b(man|woman|men|women|adult)\b", description): continue
         if any((x := item["bbox"])[0] < 0 or x[1] < 0 or x[2] <= 0 or x[3] <= 0 or
                x[0]+x[2] > image["width"] or x[1]+x[3] > image["height"] for item in boxes): continue
-        candidates.append({**image, "target_classes": sorted({categories[item["category_id"]] for item in boxes}),
+        targets = sorted({categories[item["category_id"]] for item in boxes})
+        primary = clear_targets(image, boxes, categories) if simple_objects else targets
+        if simple_objects and (people or len(targets) > 3 or not primary):
+            continue
+        candidates.append({**image, "target_classes": targets, "primary_classes": primary,
                            "person_annotations": people})
     random.Random(42).shuffle(candidates)
     candidates.sort(key=lambda image: image["person_annotations"] != 0)
@@ -150,11 +161,12 @@ def build(root, train=4, val=1, test=1, excluded=(), cached_only=False, source_s
         image_floor = {"train": minimum_train_images, "val": minimum_val_images}.get(split, 0)
         while min((counts[name] for name in LABELS), default=0) < minimum or split_count < image_floor:
             missing = {name for name in LABELS if counts[name] < minimum}
-            if not missing: missing = set(LABELS)
-            available = [image for image in candidates if image["id"] not in used and missing.intersection(image["target_classes"])]
+            if not missing:
+                missing = {name for name in LABELS if counts[name] == min(counts.values())} if simple_objects else set(LABELS)
+            available = [image for image in candidates if image["id"] not in used and missing.intersection(image["primary_classes"])]
             if not available: raise ValueError("Not enough verified candidates: " + str(missing))
             # Prefer photographs without annotated people, then cover multiple missing classes.
-            available.sort(key=lambda image: (image["person_annotations"] != 0, -len(missing.intersection(image["target_classes"]))))
+            available.sort(key=lambda image: (image["person_annotations"] != 0, -len(missing.intersection(image["primary_classes"]))))
             batch = available[:4]
             with ThreadPoolExecutor(max_workers=4) as workers:
                 futures = [(image, workers.submit(acquire, image)) for image in batch]
@@ -166,19 +178,21 @@ def build(root, train=4, val=1, test=1, excluded=(), cached_only=False, source_s
                         if isinstance(exc, urllib.error.HTTPError) and exc.code == 429:
                             raise RuntimeError("Flickr rate limit reached; stop and use verified cache or wait for Retry-After") from exc
                         continue
-                    if not missing.intersection(record["target_classes"]): continue
+                    record = dict(record, primary_classes=image["primary_classes"])
+                    if not missing.intersection(record["primary_classes"]): continue
                     used.add(image["id"])
                     selected.append(dict(record, split=split, review_number=len(selected)+1))
                     split_count += 1
-                    counts.update(record["target_classes"])
+                    counts.update(record["primary_classes"])
                     missing = {name for name in LABELS if counts[name] < minimum}
-                    if not missing and split_count < image_floor: missing = set(LABELS)
+                    if not missing and split_count < image_floor:
+                        missing = {name for name in LABELS if counts[name] == min(counts.values())} if simple_objects else set(LABELS)
             print(split, len(selected), dict(counts), flush=True)
             (root / "selection-progress.json").write_text(json.dumps({"images": selected, "failures": failures}, ensure_ascii=False, indent=2), encoding="utf-8")
     if cached_only:
         for image in candidates:
             if image["id"] not in used:
-                selected.append(dict(acquire(image), split="train", review_number=len(selected)+1))
+                selected.append(dict(acquire(image), primary_classes=image["primary_classes"], split="train", review_number=len(selected)+1))
     selected_ids = {int(r["image_id"]) for r in selected}
     subset = {"images": [im for im in coco["images"] if im["id"] in selected_ids],
               "categories": coco["categories"], "annotations": [a for a in coco["annotations"] if a["image_id"] in selected_ids]}
@@ -193,7 +207,7 @@ def build(root, train=4, val=1, test=1, excluded=(), cached_only=False, source_s
               "class_names": list(LABELS), "packet_sha256": packet_hash, "human_approval": "pending", "images": selected}
     (root / "reviews.json").write_text(json.dumps(review, indent=2, ensure_ascii=False), encoding="utf-8")
     (root / "download_failures.json").write_text(json.dumps(failures, indent=2), encoding="utf-8")
-    return publish_review(root, review, {"cached_only": cached_only, "requested_minimum_per_class": {"train": train, "val": val, "test": test}})
+    return publish_review(root, review, {"cached_only": cached_only, "simple_objects": simple_objects, "requested_minimum_per_class": {"train": train, "val": val, "test": test}})
 
 
 def publish_review(root, review, extra_summary=None):
@@ -218,6 +232,7 @@ def publish_review(root, review, extra_summary=None):
                "packet_sha256": packet_hash, "contact_sheets": sheets,
                "split_images": dict(Counter(r["split"] for r in selected)),
                "class_images_per_split": {s: dict(Counter(c for r in selected if r["split"] == s for c in r["target_classes"])) for s in ("train", "val", "test")},
+               "primary_class_images_per_split": {s: dict(Counter(c for r in selected if r["split"] == s for c in r.get("primary_classes", r["target_classes"]))) for s in ("train", "val", "test")},
                "human_approval": "pending", "privacy_reviewed_true": 0}
     summary.update(extra_summary or {})
     (root / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
@@ -268,6 +283,7 @@ if __name__ == "__main__":
     sub = parser.add_subparsers(dest="command", required=True)
     make = sub.add_parser("build"); make.add_argument("--root", required=True)
     make.add_argument("--train", type=int, default=4); make.add_argument("--val", type=int, default=1); make.add_argument("--test", type=int, default=1)
+    make.add_argument("--simple-objects", action="store_true", help="No annotated people, <=3 target classes, coverage only of large primary targets")
     make.add_argument("--source-split", choices=("train2017", "val2017"), default="val2017")
     make.add_argument("--minimum-train-images", type=int, default=0)
     make.add_argument("--minimum-val-images", type=int, default=0)
@@ -276,5 +292,5 @@ if __name__ == "__main__":
     approval = sub.add_parser("approve"); approval.add_argument("--root", required=True)
     approval.add_argument("--packet-sha256", required=True); approval.add_argument("--reviewer", required=True); approval.add_argument("--reference", required=True)
     args = parser.parse_args()
-    result = build(args.root, args.train, args.val, args.test, args.exclude, args.cached_only, args.source_split, args.minimum_train_images, args.minimum_val_images) if args.command == "build" else approve(args.root,args.packet_sha256,args.reviewer,args.reference)
+    result = build(args.root, args.train, args.val, args.test, args.exclude, args.cached_only, args.source_split, args.minimum_train_images, args.minimum_val_images, args.simple_objects) if args.command == "build" else approve(args.root,args.packet_sha256,args.reviewer,args.reference)
     print(json.dumps(result, indent=2, ensure_ascii=False))

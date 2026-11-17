@@ -2,43 +2,58 @@
 
 ## Versão ativa
 
-**YOLO26n customizado,80 épocasCPU, resolução 640 e confiança 0,15.** Substituiu YOLO11n por F1 micro de validação 0,4675 versus0,3488, com o mesmo treino 25/validação 8 aprovados. Foram comparadas três bases leves COCO em CPU antes do treino customizado; veja [pesquisa e decisão](../docs/MODELOS_VISION.md).
+**YOLO26m91**, treinado com 91 fotos, cinco épocas concluídas (máximo 12), melhor checkpoint selecionado pela validação. Treino em CPU / 640. **Inferência em 960, confiança 0,25**, cerca de 22 milhões de parâmetros e 44 MB de pesos.
 
-Nas23 fotos já examinadas, a regressão da versão ativa teve34TP/22FP/32FN: **recall51,5%, precisão60,7%, F1 de 0,5574**. A versãoYOLO11n 80 teve53,0%/48,6%, F1 de 0,5072. Há ganho de precisão/F1 e pequena perda de recall. **Meta70%/70% ainda não atingida; quality_validated=false.** A regressão não é novo teste independente após seleção de arquitetura. Não ajustamos a configuração depois dessas medições.
+O fine-tuning adicional com 117 fotos concluiu sete épocas, mas não superou o M91 na mesma validação de 38 fotos; não foi promovido. O perfil retido teve P72,7% / R71,5% na validação e **P71,2% / R72,2% no novo teste básico reservado de 13 fotos e 72 objetos**: 52 TP, 21 FP, 20 FN. A meta conjunta foi observada nesse lote pequeno. Não comprova desempenho geral nem independência de todo pré-treino COCO.
 
-[Decisão pela validação](reports/yolo26n-custom-decision.json), [regressão por imagem e cinco erros](reports/yolo26n-regression23.json), [HTTP real](reports/inference-http-yolo26n.json), [PDF](../output/pdf/ACOLHE_VISION.pdf). Pesos anteriores20 épocas e YOLO11n 80 estão preservados localmente. O resultado original29,4% era média nativa por classe; não deve ser confundido com recall operacional da versão atual.
+Nas 23 fotos mais complexas anteriores, o mesmo M91 teve P68,3% / R62,1%; elas não foram reavaliadas na rodada final. Conjuntos distintos não são evolução direta do modelo. quality_validated=false; ainda há erros e classes fracas. A métrica suplementar de 12/13 imagens com um alvo primário correto não é precisão/recall global.
 
-## Usar e gravar
+[Plano completo](../docs/entregas/VISION_FINETUNING.md), [decisão final antes do teste](reports/finetune117-decision.json), [teste reservado com dados brutos](reports/ft117-reserved13.json), [resumo](reports/finetune117-summary.json) e [PDF](../output/pdf/ACOLHE_VISION.pdf). Pesos e fotos permanecem locais. Checkpoint ativo: 3eff4c911170b189d5904b52adde2390f877f0d105a95c092a4b3496653c3bd5. Nano anterior em artifacts-yolo26n-before-ft91; candidato adicional em artifacts-ft117-medium, sem implantação.
 
-Abra Ollama e execute scripts/iniciar-demo.ps1 na raiz. Acesse http://127.0.0.1:8080 → Para educadores → Objetos que ensinam. Selecione PNG/JPEG até8 MiB e clique Reconhecer objetos. Nomes PT/ES e confiança aparecem; o aplicativo não liga câmera, não grava upload e não decide travessias. [Passos completos e roteiro curto](../docs/entregas/COMO_USAR_E_GRAVAR.md).
+## Usar nesta máquina
 
-Sem checkpoint/manifesto válidos, retorna503 explicitamente. O serviço confere hash/classes e parâmetros de inferência. Checkpoint ativo SHA256:007a199a43a6944699c43d26b23e30e5a2e25933b106181ed56a8243aa3b2e31. A GPUAMD usada pelo Ollama não implica treinoGPU no PyTorch instalado; estes treinos e detecção foramCPU. PicoRAM da nova rodada não foi medido.
+Abra Ollama e execute scripts/iniciar-demo.ps1 na raiz. Use o endereço que o terminal imprimir, pois a porta é escolhida automaticamente. Em Para educadores → Objetos que ensinam, selecione PNG/JPEG até 8 MiB e clique Reconhecer objetos. O aplicativo não liga câmera, não grava o upload nem decide travessias. As duas fotos do roteiro estão em docs/qa/testar. A demonstração HTTP local teve mediana de 0,955 segundo em cinco repetições do ônibus; não é benchmark geral.
 
-## Reproduzir em uma nova clone
+## Reproduzir em uma clone nova
 
-Python3.12, ambiente isolado, PyTorch conforme https://pytorch.org/get-started/locally/. Instalar vision/requirements.txt usa a versãoUltralytics 8.4.215 realmente testada. Depois, na raiz:
-
-```powershell
-python -m vision.reproduce --output vision/data/reproduzido
-python -m vision.audit --dataset vision/data/reproduzido/dataset.yaml --provenance vision/data/reproduzido/provenance.json
-python -m vision.train --dataset vision/data/reproduzido/dataset.yaml --provenance vision/data/reproduzido/provenance.json --epochs 80 --device cpu --imgsz 640 --batch 2 --workers 0 --base-model yolo26n.pt --output vision/artifacts
-python -m vision.calibrate --artifacts vision/artifacts --dataset vision/data/reproduzido/dataset.yaml --provenance vision/data/reproduzido/provenance.json --output vision/artifacts/calibration.json --evaluate-test --activate
-```
-
-Escolha diretórios novos: ferramentas recusam sobrescrever datasets/treinos/relatórios. O primeiro bundle reconstrói as 40 fotos iniciais25/8/7; os 25 treino/8val foram preservados na nova rodada. Fotos e pesos não estão no Git; somente clonar não habilita o detector. Pesos oficiais podem ser baixados pela biblioteca durante a preparação. Respeite AGPL3.0/Enterprise da Ultralytics: https://docs.ultralytics.com/models/yolo26/.
-
-## Novo teste e procedência
-
-O usuário aprovou23 fotos novas exclusivamente para teste local. Dataset final56 fotos:25 treino/8val/23 teste, sem mudança nos pixels/caixas/splits de treino/validação. Não houve IDs/bytes em comum entre as 40 originais e 23 novas. A auditoria não detecta similaridade perceptual. Reconstrução offline foi executada com fingerprint 4b18ed3a…:
+Instale Python 3.12, PyTorch adequado à máquina e vision/requirements.txt. A versão usada foi Ultralytics 8.4.215 e PyTorch 2.15.0+cpu. Na raiz, usando destinos que ainda não existam:
 
 ```powershell
-python -m vision.reproduce --bundle vision/reports/reproduction-newtest23.json --output vision/data/reproduzido-novo
+python -m vision.reproduce --bundle vision/reports/reproduction-union91.json --output vision/data/reproduzido91
+python -m vision.audit --dataset vision/data/reproduzido91/dataset.yaml --provenance vision/data/reproduzido91/provenance.json
+python -m vision.train --dataset vision/data/reproduzido91/dataset.yaml --provenance vision/data/reproduzido91/provenance.json --epochs 12 --patience 4 --base-model yolo26m.pt --freeze 22 --learning-rate 0.00001 --mosaic 0 --device cpu --imgsz 640 --batch 2 --workers 0 --skip-test --output vision/artifacts
+python -m vision.calibrate --artifacts vision/artifacts --dataset vision/data/reproduzido91/dataset.yaml --provenance vision/data/reproduzido91/provenance.json --imgsz 960 --confidence 0.25 --output vision/reports/NOVO-calibration.json --activate
 ```
 
-As novas23 não foram autorizadas para treino ou publicação de fotos. Metadados públicos contêm URLs, créditos, licenças, hashes e rótulos, sem pixels. Um download de referência encontrouHTTP429 no Commons; respeitamos o limite. Se ocorrer, aguarde liberação e use destino novo, ou cache local autorizado com --cache. Não substitua hashes para aceitar outras fotos.
+A confiança explícita reproduz o perfil decidido no desenvolvimento, não seleciona pela avaliação de teste. Para uma nova seleção, repita o protocolo com validação e congele a decisão antes do teste. Variações de ambiente podem alterar os resultados; confira versões e hashes. Somente clonar não habilita o detector: os dados precisam ser reconstruídos e os pesos treinados localmente. Respeite AGPL 3.0/Enterprise e licenças individuais das fotos. Se a fonte limitar requisições, aguarde ou use cache autorizado com --cache; não substitua hashes.
 
-A avaliação inicial das23 foi congelada paraYOLO11n em independent23-frozen.json. A avaliação posteriorYOLO26 é diagnosticada como regressão em conjunto já visto. Para novos ajustes, amplie treino com variedade e reserve outro teste final. A origemCOCO limita alegações de independência do desenvolvimento dos pesos pré-treinados. Mais dados alinhados ao uso educativo são necessários para perseguir70% nas duas métricas.
+## Comparar continuação de checkpoints
 
-## Entrega e testes
+```powershell
+python -m vision.merge_approved --sources vision/data/curated-pilot-01 vision/data/curated-train70-val20-test23 --heldout vision/data/curated-train70-val20-test23 --output vision/data/NOVA-uniao
+python -m vision.train --dataset vision/data/NOVA-uniao/dataset.yaml --provenance vision/data/NOVA-uniao/provenance.json --base-model yolo26n.pt --initial-artifacts vision/artifacts-yolo26n-before-ft91 --epochs 30 --patience 8 --freeze 10 --learning-rate 0.00005 --mosaic 0 --imgsz 640 --batch 2 --workers 0 --device cpu --skip-test --output vision/artifacts-NOVO-finetuning
+```
 
-PDF contém resumo250/objetivo50 palavras, método, exemplos e limites. Faltam revisão da equipe, gravação/publicação do vídeo e envio no Teams. Testes: python -B -m unittest discover -s vision/tests -v. Testes unitários simulam runtime; métricas eHTTP reais estão nos relatórios acima. Não se apresenta teste de contrato como qualidade de modelo.
+initial-artifacts exige um checkpoint local com hash, classe e modelo conferidos. Inicia nova execução a partir dos pesos, sem retomar o otimizador. optimizer=auto ignorava a taxa manual: agora AdamW, warmup e taxa são explícitos. O modelo novo precisa ser comparado na mesma validação, incluindo resultados por classe; mais épocas não são garantia de ganho. A versão instalada remapeia saídas compatíveis por nome de classe ao transferir os pesos oficiais.
+
+## Dados e limites
+
+União aprovada: 91 treino / 27 validação / 23 teste, com 613 / 247 / 66 objetos. Fingerprint abb33444…; reconstrução offline conferida. Sem duplicatas binárias; triagem perceptual heurística sem candidatos no limite usado. Fotos relacionadas por cena podem escapar da triagem. Não movimentamos teste para treino.
+
+As 23 fotos já foram expostas em rodadas anteriores, e imagens COCO podem ter participado do desenvolvimento dos pesos-base. Esses números não são avaliação independente nem eficácia pedagógica. A emenda que priorizou equilíbrio entre precisão e recall foi feita após resultados de desenvolvimento e antes da regressão; não estava no registro original.
+
+O lote de 50 fotos foi aprovado e incorporado à comparação 117 treino / 38 validação / 13 teste reservado. A coleta respeitou HTTP 429; metas originais não foram alcançadas. O modelo ativo não foi treinado nas 50 novas fotos porque o candidato117 não trouxe ganho suficiente.
+
+Para reproduzir a avaliação final, reconstrua também reproduction-union117.json e avalie o modelo M91 no perfil congelado; não confunda o conjunto experimental117 com os91exemplos de treino dos pesos servidos:
+
+```powershell
+python -m vision.reproduce --bundle vision/reports/reproduction-union117.json --output vision/data/reproduzido117
+python -m vision.calibrate --artifacts vision/artifacts --dataset vision/data/reproduzido117/dataset.yaml --provenance vision/data/reproduzido117/provenance.json --imgsz 960 --confidence 0.25 --output vision/reports/NOVO-teste13.json --evaluate-test
+```
+
+Não reajuste o perfil a partir do teste. A grade densa (--dense-grid) é apenas para escolher confiança na validação antes de congelar uma nova decisão.
+
+
+Histórico: bundles reproduction.json, reproduction-newtest23.json e reproduction-train70.json; relatórios anteriores preservados no Git. Faltam revisão final da equipe, vídeo publicado, links e envio no Teams.
+
+Testes: python -B -m unittest discover -s vision/tests -v. Testes unitários usam fixtures; métricas reais são os relatórios de inferência e treino citados.

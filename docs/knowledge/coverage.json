@@ -1,7 +1,7 @@
 {
-  "base_commit": "6fe6339345c3b2554c09c01a5c455a2bec5522b9",
+  "base_commit": "fd89464bc610944102afc719dcd9e33e356f6d0e",
   "worktree_snapshot": true,
-  "code_files": 150,
+  "code_files": 195,
   "code_source_hashes": {
     ".github/workflows/devsecops.yml": "b3561ed889f5fc1d5fc68c79d1d2f00738cc302f89a0a7150456960f0f084b5a",
     ".github/workflows/evaluate-python-bases.yml": "66d804bd1e78f5f486aca6e7eeb9c06f0faf79c1ef82a421f3ae591240f6a71b",
@@ -36,6 +36,7 @@
     "docs/evidencias/demo-overnight-http.json": "7b3513d255653e738e3a9e598ea375c8bbc58cf98726cf96addc7da38e6f38e2",
     "docs/evidencias/documentacao-qa-20261107.json": "3cac41440601c7e2790a4a035a48e291897844cf8edfd374d6c43ec2f9aeff95",
     "docs/evidencias/expansion70-final-runtime.json": "950a556c67d5b00ba244a1e7276558270786e875d476081061b0c16ec800c87e",
+    "docs/evidencias/finetune91-http.json": "cb8e6017ef7b9a26db914469ff701d365f11efe1284f32fa97661bb4e66dfc20",
     "docs/evidencias/genai-vision-20261116.json": "964f4f5c74c33c224a5fc23ccd68a6b6d2793e1f8eaf556b34d7b716c866b419",
     "docs/evidencias/hardware-rx6750xt-20261116.json": "9b75853952bca81da99740c417297238918ec795dcb8f7b38076b276dcb04553",
     "docs/evidencias/qwen3b-gpu-runtime-20261116.json": "ab7acb967557e352f4111d8d28310611d36b96b7278b0438cc14c0166c5853c3",
@@ -108,11 +109,12 @@
     "tests/test_night_worker.py": "45d525fc0611e73865effb579f3558e95b8a5332ceee6ee8913020bdb4f378d2",
     "vision/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "vision/audit.py": "1d864100d23c946182ddd1e91d4b6623c489f18d61667f249e825bdd8c50c8eb",
-    "vision/calibrate.py": "de082914944dc35095bdb60cff90d940d6280e2cf3cc72a543728bd2e7c6a331",
+    "vision/calibrate.py": "3f307ecc484373e4a72e5d62d1c3f3439c0ce5e4f0f65638621aeda8e6124ebb",
     "vision/data/dataset.example.yaml": "1128a78f43feb2c53d34db4c98652b8a519c78b21ff773ebf3abdc3c23b99677",
     "vision/data/provenance.example.json": "c8de387611be70de40a38e8b229611767e033d60753a7169977fda227c78688c",
+    "vision/merge_approved.py": "1e9e9ee1bf2e4827f5d0632b804cc10b554061513ffe47ff096c66e2be4fef7a",
     "vision/prepare.py": "17b686c4c53758e6c6d09a0f88681dada01ff2b6525c0cf4a8f70b177c7fc61c",
-    "vision/public_review.py": "ce2d8d4627d393e57b85409d95226e27380c3404aeb9a12d2b9dd1d268a5e99f",
+    "vision/public_review.py": "1a2debe01827cc1d967125a5085cb601dcdbaf2d8e4b9f4c6ddc9833df03dd6e",
     "vision/replace_review_bus.py": "4487eef530379bc974905943689cd1a2a4151b78fae68ebf80752873eea10025",
     "vision/reports/calibration-baseline.json": "477fc76c10eb95ffd89174cfd4bd6548309a97ffe2261b458b5b47b1c9963358",
     "vision/reports/calibration-improved-640-80.json": "93cbfdd6ba851b684d8abf2456add821101dfce93ac7930046054c46aaa2f372",
@@ -125,6 +127,43 @@
     "vision/reports/expansion70-object-sizes.json": "22428f3a996f996300ec8d979b2d66f8d6eec647e1f49c1d3e189ae0bb705614",
     "vision/reports/expansion70-proposal.json": "838ada1aa7b5d24b0e2beffcabe587388c9bcca421fc4bd19f9d4575ac0c569d",
     "vision/reports/expansion70-selection-protocol.json": "483ce1698bbf8a13cfec16f7e51613225f17d926138853fa7c3a3a45c37eea6b",
+    "vision/reports/finetune117-decision.json": "5ee7e16b8e8bdc71de66a8930e7653c9cddee74399042b0cb7f8443b84ea9761",
+    "vision/reports/finetune117-protocol.json": "95ab130c7104cd6f60b2d3e681662342274ba2b6b13683d9859eaf9e22b40590",
+    "vision/reports/finetune117-summary.json": "6e6d93df63a6e71df62b3b09711f85bc063651260a2e482f0edbacd0b09d01cb",
+    "vision/reports/finetune91-decision.json": "5f436bfbf37ae32e3675ef6acab68a887b2abc172f3146376b78bb49c23f47cd",
+    "vision/reports/finetune91-protocol.json": "e5c191ab38e536d254b6678a8066d4f7a26ce5eed9b843ec703f4973074b58cd",
+    "vision/reports/finetune91-summary.json": "a3da8a07f67724a4f8e2f2ad209151389f3c31f692b716f9a69143c3e84ceaa0",
+    "vision/reports/ft117-baseline-1280.json": "812968e13b17da64de8dea92647b41c9baf491079b9a4f5ece6cdb49d57ef4bf",
+    "vision/reports/ft117-baseline-640.json": "a85e1aa071bc5283d408d36c572e277b0c99804ab1a9eda79e34bd6041ef7bc9",
+    "vision/reports/ft117-baseline-960.json": "f8eeb7860b27c0a15fdb6f14266caea530aa633aa1dbdda2c6bdea924c165b71",
+    "vision/reports/ft117-baseline-dense-1280.json": "49919566987441285879aee8d848a80b054577c442b0b97d5103ca91bbdd919d",
+    "vision/reports/ft117-baseline-dense-640.json": "cf6bc58af90a7a5c265f39c6c74064980fcf8bd9f67b6cbaedfd67f2f6e2f5af",
+    "vision/reports/ft117-baseline-dense-960.json": "7d1ecdf3940f21f6e1607f53d7c02e527d34c1e9ee637ed3570399dbd1f6aa9a",
+    "vision/reports/ft117-candidate-dense-1280.json": "f55452c33add3899873bbb01a65affacf9ac448571202fc50887e91eb5db534c",
+    "vision/reports/ft117-candidate-dense-640.json": "6a0c623b36ceb2ae7f0aeba5ac2dd3d1d990da75deade2fe824b346f9267131a",
+    "vision/reports/ft117-candidate-dense-960.json": "d275fd70ddf7602d78491f079b0797cf418deb73cea2c12eec33fcdcc626812d",
+    "vision/reports/ft117-reserved13.json": "c44873902f373dd558a35eb232536ec7e6a52f147f17a31c4338c7bf5629e3fa",
+    "vision/reports/ft91-balanced-objective-amendment.json": "78319ab00c47d80cd59d97400e12718f3f4ca889e4688b05c8206aa33df16329",
+    "vision/reports/ft91-baseline-1280.json": "21ab444ddaafe46178acb6afe87ae8542530727a850ff83d1cde9a4110d23a3f",
+    "vision/reports/ft91-baseline-640.json": "a35d6fb0dd7b0b28238f2cc604b5a5ff4cd8f016fd0bdbd02e25831f25640f48",
+    "vision/reports/ft91-baseline-960.json": "e2be49bf153b5c0bf024e1ec6081b8740d0eb39b3dc15b023bb6ad305ade191c",
+    "vision/reports/ft91-capacity-protocol.json": "c479196526029a4676d4107608555343ec477256359491010631d3ca3476aeff",
+    "vision/reports/ft91-larger-pretrained-references.json": "cd618991598f4efa8bd7e81b41c64936616b905267389b2710f9020560564c49",
+    "vision/reports/ft91-medium-1280.json": "85582606c0ff8a91aebb14ae053ac8ef06c7104ee89553c8ab00ee57d1696a30",
+    "vision/reports/ft91-medium-640.json": "ec58e41adbb16a8e60919371a0807291b3cf7702393787b58003bb83df55dbd0",
+    "vision/reports/ft91-medium-960.json": "ca5b227a21f21fb1451847f39cf038dd235e4b8c90fb2517a90b12080591c19c",
+    "vision/reports/ft91-medium-deployment-calibration.json": "0d5d31bd352bae29577033f9372beb2f589a240aa0fa0f54a51a45fb10b4cfc5",
+    "vision/reports/ft91-medium-regression23.json": "984dfff3728262a9ee517739759d09cf76ef0d5d284f92b1274348c362dfc7fb",
+    "vision/reports/ft91-new70-warm-1280.json": "6d8133f6341b47b6811452c0cd872e32650a7f44eb7c341e617cf66bdefcfb5a",
+    "vision/reports/ft91-new70-warm-640.json": "50284cf9549cb4fb3a489d24979ce1bc7ed724a25a1dad4dc8555efc20eacad1",
+    "vision/reports/ft91-new70-warm-960.json": "8ab12e1b7a20d9a6c1b546640936f53467a435bd038b526a42681f6c2347cb05",
+    "vision/reports/ft91-official-warm-1280.json": "1cd0d4b15e5016360bae2e02e200e68f4e314f8ab7c0380e8a01c0aceda4686c",
+    "vision/reports/ft91-official-warm-640.json": "26fb4383b9d1d976fb0d8fc2e8adc429e1d6289a121d24c1358f2b12eaf61d0a",
+    "vision/reports/ft91-official-warm-960.json": "48119c73cf1f422ba3e54ac5d0aca1324f29f0c31691a6a8cb1aa9bea1f9c951",
+    "vision/reports/ft91-old80-warm-1280.json": "1d40a18fbe47dad20a19c90735c715e6536c659b7cdc0a8da5a7a8a464183e64",
+    "vision/reports/ft91-old80-warm-640.json": "8cf12674129442e0d029d00f49afbb029629404ef494807a28288d255094a0fb",
+    "vision/reports/ft91-old80-warm-960.json": "06774d1c0ab8fd7eb0d710d48e1d6a947f285097bb9a3747aa2ad965c9a9078c",
+    "vision/reports/ft91-original80-reference.json": "ef8be6bca7cbf539c88475e480cb0e0e22f1b7b10c223a487a7ef23e781316a6",
     "vision/reports/improvement-20261116.json": "7e0fb45a35ba4824991267b6a849370466cbffbeb5195b9c424b099d94307c9e",
     "vision/reports/independent23-frozen.json": "cea83174bcfa9dfe6c7708168d93d971a78ade8021196aa3b146a399f388a838",
     "vision/reports/inference-http-20261116.json": "6fefc36c479cb6d4cf0f915adeed9b7bb24e5fe85ab184dc6f2f05ae5d870494",
@@ -138,24 +177,30 @@
     "vision/reports/pretrained-bases-validation.json": "3a25e4f61cdd39af20cc71f5bf4a610bf73234e6614e4a823df397843f63baa9",
     "vision/reports/reproduction-newtest23.json": "ea13b350616ff0475123bee810f1685574321c76facf66b6e0ef4078116b2e6a",
     "vision/reports/reproduction-train70.json": "7c1ed28791cc56369b253c21685a20ce52a4e61cfb52daa2b34c8da0be852247",
+    "vision/reports/reproduction-union117.json": "dcefaa9974badc34b72241edac547f0a97e82d1219e399e14d85abf5197e0417",
+    "vision/reports/reproduction-union91.json": "bb62f12e9ea51b5f9d27a8c30c90fbebd07ed6d63de7e7ca2585dd4c4be82037",
     "vision/reports/reproduction.json": "f565b4535434a2addf05fe97be678ffa6ef188609b396cb1a3aa86fdc660c590",
+    "vision/reports/simple-next-duplicate-screen.json": "36cdced2c4b8aaff4df48d99064cc943de907ccf101d07c675f1fd9026379250",
+    "vision/reports/simple-next-proposal-protocol.json": "c1c1e96651f48a9ba752750da45df3b6d6330d6e71dfe012a6b9ec8b21012004",
+    "vision/reports/simple-next-proposal.json": "c9dbeab45f8f5467c2cb3e16cdad05624010e1b8b8ea1d9fdb97ed314606d181",
     "vision/reports/training-20261116.json": "bab88235766fae3e69017ef4d1bddbf1be53ea39efe684b44d2101ad36da73c7",
     "vision/reports/training-yolo26n.json": "db7ca9799ebbb19c132937a0f87714dede7465ab85757d2a4e929ae2b3c35a66",
+    "vision/reports/union91-perceptual-audit.json": "ee5f6f7579760fa5bccb7ea6da58cfe70433767576b7bd8823c14c3543bbb2c5",
     "vision/reports/yolo26n-custom-decision.json": "65fe247af937cd6d7fd25b59aebe8c56e63c61b72a16c73347e307f2aa738866",
     "vision/reports/yolo26n-regression23.json": "492c3a54d936db998c5fd935daa1237bee663a6547231af10c6d4f97a10f47ec",
     "vision/reproduce.py": "fe717179202b3ec1fe4c0edf804c71441f5f7306987884b069c4efe81ec55a6f",
     "vision/service.py": "ad590214b43ea0fe5f92e972cc08acf76d559ad5d724f475c3d9ee9e87b5cfbf",
     "vision/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "vision/tests/test_calibrate.py": "d9d9114cad6d3abb4cfd2aa638b1514c7d94b62e7048fff35b4bae7ee7082ce4",
-    "vision/tests/test_dataset.py": "3366ed74a7f66dd407a1e8fb18e2049e1bb3b08ba139f6ab89c6b92af540340c",
+    "vision/tests/test_dataset.py": "70c7f3314cbc8e52231145bd47a9a0c3b2c065029ea1dbaaa7f9a1988ba7078a",
     "vision/tests/test_guards.py": "ddb2ef5c2f52834c1e11458650ba5bf0593ad2073813f78593925326c1255721",
-    "vision/tests/test_public_review.py": "04079cc368f124fe6ccd4eda62f130278c70765d28cde5ed8bac094233089ace",
+    "vision/tests/test_public_review.py": "82e81c29f827606c945c337b68d449d9d520aaa3a26c160d6f4176c5f5cfb136",
     "vision/tests/test_reproduce.py": "352d3e71aa6d0f6caddf594762e3079db0e72ba5a48c32e68ee0f63096ecaf50",
     "vision/tests/test_service.py": "8a73f520febb778ce9707aa9d52e080f031b82a6ac29ff74051ef51973c5edf1",
-    "vision/train.py": "59926e20b02591794564b8e0d985c095e5d16b8d3676df44512aa4853f3d706b"
+    "vision/train.py": "a9aafc1f341f80e00c5e70803d61b80cf1702fa604e82ea3d6b16705a0835377"
   },
-  "ast_nodes": 565,
-  "ast_edges": 1378,
+  "ast_nodes": 575,
+  "ast_edges": 1415,
   "unmodeled_code": [
     "app/static/lessons.json",
     "big_data/output/summary.json",
@@ -164,6 +209,7 @@
     "docs/evidencias/demo-overnight-http.json",
     "docs/evidencias/documentacao-qa-20261107.json",
     "docs/evidencias/expansion70-final-runtime.json",
+    "docs/evidencias/finetune91-http.json",
     "docs/evidencias/genai-vision-20261116.json",
     "docs/evidencias/hardware-rx6750xt-20261116.json",
     "docs/evidencias/qwen3b-gpu-runtime-20261116.json",
@@ -220,6 +266,43 @@
     "vision/reports/expansion70-object-sizes.json",
     "vision/reports/expansion70-proposal.json",
     "vision/reports/expansion70-selection-protocol.json",
+    "vision/reports/finetune117-decision.json",
+    "vision/reports/finetune117-protocol.json",
+    "vision/reports/finetune117-summary.json",
+    "vision/reports/finetune91-decision.json",
+    "vision/reports/finetune91-protocol.json",
+    "vision/reports/finetune91-summary.json",
+    "vision/reports/ft117-baseline-1280.json",
+    "vision/reports/ft117-baseline-640.json",
+    "vision/reports/ft117-baseline-960.json",
+    "vision/reports/ft117-baseline-dense-1280.json",
+    "vision/reports/ft117-baseline-dense-640.json",
+    "vision/reports/ft117-baseline-dense-960.json",
+    "vision/reports/ft117-candidate-dense-1280.json",
+    "vision/reports/ft117-candidate-dense-640.json",
+    "vision/reports/ft117-candidate-dense-960.json",
+    "vision/reports/ft117-reserved13.json",
+    "vision/reports/ft91-balanced-objective-amendment.json",
+    "vision/reports/ft91-baseline-1280.json",
+    "vision/reports/ft91-baseline-640.json",
+    "vision/reports/ft91-baseline-960.json",
+    "vision/reports/ft91-capacity-protocol.json",
+    "vision/reports/ft91-larger-pretrained-references.json",
+    "vision/reports/ft91-medium-1280.json",
+    "vision/reports/ft91-medium-640.json",
+    "vision/reports/ft91-medium-960.json",
+    "vision/reports/ft91-medium-deployment-calibration.json",
+    "vision/reports/ft91-medium-regression23.json",
+    "vision/reports/ft91-new70-warm-1280.json",
+    "vision/reports/ft91-new70-warm-640.json",
+    "vision/reports/ft91-new70-warm-960.json",
+    "vision/reports/ft91-official-warm-1280.json",
+    "vision/reports/ft91-official-warm-640.json",
+    "vision/reports/ft91-official-warm-960.json",
+    "vision/reports/ft91-old80-warm-1280.json",
+    "vision/reports/ft91-old80-warm-640.json",
+    "vision/reports/ft91-old80-warm-960.json",
+    "vision/reports/ft91-original80-reference.json",
     "vision/reports/improvement-20261116.json",
     "vision/reports/independent23-frozen.json",
     "vision/reports/inference-http-20261116.json",
@@ -233,9 +316,15 @@
     "vision/reports/pretrained-bases-validation.json",
     "vision/reports/reproduction-newtest23.json",
     "vision/reports/reproduction-train70.json",
+    "vision/reports/reproduction-union117.json",
+    "vision/reports/reproduction-union91.json",
     "vision/reports/reproduction.json",
+    "vision/reports/simple-next-duplicate-screen.json",
+    "vision/reports/simple-next-proposal-protocol.json",
+    "vision/reports/simple-next-proposal.json",
     "vision/reports/training-20261116.json",
     "vision/reports/training-yolo26n.json",
+    "vision/reports/union91-perceptual-audit.json",
     "vision/reports/yolo26n-custom-decision.json",
     "vision/reports/yolo26n-regression23.json"
   ],
@@ -246,7 +335,6 @@
     "Dockerfile",
     "IMPLEMENTATION_PLAN.md",
     "Iniciar-Acolhe.cmd",
-    "README.md",
     "app/static/fonts.css",
     "app/static/icon.svg",
     "app/static/index.html",
@@ -263,15 +351,15 @@
     "devsecops/README.md",
     "devsecops/terraform/.gitignore",
     "devsecops/terraform/terraform.tfvars.example",
+    "docs/PRD_GENAI_VISION.md",
     "docs/README.md",
     "docs/VALIDACAO_GENAI_VISION.md",
-    "docs/entregas/COMO_USAR_E_GRAVAR.md",
-    "docs/entregas/ROTEIRO_VIDEOS.md",
+    "docs/entregas/VISION_FINETUNING.md",
     "docs/manual_acolhe.md",
     "docs/manual_acolhe.pdf",
     "docs/registro_testes.md",
     "docs/roteiros_videos.md",
-    "genai/notebooks/03_integracao_api.ipynb",
+    "genai/model_manifest.json",
     "genai/reports/error_analysis.md",
     "genai/reports/llm_error_analysis.md",
     "genai/reports/qwen05b-cpu-20261116.json",
@@ -291,17 +379,20 @@
     "vision/requirements.txt"
   ],
   "stale_semantic_sources": [
+    "README.md",
     "genai/README.md",
     "genai/notebooks/01_retrieval.ipynb",
     "genai/notebooks/02_local_llm.ipynb",
     "vision/PLAN.md",
-    "docs/PRD_GENAI_VISION.md",
     "genai/PLAN.md",
     "docs/ENTREGA_CHECKLIST.md",
     "docs/entregas/GENAI_RELATORIO.md",
+    "docs/entregas/ROTEIRO_VIDEOS.md",
     "genai/base/README.md",
     "docs/entregas/VISION_RELATORIO.md",
-    "docs/MODELOS_VISION.md"
+    "docs/entregas/COMO_USAR_E_GRAVAR.md",
+    "docs/MODELOS_VISION.md",
+    "genai/notebooks/03_integracao_api.ipynb"
   ],
   "structural_sources": {
     "IMPLEMENTATION_PLAN.md": {
@@ -310,7 +401,7 @@
     },
     "README.md": {
       "lines": 247,
-      "sha256": "98278bc5e40378142e785747bcfa7351bba1dddab33ccd2777ef740360692e1c"
+      "sha256": "00a838c12da70777482877c61b5f46eae8f2c5b94b917dfcb0e77bd02f698f91"
     },
     "app/static/index.html": {
       "lines": 12,
@@ -341,16 +432,16 @@
       "sha256": "d8df0b06d0a515c5b12e553baab0ec8ab1d495724d962a0165419bc6d3963faa"
     },
     "docs/ENTREGA_CHECKLIST.md": {
-      "lines": 50,
-      "sha256": "1ba60d8913e10de1c496deffdb4368bb7c546fdf12e022f46483e906a3d42598"
+      "lines": 54,
+      "sha256": "cf489dd13c22e4131c01e7d26499d325741f6586483958453ee4d12ab48c0310"
     },
     "docs/MODELOS_VISION.md": {
       "lines": 66,
       "sha256": "bc77a04ca843fab81dc6576c8e31cb60e4926e70aceef4880a1f3b9d4521f396"
     },
     "docs/PRD_GENAI_VISION.md": {
-      "lines": 93,
-      "sha256": "30e3769c01b1da794487268280b9f10dcb39b6fbf56d9c3ebd94d492653137bb"
+      "lines": 101,
+      "sha256": "4382208f0972aefc8a5324848cba1c1b4cf8c159b227dcaf9862d54ecacb5c11"
     },
     "docs/README.md": {
       "lines": 34,
@@ -362,19 +453,19 @@
     },
     "docs/entregas/COMO_USAR_E_GRAVAR.md": {
       "lines": 81,
-      "sha256": "e04958b7ea855db66814de05aa9a7131bfad745c100b38b171321327dc12b6f5"
+      "sha256": "60847179c4c005b1428686323028c7e17046fbdb2b26a782765406d6896fe77d"
     },
     "docs/entregas/GENAI_RELATORIO.md": {
       "lines": 107,
-      "sha256": "d08d55c23fa273cd9ef117c1eae5621b2ab2fe79123e40a0a6b8dec067ce4e5b"
+      "sha256": "c4ae4a1e0a3eec01dc277b7d1071eae95b084956d11944fa744c2274da77ab2e"
     },
     "docs/entregas/RESULTADOS_NOTURNOS.md": {
       "lines": 51,
       "sha256": "78112d0468d279b0fa40327b6ff1b2ebb6495e5eca6c82a02750be2e4179ee1f"
     },
     "docs/entregas/ROTEIRO_VIDEOS.md": {
-      "lines": 5,
-      "sha256": "6e35824046544c025c829cd95c57f1ca106a1ed6d73c860f0170e3045e342990"
+      "lines": 9,
+      "sha256": "a9e580d56ff1eed0270d1b25596c3ec7219e3e0cef690f0bba3f47e76fdfdc25"
     },
     "docs/entregas/TESTAR_AMANHA.md": {
       "lines": 40,
@@ -384,9 +475,13 @@
       "lines": 61,
       "sha256": "a72d62cb8b26ba288629546677bcf51502a854872702d39147dca5f858b640d2"
     },
-    "docs/entregas/VISION_RELATORIO.md": {
+    "docs/entregas/VISION_FINETUNING.md": {
       "lines": 127,
-      "sha256": "64657ca1641dcfcc37dda75314a04357099579bbefa5ddd1e009ddacfef7eab6"
+      "sha256": "8204976659c2c8916ddff81bd1743bb6b355f0c106cf458a4fcc85eeb0644a57"
+    },
+    "docs/entregas/VISION_RELATORIO.md": {
+      "lines": 152,
+      "sha256": "ab80c82f5fa689e57b811a82c568a17ad50f800e69df8188eca7552b8f623486"
     },
     "docs/manual_acolhe.md": {
       "lines": 283,
@@ -501,12 +596,12 @@
       "sha256": "9b00f331e060382f00fd1ae16586852645b39839be12971dd53365305810a40a"
     },
     "vision/PLAN.md": {
-      "lines": 53,
-      "sha256": "f1d3af792ec3ff350d1f987663b0b837efa80b1cd32e3dc5628d480c1691945e"
+      "lines": 24,
+      "sha256": "318930f7a10379bb4daaafa522879576621b640fbfd10e7b9111db13b35f84cb"
     },
     "vision/README.md": {
-      "lines": 44,
-      "sha256": "a1f9b5418c939bc4fcf5bb3815bb798c13b50f3ca5780032de1dc688706925ed"
+      "lines": 59,
+      "sha256": "066343c2f26fe04a35a0418983c453a7d22b9fa0181ff6a2df6d8cb74013d6f1"
     },
     "vision/REVIEW_PACKET.md": {
       "lines": 72,
@@ -529,8 +624,8 @@
       "sha256": "aacd8b1403ddc2a9f3e59132ae798259d5c578f218122ff81980f87179021d87"
     },
     "output/pdf/ACOLHE_VISION.pdf": {
-      "lines": 320,
-      "sha256": "63d482e82fa0f1d682c60c02629afa7d63f92646072955415a8ce0ca86940470"
+      "lines": 429,
+      "sha256": "303207861bdc27fae2eecbcfda6322533ccfd4d9ec6f40f741540b4e6604c2e0"
     },
     "app/static/lessons.json": {
       "lines": 1,
@@ -559,6 +654,10 @@
     "docs/evidencias/expansion70-final-runtime.json": {
       "lines": 126,
       "sha256": "950a556c67d5b00ba244a1e7276558270786e875d476081061b0c16ec800c87e"
+    },
+    "docs/evidencias/finetune91-http.json": {
+      "lines": 151,
+      "sha256": "cb8e6017ef7b9a26db914469ff701d365f11efe1284f32fa97661bb4e66dfc20"
     },
     "docs/evidencias/genai-vision-20261116.json": {
       "lines": 39,
@@ -784,6 +883,154 @@
       "lines": 117,
       "sha256": "483ce1698bbf8a13cfec16f7e51613225f17d926138853fa7c3a3a45c37eea6b"
     },
+    "vision/reports/finetune117-decision.json": {
+      "lines": 52119,
+      "sha256": "5ee7e16b8e8bdc71de66a8930e7653c9cddee74399042b0cb7f8443b84ea9761"
+    },
+    "vision/reports/finetune117-protocol.json": {
+      "lines": 138,
+      "sha256": "95ab130c7104cd6f60b2d3e681662342274ba2b6b13683d9859eaf9e22b40590"
+    },
+    "vision/reports/finetune117-summary.json": {
+      "lines": 484,
+      "sha256": "6e6d93df63a6e71df62b3b09711f85bc063651260a2e482f0edbacd0b09d01cb"
+    },
+    "vision/reports/finetune91-decision.json": {
+      "lines": 15766,
+      "sha256": "5f436bfbf37ae32e3675ef6acab68a887b2abc172f3146376b78bb49c23f47cd"
+    },
+    "vision/reports/finetune91-protocol.json": {
+      "lines": 59,
+      "sha256": "e5c191ab38e536d254b6678a8066d4f7a26ce5eed9b843ec703f4973074b58cd"
+    },
+    "vision/reports/finetune91-summary.json": {
+      "lines": 409,
+      "sha256": "a3da8a07f67724a4f8e2f2ad209151389f3c31f692b716f9a69143c3e84ceaa0"
+    },
+    "vision/reports/ft117-baseline-1280.json": {
+      "lines": 1105,
+      "sha256": "812968e13b17da64de8dea92647b41c9baf491079b9a4f5ece6cdb49d57ef4bf"
+    },
+    "vision/reports/ft117-baseline-640.json": {
+      "lines": 1105,
+      "sha256": "a85e1aa071bc5283d408d36c572e277b0c99804ab1a9eda79e34bd6041ef7bc9"
+    },
+    "vision/reports/ft117-baseline-960.json": {
+      "lines": 1105,
+      "sha256": "f8eeb7860b27c0a15fdb6f14266caea530aa633aa1dbdda2c6bdea924c165b71"
+    },
+    "vision/reports/ft117-baseline-dense-1280.json": {
+      "lines": 8341,
+      "sha256": "49919566987441285879aee8d848a80b054577c442b0b97d5103ca91bbdd919d"
+    },
+    "vision/reports/ft117-baseline-dense-640.json": {
+      "lines": 8341,
+      "sha256": "cf6bc58af90a7a5c265f39c6c74064980fcf8bd9f67b6cbaedfd67f2f6e2f5af"
+    },
+    "vision/reports/ft117-baseline-dense-960.json": {
+      "lines": 8341,
+      "sha256": "7d1ecdf3940f21f6e1607f53d7c02e527d34c1e9ee637ed3570399dbd1f6aa9a"
+    },
+    "vision/reports/ft117-candidate-dense-1280.json": {
+      "lines": 8341,
+      "sha256": "f55452c33add3899873bbb01a65affacf9ac448571202fc50887e91eb5db534c"
+    },
+    "vision/reports/ft117-candidate-dense-640.json": {
+      "lines": 8341,
+      "sha256": "6a0c623b36ceb2ae7f0aeba5ac2dd3d1d990da75deade2fe824b346f9267131a"
+    },
+    "vision/reports/ft117-candidate-dense-960.json": {
+      "lines": 8341,
+      "sha256": "d275fd70ddf7602d78491f079b0797cf418deb73cea2c12eec33fcdcc626812d"
+    },
+    "vision/reports/ft117-reserved13.json": {
+      "lines": 8904,
+      "sha256": "c44873902f373dd558a35eb232536ec7e6a52f147f17a31c4338c7bf5629e3fa"
+    },
+    "vision/reports/ft91-balanced-objective-amendment.json": {
+      "lines": 16,
+      "sha256": "78319ab00c47d80cd59d97400e12718f3f4ca889e4688b05c8206aa33df16329"
+    },
+    "vision/reports/ft91-baseline-1280.json": {
+      "lines": 1105,
+      "sha256": "21ab444ddaafe46178acb6afe87ae8542530727a850ff83d1cde9a4110d23a3f"
+    },
+    "vision/reports/ft91-baseline-640.json": {
+      "lines": 1105,
+      "sha256": "a35d6fb0dd7b0b28238f2cc604b5a5ff4cd8f016fd0bdbd02e25831f25640f48"
+    },
+    "vision/reports/ft91-baseline-960.json": {
+      "lines": 1105,
+      "sha256": "e2be49bf153b5c0bf024e1ec6081b8740d0eb39b3dc15b023bb6ad305ade191c"
+    },
+    "vision/reports/ft91-capacity-protocol.json": {
+      "lines": 30,
+      "sha256": "c479196526029a4676d4107608555343ec477256359491010631d3ca3476aeff"
+    },
+    "vision/reports/ft91-larger-pretrained-references.json": {
+      "lines": 4357,
+      "sha256": "cd618991598f4efa8bd7e81b41c64936616b905267389b2710f9020560564c49"
+    },
+    "vision/reports/ft91-medium-1280.json": {
+      "lines": 1105,
+      "sha256": "85582606c0ff8a91aebb14ae053ac8ef06c7104ee89553c8ab00ee57d1696a30"
+    },
+    "vision/reports/ft91-medium-640.json": {
+      "lines": 1105,
+      "sha256": "ec58e41adbb16a8e60919371a0807291b3cf7702393787b58003bb83df55dbd0"
+    },
+    "vision/reports/ft91-medium-960.json": {
+      "lines": 1105,
+      "sha256": "ca5b227a21f21fb1451847f39cf038dd235e4b8c90fb2517a90b12080591c19c"
+    },
+    "vision/reports/ft91-medium-deployment-calibration.json": {
+      "lines": 1105,
+      "sha256": "0d5d31bd352bae29577033f9372beb2f589a240aa0fa0f54a51a45fb10b4cfc5"
+    },
+    "vision/reports/ft91-medium-regression23.json": {
+      "lines": 8073,
+      "sha256": "984dfff3728262a9ee517739759d09cf76ef0d5d284f92b1274348c362dfc7fb"
+    },
+    "vision/reports/ft91-new70-warm-1280.json": {
+      "lines": 1105,
+      "sha256": "6d8133f6341b47b6811452c0cd872e32650a7f44eb7c341e617cf66bdefcfb5a"
+    },
+    "vision/reports/ft91-new70-warm-640.json": {
+      "lines": 1105,
+      "sha256": "50284cf9549cb4fb3a489d24979ce1bc7ed724a25a1dad4dc8555efc20eacad1"
+    },
+    "vision/reports/ft91-new70-warm-960.json": {
+      "lines": 1105,
+      "sha256": "8ab12e1b7a20d9a6c1b546640936f53467a435bd038b526a42681f6c2347cb05"
+    },
+    "vision/reports/ft91-official-warm-1280.json": {
+      "lines": 1105,
+      "sha256": "1cd0d4b15e5016360bae2e02e200e68f4e314f8ab7c0380e8a01c0aceda4686c"
+    },
+    "vision/reports/ft91-official-warm-640.json": {
+      "lines": 1105,
+      "sha256": "26fb4383b9d1d976fb0d8fc2e8adc429e1d6289a121d24c1358f2b12eaf61d0a"
+    },
+    "vision/reports/ft91-official-warm-960.json": {
+      "lines": 1105,
+      "sha256": "48119c73cf1f422ba3e54ac5d0aca1324f29f0c31691a6a8cb1aa9bea1f9c951"
+    },
+    "vision/reports/ft91-old80-warm-1280.json": {
+      "lines": 1105,
+      "sha256": "1d40a18fbe47dad20a19c90735c715e6536c659b7cdc0a8da5a7a8a464183e64"
+    },
+    "vision/reports/ft91-old80-warm-640.json": {
+      "lines": 1105,
+      "sha256": "8cf12674129442e0d029d00f49afbb029629404ef494807a28288d255094a0fb"
+    },
+    "vision/reports/ft91-old80-warm-960.json": {
+      "lines": 1105,
+      "sha256": "06774d1c0ab8fd7eb0d710d48e1d6a947f285097bb9a3747aa2ad965c9a9078c"
+    },
+    "vision/reports/ft91-original80-reference.json": {
+      "lines": 3261,
+      "sha256": "ef8be6bca7cbf539c88475e480cb0e0e22f1b7b10c223a487a7ef23e781316a6"
+    },
     "vision/reports/improvement-20261116.json": {
       "lines": 867,
       "sha256": "7e0fb45a35ba4824991267b6a849370466cbffbeb5195b9c424b099d94307c9e"
@@ -836,9 +1083,29 @@
       "lines": 7765,
       "sha256": "7c1ed28791cc56369b253c21685a20ce52a4e61cfb52daa2b34c8da0be852247"
     },
+    "vision/reports/reproduction-union117.json": {
+      "lines": 12184,
+      "sha256": "dcefaa9974badc34b72241edac547f0a97e82d1219e399e14d85abf5197e0417"
+    },
+    "vision/reports/reproduction-union91.json": {
+      "lines": 9892,
+      "sha256": "bb62f12e9ea51b5f9d27a8c30c90fbebd07ed6d63de7e7ca2585dd4c4be82037"
+    },
     "vision/reports/reproduction.json": {
       "lines": 1650,
       "sha256": "f565b4535434a2addf05fe97be678ffa6ef188609b396cb1a3aa86fdc660c590"
+    },
+    "vision/reports/simple-next-duplicate-screen.json": {
+      "lines": 10,
+      "sha256": "36cdced2c4b8aaff4df48d99064cc943de907ccf101d07c675f1fd9026379250"
+    },
+    "vision/reports/simple-next-proposal-protocol.json": {
+      "lines": 26,
+      "sha256": "c1c1e96651f48a9ba752750da45df3b6d6330d6e71dfe012a6b9ec8b21012004"
+    },
+    "vision/reports/simple-next-proposal.json": {
+      "lines": 118,
+      "sha256": "c9dbeab45f8f5467c2cb3e16cdad05624010e1b8b8ea1d9fdb97ed314606d181"
     },
     "vision/reports/training-20261116.json": {
       "lines": 245,
@@ -847,6 +1114,10 @@
     "vision/reports/training-yolo26n.json": {
       "lines": 238,
       "sha256": "db7ca9799ebbb19c132937a0f87714dede7465ab85757d2a4e929ae2b3c35a66"
+    },
+    "vision/reports/union91-perceptual-audit.json": {
+      "lines": 5,
+      "sha256": "ee5f6f7579760fa5bccb7ea6da58cfe70433767576b7bd8823c14c3543bbb2c5"
     },
     "vision/reports/yolo26n-custom-decision.json": {
       "lines": 235,
@@ -930,7 +1201,7 @@
     },
     "genai/notebooks/03_integracao_api.ipynb": {
       "lines": 81,
-      "sha256": "7a5654c23de9b90f9fb2aa3ea49b5375db373dfb30c563f8a4e2faeb183b65f3"
+      "sha256": "0ed23922460c44b0637fbf88c3a5861d8f7179b8c06edb132f9ae49bf60f1f24"
     },
     "robot/firmware/acolhe_safe/acolhe_safe.ino": {
       "lines": 35,
@@ -947,23 +1218,23 @@
   },
   "token_usage": null,
   "token_usage_reason": "Host agent usage not exposed",
-  "graph_nodes": 1118,
-  "graph_edges": 1717,
-  "communities": 178,
+  "graph_nodes": 1189,
+  "graph_edges": 1774,
+  "communities": 210,
   "health": {
-    "node_count": 1060,
+    "node_count": 1131,
     "unverified_node_count": 0,
-    "raw_edge_count": 1825,
+    "raw_edge_count": 1882,
     "non_object_edges": 0,
     "missing_endpoint_edges": 0,
-    "dangling_endpoint_edges": 356,
+    "dangling_endpoint_edges": 368,
     "external_reference_edges": 4,
     "self_loop_edges": 0,
-    "valid_candidate_edges": 1465,
+    "valid_candidate_edges": 1510,
     "exact_duplicate_edges": 1,
-    "directed_unique_endpoint_pairs": 1359,
+    "directed_unique_endpoint_pairs": 1404,
     "directed_same_endpoint_collapsed_edges": 106,
-    "undirected_unique_endpoint_pairs": 1358,
+    "undirected_unique_endpoint_pairs": 1403,
     "undirected_same_endpoint_collapsed_edges": 107,
     "same_endpoint_group_count": 61,
     "relation_variant_groups": 27,
@@ -971,8 +1242,8 @@
     "source_location_variant_groups": 33,
     "context_variant_groups": 2,
     "post_build_graph_type": "Graph",
-    "post_build_node_count": 1118,
-    "post_build_edge_count": 1717,
+    "post_build_node_count": 1189,
+    "post_build_edge_count": 1774,
     "post_build_error": "",
     "producer_suppression": {
       "path": "C:\\Users\\hyeon\\AppData\\Roaming\\uv\\tools\\graphifyy\\Lib\\site-packages\\graphify\\extract.py",

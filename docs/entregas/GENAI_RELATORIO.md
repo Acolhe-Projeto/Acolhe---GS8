@@ -1,4 +1,4 @@
-> Atualização 17/11: GenAI ativo v6/corpus v3; D16 RAG/agente 14/16 na revisão técnica exploratória, revisão humana pendente. Vision: quatro treinos adicionais não sustentaram promoção; modelo ativo e PDF preservados, meta 70%/70% ainda não atingida. Detalhes em [RESULTADOS_NOTURNOS](RESULTADOS_NOTURNOS.md). Este adendo substitui o perfil GenAI v4 como configuração atual; placares anteriores são históricos.
+> GenAI atual: v6/corpus v3, Qwen2.5 3B local. D16: RAG/agente 14/16 na revisão técnica exploratória; revisão humana pendente. Placar e casos antigos abaixo são históricos nas respectivas versões. Detalhes atuais em RESULTADOS_NOTURNOS.md. Vision foi atualizado separadamente para YOLO26m; veja VISION_FINETUNING.md.
 
 # Acolhe - Relatório Generative AI for Engineering
 

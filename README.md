@@ -4,9 +4,9 @@
 
 Branch `feat/genai-vision`, a partir da base `4a2d00f`. Consulte o [PRD com diagramas e critérios de aceite](docs/PRD_GENAI_VISION.md), o [plano GenAI](genai/PLAN.md), o [plano Vision](vision/PLAN.md) e a [validação desta branch](docs/VALIDACAO_GENAI_VISION.md). O [mapa Graphify](docs/knowledge/README.md) registra código e documentação de todas as disciplinas para orientar este trabalho.
 
-GenAI final usa **qwen2.5:3b-instruct** (~1,9GB de pesos), dentro do teto4B solicitado. Comparação real baseline/RAG/agente em20 perguntas de desenvolvimento e12 independentes, com GPU confirmada na RX6750XT. O [relatório GenAI](docs/entregas/GENAI_RELATORIO.md) separa métricas automáticas e revisão técnica exploratória.
+GenAI usa **qwen2.5:3b-instruct** (~1,9 GB de pesos), dentro do teto de 4B solicitado. É uma LLM local real. A especialização foi feita por agente, sem LoRA; a revisão técnica exploratória do D16 contou 14/16 acertos em RAG/agente. [Relatório e limites](docs/entregas/GENAI_RELATORIO.md).
 
-Vision usa agora **YOLO26n customizado**,80épocasCPU640, confiança0,15 escolhida pela validação. Nas23 fotos já examinadas, recall51,5% e precisão60,7%, com melhora de F1 frente ao YOLO11n80. A meta70%/70% ainda não foi atingida. [Pesquisa de bases leves](docs/MODELOS_VISION.md), [guiaVision](vision/README.md) e [PDF](output/pdf/ACOLHE_VISION.pdf). Fotos e pesos permanecem locais; nova clone precisa reconstruir dados e treinar.
+Vision usa **YOLO26m91**, inferência 960 e confiança 0,25, cerca de um segundo nos ensaios locais. O fine-tuning com117fotos foi comparado e não foi promovido. Na validação38, o perfil ativo teve P72,7% / R71,5%; no novo teste básico reservado13, **P71,2% / R72,2%**, observando a meta conjunta nesse pequeno lote. O diagnóstico complexo anterior23 continua P68,3% / R62,1%, sem nova avaliação; conjuntos diferentes não medem evolução diretamente. [Plano e comparação](docs/entregas/VISION_FINETUNING.md), [guiaVision](vision/README.md) e [PDF](output/pdf/ACOLHE_VISION.pdf). FonteCOCO e amostra pequena limitam generalização. Fotos/pesos ficam locais; o lote50 foi aprovado e processado.
 
 Para abrir e gravar: [guia rápido e roteiro de90 segundos](docs/entregas/COMO_USAR_E_GRAVAR.md).
 

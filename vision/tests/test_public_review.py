@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from vision.public_review import approve, build, fingerprint, flickr_credit
+from vision.public_review import approve, build, fingerprint, flickr_credit, clear_targets
 
 
 class PublicReviewTests(unittest.TestCase):
@@ -16,6 +16,14 @@ class PublicReviewTests(unittest.TestCase):
         self.assertEqual(flickr_credit(html)["author"], "Example photographer")
         with self.assertRaises(ValueError): flickr_credit(html.replace("licenses/by/", "licenses/by-nc/"))
         with self.assertRaises(ValueError): flickr_credit('<script type="application/ld+json">{broken}</script>')
+
+    def test_simple_objects_counts_visible_primary_targets_not_tiny_background(self):
+        image={'width':800,'height':400}
+        categories={1:'fork',2:'book',3:'bottle'}
+        boxes=[{'category_id':1,'bbox':[0,0,200,20]},
+               {'category_id':2,'bbox':[0,0,20,40]},
+               {'category_id':3,'bbox':[0,0,200,100]}]
+        self.assertEqual(clear_targets(image,boxes,categories),['bottle','fork'])
 
     def packet(self, root):
         image = root / "image.jpg"; image.write_bytes(b"test-only-image")

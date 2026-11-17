@@ -825,14 +825,6 @@
       "description": "CurrentQwen3B plus validation-selectedYOLO26n, basic use/recording links,70percent precision/recall not achieved."
     },
     {
-      "id": "final_docs_PRD_GENAI_VISION_md",
-      "label": "docs/PRD_GENAI_VISION.md — reviewed current state",
-      "file_type": "concept",
-      "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": "L1",
-      "description": "Final current architecture and official acceptance, measured GenAI/Vision results, validation-only selection and exposed-test limits."
-    },
-    {
       "id": "final_vision_PLAN_md",
       "label": "vision/PLAN.md — reviewed current state",
       "file_type": "concept",
@@ -847,14 +839,6 @@
       "source_file": "genai/PLAN.md",
       "source_location": "L1",
       "description": "CurrentQwen3B PRD, attributed8lessons, UI RAG and agent comparison; human review/video pending."
-    },
-    {
-      "id": "final_vision_README_md",
-      "label": "vision/README.md — reviewed current state",
-      "file_type": "concept",
-      "source_file": "vision/README.md",
-      "source_location": "L1",
-      "description": "CurrentYOLO26n use/reproduction, version pin, same25train8val, approved23test only; no publication of photos/weights."
     },
     {
       "id": "final_docs_ENTREGA_CHECKLIST_md",
@@ -945,20 +929,84 @@
       "description": "Full source/output reviewed and rerun: actualHTTP PT/ES/refusal on8083, Vision ready with0.15/640 and qualityfalse, no Jupyter kernel."
     },
     {
-      "id": "current_qwen3b_rag",
-      "label": "Qwen3B RAG com fontes",
+      "id": "final_docs_PRD_GENAI_VISION_md",
+      "label": "PRD atual: GenAI3B e Vision26m91",
       "file_type": "concept",
       "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": "L19",
-      "description": "Current local3B generation with source/refusal; content errors remain."
+      "source_location": "L1",
+      "description": "Estado atual, comparação e limites. Lote50 aprovado e processado; sem aprovação de fotos pendente."
     },
     {
-      "id": "current_yolo26n_pipeline",
-      "label": "YOLO26n validação e inferência",
+      "id": "current_qwen3b_rag",
+      "label": "Qwen3B RAG com fontes, corpus v3",
       "file_type": "concept",
       "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": "L19",
-      "description": "Custom80epochs640 detector, confidence0.15 chosen on validation, current regression below70/70."
+      "source_location": "L56",
+      "description": "LLM local real 3B; especialização por agente, sem LoRA da equipe. D16 revisão técnica 14/16; revisão humana pendente."
+    },
+    {
+      "id": "current_yolo26m_pipeline",
+      "label": "YOLO26m91 ativo: 960 / confiança0.25",
+      "file_type": "concept",
+      "source_file": "docs/PRD_GENAI_VISION.md",
+      "source_location": "L97",
+      "description": "Pesos treinados com91fotos, cinco épocas; continuação117 não promovida. Teste básico reservado13: P71.2/R72.2, meta observada nesse lote pequeno. Regressão complexa23: P68.3/R62.1. Conjuntos distintos; quality_validated=false; fonteCOCO limita independência."
+    },
+    {
+      "id": "ft91_checkpoint_comparison",
+      "label": "Fine-tuning: pesos antigos, recentes e controle",
+      "file_type": "concept",
+      "source_file": "docs/entregas/VISION_FINETUNING.md",
+      "source_location": "L15",
+      "description": "Três nanos nove épocas cada; faseM91 cinco; continuaçãoM117 sete, sem promoção. Mesmo split para comparadores; receita e capacidade diferentes entre fases explicitadas."
+    },
+    {
+      "id": "ft91_union_dataset",
+      "label": "Base inicial91treino/27val/23regressão",
+      "file_type": "concept",
+      "source_file": "docs/entregas/VISION_FINETUNING.md",
+      "source_location": "L11",
+      "description": "613objetos treino,247validação,66teste. Splits preservados; teste fora da seleção. Base histórica anterior à expansão117/38/13."
+    },
+    {
+      "id": "ft91_future50_proposal",
+      "label": "Lote50 aprovado: expansão117/38/13",
+      "file_type": "concept",
+      "source_file": "docs/entregas/VISION_FINETUNING.md",
+      "source_location": "L115",
+      "description": "26novas de treino,11validação,13reservadas. União117/38/13;23antigas ausentes porID/pixels. Aprovação por origem, não um hash para todas168. HTTP429 e triagem reduziram metas iniciais."
+    },
+    {
+      "id": "final_vision_README_md",
+      "label": "VisionREADME: perfilM91 e reprodução",
+      "file_type": "concept",
+      "source_file": "vision/README.md",
+      "source_location": "L3",
+      "description": "Perfil960/.25, hash exato; reconstrução de91 e117, treino, ativação e teste congelado. M117 não promovido; M91 observou meta no básico13, sem garantia geral."
+    },
+    {
+      "id": "current_qwen3b_weights",
+      "label": "Qwen2.5 3B pesos locais",
+      "file_type": "concept",
+      "source_file": "genai/model_manifest.json",
+      "source_location": "L2",
+      "description": "Ollama pré-treinado3.09B Q4_K_M,1.93GB; digest registrado. Sem treino dos pesos pela equipe, caminho de agente da rubrica; pesos fora doGit."
+    },
+    {
+      "id": "ft117_expansion",
+      "label": "Continuação117 comparada sem promoção",
+      "file_type": "concept",
+      "source_file": "docs/entregas/VISION_FINETUNING.md",
+      "source_location": "L119",
+      "description": "Sete épocas de máximo12. Mesma validação38: M91 P72.7/R71.5/F1.7210; candidato117 equilibrado P71.5/R71.5/F1.7148. Nenhum perfil passou a regra; manterM91."
+    },
+    {
+      "id": "ft117_reserved13",
+      "label": "Teste básico reservado13: meta70 observada",
+      "file_type": "concept",
+      "source_file": "docs/entregas/VISION_FINETUNING.md",
+      "source_location": "L121",
+      "description": "Decisão congelada antes do teste; escolhido e referência idênticos, uma inferência.52TP21FP20FN;P71.2/R72.2/F1.7172/macroR86.0. Sem reajuste; amostra pequena selecionadaCOCO não comprova generalização.12/13alvos primários é métrica suplementar."
     }
   ],
   "edges": [
@@ -2319,17 +2367,107 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": "L19",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
       "source": "final_docs_PRD_GENAI_VISION_md",
-      "target": "current_yolo26n_pipeline",
+      "target": "current_yolo26m_pipeline",
       "relation": "describes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/PRD_GENAI_VISION.md",
-      "source_location": "L19",
+      "source_location": "L95",
+      "weight": 1.0
+    },
+    {
+      "source": "ft91_checkpoint_comparison",
+      "target": "current_yolo26m_pipeline",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/entregas/VISION_FINETUNING.md",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "ft91_checkpoint_comparison",
+      "target": "ft91_union_dataset",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/entregas/VISION_FINETUNING.md",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "final_vision_README_md",
+      "target": "current_yolo26m_pipeline",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vision/README.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "current_qwen3b_weights",
+      "target": "current_qwen3b_rag",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "genai/model_manifest.json",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "ft91_checkpoint_comparison",
+      "target": "ft91_future50_proposal",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/entregas/VISION_FINETUNING.md",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "ft91_checkpoint_comparison",
+      "target": "vision_train_train",
+      "relation": "implemented_by",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "docs/entregas/VISION_FINETUNING.md",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "ft91_checkpoint_comparison",
+      "target": "ft117_expansion",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/entregas/VISION_FINETUNING.md",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "current_yolo26m_pipeline",
+      "target": "ft117_reserved13",
+      "relation": "evaluated_on",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/entregas/VISION_FINETUNING.md",
+      "source_location": "L121",
+      "weight": 1.0
+    },
+    {
+      "source": "ft117_expansion",
+      "target": "current_yolo26m_pipeline",
+      "relation": "retains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/entregas/VISION_FINETUNING.md",
+      "source_location": "L119",
       "weight": 1.0
     }
   ],
@@ -2446,9 +2584,9 @@
       "review": "agent read complete text; PDF extracted all 10 pages; logo visually inspected; SVG source inspected"
     },
     "vision/README.md": {
-      "sha256": "a1f9b5418c939bc4fcf5bb3815bb798c13b50f3ca5780032de1dc688706925ed",
-      "lines": 44,
-      "review": "Current complete source/output authored or reviewed in final session; measured results separated from proposed targets."
+      "sha256": "066343c2f26fe04a35a0418983c453a7d22b9fa0181ff6a2df6d8cb74013d6f1",
+      "lines": 59,
+      "review": "Full current source read in closing session; metrics checked against reports. Updated final approved expansion and retained model; unrelated stale sources remain unstamped."
     },
     "vision/requirements.txt": {
       "sha256": "d3d0501f32ef0ef58cf6d0b3a8430d87f0e496c1ecdbbac06d7d1572d9be82bb",
@@ -2546,9 +2684,9 @@
       "review": "Current complete source/output authored or reviewed in final session; measured results separated from proposed targets."
     },
     "docs/PRD_GENAI_VISION.md": {
-      "sha256": "51e5b937011e256783c2a2a1f2a3bf4d2778a189d62e13d9970a4ff1f5b30cce",
-      "lines": 89,
-      "review": "Current complete source/output authored or reviewed in final session; measured results separated from proposed targets."
+      "sha256": "4382208f0972aefc8a5324848cba1c1b4cf8c159b227dcaf9862d54ecacb5c11",
+      "lines": 101,
+      "review": "Full current source read in closing session; metrics checked against reports. Updated final approved expansion and retained model; unrelated stale sources remain unstamped."
     },
     "vision/requirements-data.txt": {
       "lines": 3,
@@ -2634,12 +2772,23 @@
       "sha256": "7a5654c23de9b90f9fb2aa3ea49b5375db373dfb30c563f8a4e2faeb183b65f3",
       "lines": 81,
       "review": "Current complete source/output authored or reviewed in final session; measured results separated from proposed targets."
+    },
+    "docs/entregas/VISION_FINETUNING.md": {
+      "sha256": "8204976659c2c8916ddff81bd1743bb6b355f0c106cf458a4fcc85eeb0644a57",
+      "lines": 127,
+      "review": "Full current source read in closing session; metrics checked against reports. Updated final approved expansion and retained model; unrelated stale sources remain unstamped."
+    },
+    "genai/model_manifest.json": {
+      "sha256": "54c18544fc41adbf682b321e279b7034cb0d15c42ecb5ba3c6026348e8da417a",
+      "lines": 18,
+      "review": "Full current source read in closing session; metrics checked against reports. Updated final approved expansion and retained model; unrelated stale sources remain unstamped."
     }
   },
-  "base_commit": "4a2d00f34c3eb570c90cc7b56822eea5f028fc3b",
+  "base_commit": "fd89464bc610944102afc719dcd9e33e356f6d0e",
   "input_tokens": null,
   "output_tokens": null,
   "rebuild_review": {
-    "intentional_removed_nodes": "Final rewritten PRDs/checklist and corrected executed notebooks reviewed in full; superseded headings/annotations removed intentionally. Historical versions in Git. Domain relations explicitly grounded in the current PRD diagram."
+    "intentional_removed_nodes": "Final rewritten PRDs/checklist and corrected executed notebooks reviewed in full; superseded headings/annotations removed intentionally. Historical versions in Git. Domain relations explicitly grounded in the current PRD diagram.",
+    "final_round": "Approved50 completed; candidate117 not promoted; M91 retained. Test13 meta observed in small basic cohort, old23 unchanged. Sources and line locators refreshed only for four fully read files."
   }
 }

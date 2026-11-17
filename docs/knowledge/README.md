@@ -67,7 +67,7 @@ Os PDFs institucionais e arquivos de proposta citados como `../Desafio-FIAP-GS-C
 
 O diagnóstico do Graphify encontra endpoints não declarados e pares de arestas repetidos na extração; a projeção não direcionada pode colapsar relações. Isso ocorre especialmente em chaves YAML repetidas e na resolução de referências. Os totais atuais ficam no relatório e em `coverage.json`, e a extração bruta é preservada localmente em `.graphify_extract.json`. **Ausência de vínculo no grafo não prova ausência de dependência.**
 
-Na exportação final para Obsidian no Windows, o exportador preservou duas notas preexistentes ligadas a `setup`/`setUp` de testes, por colisão de nomes que diferem em maiúsculas/minúsculas. Foram exportadas 927 notas; essas duas notas podem não representar a revisão mais recente. Não foram apagadas nem sobrescritas para contornar a proteção. HTML e JSON preservam todos os 864 nós do grafo; use-os para conferir esses dois símbolos.
+Na exportação para Obsidian no Windows, o exportador preservou duas notas preexistentes ligadas a `setup`/`setUp` de testes, por colisão de nomes que diferem em maiúsculas/minúsculas. Essas duas notas podem não representar a revisão mais recente. Não foram apagadas nem sobrescritas para contornar a proteção. Consulte os totais do build atual em coverage.json; HTML e JSON preservam os nós do grafo e permitem conferir esses dois símbolos.
 
 O build não chama provedor de modelo nem precisa de chave de API. A extração semântica foi feita pela sessão de agente. A ferramenta não expôs seus contadores de tokens; o uso é registrado como **não disponível**, e os zeros internos que a API do relatório exige são placeholders. Não são evidência de custo zero nem de economia medida de tokens.
 
