@@ -1,0 +1,27 @@
+Airflow 3.1.0 (apache/airflow:3.1.0-python3.12, WSL2 + Docker) - 2026-11-17 UTC
+DAG acolhe_official_snapshots: coletar_ibge || coletar_obmigra -> conferir_chegada (agendado 0 4 * * *)
+
+1) Execucao normal
+   run manual__2026-11-17T23:01:00.258039+00:00_rinNuLrl  -> success
+   task coletar_ibge      success
+   task coletar_obmigra   success
+   task conferir_chegada  success
+   notificacao: {"event": "chegada_ok", "day": "2026-11-17", "files": {"ibge": {"file": "municipios_2026-11-17.csv", "rows": 645}, "obmigra": {"file": "indicadores_2026-11-17.csv", "rows": 7}}, "new_files": []}
+   (new_files vazio: o lote do dia ja existia e nao foi sobrescrito)
+
+2) Falha provocada para demonstrar a notificacao
+   Variable acolhe_ibge_url = http://... (o coletor so aceita https)
+   run manual__2026-11-17T23:06:00.709751+00:00_rxdn4dNx  -> failed
+   task coletar_ibge      failed  (3 tentativas: retries=2)
+   task coletar_obmigra   success (ramo paralelo nao e afetado)
+   task conferir_chegada  upstream_failed
+   notificacao: {"at": "2026-11-17T23:12:03+00:00", "event": "task_failure", "dag_id": "acolhe_official_snapshots", "task_id": "coletar_ibge", "try_number": 3, "error": "ValueError"}
+   Variable removida em seguida (volta ao endpoint https padrao).
+
+3) DAG acolhe_medallion na mesma data
+   run manual__2026-11-17T22:39:06.304875+00:00_Ig33Ql5P -> success
+   ingest_demand || ingest_services -> medallion -> integrate_official, todas success
+   contagens antes = depois: batches 5, bronze 11, silver 4, quarantine 3, fact 4 (lote 07/11 de teste de qualidade incluido)
+
+Defeito encontrado no Airflow real e corrigido (commit fbc1f48): as tarefas importavam big_data
+antes de colocar ACOLHE_ROOT no sys.path (ModuleNotFoundError no worker).

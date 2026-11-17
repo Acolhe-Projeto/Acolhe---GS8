@@ -6,6 +6,13 @@ Legenda: ✅ atende · 🟡 parcial · ❌ falta · 👤 só a equipe pode fazer
 
 Links que valem para todas: repositório https://github.com/Acolhe-Projeto/Acolhe---GS8 (movido de TomazVC em 17/11; branch Aksel+Ian, ainda sem merge na main) · MVP https://acolhe-gs8.ambitiousbeach-2f5aaa39.canadacentral.azurecontainerapps.io
 
+## Atualização de 17/11 à noite (correções feitas)
+Big Data: DAG com `chegada/` e data no nome, `conferir_chegada`, notificação e Variables, executado com sucesso no Airflow real. Lotes reais de 14/11 e 17/11 na Bronze. Total barrado por regra (tabela `quality_rules`). Pasta `amostras/`. Integrantes no README.
+RPA: regras de duplicados e inconsistências, amostra de log em `rpa/logs/`, integrantes no README.
+DevSecOps: CI em todo push; run vermelho e verde reais no GitHub; Grafana com dashboard provisionado apontando para a URL pública; OIDC, secrets e environment configurados para o deploy automático; integrantes no README.
+Merge da `main` (PR #2, Maker) feito na `Aksel+Ian`, com o conflito em `app/server.py` resolvido.
+As tabelas abaixo mostram o estado antes dessas correções; o que mudou está em `big_data/README.md` (requisitos 01 a 09) e `devsecops/README.md`.
+
 ## 1. Big Data Architecture & Data Integration (Ian e Aksel)
 Entrega: PDF com o link do repositório.
 

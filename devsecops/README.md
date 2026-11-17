@@ -35,6 +35,24 @@ Ferramentas portateis, mesmas versoes da CI quando ha binario Windows: Terraform
 
 **Deploy automatico.** O job `deploy` agora roda em todo push na `main` que passar em todos os gates, desde que `vars.DEPLOY_ENABLED == 'true'`; o disparo manual continua disponivel. Inclui health check pos-deploy contra a URL publica. Na `main` a concorrencia nao cancela um run em andamento, para nao interromper um deploy.
 
+## Esteira barrada e corrigida no GitHub (2026-11-17)
+Na branch `demo/pipeline-barrado`:
+- Barrada: commit `6abd6ac` introduz `eval()` em `rpa/_gate_demo.py`. O passo "Semgrep local rules" falha com `devsecops.no-dynamic-evaluation` e o deploy é pulado: https://github.com/Acolhe-Projeto/Acolhe---GS8/actions/runs/44190586981
+- Corrigida: commit `d68f2af` remove o arquivo e todos os gates passam: https://github.com/Acolhe-Projeto/Acolhe---GS8/actions/runs/44191227009
+
+O workflow agora roda em push de qualquer branch, além de PR e disparo manual. O deploy continua restrito à `main`.
+
+## Deploy automático configurado (OIDC, sem senha)
+- Azure: identidade gerenciada `id-acolhe-gs8-deploy` em `rg-acolhe-gs8`. A credencial federada só aceita tokens do GitHub com `repo:Acolhe-Projeto/Acolhe---GS8:environment:production`, e o papel é Contributor apenas nesse resource group.
+- GitHub: environment `production` restrito à branch `main`, sem aprovação manual (o controle humano fica no PR); secrets `AZURE_CLIENT_ID`, `AZURE_TENANT_ID` e `AZURE_SUBSCRIPTION_ID` no environment; variáveis `AZURE_RESOURCE_GROUP`, `AZURE_CONTAINER_APP` e `DEPLOY_ENABLED=true`.
+- Proteção: antes do `az containerapp update`, o job confere se a imagem `ghcr.io/acolhe-projeto/acolhe---gs8` pode ser baixada sem credencial. Se o pacote estiver privado, o job falha sem tocar no Azure. No primeiro deploy pela `main`, torne o pacote público e rode o job de novo.
+
+## Dashboard no Grafana apontando para o MVP publicado
+```
+docker compose -f devsecops/monitoring/public/compose.yaml up -d
+```
+O Prometheus (http://localhost:9091) coleta `/metrics` da URL pública por HTTPS, e o Grafana (http://localhost:3000) já sobe com o dashboard "Acolhe - Four Golden Signals" e o datasource provisionados. Verificado em 17/11 com 90 s de tráfego real na URL pública: up=1, latência média de 3,6 ms, cerca de 3 req/s, erros 0, saturação 0. O JSON do dashboard usava `${DS_PROMETHEUS}`, que só funciona em import manual, e passou a usar o uid fixo `prometheus`. Enquanto o Prometheus estiver coletando, o app não escala para zero: pare o stack depois dos prints (`docker compose ... down`).
+
 ## URL pública (Azure, 2026-11-14)
 **https://acolhe-gs8.ambitiousbeach-2f5aaa39.canadacentral.azurecontainerapps.io**
 

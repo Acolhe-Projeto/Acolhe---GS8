@@ -113,7 +113,8 @@ def main():
     for n, q, r, err in results:
         md += [f'### Consulta {n}', '', '```sql', q, '```', '', table(*r) if r else f'Erro: {err}', '']
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
-    path = out / f'databricks_{now:%Y%m%d}.md'; path.write_text('\n'.join(md), encoding='utf-8'); print('written', path)
+    suffix = '' if a.namespace == 'workspace.acolhe' else '_' + sch
+    path = out / f'databricks_{now:%Y%m%d}{suffix}.md'; path.write_text('\n'.join(md), encoding='utf-8'); print('written', path)
     return 0 if steps and all(s['result'] == 'SUCCESS' for s in steps) and all(r for _, _, r, _ in results) else 1
 
 if __name__ == '__main__':

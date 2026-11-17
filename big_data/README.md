@@ -6,6 +6,19 @@
 - Aksel Viktor Caminha Rae, RM 99011
 - Ian Xavier Kuraoka, RM 98860
 
+## Requisitos 01 a 09 da GS
+| # | Requisito | Onde está |
+|---|---|---|
+| 01 | Duas fontes, uma externa real | IBGE (API de Localidades) e OBMigra 2025 (relatório oficial), além das fontes demonstrativas `demand`/`services`. Licenças em `OFFICIAL_SOURCES.md`. |
+| 02 | DAG agendado grava em `chegada/`, um arquivo por coleta com data | `airflow/official_sources_dag.py` (diário, 04:00 UTC) grava `chegada/ibge/municipios_AAAA-MM-DD.csv` e `chegada/obmigra/indicadores_AAAA-MM-DD.csv`. A data é o dia real da coleta (UTC), e um arquivo existente nunca é sobrescrito. |
+| 03 | Paralelismo, conferência e chaves fora do código | `coletar_ibge` e `coletar_obmigra` em paralelo, seguidas de `conferir_chegada` (arquivo existe, tem cabeçalho e não está vazio). Falhas acionam `on_failure_callback` e a conferência registra `chegada_ok` em `chegada/_notificacoes/notificacoes.jsonl`. Os endpoints vêm das Variables `acolhe_ibge_url` e `acolhe_obmigra_url`; as fontes são públicas e não usam chave. |
+| 04 | Dois lotes de dias diferentes no Volume | Lotes reais de 14/11 e 17/11 enviados ao Volume em `input/chegada/` (`databricks/run_evidence.py`, por dia de coleta). |
+| 05 | Bronze incremental sem duplicar | `COPY INTO` com `force=false` em `bronze` (demo), `bronze_municipios` e `bronze_obmigra`, com `arquivo_origem` e `carregado_em` em cada linha. Execução limpa em `evidence/databricks_20261117_acolhe_gs.md`: bronze_municipios 0 → 645 (lote de 14/11) → 1290 (lote de 17/11) → 1290 (reexecução); prata 645. |
+| 06 | Prata com tipos, nulos, MERGE e 3 regras com contagem | Regras R1/R2/R3 (demo), M1/M2/M3 (municípios) e O1/O2/O3 (OBMigra); o total barrado por regra fica na tabela `quality_rules`. O lote `demand_2026-11-07.csv` é um lote sintético de teste, com uma linha inválida por regra. |
+| 07 | Ouro com fato, 2 dimensões e 5 consultas, uma de impacto | `fact_indicators`, `dim_region`, `dim_language`, `dim_municipality` e `gold_official_context`; 8 consultas em `queries.sql`, interpretadas em `EVIDENCIAS.md`. A consulta 6 (crianças solicitantes de refúgio) é a de impacto. |
+| 08 | LGPD na Ouro e tela do MVP | Não há dado pessoal em nenhuma camada, e as chaves das dimensões no Databricks são hash SHA-256. O MVP consome `summary.json` em `/api/gold` (painel "Território e acolhimento"). |
+| 09 | README com integrantes, arquitetura e passo a passo | Este arquivo. Amostras de cada fonte em `amostras/`. |
+
 
 ## Estado e honestidade dos dados
 Executado localmente em Python 3.12 + SQLite. Os indicadores de demanda/servicos do MVP sao inteiramente SINTETICOS: nao representam refugiados reais, demanda real nem capacidade de atendimento. Duas fontes logicas de demonstracao (`demand` e `services`), nao duas bases publicas ja integradas. Referencias oficiais adicionais foram adquiridas separadamente em official_snapshots; veja OFFICIAL_SOURCES.md. Nao houve execucao Airflow ou Databricks, nem criacao de conta/cluster. Isso permanece pendente para evidencia academica.
