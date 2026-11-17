@@ -1,4 +1,4 @@
-# Evidencias Big Data (geradas em 2026-11-14 02:31 UTC)
+# Evidencias Big Data (geradas em 2026-11-17 22:24 UTC)
 
 Gerado por `python -B -m big_data.evidence` com o pipeline real em um warehouse temporario. Reproduzivel.
 
@@ -9,9 +9,20 @@ Gerado por `python -B -m big_data.evidence` com o pipeline real em um warehouse 
 | Antes (vazio) | 0 | 0 | 0 | 0 | 0 |
 | Depois do lote 2026-11-05 | 2 | 4 | 4 | 0 | 4 |
 | Depois do lote 2026-11-06 | 4 | 8 | 4 | 0 | 4 |
-| Reexecucao (mesmos arquivos) | 4 | 8 | 4 | 0 | 4 |
+| Depois do lote 2026-11-07 | 5 | 11 | 4 | 3 | 4 |
+| Reexecucao (mesmos arquivos) | 5 | 11 | 4 | 3 | 4 |
 
 Leitura: cada lote traz um arquivo por fonte (2 arquivos, 4 linhas brutas) e o bronze imutavel acumula 4 -> 8 linhas. A prata faz UPSERT por (fonte, record_id): o segundo lote atualiza as mesmas 4 chaves em vez de duplica-las. A reexecucao nao altera nenhuma contagem: arquivos com hash ja registrado sao ignorados.
+
+## Regras de qualidade da Prata (total barrado por regra)
+
+| Regra | Barrados |
+|---|---|
+| R1 chave e territorio obrigatorios | 1 |
+| R2 idioma permitido (pt/es/en) | 1 |
+| R3 contagem inteira >= 0, data ISO e flag de origem | 1 |
+
+O lote `demand_2026-11-07.csv` e um lote sintetico de teste de qualidade: tres linhas, cada uma violando uma regra. Elas ficam na Bronze (dado bruto) e na quarentena, e nunca chegam a Prata.
 
 ## Fontes reais (OBMigra 2025 + IBGE)
 
@@ -128,13 +139,18 @@ Interpretacao: Cobertura territorial: os 645 municipios de SP vindos do IBGE con
 ```json
 {
   "synthetic": true,
-  "source_batches": 4,
+  "source_batches": 5,
   "totals": {
     "demand": 190,
     "services": 40
   },
   "quality": {
-    "rejected": 0
+    "rejected": 3,
+    "by_rule": {
+      "R1 chave e territorio obrigatorios": 1,
+      "R2 idioma permitido (pt/es/en)": 1,
+      "R3 contagem inteira >= 0, data ISO e flag de origem": 1
+    }
   }
 }
 ```

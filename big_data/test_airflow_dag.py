@@ -40,7 +40,7 @@ class AirflowDagExecutionTests(unittest.TestCase):
     def test_branches_then_medallion_then_official_and_rerun_is_idempotent(self):
         from big_data.pipeline import create_demo
         with tempfile.TemporaryDirectory() as d:
-            root = Path(d); shutil.copytree(REPO / 'big_data', root / 'big_data', ignore=shutil.ignore_patterns('output', 'staging', 'official_snapshots', '__pycache__'))
+            root = Path(d); shutil.copytree(REPO / 'big_data', root / 'big_data', ignore=shutil.ignore_patterns('output', 'staging', 'official_snapshots', 'chegada', 'input', '__pycache__'))
             create_demo(root / 'big_data' / 'input')
             dag = self.run_dag(root)
             self.assertEqual(dag.dag_id, 'acolhe_medallion')
@@ -57,7 +57,7 @@ class AirflowDagExecutionTests(unittest.TestCase):
         """Regression: real Airflow worker (UID 50000) got EPERM from shutil.copystat."""
         from big_data.pipeline import create_demo
         with tempfile.TemporaryDirectory() as d:
-            root = Path(d); shutil.copytree(REPO / 'big_data', root / 'big_data', ignore=shutil.ignore_patterns('output', 'staging', 'official_snapshots', '__pycache__'))
+            root = Path(d); shutil.copytree(REPO / 'big_data', root / 'big_data', ignore=shutil.ignore_patterns('output', 'staging', 'official_snapshots', 'chegada', 'input', '__pycache__'))
             create_demo(root / 'big_data' / 'input')
             def deny(*a, **k): raise PermissionError(1, 'Operation not permitted')
             with mock.patch('shutil.copystat', deny), mock.patch('os.utime', deny):

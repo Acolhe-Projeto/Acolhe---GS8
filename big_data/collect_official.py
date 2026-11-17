@@ -40,8 +40,10 @@ def save_snapshot(root,spec,content,http):
     (folder/f'{stamp}_{spec["id"]}.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
     return manifest
 
-def collect(source,root):
-    spec=SOURCES[source]
+def collect(source,root,url=None):
+    """url overrides the default endpoint (Airflow passes it from a Variable)."""
+    spec=dict(SOURCES[source],**({'url':url} if url else {}))
+    if not spec['url'].startswith('https://'): raise ValueError('Only https:// sources are allowed')
     request=Request(spec['url'],headers={'User-Agent':'Acolhe-academic-reference/1.0','Accept-Encoding':'identity'})
     with urlopen(request,timeout=60) as response:
         content=response.read(30*1024*1024+1)

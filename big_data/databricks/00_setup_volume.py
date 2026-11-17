@@ -17,7 +17,9 @@ volume = f'/Volumes/{catalog}/{schema}/data'
 here = os.path.dirname(dbutils.notebook.entry_point.getDbutils().notebook().getContext().notebookPath().get())
 src = os.path.join('/Workspace' + here, 'data')
 copied = []
-for sub, dest in (('', f'{volume}/input'), ('official', f'{volume}/input/official')):
+# Real batches (chegada/ibge, chegada/obmigra) are NOT copied from here: they are sent to
+# {volume}/input/chegada by collection day (see run_evidence.py --lotes), like a manual upload.
+for sub, dest in (('', f'{volume}/input'),):
     os.makedirs(dest, exist_ok=True)
     for name in sorted(os.listdir(os.path.join(src, sub))):
         path = os.path.join(src, sub, name)
@@ -29,4 +31,4 @@ for sub, dest in (('', f'{volume}/input'), ('official', f'{volume}/input/officia
         with open(target, 'wb') as f: f.write(data)
         copied.append(target)
 print('copiados:', copied or 'nenhum (ja presentes)')
-display(dbutils.fs.ls(f'{volume}/input')); display(dbutils.fs.ls(f'{volume}/input/official'))
+display(dbutils.fs.ls(f'{volume}/input'))

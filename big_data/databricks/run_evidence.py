@@ -13,7 +13,20 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 REPO_URL = 'https://github.com/TomazVC/Acolhe---GS8'
-TABLES = ('bronze', 'silver', 'quarantine', 'fact_indicators', 'dim_region', 'dim_language', 'gold_official_context', 'dim_municipality')
+TABLES = ('bronze', 'silver', 'quarantine', 'fact_indicators', 'bronze_municipios', 'silver_municipios', 'bronze_obmigra', 'silver_obmigra', 'dim_municipality', 'gold_official_context')
+LOTES = ('2026-11-14', '2026-11-17')  # real collection days in chegada/
+
+def upload_lote(chegada, day, vol, profile):
+    """Batch upload of one collection day to the Volume (Free Edition has no Airflow link)."""
+    sent = []
+    for folder, prefix in (('ibge', 'municipios'), ('obmigra', 'indicadores')):
+        src = Path(chegada) / folder / f'{prefix}_{day}.csv'
+        if not src.is_file(): raise FileNotFoundError(f'{src} nao existe; rode a coleta (Airflow ou big_data.chegada)')
+        dest = f'dbfs:{vol}/input/chegada/{folder}/{src.name}'
+        exists = subprocess.run(['databricks', 'fs', 'ls', dest, '-p', profile], capture_output=True).returncode == 0
+        if not exists: cli('fs', 'cp', str(src), dest, profile=profile, parse=False)
+        sent.append(f'{folder}/{src.name}' + (' (ja estava no Volume)' if exists else ''))
+    return sent
 
 def cli(*args, profile, parse=True):
     r = subprocess.run(['databricks', *args, '-p', profile] + (['-o', 'json'] if parse else []), capture_output=True, text=True)
@@ -49,7 +62,8 @@ def table(cols, rows):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__); p.add_argument('--profile', default='acolhe'); p.add_argument('--branch', default='main')
-    p.add_argument('--namespace', default='workspace.acolhe'); p.add_argument('--out', default='big_data/evidence'); a = p.parse_args()
+    p.add_argument('--namespace', default='workspace.acolhe'); p.add_argument('--out', default='big_data/evidence')
+    p.add_argument('--chegada', default='big_data/chegada', help='local landing zone with the real daily files'); a = p.parse_args()
     me = cli('current-user', 'me', profile=a.profile)['userName']
     folder = f'/Users/{me}/Acolhe-GS8'
     repos = [r for r in cli('repos', 'list', '--path-prefix', folder, profile=a.profile) or [] if r.get('path') == folder]
@@ -61,16 +75,23 @@ def main():
     nb = f'{folder}/big_data/databricks'
     cat, sch = a.namespace.split('.')
     vol = f'/Volumes/{cat}/{sch}/data'
-    steps, snapshots = [], [('Antes', counts(a.namespace, wh, a.profile))]
-    plan = [('00_setup_volume', {'catalog': cat, 'schema': sch}, None)] + [
-        ('medallion', {'batch_date': d, 'schema': a.namespace, 'input_path': f'{vol}/input', 'output_path': f'{vol}/output'}, label)
-        for d, label in (('2026-11-05', 'Depois do lote 2026-11-05'), ('2026-11-06', 'Depois do lote 2026-11-06'), ('2026-11-06', 'Reexecucao do lote 2026-11-06'))]
-    for notebook, params, label in plan:
+    steps, snapshots, uploads = [], [('Antes', counts(a.namespace, wh, a.profile))], []
+    med = lambda d: {'batch_date': d, 'schema': a.namespace, 'input_path': f'{vol}/input', 'output_path': f'{vol}/output'}
+    plan = [('00_setup_volume', {'catalog': cat, 'schema': sch}, None, None),
+            ('medallion', med('2026-11-05'), None, 'Depois do lote demo 05/11'),
+            ('medallion', med('2026-11-06'), LOTES[0], f'Depois do lote real {LOTES[0]} (+ demo 06/11)'),
+            ('medallion', med('2026-11-07'), LOTES[1], f'Depois do lote real {LOTES[1]} (+ demo 07/11, teste de qualidade)'),
+            ('medallion', med('2026-11-07'), None, 'Reexecucao (nenhum arquivo novo)')]
+    for notebook, params, lote, label in plan:
+        if lote:
+            sent = upload_lote(a.chegada, lote, vol, a.profile); uploads.append((lote, ', '.join(sent))); print('upload', lote, sent, flush=True)
         step = run_notebook(f'{nb}/{notebook}', params, a.profile, f'acolhe-{notebook}-{params.get("batch_date", "setup")}')
         steps.append(step); print(f"{notebook} {params.get('batch_date', '')}: {step['result']} {step['url']}", flush=True)
         if step['result'] != 'SUCCESS': print(step['message']); break
         if label: snapshots.append((label, counts(a.namespace, wh, a.profile))); print('  ', snapshots[-1][1], flush=True)
-    history = {t: sql(f'DESCRIBE HISTORY {a.namespace}.{t}', wh, a.profile) for t in ('bronze', 'silver')}
+    history = {t: sql(f'DESCRIBE HISTORY {a.namespace}.{t}', wh, a.profile) for t in ('bronze', 'bronze_municipios', 'silver')}
+    quality = sql(f'SELECT layer, rule, description, barrados FROM {a.namespace}.quality_rules ORDER BY layer, rule', wh, a.profile)
+    origem = sql(f'SELECT arquivo_origem, collected_on, COUNT(*) AS linhas FROM {a.namespace}.bronze_municipios GROUP BY 1, 2 ORDER BY 1', wh, a.profile)
     qtext = re.sub(r'--[^\n]*', '', Path('big_data/queries.sql').read_text(encoding='utf-8'))
     results = []
     for i, q in enumerate(s.strip() for s in qtext.split(';') if s.strip()):
@@ -80,7 +101,10 @@ def main():
     md = [f'# Evidencias Databricks ({now:%Y-%m-%d %H:%M} UTC)', '',
           f'Workspace Databricks Free Edition (serverless). Git folder da branch `{head.get("branch")}`, commit `{head.get("head_commit_id", "")[:7]}`. Gerado por `big_data/databricks/run_evidence.py`.', '',
           '## Execucoes', '', table(['Notebook', 'Parametros', 'Inicio (UTC)', 'Resultado', 'Run'], [(s['name'], json.dumps(s['params']), s['started_utc'], s['result'], s['url']) for s in steps]), '',
-          '## Contagens antes, depois de cada lote e na reexecucao', '', table(['Etapa', *TABLES], [(n, *[c[t] for t in TABLES]) for n, c in snapshots]), '']
+          '## Lotes reais enviados ao Volume', '', table(['Dia de coleta', 'Arquivos'], uploads), '',
+          '## Contagens antes, depois de cada lote e na reexecucao', '', table(['Etapa', *TABLES], [(n, *[c[t] for t in TABLES]) for n, c in snapshots]), '',
+          '## Bronze real por arquivo de origem', '', table(*origem[0]) if origem[0] else f'Erro: {origem[1]}', '',
+          '## Regras de qualidade da Prata (total barrado por regra)', '', table(*quality[0]) if quality[0] else f'Erro: {quality[1]}', '']
     for t, (r, err) in history.items():
         md += [f'## DESCRIBE HISTORY {t}', '']
         md += [table(['version', 'timestamp', 'operation', 'operationMetrics'], [(row[r[0].index('version')], row[r[0].index('timestamp')], row[r[0].index('operation')], (row[r[0].index('operationMetrics')] or '')[:160]) for row in r[1]]) if r else f'Erro: {err}', '']

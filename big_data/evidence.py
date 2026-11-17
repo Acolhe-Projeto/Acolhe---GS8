@@ -63,6 +63,9 @@ def render(rows, official, queries, summary):
           '## Contagens por lote e reexecucao (camada demonstrativa, synthetic=true)', '',
           table(['Etapa', *TABLES], [(n, *[c[t] for t in TABLES]) for n, c in rows]), '',
           'Leitura: cada lote traz um arquivo por fonte (2 arquivos, 4 linhas brutas) e o bronze imutavel acumula 4 -> 8 linhas. A prata faz UPSERT por (fonte, record_id): o segundo lote atualiza as mesmas 4 chaves em vez de duplica-las. A reexecucao nao altera nenhuma contagem: arquivos com hash ja registrado sao ignorados.', '']
+    md += ['## Regras de qualidade da Prata (total barrado por regra)', '',
+           table(['Regra', 'Barrados'], sorted(summary['quality']['by_rule'].items())), '',
+           'O lote `demand_2026-11-07.csv` e um lote sintetico de teste de qualidade: tres linhas, cada uma violando uma regra. Elas ficam na Bronze (dado bruto) e na quarentena, e nunca chegam a Prata.', '']
     if official:
         md += ['## Fontes reais (OBMigra 2025 + IBGE)', '', table(['Etapa', *OFFICIAL], [(n, *[c[t] for t in OFFICIAL]) for n, c in official]), '']
     md += ['## Consultas ouro interpretadas', '']
