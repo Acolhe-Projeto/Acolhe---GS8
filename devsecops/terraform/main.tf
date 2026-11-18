@@ -35,6 +35,14 @@ variable "storage_account_name" {
     error_message = "Use 3-24 lowercase letters or digits."
   }
 }
+variable "registry_name" {
+  type        = string
+  description = "Globally unique Azure Container Registry name (5-50 letters/digits)"
+  validation {
+    condition     = can(regex("^[a-zA-Z0-9]{5,50}$", var.registry_name))
+    error_message = "Use 5-50 letters or digits."
+  }
+}
 resource "azurerm_resource_group" "app" {
   name     = "rg-${var.name}"
   location = var.location
@@ -102,12 +110,44 @@ resource "azurerm_container_app_environment_storage" "data" {
   access_key                   = azurerm_storage_account.data.primary_access_key
   access_mode                  = "ReadWrite"
 }
+# Private registry: CI pushes with its OIDC identity (AcrPush), the app pulls with its own
+# managed identity (AcrPull). No admin user, no password, no public package.
+resource "azurerm_container_registry" "acr" {
+  name                = var.registry_name
+  resource_group_name = azurerm_resource_group.app.name
+  location            = azurerm_resource_group.app.location
+  sku                 = "Basic"
+  admin_enabled       = false
+}
+resource "azurerm_user_assigned_identity" "pull" {
+  name                = "id-${var.name}-pull"
+  resource_group_name = azurerm_resource_group.app.name
+  location            = azurerm_resource_group.app.location
+}
+resource "azurerm_role_assignment" "pull" {
+  scope                = azurerm_container_registry.acr.id
+  role_definition_name = "AcrPull"
+  principal_id         = azurerm_user_assigned_identity.pull.principal_id
+}
 resource "azurerm_container_app" "app" {
   name                         = var.name
   container_app_environment_id = azurerm_container_app_environment.app.id
   resource_group_name          = azurerm_resource_group.app.name
   revision_mode                = "Single"
   workload_profile_name        = "Consumption"
+  identity {
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.pull.id]
+  }
+  registry {
+    server   = azurerm_container_registry.acr.login_server
+    identity = azurerm_user_assigned_identity.pull.id
+  }
+  # The CI deploy (az containerapp update) owns the image tag after the first apply.
+  lifecycle {
+    ignore_changes = [template[0].container[0].image]
+  }
+  depends_on = [azurerm_role_assignment.pull]
   template {
     min_replicas = 0
     max_replicas = 1 # SQLite: never scale above one writer
@@ -150,6 +190,9 @@ resource "azurerm_container_app" "app" {
       percentage      = 100
     }
   }
+}
+output "registry" {
+  value = azurerm_container_registry.acr.login_server
 }
 output "url" {
   value = "https://${azurerm_container_app.app.ingress[0].fqdn}"

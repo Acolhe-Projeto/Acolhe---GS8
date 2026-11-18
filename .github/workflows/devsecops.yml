@@ -85,38 +85,30 @@ jobs:
     environment: production
     permissions:
       contents: read
-      packages: write
       id-token: write
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: tested-image
           path: /tmp
-      - name: Publish tested image
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          IMAGE="ghcr.io/${GITHUB_REPOSITORY,,}:${GITHUB_SHA}"
-          docker load -i /tmp/acolhe-image.tar
-          echo "$GH_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
-          docker tag "acolhe:$GITHUB_SHA" "$IMAGE"
-          docker push "$IMAGE"
-          echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
-      - name: Verify image is publicly pullable (Container Apps pulls without credentials)
-        run: |
-          set -eu
-          REPO="${GITHUB_REPOSITORY,,}"
-          fail() { echo "::error::ghcr.io/${REPO} is not publicly pullable. Make the package public (Package settings > Change visibility) and re-run this job. Azure was not touched."; exit 1; }
-          TOKEN=$(curl -fsS "https://ghcr.io/token?scope=repository:${REPO}:pull" | jq -r .token) || fail
-          curl -fsS -o /dev/null -H "Authorization: Bearer ${TOKEN}" \
-            -H "Accept: application/vnd.oci.image.index.v1+json, application/vnd.docker.distribution.manifest.v2+json, application/vnd.oci.image.manifest.v1+json" \
-            "https://ghcr.io/v2/${REPO}/manifests/${GITHUB_SHA}" || fail
-          echo "Image is public: ${IMAGE}"
+      # OIDC login first: the same short-lived identity pushes to the private ACR (AcrPush)
+      # and updates the app; the app pulls with its own managed identity (AcrPull).
       - uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: Push tested image to Azure Container Registry
+        env:
+          ACR_NAME: ${{ vars.AZURE_ACR_NAME }}
+        run: |
+          set -eu
+          az acr login --name "$ACR_NAME"
+          IMAGE="${ACR_NAME}.azurecr.io/acolhe-gs8:${GITHUB_SHA}"
+          docker load -i /tmp/acolhe-image.tar
+          docker tag "acolhe:$GITHUB_SHA" "$IMAGE"
+          docker push "$IMAGE"
+          echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
       - name: Deploy existing Container App
         env:
           RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}

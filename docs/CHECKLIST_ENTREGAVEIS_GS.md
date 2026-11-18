@@ -1,5 +1,10 @@
 # Checklist de entregáveis por disciplina (GS 2026.2)
 
+## Rodada de 18/11 (madrugada)
+- PR #3 (`Aksel+Ian`) foi mesclado na `main` (commit `30af065`). A `main` agora tem Big Data, RPA, DevSecOps e Maker, com conteúdo idêntico ao que passou na CI.
+- CI da `main` (run 44210859059): `test-and-build` verde. O job `deploy` parou em "Verify image is publicly pullable" porque o pacote GHCR da organização era privado (só um owner pode torná-lo público); o Azure não foi tocado. Correção: registro privado no Azure (ACR) com identidades gerenciadas, criado por Terraform; o deploy automático passa a enviar a imagem para lá.
+- Rony avançou na branch `feat/genai-vision`, ainda fora da `main`: LLM local Qwen2.5 3B, comparação baseline × RAG/agente (7/16 contra 14/16 no D16), `genai/base/`, `genai/avaliacao/` e relatório; Vision com modelo YOLO treinado, relatório, PDF e vídeos (GenAI https://youtu.be/csoYGnIeviM, Vision https://youtu.be/8FPF_BkSh58). Essa branch partiu de uma `main` antiga e tem conflito com a atual em 7 arquivos (README, `app/server.py`, `app.js`, `index.html`, `style.css`, `.gitignore`, `Iniciar-Acolhe.cmd`); precisa de merge com resolução antes de 19/11.
+
 Rodado de novo em 17/11 à noite, contra o enunciado "Desafio FIAP GS CitizenTech 4ES", na branch `Aksel+Ian`. Prazo: 19/11 às 23h55, no Teams de cada disciplina, um envio por equipe. Repositório, aplicação e vídeos precisam continuar públicos e no ar durante a correção, que leva até uma semana.
 
 Legenda: ✅ atende · 🟡 parcial · ❌ falta · 👤 só a equipe pode fazer (gravar, enviar, hardware)
@@ -51,7 +56,7 @@ Entrega: PDF único com links clicáveis (`GS_DevSecOps_Acolhe.pdf`), no portal 
 | Dockerfile enxuto, não root, sem segredo, compose sobe | ✅ | Trivy 0 HIGH/CRITICAL; `persistence_check.sh`. |
 | Terraform, state e tfvars fora do repo, sem porta admin aberta | ✅ | 8 recursos em canadacentral; só ingress HTTPS. |
 | Actions a cada push com build, Gitleaks, Semgrep e Trivy | ✅ | Workflow em todo push; runs verdes na branch. |
-| Segredos em GitHub Secrets e deploy automático | ✅ / 🟡 | OIDC, environment `production`, secrets e `DEPLOY_ENABLED=true` configurados. O primeiro deploy pela `main` só acontece depois do merge; nesse momento é preciso tornar público o pacote GHCR da organização e rodar o job de novo (o job falha antes de tocar no Azure se o pacote estiver privado). |
+| Segredos em GitHub Secrets e deploy automático | ✅ | OIDC, environment `production`, secrets e variáveis configurados. O primeiro deploy pela `main` parou na proteção, porque o pacote GHCR da organização era privado e só um owner pode torná-lo público. A imagem passou a ir para um Azure Container Registry privado (`AcrPush` para a CI, `AcrPull` para o app), aplicado por Terraform em 18/11. |
 | Execução barrada e a corrigida | ✅ | Runs 44190586981 (vermelho) e 44191227009 (verde), prints no PDF. |
 | Dashboard das 4 métricas e alerta disparado | ✅ | Grafana apontando para a URL pública; `AcolheUnavailable` em FIRING no ensaio com o container local parado (identificado como `local-drill`). |
 | Diagrama, responsabilidade compartilhada, LGPD, custo, README | ✅ | No PDF e no `devsecops/README.md`. |
@@ -59,21 +64,22 @@ Entrega: PDF único com links clicáveis (`GS_DevSecOps_Acolhe.pdf`), no portal 
 | Envio no portal | 👤 | |
 
 ## 4. Generative AI for Engineering (Rony)
+Situação conforme a branch `feat/genai-vision`, ainda não mesclada na `main`; o professor só vê o que estiver na branch padrão.
+
 | Item | Status | Situação |
 |---|---|---|
-| Testes com gabarito e "não consta"; base com fonte | 🟡 | 16 perguntas e corpus com fontes em `genai/`. |
-| recall@1/@3 com limiar justificado | 🟡 | 0,6875 medido; falta justificar o limiar. |
-| Geração fundamentada (JSON, citação, recusa) | ❌ | LLM local nunca executado; `02_local_llm.ipynb` sem saída. |
-| LoRA ou agente vs RAG; placar das 3 configurações | ❌ | `compare.py` existe e não foi executado com modelo. |
-| 5 erros reais do modelo | 🟡 | Os 5 documentados são do buscador. |
-| Estrutura `notebooks/ base/ avaliacao/` e integrantes no README | 🟡 | Estrutura diferente; README sem RMs. |
+| Testes com gabarito, base com fonte, estrutura `base/ avaliacao/ notebooks/` | 🟡 | Na branch: `genai/base/` (corpus, fontes, manifest), `genai/avaliacao/` (conjuntos A a D), 3 notebooks. |
+| LLM local, geração fundamentada e recusa | 🟡 | Na branch: Qwen2.5 3B via Ollama, relatórios de execução e smoke do serviço. |
+| Comparação baseline × RAG × agente | 🟡 | Na branch: 7/16 contra 14/16 no conjunto D16, em `docs/entregas/GENAI_RELATORIO.md`. |
+| Vídeo e relatório | 🟡 | Vídeo https://youtu.be/csoYGnIeviM; relatório na branch. |
+| Merge na `main` | ❌ | Conflito em 7 arquivos com a `main` atual. |
 
 ## 5. Applied Computer Vision (Rony)
 | Item | Status | Situação |
 |---|---|---|
-| Treino customizado e inferência | ❌ | Sem dataset licenciado, anotação ou modelo treinado. |
-| Repositório documentado | 🟡 | `vision/README.md`, `train.py`. |
-| PDF (resumo de 250 palavras, objetivo de 50) e vídeo | ❌ 👤 | |
+| Treino customizado e inferência | 🟡 | Na branch: checkpoint YOLO avaliado, curvas PR e matriz de confusão, `vision/reproduce.py`. |
+| PDF e vídeo | 🟡 | `docs/ACOLHE_VISION.pdf` e https://youtu.be/8FPF_BkSh58 na branch. |
+| Merge na `main` | ❌ | Mesmo conflito da branch `feat/genai-vision`. |
 
 ## 6. Business Intelligence & Startup Development (Tomáz)
 | Item | Status | Situação |
@@ -87,7 +93,8 @@ Entrega: PDF único com links clicáveis (`GS_DevSecOps_Acolhe.pdf`), no portal 
 | README e vídeo de até 6 min | 🟡 👤 | `robot/README.md` com integrantes; vídeo pendente. |
 
 ## Para todos, antes de 19/11 às 23h55
-- Abrir e mesclar o PR da `Aksel+Ian` na `main`; a branch já contém a `main` atual e a CI está verde.
-- Depois do merge: tornar público o pacote `ghcr.io/acolhe-projeto/acolhe---gs8` e rodar o job de deploy de novo.
+- ✅ PR da `Aksel+Ian` mesclado na `main` (PR #3).
+- ✅ Deploy automático pelo Azure Container Registry: não depende mais de pacote público no GHCR.
+- Mesclar `feat/genai-vision` na `main`, resolvendo os 7 conflitos, para GenAI e Vision aparecerem na branch padrão.
 - Manter o Azure, o pacote GHCR e os vídeos públicos até o fim da correção (cerca de 26/11).
 - Parar o Grafana local depois dos prints (`docker compose -f devsecops/monitoring/public/compose.yaml down`), para o app voltar a escalar a zero.

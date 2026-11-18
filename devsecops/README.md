@@ -45,7 +45,8 @@ O workflow agora roda em push de qualquer branch, além de PR e disparo manual. 
 ## Deploy automático configurado (OIDC, sem senha)
 - Azure: identidade gerenciada `id-acolhe-gs8-deploy` em `rg-acolhe-gs8`. A credencial federada só aceita tokens do GitHub com `repo:Acolhe-Projeto/Acolhe---GS8:environment:production`, e o papel é Contributor apenas nesse resource group.
 - GitHub: environment `production` restrito à branch `main`, sem aprovação manual (o controle humano fica no PR); secrets `AZURE_CLIENT_ID`, `AZURE_TENANT_ID` e `AZURE_SUBSCRIPTION_ID` no environment; variáveis `AZURE_RESOURCE_GROUP`, `AZURE_CONTAINER_APP` e `DEPLOY_ENABLED=true`.
-- Proteção: antes do `az containerapp update`, o job confere se a imagem `ghcr.io/acolhe-projeto/acolhe---gs8` pode ser baixada sem credencial. Se o pacote estiver privado, o job falha sem tocar no Azure. No primeiro deploy pela `main`, torne o pacote público e rode o job de novo.
+- Registro privado (desde 18/11): a imagem testada vai para o Azure Container Registry `acracolhegs8hh2o2y` (Basic, sem usuário admin). A identidade de deploy tem `AcrPush`, e o app baixa a imagem com a identidade gerenciada `id-acolhe-gs8-pull` (`AcrPull`), sem senha nem pacote público. O job ficou sem `packages: write`: só pede `id-token` para o OIDC. Variável nova: `AZURE_ACR_NAME`.
+- Por que mudou: o primeiro deploy pela `main` (run 44210859059) publicou no GHCR da organização, e o passo de verificação barrou o deploy porque o pacote era privado e só um owner da organização pode torná-lo público. O Azure não foi tocado. A troca para o ACR elimina a dependência de pacote público. Custo extra: US$ 0,1666/dia (cerca de US$ 5/mês). O Terraform deixa a tag da imagem com a CI (`ignore_changes`).
 
 ## Dashboard no Grafana apontando para o MVP publicado
 ```
