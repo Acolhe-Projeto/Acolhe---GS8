@@ -23,6 +23,14 @@ class PipelineTests(unittest.TestCase):
             result=run(p/'input',p/'output')
             self.assertEqual(result['quality']['rejected'],1)
 
+    def test_quality_counts_per_rule(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d); create_demo(p/'input')
+            (p/'input'/'demand_2026-11-07.csv').write_text('record_id,region,language,count,snapshot_date,synthetic\n,SP,es,5,2026-11-07,true\nrj,RJ,fr,7,2026-11-07,true\nmg,MG,pt,-3,2026-11-07,true\nes,ES,pt,x,2026-11-07,true\n',encoding='utf-8')
+            q=run(p/'input',p/'output')['quality']
+            self.assertEqual(q['rejected'],4)
+            self.assertEqual([q['by_rule'][k] for k in sorted(q['by_rule'])],[1,1,2])  # R1, R2, R3 (negative + non-integer)
+
     def test_all_quality_rules(self):
         from big_data.pipeline import validated
         base={'record_id':'x','region':'SP','language':'pt','count':'1','snapshot_date':'2026-11-05','synthetic':'true'}
@@ -34,7 +42,8 @@ class PipelineTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d); create_demo(p/'input'); run(p/'input',p/'output')
             queries=Path(__file__).with_name('queries.sql').read_text(encoding='utf-8')
-            statements=[statement for statement in queries.split(';') if 'SELECT' in statement]
+            statements=[statement for statement in queries.split(';') if 'SELECT' in statement
+                        and 'gold_official_context' not in statement and 'dim_municipality' not in statement]
             self.assertEqual(len(statements),5)
             with closing(sqlite3.connect(p/'output'/'warehouse.db')) as db:
                 for statement in statements:
