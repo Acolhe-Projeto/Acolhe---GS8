@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop'
 Set-Location (Split-Path $PSScriptRoot -Parent)
 $demoPython = Join-Path (Get-Location) '.venv\Scripts\python.exe'
 if (-not (Test-Path -LiteralPath $demoPython)) {
-    throw 'Ambiente .venv ausente. Consulte docs/entregas/COMO_USAR_E_GRAVAR.md para instalar.'
+    throw 'Ambiente .venv ausente. Consulte README.md e execute scripts/preparar-demo.ps1.'
 }
 $demoListeners = @(Get-NetTCPConnection -State Listen -ErrorAction SilentlyContinue | Select-Object -ExpandProperty LocalPort)
 $demoFreePort = $Porta..([Math]::Min($Porta + 10, 65535)) | Where-Object { $_ -notin $demoListeners } | Select-Object -First 1

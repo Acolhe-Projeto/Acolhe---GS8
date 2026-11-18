@@ -38,3 +38,6 @@ big_data/official_snapshots
 **/*.pfx
 # Reviewed delivery checkpoint; raw datasets and experimental weights remain excluded.
 !vision/release/best.pt
+
+docs/knowledge
+genai/**/*.review.md

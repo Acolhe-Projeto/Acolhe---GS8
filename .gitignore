@@ -52,9 +52,8 @@ node_modules/
 *.onnx
 # Deliver the exact selected checkpoint; keep every experimental checkpoint ignored.
 !/vision/release/best.pt
-# Rebuildable Graphify caches, machine paths and local Obsidian workspace
-/graphify-out/cache/
-/graphify-out/.graphify_*
-/graphify-out/cost.json
-/graphify-out/manual-pdf-text.txt
-/graphify-out/obsidian/
+# Local knowledge exports and working review sheets are not delivery documents.
+/graphify-out/
+/docs/knowledge/
+/genai/avaliacao/*.review.md
+/genai/reports/*.review.md

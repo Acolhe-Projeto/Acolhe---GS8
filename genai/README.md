@@ -1,51 +1,32 @@
-# GenAI — mobilidade educativa PT/ES
+# GenAI
 
-**Há uma LLM real instalada localmente.** O RAG recupera fontes; Qwen gera a resposta. [Manifesto do modelo](model_manifest.json) registra o digest, tamanho, origem e comando de instalação. Os pesos (~1,9 GB) são baixados pelo Ollama e não foram versionados no Git. Não há LoRA nem pesos treinados pela equipe. A página 29 usa a expressão treinar LLM local; o item05 da rubrica, página30, permite LoRA **ou agente**, e foi seguida a alternativa de agente comparado ao RAG. Não apresentar isso como fine-tuning.
+Assistente local em PT/ES com Qwen2.5 3B Q4_K_M, recuperação lexical e agente de consulta/recusa. A interface usa RAG. O modelo tem 3,09 bilhões de parâmetros e aproximadamente 1,9 GB de pesos; a especialização não alterou seus pesos.
 
-Perfil atual: v6/corpus v3; placares anteriores abaixo são históricos. [Resultados atuais](../docs/entregas/RESULTADOS_NOTURNOS.md).
+## Usar
 
-Na entrega, scripts/preparar-demo.ps1 baixa a LLM e scripts/iniciar-demo.ps1 confere o digest antes de abrir a demonstração. O comando `python -m genai.local --verify-release` exige o mesmo modelo e digest registrados em model_manifest.json; uma tag com pesos diferentes é recusada. A base autoral, prompts, guardas e agente acompanham o código. Não é necessário treinar para testar.
+Siga a instalação do README da raiz. scripts/preparar-demo.ps1 baixa a LLM pelo Ollama; scripts/iniciar-demo.ps1 confere o mesmo digest usado na avaliação. O corpus, os prompts, as guardas e o agente estão no código.
 
-Modelo final **qwen2.5:3b-instruct**, Q4_K_M, 3,09B parâmetros (~1,9 GB de pesos), dentro do limite de 4B solicitado. Ollama 0.40.16; a comparação final confirmou 2.085.963.693 bytes em VRAM na RX 6750 XT. Licença Qwen Research: https://huggingface.co/Qwen/Qwen2.5-3B-Instruct/blob/main/LICENSE. Peso em disco não é memória total.
+O [relatório GenAI](../docs/entregas/GENAI_RELATORIO.md) apresenta método, resultados e erros. No D16, baseline acertou 7/16 e RAG/agente, 14/16, em revisão técnica exploratória. A revisão humana permanece pendente.
 
-O [relatório formal](../docs/entregas/GENAI_RELATORIO.md) reúne tarefa, equipe, diagramas, fontes, placar, erros e limitações. [Checklist oficial](../docs/ENTREGA_CHECKLIST.md). Os históricos 0.5B/1.5B e CPU permanecem identificados; não são o perfil final GPU.
+## Arquivos
 
-Para abrir os dois módulos e gravar em cerca de90segundos, use o [guia rápido](../docs/entregas/COMO_USAR_E_GRAVAR.md) e scripts/iniciar-demo.ps1. As três perguntas do roteiro foram verificadas por HTTP real em docs/evidencias/roteiro-http-real.json.
+- data/corpus.json: fonte canônica das oito microlições PT/ES.
+- model_manifest.json: identidade, tamanho, licença e digest do modelo.
+- service.py e compare.py: recuperação, geração e agente.
+- avaliacao: casos, limiar, respostas, rastros e revisão técnica.
+- notebooks: recuperação, comparação da LLM e integração HTTP.
 
-## Executar na raiz
+## Reproduzir a avaliação
 
-Instale Python 3.12 e Ollama. O servidor e GenAI usam biblioteca padrão; dependências de Vision são opcionais para GenAI.
-
-```powershell
-ollama pull qwen2.5:3b-instruct
-$env:ACOLHE_OLLAMA_MODEL="qwen2.5:3b-instruct"
-$env:ACOLHE_OLLAMA_NUM_GPU="-1"
-$env:ACOLHE_OLLAMA_KEEP_ALIVE="2m"
-python -B -m genai.local
-python -B -m app.server
-```
-
-Abra http://127.0.0.1:8080. CPU: use NUM_GPU=0. A configuração padrão é CPU e unload=0; GPU e residência 2m são explícitas. Confirme size_vram em /api/ps: pedir offload sozinho não comprova GPU. Sem MODEL, a interface usa texto curado retrieval_only; falhas do modelo geram recusa explícita. Não há fallback para nuvem.
-
-## Reproduzir avaliação
+Com Ollama aberto e a LLM instalada, executar na raiz:
 
 ```powershell
-python -B -m genai.evaluate
-python -B -m genai.experiment --dataset genai/avaliacao/teste_dev.json
-python -B -m genai.experiment --dataset genai/avaliacao/teste_independente_C.json
-python -B -m unittest discover -s genai/tests -v
-python -B -m genai.execute_notebook
-python -B -m genai.execute_notebook --llm-report genai/avaliacao/qwen3b-v4-gpu-dev20.json
+.\.venv\Scripts\python.exe -m genai.local --verify-release
+$env:ACOLHE_OLLAMA_NUM_GPU = '-1'
+$env:ACOLHE_OLLAMA_KEEP_ALIVE = '2m'
+.\.venv\Scripts\python.exe -m genai.experiment --dataset genai/avaliacao/teste_dev.json --output genai/reports/nova-avaliacao-dev.json
 ```
 
-Cada comparação grava novo JSON/ficha humana sem sobrescrever evidências. Temperatura 0, seed 42, contexto 2048, saída 256. O conjunto dev20 guiou ajustes; holdoutC12 foi congelado antes de v4. Baseline, RAG e agente recebem as mesmas perguntas/modelo. Agente toma decisão LLM retrieve/refuse com ferramenta e rastro; não é LoRA nem treinamento de pesos.
+O destino deve ser novo; a rotina não sobrescreve evidências. Para repetir o D16, usar teste_independente_D.json e outro destino. Ele já foi examinado e não constitui um novo teste independente. O processo também gera uma ficha local opcional para revisão humana.
 
-## Evidência e limites
-
-- [Dev20 GPU](avaliacao/qwen3b-v4-gpu-dev20.json) e [holdoutC12 GPU](avaliacao/qwen3b-v4-gpu-holdout12.json): contratos válidos em todas as variantes. Recall@1/@3 no desenvolvimento: 16/16; limiar 2.0 justificado em avaliacao/limiar.json.
-- [Revisão técnica exploratória pelo agente](avaliacao/revisao_tecnica_v4.json): dev baseline 5/20, RAG 16/20, agente 16/20; C12: 4/12, 8/12, 9/12. Não é julgamento humano cego. Fontes/JSON válidos não provam correção.
-- O notebook01 executa recuperação; 02 lê relatório real; 03 registra HTTP real PT/ES e recusa. Outputs executados por Python stdlib, sem alegar kernel Jupyter ou treino inexistente.
-- Oito microlições autorais, CC-BY-4.0, revisão pedagógica pendente. Fonte canônica data/corpus.json e snapshot atribuído em base/.
-- POST /api/assistant responde answer/sources/mode/model. O aviso fixo de travessia é política curada visível, separado da resposta LLM e não usado para inflar o placar congelado.
-
-Persistem falhas de idioma, intenção, omissão e falsa recusa. Guardas não garantem segurança universal. Uso com adultos e perguntas fictícias; não decide travessias. Faltam revisão humana, gravação/publicação do vídeo e envio no Teams. Veja o [roteiro](../docs/entregas/ROTEIRO_VIDEOS.md).
+O manifesto identifica a licença Qwen Research. A licença declarada do corpus autoral é CC BY 4.0.

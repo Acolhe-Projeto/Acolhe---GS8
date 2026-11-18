@@ -1,69 +1,12 @@
 # Acolhe
 
-## Trabalho de GenAI e Vision nesta branch
+Protótipo acadêmico de acolhimento linguístico em português e espanhol, com atividades educativas de mobilidade e uso acompanhado por uma pessoa adulta.
 
-Branch `feat/genai-vision`, a partir da base `4a2d00f`. Consulte o [PRD com diagramas e critérios de aceite](docs/PRD_GENAI_VISION.md), o [plano GenAI](genai/PLAN.md), o [plano Vision](vision/PLAN.md) e a [validação desta branch](docs/VALIDACAO_GENAI_VISION.md). O [mapa Graphify](docs/knowledge/README.md) registra código e documentação de todas as disciplinas para orientar este trabalho.
+Equipe: Tomáz Versolato Carballo - RM 551417; Rony Ken Nagai - RM 551549; Aksel Viktor Caminha Rae - RM 99011; Ian Xavier Kuraoka - RM 98860.
 
-GenAI usa **qwen2.5:3b-instruct** (~1,9 GB de pesos), dentro do teto de 4B solicitado. É uma LLM local real. A especialização foi feita por agente, sem LoRA; a revisão técnica exploratória do D16 contou 14/16 acertos em RAG/agente. [Relatório e limites](docs/entregas/GENAI_RELATORIO.md).
+## Instalação e execução
 
-Vision usa **YOLO26m91**, inferência 960 e confiança 0,25, cerca de um segundo nos ensaios locais. O fine-tuning com117fotos foi comparado e não foi promovido. Na validação38, o perfil ativo teve P72,7% / R71,5%; no novo teste básico reservado13, **P71,2% / R72,2%**, observando a meta conjunta nesse pequeno lote. O diagnóstico complexo anterior23 continua P68,3% / R62,1%, sem nova avaliação; conjuntos diferentes não medem evolução diretamente. [Plano e comparação](docs/entregas/VISION_FINETUNING.md), [guiaVision](vision/README.md) e [PDF](output/pdf/ACOLHE_VISION.pdf). FonteCOCO e amostra pequena limitam generalização. O mesmo checkpoint treinado está em vision/release (44 MB), e três fotos com créditos estão em vision/examples. Datasets completos e pesos experimentais continuam locais.
-
-Para abrir e gravar: [guia rápido e roteiro de90 segundos](docs/entregas/COMO_USAR_E_GRAVAR.md).
-
-O [checklist da rubrica oficial](docs/ENTREGA_CHECKLIST.md) registra o que falta: revisão da equipe, vídeos publicados e envio no Teams. O [roteiro de demonstração](docs/entregas/ROTEIRO_VIDEOS.md) está preparado. Prazo do enunciado:19/11/2026 às23h55, conferir no Teams.
-
-Para verificar preparação/auditoria e toda a suíte com dependências leves em ambiente isolado:
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r vision/requirements-data.txt
-.\.venv\Scripts\python.exe -B -m unittest discover -v
-node --test tests/frontend.test.cjs
-```
-
-O restante deste README descreve a base recebida e seus registros históricos; resultados da branch devem ser consultados no registro acima.
-
-
-## Equipe
-
-- Tomáz Versolato Carballo — RM 551417
-- Rony Ken Nagai — RM 551549
-- Aksel Viktor Caminha Rae — RM 99011
-- Ian Xavier Kuraoka — RM 98860
-
-
-
-Português para recomeçar. Protótipo acadêmico da Global Solution FIAP 2026.2, CitizenTech, para acolhimento linguístico em português/espanhol e orientações educativas de mobilidade segura.
-
-
-
-**Estado:** MVP local com módulos demonstrativos. Não é um produto validado para uso com crianças nem uma entrega acadêmica integralmente comprovada. Use adultos e dados fictícios nesta fase. O código está publicado em https://github.com/TomazVC/Acolhe---GS8. Isso não publica o aplicativo na internet nem comprova um ambiente de produção.
-
-
-
-## Ficha técnica
-
-
-
-- Versão da API: 0.1.0; Python 3.12, biblioteca padrão, SQLite e servidor HTTP local.
-
-- Interface: HTML/CSS/JavaScript sem instalação de pacotes; cinco lições PT/ES, síntese de voz do navegador e service worker.
-
-- Persistência: sessões pseudônimas, tentativas, acertos e idioma por tentativa. Exclusão por sessão; expurgo após sete dias nas operações do banco, não por agendador independente.
-
-- Integrações: recuperação lexical de conteúdo curado, adaptador opcional Ollama, contrato de visão, robô simulado, pipeline de dados e RPA local.
-
-- Infraestrutura preparada: Docker/Compose, GitHub Actions, Terraform Azure e métricas Prometheus. Configuração não equivale a infraestrutura executada.
-
-- Documentação: [manual PDF](docs/manual_acolhe.pdf), [fonte Markdown](docs/manual_acolhe.md) e [registro de testes](docs/registro_testes.md).
-
-
-
-## Testar GenAI e Vision como professor
-
-O clone da branch `feat/genai-vision` inclui o **mesmo checkpoint YOLO26m91 avaliado**, com manifesto e licença, e **três fotos de demonstração**. Não é necessário treinar Vision. GenAI usa o mesmo Qwen2.5 3B, baixado uma vez pelo Ollama e conferido por digest; corpus, prompts e agente acompanham o código. Não houve fine-tuning dos pesos da LLM.
-
-Com Python 3.12 e Ollama instalado e aberto, execute no PowerShell:
+Pré-requisitos: Windows, Python 3.12 e Ollama instalado e aberto. A primeira preparação usa internet para instalar as dependências e baixar o Qwen2.5 3B, com aproximadamente 1,9 GB de pesos. O checkpoint Vision de 44 MB já acompanha o clone.
 
 ```powershell
 git clone --branch feat/genai-vision https://github.com/Acolhe-Projeto/Acolhe---GS8.git
@@ -72,191 +15,65 @@ cd Acolhe---GS8
 .\scripts\iniciar-demo.ps1
 ```
 
-A preparação precisa de internet para dependências e a LLM (~1,9 GB de pesos, além das bibliotecas). Abra o endereço impresso. Em **Caminho seguro**, pergunte “Como atravessar a rua com segurança?”. Em **Para educadores → Objetos que ensinam**, envie `vision/examples/01-onibus.jpg`, `02-mesa-garfo-tigela.jpg` e `03-copo-cadeira.jpg`. [Passo a passo e roteiro](docs/entregas/COMO_USAR_E_GRAVAR.md), [imagens e créditos](vision/examples/README.md), [checkpoint e hash](vision/release/README.md).
+Abra o endereço exibido no terminal. A porta é escolhida automaticamente a partir de 8080. Após a preparação, também é possível abrir Iniciar-Acolhe.cmd. Encerre o servidor com Ctrl+C.
 
-## Executar localmente
+A inicialização confere o digest da LLM e o hash, as classes e o perfil do detector. Não é necessário treinar novamente para usar os modelos da entrega.
 
+## Testar GenAI
 
+Em **Caminho seguro**, digite uma pergunta e clique em **Perguntar ao ajudante**. Confira a resposta, a fonte e o aviso de acompanhamento adulto.
 
-Abra um terminal na pasta `acolhe`, com Python 3.12 disponível:
+| Idioma | Pergunta | Resultado esperado |
+|---|---|---|
+| Português | Como atravessar a rua com segurança? | Orientação com fonte e acompanhamento adulto |
+| Español | ¿Qué hago si estoy perdido? | Orientação em espanhol para buscar ajuda |
+| Português | Qual é a previsão de chuva amanhã? | Recusa por informação ausente |
 
+O modelo é Qwen2.5 3B Q4_K_M. A especialização usa recuperação e agente, sem ajuste dos pesos da LLM. Na avaliação técnica D16, baseline teve 7/16 acertos; RAG e agente, 14/16. A interface usa RAG.
 
+## Testar Vision
+
+Em **Para educadores → Objetos que ensinam**, selecione uma foto e clique em **Reconhecer objetos**. As três fotos abaixo acompanham o clone em vision/examples:
+
+| Arquivo | Resultado esperado |
+|---|---|
+| 01-onibus.jpg | ônibus / autobús |
+| 02-mesa-garfo-tigela.jpg | tigela / cuenco; garfo / tenedor; colher / cuchara |
+| 03-copo-cadeira.jpg | cadeiras / sillas; cena mais difícil, com possíveis omissões |
+
+O serviço usa o mesmo YOLO26m91 treinado e avaliado, em vision/release/best.pt. O manifesto confere o SHA-256 antes da inferência. No teste básico reservado de 13 fotos, precisão foi 71,2% e recall, 72,2%. No conjunto anterior de 23 fotos, os resultados foram 68,3% e 62,1%; conjuntos diferentes não medem evolução direta. O detector ainda erra e não decide se uma travessia é segura. [Créditos das imagens](vision/examples/README.md).
+
+## Documentação da entrega
+
+- [Relatório GenAI](docs/entregas/GENAI_RELATORIO.md): modelo, base, comparação, erros e reprodução.
+- [Relatório Vision](docs/entregas/VISION_RELATORIO.md) e [PDF](output/pdf/ACOLHE_VISION.pdf): dados, treinamento, comparação de ajustes finos e resultados.
+- [Requisitos e diagramas](docs/PRD_GENAI_VISION.md): escopo e arquitetura dos dois módulos.
+- [Documentação geral](docs/README.md): manual e documentos das demais disciplinas.
+
+## Estrutura do projeto
+
+| Pasta | Conteúdo |
+|---|---|
+| app | Interface PT/ES, API Python, sessões e atividades em SQLite |
+| genai | Base autoral, recuperação, adaptador Ollama, agente e avaliação |
+| vision | Treino e inferência, checkpoint entregue, imagens e métricas |
+| big_data | Pipeline e consultas de dados; execução externa tem requisitos próprios |
+| bi | Indicadores e proposta de negócio |
+| rpa | Relatório agregado e automação local |
+| robot | Simulador e firmware de referência |
+| devsecops | CI, infraestrutura e observabilidade |
+
+## Verificação técnica
 
 ```powershell
-
-python --version
-
-python -B -m app.server
-
-```
-
-
-
-Abra http://127.0.0.1:8080. No Windows, `Iniciar-Acolhe.cmd` abre a demonstração completa com verificação dos modelos; execute scripts/preparar-demo.ps1 antes do primeiro uso. Encerre com Ctrl+C. Não é necessário instalar dependências para o MVP padrão ou sua suíte Python. Não abra index.html diretamente, pois a aplicação precisa da API.
-
-
-
-O servidor usa loopback por padrão. Se a porta já estiver ocupada, escolha outra sem interromper processos desconhecidos:
-
-
-
-```powershell
-
-$env:PORT="8081"
-
-python -B -m app.server
-
-```
-
-
-
-`ACOLHE_DB` altera o caminho do banco; o padrão é `data/acolhe.db`. Faça cópia de segurança antes de atualizar instalações com dados relevantes. A primeira abertura pelo código atual acrescenta a coluna de idioma de tentativa a bancos antigos, sem excluir suas atividades. Tentativas antigas continuam atribuídas ao idioma original da sessão, pois não é possível reconstruir mudanças de idioma que não foram registradas.
-
-
-
-O service worker prepara as lições para leitura offline após uma primeira carga bem-sucedida. Respostas e assistente precisam de conexão com o servidor; não há fila de sincronização offline. A verificação manual desse fluxo em navegador continua pendente. HTTPS é necessário para PWA fora de localhost.
-
-
-
-## Testar
-
-
-
-```powershell
-
-python -B -m unittest discover -v
-
+.\.venv\Scripts\python.exe -B -m unittest discover -v
 node --test tests/frontend.test.cjs
-node --check app/static/app.js
-
-node --check app/static/sw.js
-
 ```
 
+A última verificação passou em 124 testes Python e 14 Node. Esses testes verificam a implementação; as avaliações dos modelos estão nos relatórios. O ensaio HTTP com os modelos reais está em docs/evidencias/release-delivery-http.json. O clone novo foi conferido com o mesmo checkpoint e as três imagens.
 
+## Operação e limites
 
-Node é opcional para executar os testes de frontend em ambiente controlado e verificar sintaxe JavaScript; isso não substitui revisão no navegador real. Os testes Python usam bancos e diretórios temporários, inclusive um servidor HTTP em porta local temporária. Não precisam do banco de uso, hardware, dataset ou Ollama. A suíte verifica contratos e indisponibilidade explícita dos módulos que ainda não possuem modelo; não comprova inferência real, qualidade pedagógica ou funcionamento visual.
+O servidor escuta em loopback. O fluxo das atividades usa sessões pseudônimas; o serviço do assistente não persiste perguntas e Vision não salva uploads. O modo de demonstração usa um banco local em docs/qa. As lições podem ser preparadas para leitura offline pelo service worker, mas o assistente e as atividades com API precisam do servidor.
 
-
-
-Na validação de 7 de novembro de 2026, às 16:51:12 UTC, a suíte Python descobriu 61 testes: 60 aprovados e 1 ignorado por ausência da dependência opcional PyYAML de treinamento. Os 11 testes Node do frontend passaram. A sintaxe JavaScript também foi aprovada. Consulte a entrada T03 de [registro de testes](docs/registro_testes.md) e o [log com hashes](docs/evidencias/revisao-sessao-copy-20261107T165112Z.json). Resultados são específicos daquele estado do código; não comprovam execução real de navegador, Airflow, Databricks ou modelos.
-
-
-
-## Arquitetura e pastas
-
-
-
-1. `app/static/`: interface e cache offline. O idioma selecionado acompanha cada resposta enviada.
-
-2. `app/server.py`: rotas JSON, validação de entrada, arquivos estáticos, cabeçalhos de segurança e métricas.
-
-3. `app/core.py`: lições, sessão, retenção e gravação idempotente SQLite.
-
-4. `genai/`: corpus autoral bilíngue, recuperação, avaliações e comparação opcional de LLM local. Sem modelo configurado, o modo é `retrieval_only`, não geração por LLM.
-
-5. `vision/`: classes, serviço indisponível sem checkpoint e roteiro de treinamento real.
-
-6. `robot/`: feedback simulado; não abre serial nem movimenta motores.
-
-7. `big_data/`: pipeline demonstrativo, consultas SQL, exemplos Airflow/Databricks e saída sintética.
-
-8. `rpa/`: leitura do SQLite sem alterar a origem e produção de relatórios agregados locais. Agrupa novas atividades pelo idioma da tentativa; bancos antigos usam idioma da sessão.
-
-9. `bi/`: indicadores e roteiro de pitch. `devsecops/`: infraestrutura, segurança e observabilidade. `tests/`: núcleo e HTTP.
-
-
-
-Rotas principais: `GET /api/health`, `/api/lessons`, `/api/summary`, `/api/gold`, `/api/automation`, `/api/vision/status` e `/metrics`; `POST /api/sessions`, `/api/attempts`, `/api/sessions/delete` e `/api/assistant`. O identificador de sessão funciona como credencial da demonstração, não como autenticação de produção.
-
-
-
-## Demonstrações auxiliares
-
-
-
-Execute a partir da raiz, sabendo que os dois primeiros comandos gravam saídas locais:
-
-
-
-```powershell
-
-python -B -m big_data.pipeline --demo
-
-python -B -m rpa.robot
-
-python -B -m robot.simulator --correct
-
-python -B -m robot.simulator --absent
-
-```
-
-
-
-O pipeline usa dados sintéticos. O RPA precisa de `data/acolhe.db`, criado ao iniciar o MVP; não cria silenciosamente um banco ausente. Nenhum desses comandos envia resultados a terceiros. Veja [Big Data](big_data/README.md), [RPA](rpa/README.md), [robótica](robot/README.md), [GenAI](genai/README.md) e [visão](vision/README.md) para contratos e limites.
-
-
-
-## Docker e infraestrutura
-
-
-
-```powershell
-
-docker compose up --build
-
-docker compose --profile monitoring up --build
-
-```
-
-
-
-Esses comandos são instruções para ambiente com Docker funcional, não evidência de execução nesta máquina. Compose limita a porta ao loopback. O container executa sem root e usa banco em `/tmp`, **efêmero: recriar o container perde o progresso**. Persistência requer volume e permissões apropriadas antes de uso real. Prometheus usa a porta 9090 quando habilitado.
-
-
-
-Não executar Terraform apply, configurar credenciais, publicar imagem ou habilitar deploy sem revisão e autorização específica. Consulte [DevSecOps](devsecops/README.md). O workflow será executado pelo GitHub Actions a cada push em main; consulte o resultado do commit publicado. A presença do workflow não comprova aprovação da CI.
-
-
-
-## Privacidade e limites
-
-
-
-Não inserir nomes, endereços, fotos, áudio ou dados de crianças. Sessões aleatórias são pseudonimização, não anonimização garantida. Métricas são agregados de demonstração e não representam crianças atendidas. O relatório RPA exige retenção própria, pois é um retrato exportado e não acompanha automaticamente a exclusão de sessões. A demonstração não decide travessia nem substitui um adulto ou serviço de emergência.
-
-
-
-Antes de exposição pública: autenticação/autorização, TLS e servidor adequado, limitação de tráfego, proteção de métricas, armazenamento persistente, revisão LGPD e revisão pedagógica humana. Não publicar bancos, dependências de documentação (`docs/.deps/`), intermediários (`docs/qa/`), segredos ou arquivos de estado Terraform. A licença de distribuição do conjunto e das dependências/datasets precisa ser revisada antes de redistribuição.
-
-
-
-## Pendências de entrega
-
-
-
-- UI: revisão visual PT/ES, teclado, tela estreita, offline, voz e fluxos interrompidos no navegador.
-
-- GenAI: executar LLM local autorizado, comparar baseline/RAG/agente, avaliar respostas e documentar erros reais do modelo.
-
-- Visão: dataset real licenciado, treino customizado, split de teste, métricas e análise de erros. Não existe checkpoint validado.
-
-- Big Data: fontes reais e execuções de coleta em dois dias distintos; execução em Spark/Databricks e Airflow.
-
-- Robótica: bancada, sensor, LCD, alimentação, parada segura, firmware e demonstração física. Simulação não é hardware comprovado.
-
-- DevSecOps: build Docker, CI/scanners, validação Terraform, ambiente autorizado, métricas e alerta demonstrados.
-
-- RPA/BI: evidências integradas, vídeos, validação do problema/negócio e avaliação da adequação do RPA em Python à rubrica.
-
-- Entrega: revisar requisitos disciplinares, links públicos e vídeos antes de qualquer publicação autorizada. PDF, código e roteiros não substituem essas evidências.
-
-
-
-## Conteúdo da publicação
-
-O repositório mantém o código, testes, logo fornecido para o projeto, identificação acadêmica da equipe, manual PDF e fontes de documentação. Foram excluídos bancos de uso, segredos, dependências locais, intermediários de PDF, backups, pesos de modelos, fotografias e metadados de datasets e capturas de fontes externas cuja redistribuição não foi validada. Esses arquivos permanecem somente na máquina de origem.
-
-Os CSVs de `big_data/input/` e o resumo de demonstração `big_data/output/summary.json` são sintéticos. O corpus bilíngue em `genai/data/corpus.json` faz parte do projeto e é necessário para o assistente local; os exemplos de configuração em `vision/data/` não incluem imagens. Relatórios históricos que mencionam capturas e datasets locais não significam que esses arquivos estão neste repositório. Para obter novas capturas, consulte `big_data/OFFICIAL_SOURCES.md` e revise as condições da fonte.
-
-A publicação não adiciona uma licença geral de uso ao projeto. As indicações de licença em conteúdos e dependências específicos mantêm seu escopo; revise-as antes de redistribuir ou incorporar material de terceiros.
+Docker/Compose e o comando python -m app.server executam o MVP básico; as dependências e a configuração das IAs são preparadas pelo fluxo Windows acima. Implantação pública, validação pedagógica, vídeos e envio acadêmico têm etapas próprias. O protótipo não foi validado para uso autônomo com crianças.
