@@ -86,7 +86,16 @@ def big_data():
     lotes = clean['Lotes reais enviados ao Volume'][0]
     origem = clean['Bronze real por arquivo de origem'][0]
     hist = clean['DESCRIBE HISTORY bronze_municipios'][0]
-    extra = ''.join(img(p.name, 'Interface do Databricks: ' + p.stem.replace('databricks_', '').replace('_', ' ')) for p in sorted(PRINTS.glob('databricks_*.png')))
+    captions = {
+        'databricks_1_volume_lotes_reais': 'Requisito 04: Volume workspace.acolhe_gs.data com os dois lotes reais em input/chegada/ibge, um por dia de coleta (14/11 e 17/11).',
+        'databricks_2_tabelas_do_schema': 'Requisitos 05 a 07: as 13 tabelas do schema acolhe_gs (Bronze, Prata, quarentena, regras de qualidade, fato e dimensões).',
+        'databricks_3_bronze_municipios_history': 'Requisito 05: histórico Delta de bronze_municipios, com uma carga COPY INTO por lote e nenhuma versão nova na reexecução.',
+        'databricks_4_quality_rules_barrados': 'Requisito 06: total barrado por regra (tabela quality_rules); R1, R2 e R3 barram uma linha cada no lote de teste de qualidade.',
+        'databricks_5_execucoes_succeeded': 'Execuções do notebook no Databricks Free Edition (serverless), todas Succeeded. Os 2 erros no gráfico são de tentativas anteriores no mesmo dia, corrigidas no código (esquema da quarentena e lote sem uma das fontes).',
+        'databricks_6_consulta_de_impacto': 'Requisito 07: consulta de impacto no SQL Editor, cerca de 12.096 crianças de 0 a 11 anos entre os pedidos de refúgio de 2025 (OBMigra).',
+    }
+    extra = '<div class="req"><h3>Prints da interface do Databricks</h3><p>E-mail e ID de usuário ocultados.</p></div>' + ''.join(
+        img(p.name, captions.get(p.stem, 'Interface do Databricks')) for p in sorted(PRINTS.glob('databricks_*.png')))
     qblocks = ''
     for n, q in enumerate(queries, 1):
         res = clean.get(f'Consulta {n}', [None])[0]

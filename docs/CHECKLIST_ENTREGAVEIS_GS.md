@@ -30,7 +30,7 @@ Entrega: PDF com o link do repositório (`GS_BigData_Acolhe.pdf`, 9 páginas, na
 | 08 LGPD na Ouro e tela do MVP | ✅ | Sem dado pessoal, chaves em hash; print do painel do MVP público. |
 | 09 README e organização | ✅ | `big_data/README.md` com integrantes e tabela dos requisitos. |
 | Prints do Airflow (Graph e Grid) | ✅ | No PDF, seção 5. |
-| Prints da interface do Databricks | 🟡 👤 | Evidência por tabelas e consultas via API. Prints da UI (Catalog, job runs) ficam com a equipe: salve como `docs/entregas/prints/databricks_*.png` e rode `gerar_pdfs.py`, que os inclui sozinho. |
+| Prints da interface do Databricks | ✅ | 6 prints no PDF: lotes no Volume, tabelas do schema, History da Bronze, `quality_rules`, execuções Succeeded e consulta de impacto no SQL Editor. E-mail e ID de usuário ocultados, sem barra do navegador. |
 | Envio no Teams | 👤 | |
 
 ## 2. Robotic Process Automation (Ian e Aksel)
