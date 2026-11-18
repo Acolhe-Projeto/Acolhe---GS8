@@ -194,12 +194,12 @@ def devsecops():
 <ul><li>MVP público: {link(MVP)}</li>
 <li>Repositório: {link(BRANCH_URL, REPO + ' (branch Aksel+Ian)')}; Dockerfile, <code>.github/workflows/devsecops.yml</code>, <code>devsecops/terraform/</code>; Ficha Técnica no README</li>
 <li>Execução barrada: {link(RUN + '44190586981')} · corrigida: {link(RUN + '44191227009')}</li>
-<li>Execução da branch com todos os gates verdes: {link(RUN + '44198056749')}</li></ul>
+<li>Deploy automático pela <code>main</code>, sem passo manual: {link(RUN + '44218762634')} (e o primeiro, {link(RUN + '44218099076')})</li></ul>
 
 <h2>2. Arquitetura</h2>
-{flow([('Dev', 'push em qualquer branch / PR'), ('GitHub Actions', 'testes · Gitleaks · Semgrep · build · Trivy'), ('GHCR', 'imagem testada, fixada por digest'), ('OIDC → Azure', 'identidade só no RG, só environment production'), ('Container Apps', 'HTTPS, 0..1 réplica, UID 10001'), ('Azure Files', 'SQLite em /data, firewall Deny'), ('Cidadão', 'URL pública')])}
+{flow([('Dev', 'push em qualquer branch / PR'), ('GitHub Actions', 'testes · Gitleaks · Semgrep · build · Trivy'), ('OIDC → Azure', 'subject imutável, só environment production'), ('ACR privado', 'imagem testada; CI com AcrPush'), ('Container Apps', 'HTTPS, 0..1 réplica, UID 10001, AcrPull'), ('Azure Files', 'SQLite em /data, firewall Deny'), ('Cidadão', 'URL pública')])}
 {flow([('Prometheus', '/metrics por HTTPS'), ('Regras', 'indisponibilidade, erros, latência, concorrência'), ('Grafana', '4 sinais de ouro')])}
-<p>Infraestrutura criada por Terraform (<code>devsecops/terraform/main.tf</code>): resource group, VNet e sub-rede delegada, storage account com firewall e criptografia de infraestrutura, share de 1 GiB, ambiente e Container App. State e <code>.tfvars</code> ficam fora do repositório; nenhuma porta administrativa é aberta (só o ingress HTTPS 443).</p>
+<p>Infraestrutura criada por Terraform (<code>devsecops/terraform/main.tf</code>): resource group, VNet e sub-rede delegada, storage account com firewall e criptografia de infraestrutura, share de 1 GiB, Azure Container Registry sem usuário admin, identidade gerenciada de pull, ambiente e Container App. State e <code>.tfvars</code> ficam fora do repositório; nenhuma porta administrativa é aberta (só o ingress HTTPS 443).</p>
 
 <h2>3. Container e IaC</h2>
 <p>Imagem <code>python:3.12-alpine</code> fixada por digest, <code>apk upgrade</code>, usuário não root (UID 10001), filesystem somente leitura no Compose, <code>cap_drop: ALL</code> e <code>no-new-privileges</code>. A stack sobe com <code>docker compose up --build</code>, e <code>devsecops/persistence_check.sh</code> mostrou os dados sobrevivendo a <code>down</code>/<code>up</code>. No Azure, os dados sobreviveram a dois reinícios do container (<code>devsecops/evidence/azure_deploy_20261114.md</code>).</p>
@@ -211,7 +211,8 @@ def devsecops():
    ❯❯❱ devsecops.no-dynamic-evaluation
             3┆ return eval(expressao)</pre>
 {img('gh_run_corrigido.png', 'Run 44191227009: o commit d68f2af remove o eval() e todos os gates passam.')}
-<p>O workflow roda a cada push e PR: testes Python e Node, Gitleaks no histórico, Semgrep com regras locais, build, testes dentro da imagem, smoke HTTP/SQLite, Trivy na imagem e na IaC, com bloqueio em HIGH/CRITICAL. O deploy é automático em push na <code>main</code>: publica a imagem testada, confere se ela pode ser baixada sem credencial, faz login no Azure por OIDC (secrets no environment <code>production</code>) e roda um health check depois do <code>az containerapp update</code>.</p>
+<p>O workflow roda a cada push e PR: testes Python e Node, Gitleaks no histórico, Semgrep com regras locais, build, testes dentro da imagem, smoke HTTP/SQLite, Trivy na imagem e na IaC, com bloqueio em HIGH/CRITICAL. O deploy é automático em push na <code>main</code>. O job entra no Azure por OIDC, com secrets no environment <code>production</code> e credencial federada presa ao subject imutável do repositório. Depois envia a imagem testada ao ACR privado, roda o <code>az containerapp update</code> e faz um health check na URL pública. Comprovado no run {link(RUN + '44218762634')}: build, gates, envio, deploy e health check, sem passo manual.</p>
+<p>Uma barrada de deploy também aconteceu: o primeiro deploy pela <code>main</code> publicaria num pacote GHCR privado da organização, e a verificação de pull anônimo parou o job antes de tocar no Azure ({link(RUN + '44210859059')}). A solução foi trocar para o ACR com identidades gerenciadas.</p>
 <p>Outras barradas reais registradas no README: o Semgrep apontou um <code>exec()</code> num teste ao ampliar o escopo; o Trivy barrou como CRITICAL a conta de armazenamento sem regra de rede (corrigido com VNet e firewall); o Trivy 0.60 barrou um falso positivo no Dockerfile de experimento.</p>
 
 <h2>5. Observabilidade</h2>
@@ -225,14 +226,16 @@ def devsecops():
  ('Memória (0,5 GiB)', 'US$ 0,000004/GiB-s', 'US$ 0,29', 'US$ 5,26'),
  ('Requisições', 'US$ 0,40/milhão', 'US$ 0,04', 'conforme uso'),
  ('Azure Files (1 GiB, Hot LRS)', 'US$ 0,03/GB-mês', 'centavos', 'centavos'),
- ('VNet, GHCR público, GitHub Actions público', 'sem custo', '-', '-')])}
-<p>Total estimado: cerca de US$ 1,60/mês em uso de demonstração (o app escala a zero sem tráfego) e cerca de US$ 28/mês no pior caso, coberto pelo crédito Azure for Students de US$ 100.</p>
+ ('Azure Container Registry Basic (10 GB incluídos)', 'US$ 0,1666/dia', 'US$ 5,00', 'US$ 5,00'),
+ ('VNet, GitHub Actions em repositório público', 'sem custo', '-', '-')])}
+<p>Total estimado: cerca de US$ 6,70/mês em uso de demonstração (o app escala a zero sem tráfego; o ACR é cobrado por dia) e cerca de US$ 33/mês no pior caso, coberto pelo crédito Azure for Students de US$ 100.</p>
 
 <h2>7. Responsabilidade compartilhada</h2>
 {table(['Camada', 'Provedor', 'Equipe'], [
  ('Datacenter, hardware, hipervisor', 'Azure', '-'),
  ('Plataforma Container Apps e TLS do ingress', 'Azure', 'região, escala, ingress só HTTPS'),
- ('Runners e GHCR', 'GitHub', 'versões fixadas, sem segredo no código'),
+ ('Runners do GitHub Actions', 'GitHub', 'versões fixadas, sem segredo no código'),
+ ('Registro de imagens (ACR)', 'Azure', 'sem usuário admin, push só pela CI, pull só pela identidade do app'),
  ('Imagem do container', '-', 'digest fixado, Trivy, usuário não root'),
  ('Código', '-', 'testes, Semgrep, validação de entrada, CSP'),
  ('Identidade e acesso', 'Entra ID (OIDC)', 'identidade só no RG e no environment production'),
@@ -240,7 +243,7 @@ def devsecops():
  ('Monitoramento', 'coleta da plataforma', 'sinais de ouro, regras de alerta')])}
 
 <h2>8. Onde ficam os dados pessoais (LGPD)</h2>
-<p>O único dado pessoal é pseudônimo: o código aleatório de sessão, com idioma, lição, acerto e horário, no SQLite em <code>/data</code> (Azure Files, conta com firewall Deny, TLS 1.2 e criptografia em repouso). Não há nome, documento, foto, áudio ou localização. As sessões são apagadas após 7 dias, e o botão "Apagar minha sessão de teste" exclui a pedido. RPA e Big Data só exportam agregados. Como a assinatura de estudante não permite <code>brazilsouth</code>, o deploy está em <code>canadacentral</code>, o que é transferência internacional (art. 33); em uso real com crianças, usar região no Brasil e cumprir o art. 14 (consentimento de um dos pais ou responsável).</p>
+<p>O único dado pessoal é pseudônimo: o código aleatório de sessão, com idioma, lição, acerto e horário, no SQLite em <code>/data</code> (Azure Files, conta com firewall Deny, TLS 1.2 e criptografia em repouso). Não há nome, documento, foto, áudio ou localização. As sessões são apagadas após 7 dias, e o botão "Apagar minha sessão de teste" exclui a pedido. RPA e Big Data só exportam agregados. O ACR guarda só a imagem do app, sem dados pessoais. Como a assinatura de estudante não permite <code>brazilsouth</code>, o deploy está em <code>canadacentral</code>, o que é transferência internacional (art. 33); em uso real com crianças, usar região no Brasil e cumprir o art. 14 (consentimento de um dos pais ou responsável).</p>
 
 <h2>9. Ficha Técnica e reprodução</h2>
 <p>API 0.1.0 em Python 3.12 (biblioteca padrão) e SQLite; interface HTML/CSS/JS bilíngue. Para reproduzir: <code>bash devsecops/ci_local.sh</code> (mesmos gates da CI), <code>docker compose up --build</code>, <code>terraform -chdir=devsecops/terraform init && terraform apply</code> com um <code>terraform.tfvars</code> local, e <code>docker compose -f devsecops/monitoring/public/compose.yaml up -d</code> para o Grafana.</p>
