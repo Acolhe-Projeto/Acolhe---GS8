@@ -56,7 +56,7 @@ Entrega: PDF único com links clicáveis (`GS_DevSecOps_Acolhe.pdf`), no portal 
 | Dockerfile enxuto, não root, sem segredo, compose sobe | ✅ | Trivy 0 HIGH/CRITICAL; `persistence_check.sh`. |
 | Terraform, state e tfvars fora do repo, sem porta admin aberta | ✅ | 8 recursos em canadacentral; só ingress HTTPS. |
 | Actions a cada push com build, Gitleaks, Semgrep e Trivy | ✅ | Workflow em todo push; runs verdes na branch. |
-| Segredos em GitHub Secrets e deploy automático | ✅ | OIDC, environment `production`, secrets e variáveis configurados. O primeiro deploy pela `main` parou na proteção, porque o pacote GHCR da organização era privado e só um owner pode torná-lo público. A imagem passou a ir para um Azure Container Registry privado (`AcrPush` para a CI, `AcrPull` para o app), aplicado por Terraform em 18/11. |
+| Segredos em GitHub Secrets e deploy automático | ✅ | OIDC, environment `production`, secrets e variáveis configurados. O primeiro deploy pela `main` parou na proteção, porque o pacote GHCR da organização era privado e só um owner pode torná-lo público. A imagem passou a ir para um Azure Container Registry privado (`AcrPush` para a CI, `AcrPull` para o app), aplicado por Terraform em 18/11. Deploy automático comprovado: run 44218099076 (push `e3f6b6a` → ACR → Container App → health check OK), com a credencial OIDC no formato de subject imutável do repositório. |
 | Execução barrada e a corrigida | ✅ | Runs 44190586981 (vermelho) e 44191227009 (verde), prints no PDF. |
 | Dashboard das 4 métricas e alerta disparado | ✅ | Grafana apontando para a URL pública; `AcolheUnavailable` em FIRING no ensaio com o container local parado (identificado como `local-drill`). |
 | Diagrama, responsabilidade compartilhada, LGPD, custo, README | ✅ | No PDF e no `devsecops/README.md`. |
@@ -94,7 +94,7 @@ Situação conforme a branch `feat/genai-vision`, ainda não mesclada na `main`;
 
 ## Para todos, antes de 19/11 às 23h55
 - ✅ PR da `Aksel+Ian` mesclado na `main` (PR #3).
-- ✅ Deploy automático pelo Azure Container Registry: não depende mais de pacote público no GHCR.
+- ✅ Deploy automático pela `main` funcionando via Azure Container Registry (run 44218099076); produção roda a imagem do commit `e3f6b6a`.
 - Mesclar `feat/genai-vision` na `main`, resolvendo os 7 conflitos, para GenAI e Vision aparecerem na branch padrão.
 - Manter o Azure, o pacote GHCR e os vídeos públicos até o fim da correção (cerca de 26/11).
 - Parar o Grafana local depois dos prints (`docker compose -f devsecops/monitoring/public/compose.yaml down`), para o app voltar a escalar a zero.
