@@ -1,4 +1,4 @@
-ultralytics>=8.3,<9
+ultralytics==8.4.215
 Pillow>=10.4,<12
 
 PyYAML>=6.0.2,<7

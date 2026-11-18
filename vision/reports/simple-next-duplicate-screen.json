@@ -1,0 +1,10 @@
+{
+  "exact_internal_duplicates": 0,
+  "exact_historical_overlap": 0,
+  "id_historical_overlap": 0,
+  "heuristic": "dHash64distance<=4 and relative aspectdiff<5%; not proof of independent scenes.",
+  "candidate_pairs": [],
+  "manual_scene_grouping": "Related schoolbus119449/226814 both validation; yellowcat scene440935excluded; eight ambiguous/related images excluded before human review.",
+  "packet_sha256": "d6e54fb4421462f619227e537c320234f0b4af3524f1c8724a2b87d205825d22",
+  "human_approval": "pending"
+}

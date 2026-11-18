@@ -1,0 +1,30 @@
+{
+  "recorded_at_utc": "2026-11-17T09:59:21.933068+00:00",
+  "phase": "B, capacity hypothesis after phaseA nano comparison and validation-only pretrained references. Not preregistered before phaseA; no test read in either phase.",
+  "source_reference": "ft91-larger-pretrained-references.json",
+  "base_model": "yolo26m.pt",
+  "base_checkpoint_sha256": "401cea9ab23ad19246ff7744859816bc599f350e93c9dd30367b6f0a0745d0b7",
+  "reason": "Larger pretrained model materially improved validation F1 over nano; 21.9M full training parameters and44MBweights remain within local memory budget. This reference alone is not custom-training proof.",
+  "dataset": "curated-union91-val27-test23",
+  "epochs_max": 12,
+  "patience": 4,
+  "freeze": 22,
+  "optimizer": "AdamW",
+  "lr0": 1e-05,
+  "warmup_bias_lr": 0,
+  "warmup_epochs": 1,
+  "mosaic": 0,
+  "imgsz": 640,
+  "inference_sizes": [
+    640,
+    960,
+    1280
+  ],
+  "batch": 2,
+  "workers": 0,
+  "device": "cpu",
+  "seed": 42,
+  "resume": false,
+  "test_evaluated": false,
+  "deployment_rule": "Same as finetune91-protocol.json: both P/R not regress vs active27, F1+0.02, no newly-zero-recall class; report macro and latency. Test only after winner frozen."
+}

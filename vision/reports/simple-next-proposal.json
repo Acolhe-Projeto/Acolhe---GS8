@@ -1,0 +1,118 @@
+{
+  "images": 50,
+  "image_bytes": 8974816,
+  "packet_sha256": "d6e54fb4421462f619227e537c320234f0b4af3524f1c8724a2b87d205825d22",
+  "contact_sheets": [
+    "contact-01.jpg",
+    "contact-02.jpg",
+    "contact-03.jpg",
+    "contact-04.jpg",
+    "contact-05.jpg"
+  ],
+  "split_images": {
+    "test": 13,
+    "val": 11,
+    "train": 26
+  },
+  "class_images_per_split": {
+    "train": {
+      "bowl": 5,
+      "cup": 6,
+      "spoon": 6,
+      "bottle": 7,
+      "chair": 5,
+      "fork": 8,
+      "backpack": 2,
+      "book": 3,
+      "clock": 4,
+      "bus": 3,
+      "traffic light": 2,
+      "umbrella": 1
+    },
+    "val": {
+      "bowl": 4,
+      "cup": 2,
+      "spoon": 2,
+      "fork": 2,
+      "chair": 2,
+      "book": 2,
+      "bottle": 3,
+      "clock": 1,
+      "traffic light": 1,
+      "bus": 2,
+      "umbrella": 1,
+      "backpack": 1
+    },
+    "test": {
+      "bowl": 2,
+      "cup": 3,
+      "spoon": 3,
+      "fork": 2,
+      "book": 5,
+      "chair": 2,
+      "umbrella": 1,
+      "bottle": 1,
+      "clock": 2,
+      "bus": 2,
+      "traffic light": 3,
+      "backpack": 1
+    }
+  },
+  "primary_class_images_per_split": {
+    "train": {
+      "bowl": 5,
+      "cup": 6,
+      "spoon": 6,
+      "bottle": 7,
+      "chair": 5,
+      "fork": 8,
+      "backpack": 2,
+      "book": 3,
+      "clock": 4,
+      "bus": 3,
+      "traffic light": 2,
+      "umbrella": 1
+    },
+    "val": {
+      "bowl": 4,
+      "cup": 2,
+      "spoon": 2,
+      "fork": 2,
+      "chair": 2,
+      "book": 2,
+      "bottle": 3,
+      "clock": 1,
+      "traffic light": 1,
+      "bus": 2,
+      "umbrella": 1,
+      "backpack": 1
+    },
+    "test": {
+      "bowl": 2,
+      "cup": 3,
+      "spoon": 3,
+      "fork": 2,
+      "book": 4,
+      "chair": 2,
+      "umbrella": 1,
+      "bottle": 1,
+      "clock": 2,
+      "bus": 2,
+      "traffic light": 2,
+      "backpack": 1
+    }
+  },
+  "human_approval": "approved",
+  "privacy_reviewed_true": 0,
+  "training_started": true,
+  "scope": "Proposal only,50newphotos; not independent of all COCO pretraining. No inference or tuning used to choose photos.",
+  "acquisition_stopped_at_rate_limit": true,
+  "local_packet": "vision/data/public-review-simple-next-v2-20261117",
+  "planned_counts_not_achieved": "Original48train12val+2primaryphotos/class test not reached dueHTTP429andvisual exclusions; actual26train11val13test.",
+  "policy": "At most3targetclasses; no annotated people; primary objects at least128long/16short pixels in640fit. These are screening heuristics only.",
+  "would_expand_current_train_to": 117,
+  "would_expand_current_validation_to": 38,
+  "new_test_images": 13,
+  "pretraining_overlap_limit": "COCO-source images may have appeared in original pretrained weights; newtest only reserved from team fine-tuning.",
+  "approval_reference": "Aprovo o lote e o treino local"
+}

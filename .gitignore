@@ -25,6 +25,9 @@ node_modules/
 # Documentation build dependencies and intermediate output
 /docs/.deps/
 /docs/qa/
+# Personal remote-access setup is never project documentation.
+/docs/**/remote-access/
+/docs/**/remote-acess/
 # Terraform private configuration/state
 *.tfstate*
 *.tfvars
@@ -42,7 +45,7 @@ node_modules/
 !/big_data/output/summary.json
 /rpa/output/
 /rpa/reports/
-# Dataset examples only; do not publish photographs, annotations, or model weights
+# Raw datasets and experimental weights stay local; the reviewed release is explicit below.
 /vision/data/*
 !/vision/data/dataset.example.yaml
 !/vision/data/provenance.example.json
@@ -52,7 +55,15 @@ node_modules/
 /vision/*.py.before-guards
 /vision/artifacts*/
 /vision/runs/
+/runs/
 *.pt
 *.onnx
+# Deliver the exact selected checkpoint; keep every experimental checkpoint ignored.
+!/vision/release/best.pt
+# Local knowledge exports and working review sheets are not delivery documents.
+/graphify-out/
+/docs/knowledge/
+/genai/avaliacao/*.review.md
+/genai/reports/*.review.md
 /robot/.models/
 /robot/.verification/

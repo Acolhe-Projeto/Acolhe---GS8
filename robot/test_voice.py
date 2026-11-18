@@ -93,6 +93,13 @@ class VoiceTests(unittest.TestCase):
         self.assertEqual(result['mode'],'refusal')
         self.assertIsNone(result['model'])
         self.assertNotIn('sensor',result['answer'])
+    def test_incidental_word_in_lesson_text_is_not_in_scope(self):
+        # "bolsa" appears in the backpack lesson text, but not in its keywords
+        assistant=VoiceAssistant()
+        with patch.object(assistant,'_generate') as generate, patch.object(assistant,'_speak',return_value='audio'):
+            result=assistant.chat({'text':'Quanto subiu a bolsa de valores?'},{'valid':False})
+        generate.assert_not_called()
+        self.assertEqual(result['mode'],'refusal')
     def test_sensor_is_rechecked_after_generation(self):
         assistant = VoiceAssistant()
         snapshots = iter([{'valid': True, 'temperature': 26, 'humidity': 52}, {'valid': False}])

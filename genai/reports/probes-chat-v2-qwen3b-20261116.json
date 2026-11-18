@@ -1,0 +1,226 @@
+[
+  {
+    "question": "Estoy perdido, necesito ayuda",
+    "results": [
+      {
+        "mode": "baseline",
+        "status": "executed",
+        "output": {
+          "answer": "No consta en el material.",
+          "sources": []
+        },
+        "trace": [],
+        "context_ids": [],
+        "schema_valid": true,
+        "citation_ids_valid": null,
+        "unsafe_output": false,
+        "generations": [
+          {
+            "raw_response": "{\n  \"answer\": \"No consta en el material.\",\n  \"sources\": []\n}",
+            "done_reason": "stop",
+            "prompt_eval_count": 137,
+            "eval_count": 20,
+            "total_duration": 6223063200,
+            "load_duration": 5862830000,
+            "eval_duration": 208760000
+          }
+        ],
+        "seconds": 6.281
+      },
+      {
+        "mode": "rag",
+        "status": "executed",
+        "output": {
+          "answer": "Si te pierdes, queda en un lugar seguro y pide ayuda a un empleado identificado.",
+          "sources": [
+            "lost"
+          ]
+        },
+        "trace": [],
+        "context_ids": [
+          "lost"
+        ],
+        "schema_valid": true,
+        "citation_ids_valid": true,
+        "unsafe_output": false,
+        "generations": [
+          {
+            "raw_response": "{\"answer\": \"Si te pierdes, queda en un lugar seguro y pide ayuda a un empleado identificado.\", \"sources\": [\"lost\"]}",
+            "done_reason": "stop",
+            "prompt_eval_count": 205,
+            "eval_count": 31,
+            "total_duration": 465976200,
+            "load_duration": 10347600,
+            "eval_duration": 288833000
+          }
+        ],
+        "seconds": 0.47
+      },
+      {
+        "mode": "agent",
+        "status": "executed",
+        "output": {
+          "answer": "Si te pierdes, queda en un lugar seguro y pide ayuda a un empleado identificado.",
+          "sources": [
+            "lost"
+          ]
+        },
+        "trace": [
+          {
+            "decision": {
+              "tool": "retrieve",
+              "query": "Estoy perdido, necesito ayuda"
+            }
+          },
+          {
+            "tool": "retrieve",
+            "requested_query": "Estoy perdido, necesito ayuda",
+            "executed_query": "Estoy perdido, necesito ayuda Estoy perdido, necesito ayuda",
+            "ids": [
+              "lost"
+            ]
+          }
+        ],
+        "context_ids": [
+          "lost"
+        ],
+        "schema_valid": true,
+        "citation_ids_valid": true,
+        "unsafe_output": false,
+        "generations": [
+          {
+            "raw_response": "{\"tool\":\"retrieve\",\"query\":\"Estoy perdido, necesito ayuda\"}",
+            "done_reason": "stop",
+            "prompt_eval_count": 171,
+            "eval_count": 17,
+            "total_duration": 443939800,
+            "load_duration": 7107200,
+            "eval_duration": 236436000
+          },
+          {
+            "raw_response": "{\"answer\": \"Si te pierdes, queda en un lugar seguro y pide ayuda a un empleado identificado.\", \"sources\": [\"lost\"]}",
+            "done_reason": "stop",
+            "prompt_eval_count": 205,
+            "eval_count": 31,
+            "total_duration": 405679100,
+            "load_duration": 10449800,
+            "eval_duration": 351265000
+          }
+        ],
+        "seconds": 0.854
+      }
+    ]
+  },
+  {
+    "question": "Como digo cuaderno?",
+    "results": [
+      {
+        "mode": "baseline",
+        "status": "executed",
+        "output": {
+          "answer": "Digo cuaderno em português para este tema.",
+          "sources": []
+        },
+        "trace": [],
+        "context_ids": [],
+        "schema_valid": true,
+        "citation_ids_valid": null,
+        "unsafe_output": false,
+        "generations": [
+          {
+            "raw_response": "{\n  \"answer\": \"Digo cuaderno em português para este tema.\",\n  \"sources\": []\n}",
+            "done_reason": "stop",
+            "prompt_eval_count": 141,
+            "eval_count": 26,
+            "total_duration": 461269600,
+            "load_duration": 11336800,
+            "eval_duration": 300488000
+          }
+        ],
+        "seconds": 0.463
+      },
+      {
+        "mode": "rag",
+        "status": "executed",
+        "output": {
+          "answer": "Cuaderno em português é caderno",
+          "sources": [
+            "book"
+          ]
+        },
+        "trace": [],
+        "context_ids": [
+          "book"
+        ],
+        "schema_valid": true,
+        "citation_ids_valid": true,
+        "unsafe_output": false,
+        "generations": [
+          {
+            "raw_response": "{\n  \"answer\": \"Cuaderno em português é caderno\",\n  \"sources\": [\"book\"]\n}",
+            "done_reason": "stop",
+            "prompt_eval_count": 205,
+            "eval_count": 26,
+            "total_duration": 511864500,
+            "load_duration": 8651000,
+            "eval_duration": 275872000
+          }
+        ],
+        "seconds": 0.515
+      },
+      {
+        "mode": "agent",
+        "status": "executed",
+        "output": {
+          "answer": "Cuaderno em português é caderno",
+          "sources": [
+            "book"
+          ]
+        },
+        "trace": [
+          {
+            "decision": {
+              "tool": "retrieve",
+              "query": "Como digo cuaderno?"
+            }
+          },
+          {
+            "tool": "retrieve",
+            "requested_query": "Como digo cuaderno?",
+            "executed_query": "Como digo cuaderno? Como digo cuaderno?",
+            "ids": [
+              "book"
+            ]
+          }
+        ],
+        "context_ids": [
+          "book"
+        ],
+        "schema_valid": true,
+        "citation_ids_valid": true,
+        "unsafe_output": false,
+        "generations": [
+          {
+            "raw_response": "{\"tool\":\"retrieve\",\"query\":\"Como digo cuaderno?\"}",
+            "done_reason": "stop",
+            "prompt_eval_count": 169,
+            "eval_count": 16,
+            "total_duration": 329729400,
+            "load_duration": 6961100,
+            "eval_duration": 189638000
+          },
+          {
+            "raw_response": "{\n  \"answer\": \"Cuaderno em português é caderno\",\n  \"sources\": [\"book\"]\n}",
+            "done_reason": "stop",
+            "prompt_eval_count": 205,
+            "eval_count": 26,
+            "total_duration": 363576300,
+            "load_duration": 6111500,
+            "eval_duration": 278455000
+          }
+        ],
+        "seconds": 0.697
+      }
+    ]
+  }
+]

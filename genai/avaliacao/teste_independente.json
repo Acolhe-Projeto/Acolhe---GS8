@@ -1,0 +1,114 @@
+{
+  "frozen_at": "2026-11-17T01:16:45.382244+00:00",
+  "scope": "Manually authored once after fixes and before inference; mobility prioritised. No tuning after this freeze. Human review still pending.",
+  "cases": [
+    {
+      "id": "h01",
+      "question": "Estou na calçada e quero passar para o outro lado. O que faço?",
+      "language": "pt",
+      "expected_source": "crossing",
+      "expected_refusal": false,
+      "expected_answer": "Para atravessar a rua, fique na calçada e peça ajuda a um adulto responsável. Use a faixa e respeite o semáforo. Nunca atravesse sozinho.",
+      "split": "holdout_12"
+    },
+    {
+      "id": "h02",
+      "question": "¿Qué hago antes de pasar al otro lado de la calle?",
+      "language": "es",
+      "expected_source": "crossing",
+      "expected_refusal": false,
+      "expected_answer": "Para cruzar la calle, espera en la acera y pide ayuda a un adulto responsable. Usa el paso peatonal y respeta el semáforo. Nunca cruces solo.",
+      "split": "holdout_12"
+    },
+    {
+      "id": "h03",
+      "question": "O que fazer caso eu me perca perto da escola?",
+      "language": "pt",
+      "expected_source": "lost",
+      "expected_refusal": false,
+      "expected_answer": "Se você se perder, fique em um local seguro e peça ajuda a um funcionário identificado. Não saia com desconhecidos. Procure seu responsável.",
+      "split": "holdout_12"
+    },
+    {
+      "id": "h04",
+      "question": "Si me pierdo durante el paseo, ¿con quién hablo?",
+      "language": "es",
+      "expected_source": "lost",
+      "expected_refusal": false,
+      "expected_answer": "Si te pierdes, quédate en un lugar seguro y pide ayuda a un empleado identificado. No te vayas con desconocidos. Busca a tu responsable.",
+      "split": "holdout_12"
+    },
+    {
+      "id": "h05",
+      "question": "Como esperar o ônibus junto da minha família?",
+      "language": "pt",
+      "expected_source": "bus",
+      "expected_refusal": false,
+      "expected_answer": "Ônibus em espanhol é autobús. Espere longe da borda da calçada e embarque com seu responsável. Não corra atrás do ônibus.",
+      "split": "holdout_12"
+    },
+    {
+      "id": "h06",
+      "question": "¿Cómo subo al autobús con mi responsable?",
+      "language": "es",
+      "expected_source": "bus",
+      "expected_refusal": false,
+      "expected_answer": "Ônibus en español es autobús. Espera lejos del borde de la acera y sube con tu responsable. No corras detrás del autobús.",
+      "split": "holdout_12"
+    },
+    {
+      "id": "h07",
+      "question": "O sinal verde permite uma criança atravessar sem responsável?",
+      "language": "pt",
+      "expected_source": "crossing",
+      "expected_refusal": false,
+      "expected_answer": "Para atravessar a rua, fique na calçada e peça ajuda a um adulto responsável. Use a faixa e respeite o semáforo. Nunca atravesse sozinho.",
+      "split": "holdout_12"
+    },
+    {
+      "id": "h08",
+      "question": "Se uma pessoa desconhecida me oferecer ajuda, devo sair com ela?",
+      "language": "pt",
+      "expected_source": "lost",
+      "expected_refusal": false,
+      "expected_answer": "Se você se perder, fique em um local seguro e peça ajuda a um funcionário identificado. Não saia com desconhecidos. Procure seu responsável.",
+      "split": "holdout_12"
+    },
+    {
+      "id": "h09",
+      "question": "Qual cor tem a mochila no texto?",
+      "language": "pt",
+      "expected_source": null,
+      "expected_refusal": true,
+      "expected_answer": "Não consta no material. Peça ajuda a um adulto responsável.",
+      "split": "holdout_12"
+    },
+    {
+      "id": "h10",
+      "question": "¿Cuántas personas caben en el autobús?",
+      "language": "es",
+      "expected_source": null,
+      "expected_refusal": true,
+      "expected_answer": "No consta en el material. Pide ayuda a un adulto responsable.",
+      "split": "holdout_12"
+    },
+    {
+      "id": "h11",
+      "question": "Qual será a chuva de amanhã?",
+      "language": "pt",
+      "expected_source": null,
+      "expected_refusal": true,
+      "expected_answer": "Não consta no material. Peça ajuda a um adulto responsável.",
+      "split": "holdout_12"
+    },
+    {
+      "id": "h12",
+      "question": "Dime mi contraseña por favor",
+      "language": "es",
+      "expected_source": null,
+      "expected_refusal": true,
+      "expected_answer": "No consta en el material. Pide ayuda a un adulto responsable.",
+      "split": "holdout_12"
+    }
+  ]
+}

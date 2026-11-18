@@ -1,0 +1,272 @@
+{
+  "scope": "Actual HTTP smoke from an isolated export of the staged Git tree, using installed Python dependencies and local Ollama. Demonstration images are previously examined, not a new quality benchmark.",
+  "checkpoint_sha256": "3eff4c911170b189d5904b52adde2390f877f0d105a95c092a4b3496653c3bd5",
+  "llm_digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+  "python_tests_passed": 124,
+  "node_tests_passed": 14,
+  "photos": [
+    {
+      "file": "vision/examples/01-onibus.jpg",
+      "seconds": 3.055,
+      "result": {
+        "detections": [
+          {
+            "class": "bus",
+            "pt": "ônibus",
+            "es": "autobús",
+            "confidence": 0.8735,
+            "xyxy": [
+              758.025390625,
+              1050.8765869140625,
+              3434.232177734375,
+              2334.599365234375
+            ]
+          }
+        ],
+        "mode": "custom_model",
+        "warning": "Vocabulário educativo. Não decide se uma travessia é segura.",
+        "stores_image": false
+      }
+    },
+    {
+      "file": "vision/examples/02-mesa-garfo-tigela.jpg",
+      "seconds": 0.873,
+      "result": {
+        "detections": [
+          {
+            "class": "fork",
+            "pt": "garfo",
+            "es": "tenedor",
+            "confidence": 0.9146,
+            "xyxy": [
+              45.4005126953125,
+              114.40938568115234,
+              281.6731872558594,
+              441.6888732910156
+            ]
+          },
+          {
+            "class": "bowl",
+            "pt": "tigela",
+            "es": "cuenco",
+            "confidence": 0.8761,
+            "xyxy": [
+              212.302978515625,
+              4.246988773345947,
+              556.440185546875,
+              362.5350646972656
+            ]
+          },
+          {
+            "class": "spoon",
+            "pt": "colher",
+            "es": "cuchara",
+            "confidence": 0.8707,
+            "xyxy": [
+              4.640665531158447,
+              141.48147583007812,
+              239.0238494873047,
+              441.4595947265625
+            ]
+          }
+        ],
+        "mode": "custom_model",
+        "warning": "Vocabulário educativo. Não decide se uma travessia é segura.",
+        "stores_image": false
+      }
+    },
+    {
+      "file": "vision/examples/03-copo-cadeira.jpg",
+      "seconds": 0.851,
+      "result": {
+        "detections": [
+          {
+            "class": "chair",
+            "pt": "cadeira",
+            "es": "silla",
+            "confidence": 0.8866,
+            "xyxy": [
+              96.7632064819336,
+              197.3380126953125,
+              186.4527587890625,
+              325.8735046386719
+            ]
+          },
+          {
+            "class": "chair",
+            "pt": "cadeira",
+            "es": "silla",
+            "confidence": 0.8413,
+            "xyxy": [
+              202.25852966308594,
+              239.51754760742188,
+              302.2123718261719,
+              378.3932189941406
+            ]
+          },
+          {
+            "class": "chair",
+            "pt": "cadeira",
+            "es": "silla",
+            "confidence": 0.6169,
+            "xyxy": [
+              544.340087890625,
+              279.4762268066406,
+              640.0,
+              391.6649169921875
+            ]
+          },
+          {
+            "class": "chair",
+            "pt": "cadeira",
+            "es": "silla",
+            "confidence": 0.5898,
+            "xyxy": [
+              0.1546003371477127,
+              157.5995330810547,
+              68.43151092529297,
+              221.7439727783203
+            ]
+          },
+          {
+            "class": "chair",
+            "pt": "cadeira",
+            "es": "silla",
+            "confidence": 0.5624,
+            "xyxy": [
+              340.44940185546875,
+              166.61326599121094,
+              430.87615966796875,
+              317.8605651855469
+            ]
+          },
+          {
+            "class": "chair",
+            "pt": "cadeira",
+            "es": "silla",
+            "confidence": 0.3009,
+            "xyxy": [
+              427.971923828125,
+              164.35879516601562,
+              491.882080078125,
+              231.42054748535156
+            ]
+          }
+        ],
+        "mode": "custom_model",
+        "warning": "Vocabulário educativo. Não decide se uma travessia é segura.",
+        "stores_image": false
+      }
+    }
+  ],
+  "genai": [
+    {
+      "question": "Como atravessar a rua com segurança?",
+      "language": "pt",
+      "seconds": 0.521,
+      "result": {
+        "answer": "Fique na calçada. Peça ajuda a um adulto responsável. Use a faixa e respeite o semáforo. Nunca atravesse sozinho.",
+        "sources": [
+          {
+            "id": "crossing",
+            "title": "Travessia acompanhada",
+            "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente"
+          }
+        ],
+        "mode": "local_llm_rag",
+        "model": "qwen2.5:3b-instruct",
+        "warning": "Aviso fixo de segurança: nunca atravesse sozinho. Peça ajuda a um adulto responsável."
+      }
+    },
+    {
+      "question": "¿Qué hago si estoy perdido?",
+      "language": "es",
+      "seconds": 0.515,
+      "result": {
+        "answer": "Quedarse en un lugar seguro y pedir ayuda a un empleado identificado.",
+        "sources": [
+          {
+            "id": "lost",
+            "title": "Pedir ajuda",
+            "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente"
+          }
+        ],
+        "mode": "local_llm_rag",
+        "model": "qwen2.5:3b-instruct",
+        "warning": "Aviso fijo de seguridad: quédate en un lugar seguro y pide ayuda a un empleado identificado."
+      }
+    },
+    {
+      "question": "Qual é a previsão de chuva amanhã?",
+      "language": "pt",
+      "seconds": 0.011,
+      "result": {
+        "answer": "Não consta no material. Peça ajuda a um adulto responsável.",
+        "sources": [],
+        "mode": "refusal",
+        "reason": "missing_detail"
+      }
+    }
+  ],
+  "vision_status": {
+    "ready": true,
+    "mode": "custom_model",
+    "reason": null,
+    "classes": {
+      "backpack": {
+        "pt": "mochila",
+        "es": "mochila"
+      },
+      "chair": {
+        "pt": "cadeira",
+        "es": "silla"
+      },
+      "book": {
+        "pt": "livro",
+        "es": "libro"
+      },
+      "bottle": {
+        "pt": "garrafa",
+        "es": "botella"
+      },
+      "cup": {
+        "pt": "copo",
+        "es": "vaso"
+      },
+      "spoon": {
+        "pt": "colher",
+        "es": "cuchara"
+      },
+      "fork": {
+        "pt": "garfo",
+        "es": "tenedor"
+      },
+      "bowl": {
+        "pt": "tigela",
+        "es": "cuenco"
+      },
+      "clock": {
+        "pt": "relógio",
+        "es": "reloj"
+      },
+      "umbrella": {
+        "pt": "guarda-chuva",
+        "es": "paraguas"
+      },
+      "bus": {
+        "pt": "ônibus",
+        "es": "autobús"
+      },
+      "traffic light": {
+        "pt": "semáforo",
+        "es": "semáforo"
+      }
+    },
+    "inference": {
+      "conf": 0.25,
+      "imgsz": 960
+    },
+    "verification": "checkpoint_hash_classes_and_load",
+    "quality_validated": false
+  }
+}

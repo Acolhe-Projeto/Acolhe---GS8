@@ -1,0 +1,151 @@
+{
+  "url": "http://127.0.0.1:8084",
+  "scope": "Actual HTTP after deployment. Latency samples are five repeats of approved bus photo; includes model load/hash checks. Small local sample, not a general benchmark.",
+  "status": {
+    "ready": true,
+    "mode": "custom_model",
+    "reason": null,
+    "classes": {
+      "backpack": {
+        "pt": "mochila",
+        "es": "mochila"
+      },
+      "chair": {
+        "pt": "cadeira",
+        "es": "silla"
+      },
+      "book": {
+        "pt": "livro",
+        "es": "libro"
+      },
+      "bottle": {
+        "pt": "garrafa",
+        "es": "botella"
+      },
+      "cup": {
+        "pt": "copo",
+        "es": "vaso"
+      },
+      "spoon": {
+        "pt": "colher",
+        "es": "cuchara"
+      },
+      "fork": {
+        "pt": "garfo",
+        "es": "tenedor"
+      },
+      "bowl": {
+        "pt": "tigela",
+        "es": "cuenco"
+      },
+      "clock": {
+        "pt": "relógio",
+        "es": "reloj"
+      },
+      "umbrella": {
+        "pt": "guarda-chuva",
+        "es": "paraguas"
+      },
+      "bus": {
+        "pt": "ônibus",
+        "es": "autobús"
+      },
+      "traffic light": {
+        "pt": "semáforo",
+        "es": "semáforo"
+      }
+    },
+    "inference": {
+      "conf": 0.25,
+      "imgsz": 960
+    },
+    "verification": "checkpoint_hash_classes_and_load",
+    "quality_validated": false
+  },
+  "bus": {
+    "latency_seconds": [
+      0.9528438000124879,
+      0.9826438000018243,
+      0.8607429999974556,
+      0.9548834999877727,
+      0.9765405000071041
+    ],
+    "median_seconds": 0.9548834999877727,
+    "max_seconds": 0.9826438000018243,
+    "response": {
+      "detections": [
+        {
+          "class": "bus",
+          "pt": "ônibus",
+          "es": "autobús",
+          "confidence": 0.8735,
+          "xyxy": [
+            758.025390625,
+            1050.8765869140625,
+            3434.232177734375,
+            2334.599365234375
+          ]
+        }
+      ],
+      "mode": "custom_model",
+      "warning": "Vocabulário educativo. Não decide se uma travessia é segura.",
+      "stores_image": false
+    }
+  },
+  "utensils": {
+    "detections": [
+      {
+        "class": "fork",
+        "pt": "garfo",
+        "es": "tenedor",
+        "confidence": 0.9146,
+        "xyxy": [
+          45.4005126953125,
+          114.40938568115234,
+          281.6731872558594,
+          441.6888732910156
+        ]
+      },
+      {
+        "class": "bowl",
+        "pt": "tigela",
+        "es": "cuenco",
+        "confidence": 0.8761,
+        "xyxy": [
+          212.302978515625,
+          4.246988773345947,
+          556.440185546875,
+          362.5350646972656
+        ]
+      },
+      {
+        "class": "spoon",
+        "pt": "colher",
+        "es": "cuchara",
+        "confidence": 0.8707,
+        "xyxy": [
+          4.640665531158447,
+          141.48147583007812,
+          239.0238494873047,
+          441.4595947265625
+        ]
+      }
+    ],
+    "mode": "custom_model",
+    "warning": "Vocabulário educativo. Não decide se uma travessia é segura.",
+    "stores_image": false
+  },
+  "genai": {
+    "answer": "Fique na calçada. Peça ajuda a um adulto responsável. Use a faixa e respeite o semáforo. Nunca atravesse sozinho.",
+    "sources": [
+      {
+        "id": "crossing",
+        "title": "Travessia acompanhada",
+        "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente"
+      }
+    ],
+    "mode": "local_llm_rag",
+    "model": "qwen2.5:3b-instruct",
+    "warning": "Aviso fixo de segurança: nunca atravesse sozinho. Peça ajuda a um adulto responsável."
+  }
+}

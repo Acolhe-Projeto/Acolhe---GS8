@@ -1,0 +1,151 @@
+{
+  "portal_url": "http://127.0.0.1:8084",
+  "genai": [
+    {
+      "question": "Como atravessar a rua com segurança?",
+      "language": "pt",
+      "response": {
+        "answer": "Fique na calçada. Peça ajuda a um adulto responsável. Use a faixa e respeite o semáforo. Nunca atravesse sozinho.",
+        "sources": [
+          {
+            "id": "crossing",
+            "title": "Travessia acompanhada",
+            "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente"
+          }
+        ],
+        "mode": "local_llm_rag",
+        "model": "qwen2.5:3b-instruct",
+        "warning": "Aviso fixo de segurança: nunca atravesse sozinho. Peça ajuda a um adulto responsável."
+      }
+    },
+    {
+      "question": "Como digo silla?",
+      "language": "pt",
+      "response": {
+        "answer": "cadeira",
+        "sources": [
+          {
+            "id": "chair",
+            "title": "Cadeira",
+            "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente"
+          }
+        ],
+        "mode": "local_llm_rag",
+        "model": "qwen2.5:3b-instruct"
+      }
+    },
+    {
+      "question": "Como devo esperar para embarcar no ônibus?",
+      "language": "pt",
+      "response": {
+        "answer": "Espere longe da borda da calçada e embarque com seu responsável.",
+        "sources": [
+          {
+            "id": "bus",
+            "title": "Ônibus acompanhado",
+            "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente"
+          }
+        ],
+        "mode": "local_llm_rag",
+        "model": "qwen2.5:3b-instruct"
+      }
+    },
+    {
+      "question": "Necesito ayuda, estoy perdido",
+      "language": "es",
+      "response": {
+        "answer": "Quedarse en un lugar seguro y pedir ayuda a un empleado identificado.",
+        "sources": [
+          {
+            "id": "lost",
+            "title": "Pedir ajuda",
+            "source": "Conteúdo autoral Acolhe, versão3; revisão pedagógica pendente"
+          }
+        ],
+        "mode": "local_llm_rag",
+        "model": "qwen2.5:3b-instruct",
+        "warning": "Aviso fijo de seguridad: quédate en un lugar seguro y pide ayuda a un empleado identificado."
+      }
+    },
+    {
+      "question": "Qual é a previsão de chuva amanhã?",
+      "language": "pt",
+      "response": {
+        "answer": "Não consta no material. Peça ajuda a um adulto responsável.",
+        "sources": [],
+        "mode": "refusal",
+        "reason": "missing_detail"
+      }
+    }
+  ],
+  "vision": [
+    {
+      "file": "01-onibus.jpg",
+      "response": {
+        "detections": [
+          {
+            "class": "bus",
+            "pt": "ônibus",
+            "es": "autobús",
+            "confidence": 0.9479,
+            "xyxy": [
+              850.3543090820312,
+              1029.38427734375,
+              4117.22119140625,
+              2328.454345703125
+            ]
+          }
+        ],
+        "mode": "custom_model",
+        "warning": "Vocabulário educativo. Não decide se uma travessia é segura.",
+        "stores_image": false
+      }
+    },
+    {
+      "file": "02-mesa-garfo-tigela.jpg",
+      "response": {
+        "detections": [
+          {
+            "class": "bowl",
+            "pt": "tigela",
+            "es": "cuenco",
+            "confidence": 0.6649,
+            "xyxy": [
+              211.70574951171875,
+              4.323028564453125,
+              627.9566650390625,
+              397.5831298828125
+            ]
+          },
+          {
+            "class": "spoon",
+            "pt": "colher",
+            "es": "cuchara",
+            "confidence": 0.6028,
+            "xyxy": [
+              5.636688232421875,
+              144.77252197265625,
+              218.9610137939453,
+              423.78173828125
+            ]
+          },
+          {
+            "class": "fork",
+            "pt": "garfo",
+            "es": "tenedor",
+            "confidence": 0.2075,
+            "xyxy": [
+              59.48460388183594,
+              115.314453125,
+              232.25331115722656,
+              416.5770263671875
+            ]
+          }
+        ],
+        "mode": "custom_model",
+        "warning": "Vocabulário educativo. Não decide se uma travessia é segura.",
+        "stores_image": false
+      }
+    }
+  ]
+}

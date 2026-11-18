@@ -1,0 +1,226 @@
+[
+  {
+    "question": "Estoy perdido, necesito ayuda",
+    "results": [
+      {
+        "mode": "baseline",
+        "status": "executed",
+        "output": {
+          "answer": "¡Hola! ¿Cómo puedo ayudarte hoy?",
+          "sources": []
+        },
+        "trace": [],
+        "context_ids": [],
+        "schema_valid": true,
+        "citation_ids_valid": null,
+        "unsafe_output": false,
+        "generations": [
+          {
+            "raw_response": "{\n  \"answer\": \"¡Hola! ¿Cómo puedo ayudarte hoy?\",\n  \"sources\": []\n}",
+            "done_reason": "stop",
+            "prompt_eval_count": 137,
+            "eval_count": 23,
+            "total_duration": 4614857100,
+            "load_duration": 4356507000,
+            "eval_duration": 157993000
+          }
+        ],
+        "seconds": 4.651
+      },
+      {
+        "mode": "rag",
+        "status": "executed",
+        "output": {
+          "answer": "No consta en el material.",
+          "sources": [
+            "lost"
+          ]
+        },
+        "trace": [],
+        "context_ids": [
+          "lost"
+        ],
+        "schema_valid": true,
+        "citation_ids_valid": true,
+        "unsafe_output": false,
+        "generations": [
+          {
+            "raw_response": "{\n  \"answer\": \"No consta en el material.\",\n  \"sources\": [\"lost\"]\n}",
+            "done_reason": "stop",
+            "prompt_eval_count": 205,
+            "eval_count": 22,
+            "total_duration": 333687400,
+            "load_duration": 7377600,
+            "eval_duration": 164718000
+          }
+        ],
+        "seconds": 0.336
+      },
+      {
+        "mode": "agent",
+        "status": "executed",
+        "output": {
+          "answer": "No consta en el material.",
+          "sources": [
+            "lost"
+          ]
+        },
+        "trace": [
+          {
+            "decision": {
+              "tool": "retrieve",
+              "query": "get help when lost"
+            }
+          },
+          {
+            "tool": "retrieve",
+            "requested_query": "get help when lost",
+            "executed_query": "Estoy perdido, necesito ayuda get help when lost",
+            "ids": [
+              "lost"
+            ]
+          }
+        ],
+        "context_ids": [
+          "lost"
+        ],
+        "schema_valid": true,
+        "citation_ids_valid": true,
+        "unsafe_output": false,
+        "generations": [
+          {
+            "raw_response": "{\"tool\": \"retrieve\", \"query\": \"get help when lost\"}",
+            "done_reason": "stop",
+            "prompt_eval_count": 171,
+            "eval_count": 16,
+            "total_duration": 292803400,
+            "load_duration": 12208100,
+            "eval_duration": 118350000
+          },
+          {
+            "raw_response": "{\n  \"answer\": \"No consta en el material.\",\n  \"sources\": [\"lost\"]\n}",
+            "done_reason": "stop",
+            "prompt_eval_count": 205,
+            "eval_count": 22,
+            "total_duration": 241019600,
+            "load_duration": 11498100,
+            "eval_duration": 154573000
+          }
+        ],
+        "seconds": 0.539
+      }
+    ]
+  },
+  {
+    "question": "Como digo cuaderno?",
+    "results": [
+      {
+        "mode": "baseline",
+        "status": "executed",
+        "output": {
+          "answer": "Como digo cuaderno?",
+          "sources": []
+        },
+        "trace": [],
+        "context_ids": [],
+        "schema_valid": true,
+        "citation_ids_valid": null,
+        "unsafe_output": false,
+        "generations": [
+          {
+            "raw_response": "{\n  \"answer\": \"Como digo cuaderno?\",\n  \"sources\": []\n}",
+            "done_reason": "stop",
+            "prompt_eval_count": 141,
+            "eval_count": 20,
+            "total_duration": 239401900,
+            "load_duration": 8331100,
+            "eval_duration": 137463000
+          }
+        ],
+        "seconds": 0.241
+      },
+      {
+        "mode": "rag",
+        "status": "executed",
+        "output": {
+          "answer": "O cuaderno é o termo correto em português para um caderno.",
+          "sources": [
+            "book"
+          ]
+        },
+        "trace": [],
+        "context_ids": [
+          "book"
+        ],
+        "schema_valid": true,
+        "citation_ids_valid": true,
+        "unsafe_output": false,
+        "generations": [
+          {
+            "raw_response": "{ \"answer\": \"O cuaderno é o termo correto em português para um caderno.\", \"sources\": [\"book\"] }",
+            "done_reason": "stop",
+            "prompt_eval_count": 205,
+            "eval_count": 32,
+            "total_duration": 411560000,
+            "load_duration": 9349400,
+            "eval_duration": 260253000
+          }
+        ],
+        "seconds": 0.414
+      },
+      {
+        "mode": "agent",
+        "status": "executed",
+        "output": {
+          "answer": "O cuaderno é o termo correto em português para um caderno.",
+          "sources": [
+            "book"
+          ]
+        },
+        "trace": [
+          {
+            "decision": {
+              "tool": "retrieve",
+              "query": "Como digo cuaderno?"
+            }
+          },
+          {
+            "tool": "retrieve",
+            "requested_query": "Como digo cuaderno?",
+            "executed_query": "Como digo cuaderno? Como digo cuaderno?",
+            "ids": [
+              "book"
+            ]
+          }
+        ],
+        "context_ids": [
+          "book"
+        ],
+        "schema_valid": true,
+        "citation_ids_valid": true,
+        "unsafe_output": false,
+        "generations": [
+          {
+            "raw_response": "{\"tool\": \"retrieve\", \"query\": \"Como digo cuaderno?\"}",
+            "done_reason": "stop",
+            "prompt_eval_count": 169,
+            "eval_count": 19,
+            "total_duration": 597998100,
+            "load_duration": 7960200,
+            "eval_duration": 123351000
+          },
+          {
+            "raw_response": "{ \"answer\": \"O cuaderno é o termo correto em português para um caderno.\", \"sources\": [\"book\"] }",
+            "done_reason": "stop",
+            "prompt_eval_count": 205,
+            "eval_count": 32,
+            "total_duration": 289342100,
+            "load_duration": 5267600,
+            "eval_duration": 227504000
+          }
+        ],
+        "seconds": 0.89
+      }
+    ]
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "timestamp_utc": "2026-11-16T19:42:01.787856+00:00",
+  "python": "3.12.10",
+  "python_tests": 90,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "python_ok": true,
+  "node_tests_exit_code": 0,
+  "node_summary": [
+    "# tests 14",
+    "# pass 14",
+    "# fail 0"
+  ],
+  "syntax_checks": [
+    {
+      "file": "app/static/app.js",
+      "exit_code": 0
+    },
+    {
+      "file": "app/static/vision.js",
+      "exit_code": 0
+    },
+    {
+      "file": "app/static/sw.js",
+      "exit_code": 0
+    }
+  ],
+  "duration_seconds": 11.088,
+  "scope": "Unit/HTTP contracts; Vision inference mocked; real GenAI reports are separate.",
+  "post_profile_change_check": {
+    "selected_model": "qwen2.5:1.5b-instruct",
+    "genai_tests": 22,
+    "failures": 0,
+    "errors": 0,
+    "command": ".venv/Scripts/python.exe -B -m unittest genai.tests.test_service genai.tests.test_experiment -q",
+    "reason": "Recheck after selecting 1.5B default; full suite already passed."
+  }
+}

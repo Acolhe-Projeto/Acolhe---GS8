@@ -1,0 +1,177 @@
+{
+  "real_images": true,
+  "trained_on_real_images": true,
+  "model": "yolo26m",
+  "class_names": [
+    "backpack",
+    "chair",
+    "book",
+    "bottle",
+    "cup",
+    "spoon",
+    "fork",
+    "bowl",
+    "clock",
+    "umbrella",
+    "bus",
+    "traffic light"
+  ],
+  "checkpoint_sha256": "3eff4c911170b189d5904b52adde2390f877f0d105a95c092a4b3496653c3bd5",
+  "inference": {
+    "conf": 0.25,
+    "imgsz": 960
+  },
+  "quality_validated": false,
+  "epochs": 12,
+  "epochs_completed": 5,
+  "imgsz": 640,
+  "device": "cpu",
+  "freeze": 22,
+  "seed": 42,
+  "batch": 2,
+  "workers": 0,
+  "training_overrides": {
+    "optimizer": "AdamW",
+    "lr0": 1e-05,
+    "lrf": 0.1,
+    "warmup_epochs": 1.0,
+    "warmup_bias_lr": 0.0
+  },
+  "mosaic": 0.0,
+  "patience": 4,
+  "dataset_audit": {
+    "passed": true,
+    "class_names": [
+      "backpack",
+      "chair",
+      "book",
+      "bottle",
+      "cup",
+      "spoon",
+      "fork",
+      "bowl",
+      "clock",
+      "umbrella",
+      "bus",
+      "traffic light"
+    ],
+    "splits": {
+      "train": {
+        "images": 91,
+        "objects": 613,
+        "objects_per_class": {
+          "bowl": 74,
+          "chair": 110,
+          "fork": 40,
+          "clock": 23,
+          "spoon": 50,
+          "bottle": 96,
+          "traffic light": 39,
+          "book": 69,
+          "umbrella": 17,
+          "cup": 75,
+          "bus": 9,
+          "backpack": 11
+        },
+        "images_per_class": {
+          "chair": 38,
+          "bowl": 40,
+          "fork": 24,
+          "clock": 18,
+          "spoon": 26,
+          "bottle": 30,
+          "traffic light": 10,
+          "book": 24,
+          "umbrella": 7,
+          "cup": 40,
+          "bus": 6,
+          "backpack": 10
+        }
+      },
+      "val": {
+        "images": 27,
+        "objects": 247,
+        "objects_per_class": {
+          "bottle": 32,
+          "cup": 53,
+          "spoon": 19,
+          "bowl": 36,
+          "book": 34,
+          "chair": 29,
+          "clock": 7,
+          "fork": 13,
+          "traffic light": 5,
+          "umbrella": 7,
+          "bus": 8,
+          "backpack": 4
+        },
+        "images_per_class": {
+          "spoon": 9,
+          "bowl": 14,
+          "cup": 14,
+          "bottle": 12,
+          "book": 8,
+          "chair": 13,
+          "clock": 7,
+          "fork": 8,
+          "traffic light": 3,
+          "umbrella": 7,
+          "bus": 3,
+          "backpack": 3
+        }
+      },
+      "test": {
+        "images": 23,
+        "objects": 66,
+        "objects_per_class": {
+          "cup": 3,
+          "spoon": 4,
+          "bowl": 7,
+          "fork": 3,
+          "bottle": 5,
+          "chair": 7,
+          "book": 12,
+          "clock": 4,
+          "traffic light": 10,
+          "umbrella": 4,
+          "backpack": 5,
+          "bus": 2
+        },
+        "images_per_class": {
+          "spoon": 3,
+          "cup": 3,
+          "bowl": 5,
+          "fork": 3,
+          "bottle": 3,
+          "chair": 4,
+          "book": 3,
+          "clock": 3,
+          "traffic light": 3,
+          "umbrella": 3,
+          "backpack": 3,
+          "bus": 1
+        }
+      }
+    },
+    "dataset_fingerprint_sha256": "abb3344456883d54fd452809101782b353c94de25c3127646e05b0edc7a9732e",
+    "duplicate_content": 0,
+    "license_review": "human declarations checked; legal rights not independently verified",
+    "perceptual_duplicates_checked": false,
+    "quality_validated": false
+  },
+  "dataset_yaml_sha256": "24efcf57220f5ceb1224a5e3cb0b04296ea5110a83552fd50af8de7e573ccc0d",
+  "calibration": {
+    "selected_on": "validation_only",
+    "selection": "Balanced development objective: among non-regressing P/R and F1+0.02 with no newly-zero class, prioritize joint70, max min(P,R), F1, precision, smaller resolution. Amended BEFORE test, after development comparison."
+  },
+  "release_name": "YOLO26m91",
+  "license": "AGPL-3.0",
+  "weights_bytes": 44036761,
+  "best_epoch": 1,
+  "training_images": 91,
+  "evidence": [
+    "vision/reports/finetune117-summary.json",
+    "vision/reports/reproduction-union91.json",
+    "docs/entregas/VISION_RELATORIO.md"
+  ]
+}

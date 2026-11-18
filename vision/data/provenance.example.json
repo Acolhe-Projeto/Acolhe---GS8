@@ -3,6 +3,19 @@
   "license": "",
   "real_images": false,
   "split_method": "",
+  "images": [
+    {
+      "image_id": "REPLACE_WITH_ORIGINAL_ID",
+      "file": "images/train/REPLACE.jpg",
+      "split": "train",
+      "source_url": "",
+      "author": "",
+      "license": "",
+      "reviewed_at": "",
+      "privacy_reviewed": false,
+      "sha256": ""
+    }
+  ],
   "class_names": [
     "backpack",
     "chair",

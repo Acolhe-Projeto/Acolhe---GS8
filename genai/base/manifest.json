@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-11-17T01:37:24.546231+00:00",
+  "runtime_source": "genai/data/corpus.json",
+  "sha256": "44bc667247041dd06cd73d0a186df121e60de0df4be0971993b43c5df1c477c8",
+  "version": 3,
+  "documents": 8,
+  "language_chunks": 16,
+  "pedagogical_review": "pending",
+  "license": "CC-BY-4.0 (authorial team corpus)",
+  "guidance_views": 16,
+  "guidance_note": "Monolingual views of the SAME eight sources, not independent new knowledge chunks; pending pedagogical review."
+}

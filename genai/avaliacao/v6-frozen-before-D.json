@@ -1,0 +1,11 @@
+{
+  "frozen_at_utc": "2026-11-17T08:36:34.057850+00:00",
+  "decision": "Select chat_guidance_v6 based only on dev20 improvements. No further changes after D16 evaluation.",
+  "corpus_sha256": "44bc667247041dd06cd73d0a186df121e60de0df4be0971993b43c5df1c477c8",
+  "development_report": "qwen3b-v6-final-dev20.json",
+  "code_sha256": {
+    "service.py": "07bbe366593515f9789d20edfc488641b78cd04123be0c83b723d533999b7f68",
+    "compare.py": "d0936c63257cd88d441870a84c7ba023a0da9523830d2b1afa6dc00d2b9ce515",
+    "experiment.py": "43485ced3efecf8be67447310c17746ce0c68fd45e82e02d5c93f494161bc325"
+  }
+}

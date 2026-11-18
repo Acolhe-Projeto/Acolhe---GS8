@@ -1,5 +1,20 @@
 # Checklist de entregáveis por disciplina (GS 2026.2)
 
+## Merge de GenAI e Vision na `main` (18/11)
+A branch `feat/genai-vision` (Rony) foi mesclada na `main`, com 11 arquivos em conflito resolvidos sem perder trabalho de nenhum lado:
+- `app/server.py`: rotas do robô e da voz (Tomáz), `automation_path` (RPA) e a rota `/api/vision/predict` com bind exclusivo de porta no Windows (Rony).
+- `app.js`, `index.html`, `style.css`: merge por tokens dos arquivos minificados; cada adição dos dois lados foi conferida no resultado. O texto de privacidade junta os dois: sem armazenamento de áudio, e fotos analisadas só quando enviadas, sem salvar.
+- `sw.js`: cache `acolhe-v4` com os arquivos do robô e da visão.
+- `README.md`: estrutura do README do Rony, com a seção Maker, a Ficha Técnica, Big Data/RPA/DevSecOps e a URL pública; `git clone` aponta para a `main`.
+- `genai/data/corpus.json` e os testes de GenAI ficaram como o Rony congelou para a avaliação D16. As frases de cortesia do robô (`thanks`, `please`) foram para `robot/polite_corpus.json`.
+
+Defeitos que o merge expôs e foram corrigidos:
+- Falso positivo na conversa do robô: "Qual a cotação da bolsa hoje?" recuperava a lição da mochila ("Mochila é uma bolsa..."). O robô agora só usa documentos cujas palavras-chave coincidem com a pergunta, com teste de regressão.
+- Testes da visão dependiam de Pillow sem proteção: ganharam o mesmo `skipUnless` que o Rony já usava, e a CI instala `vision/requirements-data.txt` para que rodem no GitHub.
+- `vision/public_review.py` usava a fonte `C:/Windows/Fonts/arial.ttf` e quebrava no Linux; agora cai na fonte padrão do Pillow.
+
+Verificação do merge: 197 testes Python (com Pillow: todos aprovados, 1 ignorado por `ultralytics`) e 24 testes de interface aprovados; Gitleaks, Semgrep, build, testes dentro da imagem, smoke e Trivy (imagem e IaC) aprovados no `ci_local.sh`.
+
 ## Rodada de 18/11 (madrugada)
 - PR #3 (`Aksel+Ian`) foi mesclado na `main` (commit `30af065`). A `main` agora tem Big Data, RPA, DevSecOps e Maker, com conteúdo idêntico ao que passou na CI.
 - CI da `main` (run 44210859059): `test-and-build` verde. O job `deploy` parou em "Verify image is publicly pullable" porque o pacote GHCR da organização era privado (só um owner pode torná-lo público); o Azure não foi tocado. Correção: registro privado no Azure (ACR) com identidades gerenciadas, criado por Terraform; o deploy automático passa a enviar a imagem para lá.
@@ -64,7 +79,7 @@ Entrega: PDF único com links clicáveis (`GS_DevSecOps_Acolhe.pdf`), no portal 
 | Envio no portal | 👤 | |
 
 ## 4. Generative AI for Engineering (Rony)
-Situação conforme a branch `feat/genai-vision`, ainda não mesclada na `main`; o professor só vê o que estiver na branch padrão.
+Mesclado na `main` em 18/11; o que está abaixo vale para a branch padrão.
 
 | Item | Status | Situação |
 |---|---|---|
@@ -72,14 +87,14 @@ Situação conforme a branch `feat/genai-vision`, ainda não mesclada na `main`;
 | LLM local, geração fundamentada e recusa | 🟡 | Na branch: Qwen2.5 3B via Ollama, relatórios de execução e smoke do serviço. |
 | Comparação baseline × RAG × agente | 🟡 | Na branch: 7/16 contra 14/16 no conjunto D16, em `docs/entregas/GENAI_RELATORIO.md`. |
 | Vídeo e relatório | 🟡 | Vídeo https://youtu.be/csoYGnIeviM; relatório na branch. |
-| Merge na `main` | ❌ | Conflito em 7 arquivos com a `main` atual. |
+| Merge na `main` | ✅ | Mesclado em 18/11, com os conflitos resolvidos e a CI verde. |
 
 ## 5. Applied Computer Vision (Rony)
 | Item | Status | Situação |
 |---|---|---|
 | Treino customizado e inferência | 🟡 | Na branch: checkpoint YOLO avaliado, curvas PR e matriz de confusão, `vision/reproduce.py`. |
 | PDF e vídeo | 🟡 | `docs/ACOLHE_VISION.pdf` e https://youtu.be/8FPF_BkSh58 na branch. |
-| Merge na `main` | ❌ | Mesmo conflito da branch `feat/genai-vision`. |
+| Merge na `main` | ✅ | Mesclado em 18/11 junto com GenAI. |
 
 ## 6. Business Intelligence & Startup Development (Tomáz)
 | Item | Status | Situação |
@@ -95,6 +110,6 @@ Situação conforme a branch `feat/genai-vision`, ainda não mesclada na `main`;
 ## Para todos, antes de 19/11 às 23h55
 - ✅ PR da `Aksel+Ian` mesclado na `main` (PR #3).
 - ✅ Deploy automático pela `main` funcionando via Azure Container Registry (run 44218099076); produção roda a imagem do commit `e3f6b6a`.
-- Mesclar `feat/genai-vision` na `main`, resolvendo os 7 conflitos, para GenAI e Vision aparecerem na branch padrão.
+- ✅ `feat/genai-vision` mesclada na `main` (GenAI e Vision na branch padrão).
 - Manter o Azure, o pacote GHCR e os vídeos públicos até o fim da correção (cerca de 26/11).
 - Parar o Grafana local depois dos prints (`docker compose -f devsecops/monitoring/public/compose.yaml down`), para o app voltar a escalar a zero.

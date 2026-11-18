@@ -179,7 +179,13 @@ class VoiceAssistant:
             from genai.service import retrieve, tokens
             normalized = ' '.join(tokens(text))
             environmental = any(w in normalized for w in ('temperatura', 'umidade', 'sala', 'ambiente', 'calor', 'quente', 'frio', 'sensor'))
-            documents = [{'id': d['id'], 'text': d['pt']} for d in retrieve(text)]
+            from robot.polite import polite_documents
+            # Only documents whose curated keywords share a word with the question count as in scope:
+            # an incidental word in a lesson's text ("bolsa" in the backpack lesson) is not evidence
+            # that a question about the stock exchange is in scope.
+            asked = set(tokens(text))
+            topical = [d for d in retrieve(text) if asked & set(tokens(d['keywords']))]
+            documents = [{'id': d['id'], 'text': d['pt']} for d in topical + polite_documents(text)]
             in_scope = documents or environmental or any(word in normalized.split() for word in ('ola','oi','nome','acolhe','aprender','palavra','portugues','ensinar','atividade','fazer','ajudar','obrigado'))
             mode = 'local_llm_rag' if in_scope else 'refusal'
             requested_motor, motor_result = motor_command(text), None
