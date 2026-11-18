@@ -1,5 +1,7 @@
 # Fechamento dos experimentos noturnos — 17/11/2026
 
+Este documento preserva o resultado GenAI v6/D16 e a rodada noturna histórica de Vision. O Vision ativo foi atualizado depois para YOLO26m: treino com 91 fotos, inferência 960/confiança 0,25; o candidato com 117 fotos não foi promovido. Na validação ampliada, P72,7%/R71,5%; no teste básico reservado de 13 fotos, P71,2%/R72,2%. A meta foi observada nesse lote pequeno, sem comprovar generalização. Fonte atual: [VISION_FINETUNING.md](VISION_FINETUNING.md).
+
 ## GenAI
 
 Perfil ativo: Qwen2.5 3B Instruct Q4, protocolo `chat_guidance_v6`, corpus v3. Mantidos oito documentos e 16 campos bilíngues; as 16 visões de orientação não são novas fontes. Intenção de tradução respeita o idioma solicitado; perguntas de orientação recebem texto monolíngue. Preços ausentes são recusados pelo programa, igualmente nas três configurações. Avisos fixos de travessia e pessoa perdida aparecem separados da resposta do modelo.
@@ -29,7 +31,7 @@ Em v6, RAG/agente citaram a fonte esperada em 8/10 positivos, recusaram corretam
 
 Evidências em genai/avaliacao: qwen3b-v4-D16-night.json, qwen3b-v6-D16-night.json, D16-revisao-tecnica.json, v6-frozen-before-D.json e qwen3b-v6-final-dev20.json. Respostas brutas preservadas. Comparação combina prompt, guarda e forma de apresentar a fonte; não isola causalmente um único fator. Nenhuma alegação de revisão pedagógica concluída.
 
-## Vision
+## Vision — registro histórico anterior ao YOLO26m
 
 Quatro experimentos adicionais concluídos usando apenas as 25 imagens de treino já aprovadas. Nenhuma das 23 fotos de teste foi incorporada ao treino nem usada nesta decisão.
 
@@ -46,6 +48,6 @@ No conjunto já exposto de 23 imagens, o modelo ativo mantém P60,7% / R51,5%, 3
 
 Decisão e hashes: vision/reports/overnight-decision.json; quatro relatórios night-*.json preservam as grades de validação. Treinos em CPU; GPU AMD não foi prometida para o stack de Vision instalado.
 
-## Uso e validação
+## Uso e validação da rodada histórica
 
 Guia: docs/entregas/TESTAR_AMANHA.md. As fotos de ensaio permanecem locais em docs/qa/testar. Evidência HTTP real da versão atual: docs/evidencias/demo-overnight-http.json. A primeira resposta pode demorar para carregar o modelo. O protótipo pode errar; não usar detecção para decidir travessias.

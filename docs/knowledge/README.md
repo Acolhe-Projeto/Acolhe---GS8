@@ -61,7 +61,7 @@ A primeira detecção, antes das implementações, encontrou **82 arquivos supor
 3. **Complemento literal:** títulos Markdown, links e referências de caminho indexam também novos documentos. Arquivos não classificados pelo detector (notebooks, CSS, firmware, BPMN, CSVs, Dockerfiles e inicializador Windows) recebem nós de documento. Isso distingue indexação estrutural de revisão semântica; não afirma compreensão automática completa de cada formato.
 4. **Construção:** Graphify mescla estrutura e conceitos, agrupa comunidades, mede coesão e exporta JSON, relatório, HTML e Obsidian. `EXTRACTED` representa evidência explícita; `INFERRED` continua sendo inferência. Os números de comunidade desambiguam hubs de mesmo tema no vault.
 
-Os PDFs institucionais e arquivos de proposta citados como `../Desafio-FIAP-GS-CitizenTech 4ES.pdf`, `../GSFinal.md` e `../prompt-inicial.txt` **não estão neste clone**. O mapa usa os relatos do manual; não substitui a conferência do enunciado oficial. Fotografias/datasets, pesos, bancos de uso e credenciais não estão incluídos no conhecimento compartilhável.
+Os PDFs institucionais e arquivos de proposta citados como `../Desafio-FIAP-GS-CitizenTech 4ES.pdf`, `../GSFinal.md` e `../prompt-inicial.txt` **não estão neste clone**. O mapa usa os relatos do manual; não substitui a conferência do enunciado oficial. Datasets completos, pesos experimentais, bancos de uso e credenciais não estão incluídos no conhecimento compartilhável. O checkpoint Vision selecionado e três fotos creditadas acompanham a entrega em vision/release e vision/examples; seus cartões de distribuição são indexados pelo grafo.
 
 ## Integridade e custo
 

@@ -10,7 +10,7 @@ As rodadas anteriores já faziam transferência de aprendizado dos pesos oficiai
 
 Reunimos os conjuntos aprovados, mantendo o split de cada imagem. Cinco IDs repetidos foram comparados por pixels e rótulos antes da deduplicação. Resultado: 91 fotos de treino com 613 objetos, 27 de validação com 247 objetos e as 23 fotos históricas de teste com 66 objetos. Não houve novas fotos nem nova aprovação necessária. Os sete testes antigos continuam fora do treino. Fingerprint: abb33444…; reconstrução em reproduction-union91.json.
 
-Não há conteúdo binário duplicado entre splits. dHash64, distância até quatro e diferença de proporção abaixo de 5%, não apontou pares suspeitos. Isso é uma triagem heurística e não comprova ausência de cenas semelhantes. Fotos, pesos e logs de execução permanecem locais.
+Não há conteúdo binário duplicado entre splits. dHash64, distância até quatro e diferença de proporção abaixo de 5%, não apontou pares suspeitos. Isso é uma triagem heurística e não comprova ausência de cenas semelhantes. Datasets completos, pesos experimentais e logs permanecem locais. O checkpoint selecionado acompanha a entrega em vision/release, com SHA-256 idêntico ao avaliado, manifesto e licença; três fotografias creditadas estão em vision/examples. Não é necessário refazer o treino para testar o produto.
 
 ## Experimento registrado antes da comparação
 
@@ -88,7 +88,7 @@ Perfil implantado: YOLO26m customizado, confiança 0,25, inferência 960 e trein
 | Nano anterior, regressão 23 |60,7%|51,5%|0,5574|62.0%|
 | M atual, mesma regressão |68,3%|62,1%|0,6508|65,5%|
 
-A regressão atual teve41TP/19FP/25FN, frente a34TP/22FP/32FN. Algumas classes regrediram em recall; tabela completa no relatório. A meta de70%nas duas métricas ainda não foi atingida. Não alteramos os parâmetros após ler esse resultado.
+A regressão atual teve41TP/19FP/25FN, frente a34TP/22FP/32FN. Algumas classes regrediram em recall; tabela completa no relatório. A meta de70%nas duas métricas não foi atingida nesse conjunto de23fotos. Não alteramos os parâmetros após ler esse resultado.
 
 ![Comparação por épocas adicionais](../../vision/reports/ft91-training-history.png)
 
@@ -107,7 +107,7 @@ A fonte retornou HTTP429 e a coleta parou. A proposta inicial de48treino/12valid
 Revisão local: vision/data/public-review-simple-next-v2-20261117/REVIEW.md. Hash d6e54fb4421462f619227e537c320234f0b4af3524f1c8724a2b87d205825d22. A aprovação concreta foi recebida e a rodadaDabaixo foi executada; a regressão23não foi reutilizada para seleção ou teste.
 
 
-Validação de implementação: 122 testes automatizados Python passaram após as alterações. Inferência e GenAI foram verificados por HTTP real. As oito páginas do PDF final foram renderizadas e inspecionadas. A utilização do lote aprovado e os resultados finais estão registrados abaixo.
+Validação de implementação: 122 testes Python passaram antes do empacotamento; após incluir o checkpoint e a verificação de identidade da LLM, 124 testes Python e 14 Node passaram. Inferência e GenAI foram verificados por HTTP real. As oito páginas do PDF final foram renderizadas e inspecionadas. A utilização do lote aprovado e os resultados finais estão registrados abaixo.
 
 
 ## Encerramento da rodada D
@@ -124,4 +124,4 @@ As13fotos são amostra pequena, selecionada para objetos mais visíveis e podem 
 
 ![Validação38 e teste13 são conjuntos distintos](../../vision/reports/ft117-final-profile.png)
 
-Relatórios finais: finetune117-summary.json, ft117-reserved13.json, protocolo, decisão e históricoCSV. Perfil da aplicação:YOLO26m91,960,confiança0,25; mesmo hash3eff4c91…. Nenhuma foto ou peso foi publicado. Documentos, PDF e guias atualizados; vídeos e Teams ainda dependem da equipe.
+Relatórios finais: finetune117-summary.json, ft117-reserved13.json, protocolo, decisão e históricoCSV. Perfil da aplicação:YOLO26m91,960,confiança0,25; mesmo hash3eff4c91…. A entrega inclui o checkpoint escolhido em vision/release e três fotos creditadas em vision/examples; os datasets completos e pesos experimentais continuam locais. Documentos, PDF e guias atualizados; vídeos e Teams ainda dependem da equipe.

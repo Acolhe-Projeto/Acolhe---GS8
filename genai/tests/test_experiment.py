@@ -101,10 +101,31 @@ class ExperimentTests(unittest.TestCase):
         self.assertFalse(report["ready"])
         self.assertIn(service.DEFAULT_MODEL, report["action"])
 
+    def test_release_preflight_rejects_same_tag_with_changed_weights(self):
+        manifest = json.loads(Path(local.__file__).with_name("model_manifest.json").read_text(encoding="utf-8"))
+        for digest, expected_ready in [(manifest["ollama_manifest_digest"], True), ("different-weights", False)]:
+            with self.subTest(digest=digest):
+                response = MagicMock()
+                response.__enter__.return_value.read.return_value = json.dumps({"models": [{"name": manifest["model"], "digest": digest}]}).encode()
+                with patch("urllib.request.urlopen", return_value=response):
+                    report = local.check(manifest["model"], verify_release=True)
+                self.assertEqual(report["ready"], expected_ready)
+                self.assertEqual(report["expected_digest"], manifest["ollama_manifest_digest"])
+                if not expected_ready:
+                    self.assertIn("error", report)
+
     def test_twenty_cases_include_bilingual_refusals(self):
         rows = experiment.cases()
         self.assertEqual(len(rows), 20)
         self.assertEqual({r["language"] for r in rows if r["expected_refusal"]}, {"pt", "es"})
+
+    def test_release_preflight_fails_closed_if_manifest_is_invalid(self):
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = json.dumps({"models": [{"name": service.DEFAULT_MODEL, "digest": "present"}]}).encode()
+        with patch("urllib.request.urlopen", return_value=response), patch.object(Path, "read_text", return_value="{"):
+            report = local.check(verify_release=True)
+        self.assertFalse(report["ready"])
+        self.assertIn("error", report)
 
     def test_notebook_executes_report_reader_without_inference(self):
         with tempfile.TemporaryDirectory() as directory:

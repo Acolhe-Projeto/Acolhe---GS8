@@ -128,7 +128,13 @@ F1 de 0,7172; macrorecall de 86,0%. A meta conjunta de 70% foi observada nesse p
 
 A métrica suplementar da atividade encontrou ao menos um objeto primário correto em 12 das 13 imagens. Foi definida antes do teste e não substitui precisão/recall sobre os 72 objetos: não deve ser apresentada como acurácia global de 92,3%. Ainda há 21 falsos positivos e 20 perdas; livros e cadeiras são exemplos de cobertura limitada. Não houve validação pedagógica com crianças. Os dados são pequenos, selecionados e não comprovam desempenho geral.
 
-Evidências: finetune117-protocol.json, finetune117-decision.json, ft117-reserved13.json, finetune117-summary.json e reproduction-union117.json. O treino adicional e as comparações estão preservados, mesmo sem promoção. Não houve publicação de fotografias ou pesos.
+Evidências: finetune117-protocol.json, finetune117-decision.json, ft117-reserved13.json, finetune117-summary.json e reproduction-union117.json. O treino adicional e as comparações estão preservados, mesmo sem promoção. Os datasets completos e os pesos experimentais não integram a distribuição; o checkpoint escolhido e três exemplos acompanham a entrega descrita a seguir.
+
+## Arquivos para testar após clonar
+
+A branch feat/genai-vision inclui o mesmo checkpoint customizado avaliado em vision/release/best.pt, com 44.036.761 bytes e SHA-256 3eff4c911170b189d5904b52adde2390f877f0d105a95c092a4b3496653c3bd5. Manifesto e licença AGPL-3.0 acompanham o arquivo. O serviço carrega essa versão e verifica hash, classes e perfil de inferência; não é necessário treinar novamente para usá-la.
+
+As três fotos de demonstração estão em vision/examples: 01-onibus.jpg, 02-mesa-garfo-tigela.jpg e 03-copo-cadeira.jpg. Autoria, fontes, licenças e hashes acompanham as imagens. São exemplos já examinados, não um novo teste independente. Datasets completos e checkpoints experimentais permanecem locais. Para instalar dependências e abrir o portal, seguir scripts/preparar-demo.ps1, scripts/iniciar-demo.ps1 e o guia COMO_USAR_E_GRAVAR.md.
 
 ## Conclusão
 

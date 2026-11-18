@@ -6,7 +6,7 @@ Branch `feat/genai-vision`, a partir da base `4a2d00f`. Consulte o [PRD com diag
 
 GenAI usa **qwen2.5:3b-instruct** (~1,9 GB de pesos), dentro do teto de 4B solicitado. É uma LLM local real. A especialização foi feita por agente, sem LoRA; a revisão técnica exploratória do D16 contou 14/16 acertos em RAG/agente. [Relatório e limites](docs/entregas/GENAI_RELATORIO.md).
 
-Vision usa **YOLO26m91**, inferência 960 e confiança 0,25, cerca de um segundo nos ensaios locais. O fine-tuning com117fotos foi comparado e não foi promovido. Na validação38, o perfil ativo teve P72,7% / R71,5%; no novo teste básico reservado13, **P71,2% / R72,2%**, observando a meta conjunta nesse pequeno lote. O diagnóstico complexo anterior23 continua P68,3% / R62,1%, sem nova avaliação; conjuntos diferentes não medem evolução diretamente. [Plano e comparação](docs/entregas/VISION_FINETUNING.md), [guiaVision](vision/README.md) e [PDF](output/pdf/ACOLHE_VISION.pdf). FonteCOCO e amostra pequena limitam generalização. Fotos/pesos ficam locais; o lote50 foi aprovado e processado.
+Vision usa **YOLO26m91**, inferência 960 e confiança 0,25, cerca de um segundo nos ensaios locais. O fine-tuning com117fotos foi comparado e não foi promovido. Na validação38, o perfil ativo teve P72,7% / R71,5%; no novo teste básico reservado13, **P71,2% / R72,2%**, observando a meta conjunta nesse pequeno lote. O diagnóstico complexo anterior23 continua P68,3% / R62,1%, sem nova avaliação; conjuntos diferentes não medem evolução diretamente. [Plano e comparação](docs/entregas/VISION_FINETUNING.md), [guiaVision](vision/README.md) e [PDF](output/pdf/ACOLHE_VISION.pdf). FonteCOCO e amostra pequena limitam generalização. O mesmo checkpoint treinado está em vision/release (44 MB), e três fotos com créditos estão em vision/examples. Datasets completos e pesos experimentais continuam locais.
 
 Para abrir e gravar: [guia rápido e roteiro de90 segundos](docs/entregas/COMO_USAR_E_GRAVAR.md).
 
@@ -59,6 +59,21 @@ Português para recomeçar. Protótipo acadêmico da Global Solution FIAP 2026.2
 
 
 
+## Testar GenAI e Vision como professor
+
+O clone da branch `feat/genai-vision` inclui o **mesmo checkpoint YOLO26m91 avaliado**, com manifesto e licença, e **três fotos de demonstração**. Não é necessário treinar Vision. GenAI usa o mesmo Qwen2.5 3B, baixado uma vez pelo Ollama e conferido por digest; corpus, prompts e agente acompanham o código. Não houve fine-tuning dos pesos da LLM.
+
+Com Python 3.12 e Ollama instalado e aberto, execute no PowerShell:
+
+```powershell
+git clone --branch feat/genai-vision https://github.com/Acolhe-Projeto/Acolhe---GS8.git
+cd Acolhe---GS8
+.\scripts\preparar-demo.ps1
+.\scripts\iniciar-demo.ps1
+```
+
+A preparação precisa de internet para dependências e a LLM (~1,9 GB de pesos, além das bibliotecas). Abra o endereço impresso. Em **Caminho seguro**, pergunte “Como atravessar a rua com segurança?”. Em **Para educadores → Objetos que ensinam**, envie `vision/examples/01-onibus.jpg`, `02-mesa-garfo-tigela.jpg` e `03-copo-cadeira.jpg`. [Passo a passo e roteiro](docs/entregas/COMO_USAR_E_GRAVAR.md), [imagens e créditos](vision/examples/README.md), [checkpoint e hash](vision/release/README.md).
+
 ## Executar localmente
 
 
@@ -77,7 +92,7 @@ python -B -m app.server
 
 
 
-Abra http://127.0.0.1:8080. No Windows, `Iniciar-Acolhe.cmd` executa o mesmo servidor. Encerre com Ctrl+C. Não é necessário instalar dependências para o MVP padrão ou sua suíte Python. Não abra index.html diretamente, pois a aplicação precisa da API.
+Abra http://127.0.0.1:8080. No Windows, `Iniciar-Acolhe.cmd` abre a demonstração completa com verificação dos modelos; execute scripts/preparar-demo.ps1 antes do primeiro uso. Encerre com Ctrl+C. Não é necessário instalar dependências para o MVP padrão ou sua suíte Python. Não abra index.html diretamente, pois a aplicação precisa da API.
 
 
 

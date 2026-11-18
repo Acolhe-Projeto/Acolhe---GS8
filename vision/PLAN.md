@@ -15,10 +15,10 @@
 - Pesquisa de capacidade e treino customizado M:5épocas; continuação M117:7épocas. Taxas/AdamW explícitos, hashes e épocas máximas/executadas separados.
 - Seleção pela validação e confiança refinada em passos0,01 antes do teste. Decisão congelada, modelo anterior M91 mantido.
 - Teste13 executado uma vez:52TP21FP20FN. Referência e selecionado são idênticos; não houve falsa evidência pareada nem retunagem após o teste.
-- API, duas fotos do roteiro, GenAI, notebook e latência verificados.122testes passaram; PDF e PRDs atualizados.
+- API, GenAI, notebook e latência verificados. Na entrega, o mesmo checkpoint e três fotos acompanham o clone; os três uploads, PT/ES e recusa foram verificados por HTTP em uma cópia isolada dos arquivos do Git. Passaram 124 testes Python e 14 Node; PDF e PRDs atualizados. Evidência: docs/evidencias/release-delivery-http.json.
 
 ## Limites e próximos passos
 
-Não chamar o resultado de ausência de erros. O13é pequeno e básico; fonteCOCO pode sobrepor pré-treino. O23mais complexo continua pior. Livros/cadeiras e falsos positivos ainda precisam de atenção. Há revisão pedagógica e nova avaliação em cenas reais de uso a fazer. Fotos/pesos não foram publicados.
+Não chamar o resultado de ausência de erros. O13é pequeno e básico; fonteCOCO pode sobrepor pré-treino. O23mais complexo continua pior. Livros/cadeiras e falsos positivos ainda precisam de atenção. Há revisão pedagógica e nova avaliação em cenas reais de uso a fazer. A entrega inclui apenas o checkpoint escolhido e três fotos creditadas; datasets completos e pesos experimentais continuam locais.
 
 O lote50 já foi aprovado e usado na comparação; não há nova aprovação de dados pendente desta rodada. Restam revisão final da equipe, vídeos reais, URLs e envio no Teams. Não alterar confiança com base no teste já examinado.

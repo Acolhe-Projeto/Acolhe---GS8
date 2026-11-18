@@ -8,13 +8,24 @@ O fine-tuning adicional com 117 fotos concluiu sete épocas, mas não superou o 
 
 Nas 23 fotos mais complexas anteriores, o mesmo M91 teve P68,3% / R62,1%; elas não foram reavaliadas na rodada final. Conjuntos distintos não são evolução direta do modelo. quality_validated=false; ainda há erros e classes fracas. A métrica suplementar de 12/13 imagens com um alvo primário correto não é precisão/recall global.
 
-[Plano completo](../docs/entregas/VISION_FINETUNING.md), [decisão final antes do teste](reports/finetune117-decision.json), [teste reservado com dados brutos](reports/ft117-reserved13.json), [resumo](reports/finetune117-summary.json) e [PDF](../output/pdf/ACOLHE_VISION.pdf). Pesos e fotos permanecem locais. Checkpoint ativo: 3eff4c911170b189d5904b52adde2390f877f0d105a95c092a4b3496653c3bd5. Nano anterior em artifacts-yolo26n-before-ft91; candidato adicional em artifacts-ft117-medium, sem implantação.
+[Plano completo](../docs/entregas/VISION_FINETUNING.md), [decisão final antes do teste](reports/finetune117-decision.json), [teste reservado com dados brutos](reports/ft117-reserved13.json), [resumo](reports/finetune117-summary.json) e [PDF](../output/pdf/ACOLHE_VISION.pdf). O mesmo checkpoint avaliado acompanha o clone em [release/best.pt](release/best.pt), com [manifesto e licença](release/README.md); três fotos com créditos estão em [examples](examples/README.md). Checkpoint ativo: 3eff4c911170b189d5904b52adde2390f877f0d105a95c092a4b3496653c3bd5. Datasets completos e checkpoints experimentais permanecem locais.
+
+## Testar depois de clonar, sem treinar
+
+Com Python 3.12 e Ollama instalado e aberto, execute na raiz:
+
+```powershell
+.\scripts\preparar-demo.ps1
+.\scripts\iniciar-demo.ps1
+```
+
+A preparação instala dependências e baixa a LLM uma vez. Vision já vem com os pesos customizados; o serviço usa `vision/release`, não baixa um detector genérico. No portal, envie as três fotos de `vision/examples`. Não é necessário reconstruir o dataset para usar o modelo entregue.
 
 ## Usar nesta máquina
 
-Abra Ollama e execute scripts/iniciar-demo.ps1 na raiz. Use o endereço que o terminal imprimir, pois a porta é escolhida automaticamente. Em Para educadores → Objetos que ensinam, selecione PNG/JPEG até 8 MiB e clique Reconhecer objetos. O aplicativo não liga câmera, não grava o upload nem decide travessias. As duas fotos do roteiro estão em docs/qa/testar. A demonstração HTTP local teve mediana de 0,955 segundo em cinco repetições do ônibus; não é benchmark geral.
+Abra Ollama e execute scripts/iniciar-demo.ps1 na raiz. Use o endereço que o terminal imprimir, pois a porta é escolhida automaticamente. Em Para educadores → Objetos que ensinam, selecione PNG/JPEG até 8 MiB e clique Reconhecer objetos. O aplicativo não liga câmera, não grava o upload nem decide travessias. As três fotos do roteiro estão em vision/examples. A demonstração HTTP local teve mediana de 0,955 segundo em cinco repetições do ônibus; não é benchmark geral.
 
-## Reproduzir em uma clone nova
+## Refazer treinamento e avaliação (opcional)
 
 Instale Python 3.12, PyTorch adequado à máquina e vision/requirements.txt. A versão usada foi Ultralytics 8.4.215 e PyTorch 2.15.0+cpu. Na raiz, usando destinos que ainda não existam:
 
@@ -25,7 +36,7 @@ python -m vision.train --dataset vision/data/reproduzido91/dataset.yaml --proven
 python -m vision.calibrate --artifacts vision/artifacts --dataset vision/data/reproduzido91/dataset.yaml --provenance vision/data/reproduzido91/provenance.json --imgsz 960 --confidence 0.25 --output vision/reports/NOVO-calibration.json --activate
 ```
 
-A confiança explícita reproduz o perfil decidido no desenvolvimento, não seleciona pela avaliação de teste. Para uma nova seleção, repita o protocolo com validação e congele a decisão antes do teste. Variações de ambiente podem alterar os resultados; confira versões e hashes. Somente clonar não habilita o detector: os dados precisam ser reconstruídos e os pesos treinados localmente. Respeite AGPL 3.0/Enterprise e licenças individuais das fotos. Se a fonte limitar requisições, aguarde ou use cache autorizado com --cache; não substitua hashes.
+A confiança explícita reproduz o perfil decidido no desenvolvimento, não seleciona pela avaliação de teste. Para uma nova seleção, repita o protocolo com validação e congele a decisão antes do teste. Variações de ambiente podem alterar os resultados; confira versões e hashes. Estes comandos geram novos artefatos em vision/artifacts; não substituem automaticamente o checkpoint entregue em vision/release. Para apenas testar, use a seção anterior. Respeite AGPL 3.0/Enterprise e licenças individuais das fotos. Se a fonte limitar requisições, aguarde ou use cache autorizado com --cache; não substitua hashes.
 
 ## Comparar continuação de checkpoints
 

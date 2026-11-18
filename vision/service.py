@@ -5,8 +5,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).parent
-MODEL = ROOT / "artifacts/best.pt"
-MANIFEST = ROOT / "artifacts/model_manifest.json"
+MODEL = ROOT / "release/best.pt"
+MANIFEST = ROOT / "release/model_manifest.json"
 LABELS = {en: {"pt": pt, "es": es} for en, pt, es in [
  ("backpack","mochila","mochila"),("chair","cadeira","silla"),("book","livro","libro"),
  ("bottle","garrafa","botella"),("cup","copo","vaso"),("spoon","colher","cuchara"),

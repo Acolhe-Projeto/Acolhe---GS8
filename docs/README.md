@@ -5,6 +5,10 @@
 - [PRD GenAI/Vision](PRD_GENAI_VISION.md): escopo desta branch, diagramas, lacunas e critérios de aceite.
 - [Validação GenAI/Vision](VALIDACAO_GENAI_VISION.md): execução e limites das evidências desta branch.
 - [Conhecimento Graphify](knowledge/README.md): mapa de todas as disciplinas, cobertura, consultas e vault Obsidian.
+- [Checklist da entrega](ENTREGA_CHECKLIST.md): critérios oficiais e pendências de revisão, vídeos e envio.
+- [Usar e gravar](entregas/COMO_USAR_E_GRAVAR.md): preparação após clonar, frases, três fotos incluídas e roteiro curto.
+- [Relatório GenAI](entregas/GENAI_RELATORIO.md): Qwen3B, comparação baseline/RAG/agente e limites.
+- [Resultados Vision](entregas/VISION_FINETUNING.md): modelo mantido, comparação 91/117 fotos e teste reservado.
 
 - `manual_acolhe.pdf`: manual diagramado com capa, logo original, equipe, sumário navegável, onze capítulos e páginas numeradas.
 - `manual_acolhe.md`: fonte editável do conteúdo do manual.
@@ -29,6 +33,6 @@ O DOCX não foi produzido nesta execução. A fonte editável disponível é Mar
 
 ## Publicação e cuidado com os arquivos
 
-Não versionar `docs/.deps/` e `docs/qa/`. Não incluir bancos ou evidências com dados pessoais reais. Antes de publicar, conferir as permissões e os requisitos da disciplina.
+Não versionar `docs/.deps/` e `docs/qa/`. O `.gitignore` exclui essas pastas; o `.dockerignore` também as exclui do contexto de build, junto com datasets locais, bancos e pesos experimentais. A entrega tem exceções explícitas para o checkpoint escolhido em vision/release e as três fotos creditadas em vision/examples. Configuração de acesso remoto e cadastro em serviços externos não fazem parte da documentação do projeto e devem ficar fora do clone. Não incluir bancos ou evidências com dados pessoais reais. Antes de publicar, conferir as permissões e os requisitos da disciplina.
 
 O manual é apoio geral. Maker exige documentação oficial pelo GitHub, não substituída pelo PDF. Big Data, Visão e RPA exigem seus relatórios e evidências próprios. O pitch BI exige vídeo no YouTube como não listado, com link testado em janela anônima e MVP na URL pública.

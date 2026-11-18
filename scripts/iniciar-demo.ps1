@@ -18,9 +18,13 @@ $env:HOST = '127.0.0.1'
 $env:PORT = [string]$Porta
 New-Item -ItemType Directory -Force -Path 'docs/qa' | Out-Null
 $env:ACOLHE_DB = Join-Path (Get-Location) 'docs\qa\demonstracao.db'
-& $demoPython -B -m genai.local
+& $demoPython -B -m genai.local --verify-release
 if ($LASTEXITCODE -ne 0) {
-    throw 'Abra o Ollama e confira o modelo: ollama pull qwen2.5:3b-instruct'
+    throw 'Abra o Ollama e confira o modelo e digest registrados em genai/model_manifest.json.'
+}
+& $demoPython -B -c "import json; from vision.service import status; result=status(); print(json.dumps(result, ensure_ascii=False)); raise SystemExit(0 if result['ready'] else 1)"
+if ($LASTEXITCODE -ne 0) {
+    throw 'Vision indisponivel. Execute scripts/preparar-demo.ps1 e confira vision/release.'
 }
 Write-Host "Abra http://127.0.0.1:$Porta - Ctrl+C encerra o servidor."
 & $demoPython -B -m app.server

@@ -27,7 +27,7 @@ O PDF usa a expressão treinar LLM local no objetivo; o item G05 admite explicit
 |---|---|---|
 | Treino customizado | Objetivo oficial | YOLO26m ativo, 91 treino / 27 validação; cinco épocas concluídas de máximo 12; checkpoint escolhido na primeira |
 | Comparação de fine-tuning | Evidência adicional | Checkpoints nano antigo/recente e controle, nove épocas cada; fase M registrada separadamente |
-| GitHub | Entregável | Código, metadados, rótulos e comandos; fotos e pesos locais |
+| GitHub | Entregável | Código, metadados, rótulos e comandos; mesmo checkpoint Vision em vision/release e três fotos com créditos em vision/examples; Qwen baixado e conferido por digest |
 | PDF específico | Até 5 pontos | Atualizado: resumo 250 palavras, objetivo 50, equipe, método, ferramentas, resultados e conclusão |
 | Vídeo funcionando | Até 5 pontos | Roteiro e API reais; gravação/publicação e URL pendentes |
 
@@ -40,7 +40,7 @@ A decisão foi congelada antes da regressão; a emenda do objetivo balanceado ve
 1. Revisar nomes/RMs, conteúdo, gabaritos/respostas e relatórios com a equipe. Fichas de revisão humana não foram preenchidas pelo agente.
 2. Gravar os dois vídeos, revisar imagem/voz/créditos, publicar no destino da equipe e inserir URLs reais. Regenerar PDF se alterar seu conteúdo.
 3. Conferir acesso sem login e enviar em cada Teams até o prazo. Guardar comprovante.
-4. Perseguir qualidade com dados mais claros e nova avaliação reservada. Lote futuro de 50 fotos proposto: 26 treino / 11 validação / 13 teste, aprovado e usado no experimento 117; candidato não promovido. Não reutilizar a autorização anterior para essas fotos. Critérios/limites em vision/reports/simple-next-proposal.json.
+4. Para uma próxima rodada, ampliar diversidade de cenas e reservar nova avaliação antes de ajustar o modelo. O lote de 50 fotos desta rodada já recebeu aprovação específica e foi usado: 26 treino / 11 validação / 13 teste, no experimento 117; candidato não promovido. Não há nova aprovação pendente desse lote. Critérios/limites em vision/reports/simple-next-proposal.json.
 
 As aprovações dos lotes anteriores e a escrita GitHub estão resolvidas; não solicitar novamente o mesmo uso. Os ensaios locais atuais funcionam. O sistema não gravou/publicou vídeos nem enviou entregas ao Teams.
 

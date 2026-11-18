@@ -36,17 +36,31 @@ A modalidade baseline recebe a mesma tarefa e guardas de entrada, sem documentos
 
 | Fonte | Formato | Licença declarada | Trechos |
 |---|---|---|---:|
-| Conteúdo autoral Acolhe v2 PT/ES | JSON UTF-8, IDs e pares de tradução | CC-BY4.0; revisão pedagógica pendente | 8 |
+| Conteúdo autoral Acolhe v3 PT/ES | JSON UTF-8, IDs e pares de tradução | CC-BY4.0; revisão pedagógica pendente | 8 |
 
-Arquivo canônico: genai/data/corpus.json. SHA-256: 6b4e5c617d41577d9d8ba6958f331a5d8a444346a0de803184760bc21f3bb092. Os oito IDs são crossing, lost, backpack, chair, bottle, bus, greeting, book. Fonte/versão/licença constam em cada trecho; a declaração autoral não é parecer pedagógico. O índice genai/base/ aponta para a fonte canônica.
+Arquivo canônico: genai/data/corpus.json. SHA-256: 44bc667247041dd06cd73d0a186df121e60de0df4be0971993b43c5df1c477c8. Os oito IDs são crossing, lost, backpack, chair, bottle, bus, greeting, book. Fonte/versão/licença constam em cada trecho; a declaração autoral não é parecer pedagógico. O índice genai/base/ aponta para a fonte canônica.
 
 ## Busca e limiar
 
-Recall@1 e recall@3 no desenvolvimento:16/16 =1,000. O limiar2,0 foi justificado por grade somente no desenvolvimento; é o maior corte testado que manteve cobertura completa antes de medir o holdoutC. A busca usa IDF e bônus explícito de pares PT/ES. Geração recebe top1 para evitar mistura de microlições, enquanto recall@3 é medido separadamente. A justificativa, candidatos e hash estão em genai/avaliacao/limiar.json. O resultado de desenvolvimento reflete ajustes feitos sobre erros desse próprio conjunto, portanto não é independente.
+Recall@1 e recall@3 no desenvolvimento:16/16 =1,000. O limiar2,0 foi reavaliado no corpus v3 usando somente desenvolvimento. A busca usa IDF e bônus explícito de pares PT/ES. Geração recebe top1 para evitar mistura de microlições, enquanto recall@3 é medido separadamente. A justificativa, candidatos e hash atuais estão em genai/avaliacao/limiar.json; a grade do corpus v2 fica em limiar-corpus-v2.json. O resultado de desenvolvimento reflete ajustes feitos sobre erros desse próprio conjunto, portanto não é independente.
 
-O holdoutC tem12 perguntas manuais, oito positivas e quatro negativas, congeladas antes da inferência v4. Não houve ajuste dos prompts/corpus após observar C. A rodada GPU repete o protocolo congelado já medido em CPU; não é uma nova amostra independente. A e B são diagnósticos de versões anteriores preservados no histórico.
+## Placar atual: protocolo v6 no D16
 
-## Placar: mesmo modelo nas três configurações
+O D16 contém 16 casos autorais congelados antes dos ajustes da versão v6: dez positivos e seis negativos. A configuração foi escolhida pelo desenvolvimento antes da leitura dos resultados D16; nenhum ajuste foi feito após essa leitura. A correção semântica abaixo é revisão técnica exploratória do agente, com revisão humana pendente.
+
+| Configuração | Respostas corretas / 16 | Contratos válidos / 16 | Fonte esperada / 10 positivos | Média s |
+|---|---:|---:|---:|---:|
+| Baseline sem contexto | 7 (43,8%) | 16 | N/A | 0,176 |
+| RAG | 14 (87,5%) | 16 | 8 | 0,265 |
+| Agente com recuperação | 14 (87,5%) | 16 | 8 | 0,433 |
+
+RAG e agente recusaram os seis casos negativos. Persistem duas falhas de recuperação: d02 recupera ônibus em vez de ajuda a pessoa perdida; d08 recupera garrafa em vez de cadeira. O agente não superou RAG, que permanece na interface. Os tempos são médias da rodada registrada e não incluem a primeira carga do modelo. Não são garantia de desempenho em outras máquinas.
+
+Evidências: genai/avaliacao/qwen3b-v6-D16-night.json, D16-revisao-tecnica.json e v6-frozen-before-D.json. As correções de erros e o contraste v4/v6 estão em [RESULTADOS_NOTURNOS.md](RESULTADOS_NOTURNOS.md). Os casos são pequenos e autorais; estes resultados não comprovam generalização nem eficácia pedagógica.
+
+## Histórico v4: mesmo modelo no desenvolvimento e holdout C12
+
+As tabelas e análises desta seção e da seção de erros abaixo pertencem à versão v4. O holdout C tem 12 perguntas manuais, oito positivas e quatro negativas, congeladas antes daquela inferência. Dentro daquela rodada não houve ajustes após observar C. A rodada GPU repetiu o protocolo então congelado já medido em CPU; não era uma nova amostra independente. A e B também são históricos. O resultado atual é o D16/v6 acima.
 
 Contratos incluem respostas e recusas do host. IDs válidos são contados somente entre saídas geradas, não como prova de factualidade. Acerto/flags da revisão técnica abaixo são julgamentos exploratórios do agente após ler as saídas, não avaliação humana cega ou validação populacional. O gabarito exige o fato/ação principal, idioma correto, recusa pertinente e ausência de detalhe concreto não sustentado. Respostas parciais/tautológicas e omissões de segurança foram contadas como falhas.
 
@@ -61,9 +75,9 @@ Contratos incluem respostas e recusas do host. IDs válidos são contados soment
 
 Interpretação: RAG e agente corrigiram traduções e falsas recusas frequentes do baseline, mas não ficaram perfeitos. No desenvolvimento, a revisão técnica contou5/20 acertos no baseline e16/20 em RAG/agente. No holdout,4/12,8/12 e9/12. Flags de conteúdo não sustentado caíram de4 para1/0 no desenvolvimento; no holdout foram2/2/1. Portanto, não há redução uniforme de todas as falhas pelo RAG no conjunto novo; o agente acertou a recusa de tarifa ausente que o RAG tratou mal. As planilhas JSON trazem cada julgamento, gabarito, saída e justificativa para contestação/revisão humana. Não apresentar esses números como acurácia humana certificada.
 
-Arquivos finais: genai/avaliacao/qwen3b-v4-gpu-dev20.json e qwen3b-v4-gpu-holdout12.json. Revisão técnica: revisao_tecnica_v4.json; fichas .review.md humanas continuam sem pontuações inventadas. Não usar números das versões0.5B/1.5B como se fossem do modelo final.
+Arquivos históricos v4: genai/avaliacao/qwen3b-v4-gpu-dev20.json e qwen3b-v4-gpu-holdout12.json. Revisão técnica: revisao_tecnica_v4.json; fichas .review.md humanas continuam sem pontuações inventadas. Não usar números das versões anteriores como se fossem da versão ativa v6.
 
-## Cinco erros reais, causa e correção proposta
+## Histórico: erros reais, causa e correção proposta na v4
 
 | Caso/versão | Evidência real | Diagnóstico | Correção e estado |
 |---|---|---|---|
@@ -93,7 +107,7 @@ $env:ACOLHE_OLLAMA_NUM_GPU="-1"
 $env:ACOLHE_OLLAMA_KEEP_ALIVE="2m"
 python -B -m genai.local
 python -B -m genai.experiment --dataset genai/avaliacao/teste_dev.json
-python -B -m genai.experiment --dataset genai/avaliacao/teste_independente_C.json
+python -B -m genai.experiment --dataset genai/avaliacao/teste_independente_D.json
 python -B -m app.server
 ```
 

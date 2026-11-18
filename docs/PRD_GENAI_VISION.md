@@ -1,6 +1,6 @@
 # PRD — GenAI e Computer Vision
 
-Versão 4, 17/11/2026. Branch feat/genai-vision. Esta versão descreve o estado atual; experimentos anteriores estão no histórico e nos relatórios. Fonte oficial: desafio FIAP CitizenTech, páginas 24, 29–31 e 44. Pesos e pendências em ENTREGA_CHECKLIST.md.
+Versão 5, 17/11/2026. Branch feat/genai-vision. Esta versão descreve o estado atual e a entrega reproduzível; experimentos anteriores estão no histórico e nos relatórios. Fonte oficial: desafio FIAP CitizenTech, páginas 24, 29–31 e 44. Pesos e pendências em ENTREGA_CHECKLIST.md.
 
 ## Problema e escopo
 
@@ -8,7 +8,7 @@ O Acolhe apoia acolhimento linguístico PT/ES e orientações educativas de mobi
 
 ## Jornadas
 
-1. Abrir Ollama e executar scripts/iniciar-demo.ps1; acessar a porta indicada.
+1. Na primeira execução, instalar Python 3.12 e Ollama, abrir Ollama e executar scripts/preparar-demo.ps1. O clone inclui o mesmo checkpoint Vision e três fotos; a preparação baixa a LLM e confere seu digest. Depois, executar scripts/iniciar-demo.ps1 e acessar a porta indicada.
 2. Em Caminho seguro, perguntar em PT/ES e conferir resposta, fonte e avisos. Sem informação, receber recusa explícita.
 3. Em Para educadores → Objetos que ensinam, selecionar JPEG/PNG de até 8 MiB e reconhecer nomes PT/ES, caixas e confiança. Não há câmera automática.
 4. Gravar demonstrações reais com entregas/TESTAR_AMANHA.md ou COMO_USAR_E_GRAVAR.md, incluindo limitações.
@@ -89,7 +89,7 @@ HTTP real: ônibus e três utensílios reconhecidos, sem armazenamento. Mediana 
 - vision/reports/finetune91-decision.json e ft91-medium-regression23.json: decisão e dados reais.
 - docs/evidencias/finetune91-http.json: configuração e chamadas reais.
 - output/pdf/ACOLHE_VISION.pdf: relatório de entrega atualizado.
-- entregas/TESTAR_AMANHA.md: frases e fotos locais de ensaio.
+- entregas/TESTAR_AMANHA.md: frases e as três fotos distribuídas em vision/examples.
 
 
 ## Resultado final da expansão aprovada
@@ -99,3 +99,11 @@ O lote50 foi aprovado e compôs117treino/38validação/13teste, sem qualquer ima
 A decisão foi congelada antes do teste13. Uma avaliação única registrou52TP21FP20FN: precisão71,2%,recall72,2%,F10,7172; meta observada nesse pequeno conjunto básico. Macrorecall86,0%;12/13imagens tiveram ao menos um alvo primário correto, indicador suplementar que NÃO substituiP/Rglobais. Não é ganho causado pelo treino117 e não comprova generalização; fonteCOCO pode sobrepor pré-treino. As23complexas continuam com68,3%P/62,1%R, sem nova avaliação.
 
 Não há aprovação de fotos pendente desta rodada. Restam revisão da equipe, vídeos, links reais e envio acadêmico. Perfil/erros/fontes completos em entregas/VISION_FINETUNING.md, vision/reports/finetune117-summary.json e ft117-reserved13.json. quality_validated=false permanece correto.
+
+## Aceite da distribuição para avaliação
+
+- O clone contém o checkpoint selecionado em vision/release, manifesto, licença e três fotos com créditos em vision/examples.
+- scripts/preparar-demo.ps1 instala dependências e baixa a LLM; scripts/iniciar-demo.ps1 exige o digest Qwen avaliado e a verificação de hash/classes do detector. Iniciar-Acolhe.cmd usa esse mesmo fluxo.
+- O professor consegue inferir sem reconstruir o dataset ou treinar novamente. Uma cópia isolada do conteúdo preparado para Git passou nos três uploads e nas perguntas PT/ES/recusa; evidência em evidencias/release-delivery-http.json.
+- Internet é necessária para instalar dependências e baixar o Qwen na preparação. Isso não altera os pesos do detector nem constitui treinamento dos pesos da LLM.
+- Datasets completos, artefatos experimentais e configuração de acesso remoto permanecem fora da distribuição.

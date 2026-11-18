@@ -542,7 +542,7 @@
       "file_type": "concept",
       "source_file": "Iniciar-Acolhe.cmd",
       "source_location": null,
-      "description": "Muda para pasta do script e executa python -m app.server."
+      "description": "Starts the full checked demo through scripts/iniciar-demo.ps1 in the checkout directory, using .venv, pinned Qwen digest and verified Vision release."
     },
     {
       "id": "dockerignore_document",
@@ -558,7 +558,7 @@
       "file_type": "concept",
       "source_file": ".dockerignore",
       "source_location": null,
-      "description": "Exclui git, env, caches, venv e arquivos de artefatos do contexto."
+      "description": "Excludes private QA, raw datasets, experimental weights and secrets from Docker context; explicitly includes only the reviewed vision/release/best.pt."
     },
     {
       "id": "gitattributes_document",
@@ -574,7 +574,7 @@
       "file_type": "concept",
       "source_file": ".gitattributes",
       "source_location": null,
-      "description": "Normalização automática de texto, PDF e imagens binários."
+      "description": "Git treats PDF, images and checkpoint .pt as binary; Windows launcher .cmd checks out with CRLF."
     },
     {
       "id": "devsecops_terraform_gitignore_document",
@@ -886,7 +886,7 @@
       "file_type": "concept",
       "source_file": "docs/VALIDACAO_GENAI_VISION.md",
       "source_location": "L1",
-      "description": "Final112Python and14Node verification, actual HTTP, exclusive Windows listener/free-port correction; historical evidence labelled."
+      "description": "124 Python and 14 Node tests passed. Isolated Git export verified exact YOLO26m91 checkpoint, three example uploads, Qwen3B PT/ES and refusal. Dependency installation reused this workstation, not a second physical computer. Prior stages historical."
     },
     {
       "id": "final_vision_requirements_txt",
@@ -902,7 +902,7 @@
       "file_type": "concept",
       "source_file": ".gitignore",
       "source_location": "L1",
-      "description": "Secrets/runtime databases, raw photos/weights, QA and bothUltralytics runs paths excluded from publication."
+      "description": "Raw datasets, experimental checkpoints, runtime databases, private QA and remote-access setup excluded. Explicit exception for the exact selected vision/release/best.pt; three credited examples distributed separately."
     },
     {
       "id": "final_genai_notebooks_01_retrieval_ipynb",
@@ -934,7 +934,7 @@
       "file_type": "concept",
       "source_file": "docs/PRD_GENAI_VISION.md",
       "source_location": "L1",
-      "description": "Estado atual, comparação e limites. Lote50 aprovado e processado; sem aprovação de fotos pendente."
+      "description": "PRD v5: same evaluated checkpoint and three credited photos in clone; preparation downloads and verifies Qwen3B digest. No retraining needed for inference. Human review, videos and Teams pending."
     },
     {
       "id": "current_qwen3b_rag",
@@ -950,7 +950,7 @@
       "file_type": "concept",
       "source_file": "docs/PRD_GENAI_VISION.md",
       "source_location": "L97",
-      "description": "Pesos treinados com91fotos, cinco épocas; continuação117 não promovida. Teste básico reservado13: P71.2/R72.2, meta observada nesse lote pequeno. Regressão complexa23: P68.3/R62.1. Conjuntos distintos; quality_validated=false; fonteCOCO limita independência."
+      "description": "YOLO26m trained on91photos,5epochs; candidate117 not promoted. Same SHA256 checkpoint distributed in vision/release and loaded by service. Basic reserved13 P71.2/R72.2; exposed complex23 P68.3/R62.1. Distinct cohorts, COCO pretraining overlap possible, quality_validated=false."
     },
     {
       "id": "ft91_checkpoint_comparison",
@@ -982,7 +982,7 @@
       "file_type": "concept",
       "source_file": "vision/README.md",
       "source_location": "L3",
-      "description": "Perfil960/.25, hash exato; reconstrução de91 e117, treino, ativação e teste congelado. M117 não promovido; M91 observou meta no básico13, sem garantia geral."
+      "description": "Exact YOLO26m91 checkpoint and three credited examples included in clone. Preparation installs dependencies and verifies Qwen digest; rerunning dataset reconstruction/training is optional. Distinct cohorts and quality limits explicit."
     },
     {
       "id": "current_qwen3b_weights",
@@ -1007,6 +1007,24 @@
       "source_file": "docs/entregas/VISION_FINETUNING.md",
       "source_location": "L121",
       "description": "Decisão congelada antes do teste; escolhido e referência idênticos, uma inferência.52TP21FP20FN;P71.2/R72.2/F1.7172/macroR86.0. Sem reajuste; amostra pequena selecionadaCOCO não comprova generalização.12/13alvos primários é métrica suplementar."
+    },
+    {
+      "id": "released_yolo26m91_checkpoint",
+      "label": "Same evaluated checkpoint in Git",
+      "source_file": "vision/release/README.md",
+      "source_location": "L1",
+      "file_type": "document",
+      "description": "44MB exact checkpoint SHA2563eff4c91... with runtime manifest and AGPL3 license; no retraining needed to run the delivered model.",
+      "confidence": 1.0
+    },
+    {
+      "id": "three_credited_vision_examples",
+      "label": "Three photographs included in clone",
+      "source_file": "vision/examples/README.md",
+      "source_location": "L1",
+      "file_type": "document",
+      "description": "Bus, table utensils and chair scene; originals unchanged, per-image attribution/license/hash recorded; previously examined demo images, not an independent benchmark.",
+      "confidence": 1.0
     }
   ],
   "edges": [
@@ -2519,9 +2537,9 @@
       "review": "agent read complete text; PDF extracted all 10 pages; logo visually inspected; SVG source inspected"
     },
     "docs/README.md": {
-      "lines": 34,
-      "sha256": "01daa07f9d2906e428f49f074c88dc3b196942437156a947a0cdacf89ebaded3",
-      "review": "Complete final source read; raw reports read metadata and every case/result/trace."
+      "lines": 38,
+      "sha256": "05dc033daacc1360d45bda8aa1b2783cffe3ea9967e79865d93cfe01a6b4a7c3",
+      "review": "Release concepts checked against the current source and isolated HTTP verification; historical sections retain their scoped evidence."
     },
     "docs/manual_acolhe.md": {
       "lines": 283,
@@ -2584,9 +2602,9 @@
       "review": "agent read complete text; PDF extracted all 10 pages; logo visually inspected; SVG source inspected"
     },
     "vision/README.md": {
-      "sha256": "066343c2f26fe04a35a0418983c453a7d22b9fa0181ff6a2df6d8cb74013d6f1",
-      "lines": 59,
-      "review": "Full current source read in closing session; metrics checked against reports. Updated final approved expansion and retained model; unrelated stale sources remain unstamped."
+      "sha256": "f92ff5f923484eecf339ecfb4add14800d296ae5105bf39e6e2606a31da5e7e5",
+      "lines": 70,
+      "review": "Current release source reviewed; checkpoint comparison/heldout figures unchanged and checked against finetune117 summary; launcher and optional retraining distinction updated."
     },
     "vision/requirements.txt": {
       "sha256": "d3d0501f32ef0ef58cf6d0b3a8430d87f0e496c1ecdbbac06d7d1572d9be82bb",
@@ -2644,24 +2662,24 @@
       "review": "agent read complete text; PDF extracted all 10 pages; logo visually inspected; SVG source inspected"
     },
     "Iniciar-Acolhe.cmd": {
-      "lines": 8,
-      "sha256": "fe66913385ada4225440722a1ea6274cb4b56b986f8ba0d5997c84c945188a7c",
-      "review": "agent read complete text; PDF extracted all 10 pages; logo visually inspected; SVG source inspected"
+      "lines": 4,
+      "sha256": "453edeef65738ccacb6cafa9ef40a24d14b2fc09c06d96535dfb666130f68b81",
+      "review": "Current release source reviewed; checkpoint comparison/heldout figures unchanged and checked against finetune117 summary; launcher and optional retraining distinction updated."
     },
     ".dockerignore": {
-      "lines": 10,
-      "sha256": "941bb4c4c90b112f89629d5b354763059103bfa945e2babf389ad64c379bd1cc",
-      "review": "agent read complete text; PDF extracted all 10 pages; logo visually inspected; SVG source inspected"
+      "lines": 40,
+      "sha256": "f413077a7b6cbd82a2529b7be6e17c3ffa00527d4b8c476018e1043bedbfb880",
+      "review": "Release concepts checked against the current source and isolated HTTP verification; historical sections retain their scoped evidence."
     },
     ".gitattributes": {
-      "lines": 8,
-      "sha256": "b0d7b4e6517c3891370cb60c97aabee45b102f468a068db89b07cf96a418cc74",
-      "review": "agent read complete text; PDF extracted all 10 pages; logo visually inspected; SVG source inspected"
+      "lines": 10,
+      "sha256": "d2b95efb427fbb615f0a759ac1efc210c7fccef6c9d9fc87c98b295debc4a64c",
+      "review": "Current release source reviewed; checkpoint comparison/heldout figures unchanged and checked against finetune117 summary; launcher and optional retraining distinction updated."
     },
     ".gitignore": {
-      "sha256": "5cd80909af15444c23a6800cfe9ad53bc48bc75b4941feaad1e04d8603da5ec2",
-      "lines": 55,
-      "review": "Current complete source/output authored or reviewed in final session; measured results separated from proposed targets."
+      "sha256": "c1dc06ca37e37e576619dc8a7d4434a8327232e0f87a6e65fe2b35540ef02de6",
+      "lines": 60,
+      "review": "Release concepts checked against the current source and isolated HTTP verification; historical sections retain their scoped evidence."
     },
     "devsecops/terraform/.gitignore": {
       "lines": 5,
@@ -2684,9 +2702,9 @@
       "review": "Current complete source/output authored or reviewed in final session; measured results separated from proposed targets."
     },
     "docs/PRD_GENAI_VISION.md": {
-      "sha256": "4382208f0972aefc8a5324848cba1c1b4cf8c159b227dcaf9862d54ecacb5c11",
-      "lines": 101,
-      "review": "Full current source read in closing session; metrics checked against reports. Updated final approved expansion and retained model; unrelated stale sources remain unstamped."
+      "sha256": "5a7c8e47c090eccfc28990f3220b45633e322f208ae8769a5571720e0a779833",
+      "lines": 109,
+      "review": "Release concepts checked against the current source and isolated HTTP verification; historical sections retain their scoped evidence."
     },
     "vision/requirements-data.txt": {
       "lines": 3,
@@ -2699,9 +2717,9 @@
       "review": "Current complete source/output authored or reviewed in final session; measured results separated from proposed targets."
     },
     "docs/VALIDACAO_GENAI_VISION.md": {
-      "sha256": "e61ac95ecf161bcb218315bda2fe5e93006d7eb0de462539b6535c8986510849",
-      "lines": 101,
-      "review": "Current complete source/output authored or reviewed in final session; measured results separated from proposed targets."
+      "sha256": "05b35677e296b042116557866eff40c34c682faadd3c36324b6946b1a854a38f",
+      "lines": 107,
+      "review": "Release concepts checked against the current source and isolated HTTP verification; historical sections retain their scoped evidence."
     },
     "genai/reports/llm_error_analysis.md": {
       "lines": 85,
@@ -2774,14 +2792,24 @@
       "review": "Current complete source/output authored or reviewed in final session; measured results separated from proposed targets."
     },
     "docs/entregas/VISION_FINETUNING.md": {
-      "sha256": "8204976659c2c8916ddff81bd1743bb6b355f0c106cf458a4fcc85eeb0644a57",
+      "sha256": "9163a7dfce0dda9ee76cc5a86ae5389f2ba0dd0f4834e91d7c4f7f2895379c42",
       "lines": 127,
-      "review": "Full current source read in closing session; metrics checked against reports. Updated final approved expansion and retained model; unrelated stale sources remain unstamped."
+      "review": "Current release source reviewed; checkpoint comparison/heldout figures unchanged and checked against finetune117 summary; launcher and optional retraining distinction updated."
     },
     "genai/model_manifest.json": {
       "sha256": "54c18544fc41adbf682b321e279b7034cb0d15c42ecb5ba3c6026348e8da417a",
       "lines": 18,
       "review": "Full current source read in closing session; metrics checked against reports. Updated final approved expansion and retained model; unrelated stale sources remain unstamped."
+    },
+    "vision/release/README.md": {
+      "sha256": "a2a86c11bf669b9640778815164eb615fc916686e9ad547a67553892addd953c",
+      "lines": 14,
+      "review": "Release card authored and reviewed; three local photographs visually inspected and actual HTTP results checked."
+    },
+    "vision/examples/README.md": {
+      "sha256": "dc7626c65a5f91b8ba34c65df3f0b4b2c58532cd68aa87558cba9a04699fce0d",
+      "lines": 13,
+      "review": "Release card authored and reviewed; three local photographs visually inspected and actual HTTP results checked."
     }
   },
   "base_commit": "fd89464bc610944102afc719dcd9e33e356f6d0e",

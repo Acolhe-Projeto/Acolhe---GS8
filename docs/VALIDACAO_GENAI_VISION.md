@@ -1,14 +1,20 @@
-> **Validação final17/11:**112 testes Python e14 Node passaram. Portal novo em porta livre, http://127.0.0.1:8083 na verificação, Vision pronto640/conf0,15 e inferência real; PNGcorrompido retorna400. Corrigida colisão de listenersWindows; usar o endereço impresso pelo script. YOLO26n escolhido pela validação e avaliado como regressão no23 já exposto. Meta70%/70% não atingida. Evidência em evidencias/demo-final-http.json e validacao-melhoria.json.
+# Validação GenAI/Vision — estado atual em 17/11/2026
 
-> **Versão ativa final:** YOLO26n80épocas640/confiança0,15, promovido por F1micro de validação0,4675 versus0,3488 do YOLO11n. Regressão nas23 fotos já examinadas: recall51,5%, precisão60,7%,F10,5574. Meta principal70%/70% ainda não atingida. Decisão antes da regressão; não houve ajustes após. Relatórios em vision/reports/yolo26n-custom-decision.json e yolo26n-regression23.json. RegistrosYOLO11n abaixo são históricos.
+GenAI: Qwen2.5 3B local, protocolo v6 e corpus v3. Na revisão técnica exploratória do D16, baseline acertou 7/16; RAG e agente, 14/16. A interface usa RAG; revisão humana pendente. Não houve LoRA nem treino dos pesos da LLM, seguindo a alternativa de agente da rubrica.
 
-> **Melhoria executada:**109 testes Python e14 Node passaram. Script de abertura e três perguntas do roteiro verificados por HTTP real; resposta/fonte/aviso de GenAI conferidos na UI Brave. Vision80épocas640/confiança0,10 ativo e inferênciaHTTP real. No teste histórico: recall operacional52,4%, precisão51,2%, abaixo da meta. Novo23fotos aprovado e avaliado com configuração congelada: recall53,0%, precisão48,6%. Evidências em evidencias/validacao-melhoria.json e vision/reports/improvement-20261116.json. Os registros iniciais abaixo são históricos.
+Vision: YOLO26m treinado com 91 fotos, cinco épocas concluídas; perfil CPU, 960 pixels e confiança 0,25. O candidato com 117 fotos concluiu sete épocas e não passou a regra de promoção. Na mesma validação ampliada de 38 fotos: precisão 72,7% e recall 71,5% para o modelo mantido. No teste básico reservado de 13 fotos/72 objetos: 52 TP, 21 FP, 20 FN, precisão 71,2% e recall 72,2%. A meta foi observada nesse lote; não comprova qualidade geral. O diagnóstico anterior nas 23 fotos expostas permanece em 68,3%/62,1%.
 
-> **Checks finais:104 testes Python e14 testes Node passaram; sintaxe JS e git diff --check conferidos. Evidência em docs/evidencias/validacao-final.json.**
+Na verificação após empacotar a entrega, 124 testes Python passaram em 11,785 segundos e 14 testes Node passaram. Testes de implementação não medem acurácia dos modelos. Ensaios HTTP reais e resultados medidos estão em [VISION_FINETUNING.md](entregas/VISION_FINETUNING.md), [GENAI_RELATORIO.md](entregas/GENAI_RELATORIO.md), docs/evidencias/finetune91-http.json e vision/reports/finetune117-summary.json. Os logs completos ficam locais em docs/qa/delivery-release-tests.log e delivery-release-frontend.log. A execução anterior de 122 testes continua preservada como histórico.
 
-> **Atualização de fechamento:** este documento preserva o planejamento e os registros iniciais. O estado atual e a rubrica oficial estão em docs/ENTREGA_CHECKLIST.md; resultados finais estão em docs/entregas/GENAI_RELATORIO.md e VISION_RELATORIO.md. GenAI final é Qwen2.5 3B com comparação real dev20/holdoutC12 em GPU; Vision treinou20 épocas em CPU sobre40 fotos aprovadas e tem PDF final. Referências abaixo a1.5B, rubrica ausente ou treino pendente são históricas e foram superadas. Revisão humana, vídeos e Teams permanecem pendentes.
+Pendências: revisão da equipe e pedagógica, gravação/publicação dos vídeos, URLs reais e envio acadêmico. Ver [checklist](ENTREGA_CHECKLIST.md). O checkpoint Vision escolhido e três fotos creditadas acompanham a entrega; datasets completos, pesos experimentais, bancos, logs locais e configuração de serviços externos ficam fora do material compartilhado. GenAI usa download do Qwen com verificação do digest avaliado.
 
-# Validação da branch GenAI/Vision — 16/11/2026
+## Ensaio da entrega sem os arquivos privados locais
+
+Uma cópia isolada dos arquivos preparados para Git foi aberta sem docs/qa, datasets completos ou vision/artifacts. O serviço carregou o checkpoint em vision/release com o mesmo SHA-256 e reconheceu ônibus, garfo/tigela/colher e cadeiras nas três fotos incluídas. GenAI respondeu em português e espanhol com fontes e recusou a previsão de chuva ausente. O digest da LLM coincidiu com o manifesto e com a tag consultada no registro oficial. A preparação também foi executada nesta máquina; não se alega instalação em outro computador físico. Bibliotecas já instaladas e o Ollama local foram usados no ensaio isolado. Evidência: [release-delivery-http.json](evidencias/release-delivery-http.json). Estes uploads são demonstração, não uma nova avaliação de qualidade.
+
+## Histórico das primeiras execuções — 16/11/2026
+
+Os registros abaixo descrevem somente as versões iniciais. Referências a modelos 0.5B/1.5B, ausência de treino Vision, rubrica ainda não conferida e próximos passos daquela data foram superadas pelo estado atual acima. As evidências originais são preservadas, sem apresentar resultados antigos como atuais.
 
 Repositório `Acolhe-Projeto/Acolhe---GS8`, base `4a2d00f34c3eb570c90cc7b56822eea5f028fc3b`, branch `feat/genai-vision`. As mudanças se concentram em GenAI, Vision, integração HTTP/PWA, seus testes e documentação. Os outros módulos foram lidos para o mapa e exercitados pela suíte de regressão.
 
@@ -68,7 +74,7 @@ No smoke direto de `service.answer`, PT/mochila retornou modo `local_llm_rag`, f
 
 **O Qwen 0.5B ficou como perfil leve experimental, sem aprovação para uso com crianças.** O experimento sem os filtros do produto também mostrou obediência indevida a uma pergunta adversarial; o endpoint recusa essa entrada específica antes de gerar, mas isso não garante recusa de toda paráfrase. Antes de habilitar geração em uma demonstração supervisionada, revisar respostas e proteções; o padrão da aplicação continua sendo conteúdo curado. Essas falhas motivaram a avaliação de 1.5B abaixo. Novas melhorias ainda exigem casos independentes.
 
-## Escolha final: 1.5B leve em CPU
+## Escolha histórica: 1.5B leve em CPU
 
 Após as falhas funcionais de 0.5B, foi instalado [`qwen2.5:1.5b-instruct`](https://ollama.com/library/qwen2.5:1.5b-instruct), Q4_K_M, aproximadamente 986 MB de pesos, mantendo contexto 2048, saída 256 e `num_gpu=0`. Digest verificado: `65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b`. A máquina tem aproximadamente 32 GB de RAM; não se presume que o tamanho do arquivo represente o uso total de memória.
 
@@ -86,7 +92,7 @@ O [subconjunto 1.5B de quatro casos](../genai/reports/qwen15b-cpu-subset4-202611
 
 Portanto, a escolha de 1.5B se apoia somente na melhora funcional do **fluxo RAG do produto**, observada nas duas respostas do smoke com fontes. Não há superioridade geral demonstrada nas três variantes. Corrigir omissão de fontes no prompt experimental, recusa indevida do agente e testar novos casos independentes fazem parte do backlog; não se confundem recusa indevida e segurança aprovada.
 
-## Vision: implementação versus execução
+## Vision: implementação versus execução na rodada inicial
 
 Implementados e testados: conversão COCO local revisado → YOLO, auditoria de pixels/caixas/inventário/hashes/duplicatas/splits, treino CPU parametrizado, avaliação reservada com métricas por classe, hash de checkpoint e integração PWA. Exemplos de procedência permanecem `real_images=false`.
 

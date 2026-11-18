@@ -41,16 +41,24 @@ RAG significa gerar uma resposta consultando documentos. Não diga que está tud
 
 1. Clique em **Para educadores** e procure **Objetos que ensinam**.
 2. Confira se o modelo está pronto. O diagnóstico técnico também está em /api/vision/status no mesmo endereço/porta indicado pelo terminal.
-3. Clique para selecionar uma foto PNG/JPEG, até 8 MiB, de objetos sem dados pessoais.
-4. Clique em **Reconhecer objetos**. Mostre nomes PT/ES e confiança. A câmera não é ligada e o servidor não salva o upload.
-5. Se não reconhecer, mostre a falha e explique a limitação. O número de confiança não é uma garantia de acerto.
+3. Clique para selecionar uma foto e cole este caminho na barra de endereço da janela de arquivos:
 
-Para um ensaio local, a foto de ônibus já aprovada está em `vision/data/public-review-pilot-v2-20261116/originals/commons-burlington-bus.jpg`. Para publicar o vídeo com essa foto, revise a autorização de exibição e atribua o autor/licença. Alternativa simples: use uma foto própria de um objeto, tirada sem pessoas ou dados pessoais, e autorize sua publicação.
+```text
+D:\GS2026\Acolhe---GS8\vision\examples
+```
+
+4. Selecione **01-onibus.jpg** e clique em **Reconhecer objetos**. O resultado esperado é **ônibus / autobús**.
+5. Repita com **02-mesa-garfo-tigela.jpg**. O resultado esperado é **garfo / tenedor**, **tigela / cuenco** e **colher / cuchara**.
+6. Mostre os nomes PT/ES, caixas e confiança. As duas fotos tiveram detecções confirmadas na última verificação local; são exemplos de demonstração. O número de confiança não é garantia de acerto. Se houver falha, mostre e explique a limitação.
+
+Opcional: use **03-copo-cadeira.jpg**, na mesma pasta, para experimentar uma cena mais difícil; cadeiras / sillas foram detectadas no ensaio da entrega. Não prometa detectar todos os objetos dessa cena. Também é possível enviar uma foto própria PNG/JPEG, até 8 MiB, sem pessoas ou dados pessoais. A câmera não é ligada e o servidor não salva o upload.
+
+As três fotos acompanham o clone em `vision/examples/`. Em outra máquina, use a pasta equivalente dentro do clone, sem depender de D:\GS2026. Créditos e licenças: ônibus — Znns, CC BY 4.0; mesa — jules, CC BY 2.0; cena de cadeiras — liz west, CC BY 2.0. Fontes e hashes estão em `vision/examples/credits.json`; preserve a atribuição na gravação.
 
 ## Roteiro Vision: aproximadamente um minuto
 
-1. “Aqui identificamos objetos e mostramos o nome em português e espanhol.” Selecione e envie a foto.
-2. Mostre o resultado real. “Este detector YOLO26m recebeu treinamento customizado com imagens públicas revisadas, usando transferência de aprendizado.”
+1. “Aqui identificamos objetos e mostramos o nome em português e espanhol.” Selecione **01-onibus.jpg**, na pasta indicada acima, e clique em **Reconhecer objetos**. Mostre **ônibus / autobús** no resultado real.
+2. Envie **02-mesa-garfo-tigela.jpg** e mostre as detecções reais de garfo, tigela e colher. “Este detector YOLO26m recebeu treinamento customizado com imagens públicas revisadas, usando transferência de aprendizado.”
 3. Abra o relatório Vision e mostre a tabela da versão ativa. “O YOLO26m foi adaptado com 91 fotos de treino e selecionado pela validação. Nas 23 fotos já examinadas, o diagnóstico teve recall de 62,1% e precisão de 68,3%. No novo lote básico de 13 fotos reservado, tivemos precisão de 71,2% e recall de 72,2%. É um conjunto diferente e pequeno; o modelo ainda erra.” Não apresente esse diagnóstico posterior como novo teste cego.
 4. “É um piloto pequeno, com erros documentados. Não identifica rostos nem decide se uma travessia é segura.”
 
@@ -59,12 +67,13 @@ Os PRDs e relatórios explicam os dados, arquitetura, teste e falhas. O roteiro 
 ## Em outra máquina: preparação inicial
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r vision/requirements.txt
-ollama pull qwen2.5:3b-instruct
+git clone --branch feat/genai-vision https://github.com/Acolhe-Projeto/Acolhe---GS8.git
+cd Acolhe---GS8
+.\scripts\preparar-demo.ps1
+.\scripts\iniciar-demo.ps1
 ```
 
-Instale/inicie o Ollama antes do script. Para Vision, os pesos e fotos não estão no Git: siga vision/README.md para reconstruir o dataset e treinar. Somente clonar o repositório não deixa o detector pronto. Para GenAI, bastam Python e Ollama com o modelo baixado; não precisa treinar pesos.
+Pré-requisitos: Python 3.12 e Ollama instalado e aberto. A preparação cria .venv, instala dependências Vision e baixa o Qwen3B (~1,9 GB) uma vez; requer internet nessa etapa. Confere o digest exato da LLM, o SHA-256 do detector e as classes. O mesmo checkpoint Vision já acompanha o clone em vision/release/best.pt, com manifesto e licença; as três fotos estão em vision/examples. Não é necessário treinar para testar. As dependências e o modelo LLM podem ocupar vários GB adicionais. Se a tag upstream mudar, a verificação recusa o digest diferente em vez de substituir silenciosamente a versão avaliada.
 
 ## Gravar rapidamente no OBS, se usar essa ferramenta
 

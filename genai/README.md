@@ -4,6 +4,8 @@
 
 Perfil atual: v6/corpus v3; placares anteriores abaixo são históricos. [Resultados atuais](../docs/entregas/RESULTADOS_NOTURNOS.md).
 
+Na entrega, scripts/preparar-demo.ps1 baixa a LLM e scripts/iniciar-demo.ps1 confere o digest antes de abrir a demonstração. O comando `python -m genai.local --verify-release` exige o mesmo modelo e digest registrados em model_manifest.json; uma tag com pesos diferentes é recusada. A base autoral, prompts, guardas e agente acompanham o código. Não é necessário treinar para testar.
+
 Modelo final **qwen2.5:3b-instruct**, Q4_K_M, 3,09B parâmetros (~1,9 GB de pesos), dentro do limite de 4B solicitado. Ollama 0.40.16; a comparação final confirmou 2.085.963.693 bytes em VRAM na RX 6750 XT. Licença Qwen Research: https://huggingface.co/Qwen/Qwen2.5-3B-Instruct/blob/main/LICENSE. Peso em disco não é memória total.
 
 O [relatório formal](../docs/entregas/GENAI_RELATORIO.md) reúne tarefa, equipe, diagramas, fontes, placar, erros e limitações. [Checklist oficial](../docs/ENTREGA_CHECKLIST.md). Os históricos 0.5B/1.5B e CPU permanecem identificados; não são o perfil final GPU.

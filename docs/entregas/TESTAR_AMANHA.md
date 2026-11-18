@@ -22,19 +22,19 @@ cd D:\GS2026\Acolhe---GS8
 4. Volte o idioma para **Português**. Clique em **Para educadores**, vá até **Objetos que ensinam** e clique em selecionar foto. Abra esta pasta:
 
 ```text
-D:\GS2026\Acolhe---GS8\docs\qa\testar
+D:\GS2026\Acolhe---GS8\vision\examples
 ```
 
 5. Selecione **01-onibus.jpg** e clique em **Reconhecer objetos**. Confira o nome ônibus/autobús e a confiança:
 
-![Foto de ônibus para testar](../qa/testar/01-onibus.jpg)
+![Foto de ônibus para testar](../../vision/examples/01-onibus.jpg)
 
 6. Repita com **02-mesa-garfo-tigela.jpg**. Confira os objetos encontrados e os nomes em português/espanhol:
 
-![Mesa com tigela, colher e garfo](../qa/testar/02-mesa-garfo-tigela.jpg)
+![Mesa com tigela, colher e garfo](../../vision/examples/02-mesa-garfo-tigela.jpg)
 
 7. Para gravar rapidamente o GenAI, mostre a pergunta de travessia, a fonte, a troca para espanhol e a pergunta sobre chuva. Diga: “O Acolhe usa uma IA local com uma base de conhecimento. A interface mostra a fonte e recusa informações que não constam. O protótipo ainda pode errar.”
 
 8. Para gravar Vision, envie as duas fotos e mostre os nomes PT/ES. Diga: “O detector recebeu treinamento customizado para reconhecer objetos. Os resultados têm erros documentados e não autorizam decisões de travessia.”
 
-As fotos de ensaio estão somente nesta máquina. Os créditos estão em docs/qa/testar/CREDITOS_E_RESULTADOS.json. Antes de publicar um vídeo que as exiba, confira os créditos/licenças e a exibição autorizada. Para encerrar o servidor, volte ao terminal e pressione Ctrl+C.
+As três fotos de ensaio acompanham o clone em vision/examples; 03-copo-cadeira.jpg é uma cena opcional mais difícil. Em outra máquina, selecione essa pasta dentro do clone. Os créditos e licenças estão em vision/examples/credits.json e devem acompanhar a exibição no vídeo. Para encerrar o servidor, volte ao terminal e pressione Ctrl+C.

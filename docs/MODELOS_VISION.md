@@ -1,4 +1,4 @@
-> Atualização 17/11: GenAI ativo v6/corpus v3; D16 RAG/agente 14/16 na revisão técnica exploratória, revisão humana pendente. Vision: quatro treinos adicionais não sustentaram promoção; modelo ativo e PDF preservados, meta 70%/70% ainda não atingida. Detalhes em [RESULTADOS_NOTURNOS](entregas/RESULTADOS_NOTURNOS.md). Este adendo substitui o perfil GenAI v4 como configuração atual; placares anteriores são históricos.
+> Estado atual em 17/11: Vision usa YOLO26m treinado com 91 fotos, em 960/confiança 0,25. O candidato com 117 fotos não foi promovido. No teste básico reservado de 13 fotos, precisão 71,2% e recall 72,2%; a meta foi observada apenas nesse lote pequeno. Este documento preserva a pesquisa histórica das bases nano. Resultados atuais em [VISION_FINETUNING](entregas/VISION_FINETUNING.md).
 
 # Bases leves para Vision — pesquisa e validação local
 
@@ -6,7 +6,7 @@ Revisão17/11/2026. O projeto já fazia transferência de aprendizado a partir d
 
 ## Modelos encontrados
 
-- **YOLO11n:** base atual,2,62 M parâmetros no módulo carregado,5,61 MB de pesos. Mantém a stack existente.
+- **YOLO11n:** base inicial da pesquisa,2,62 M parâmetros no módulo carregado,5,61 MB de pesos. Mantém a stack existente.
 - **YOLOv8n:**3,16 M e 6,55 MB medidos; modelo consolidado, compatível com o mesmo pipeline. Fonte oficial: https://docs.ultralytics.com/models/yolov8/
 - **YOLO26n:**2,57 M e 5,54 MB medidos; base recente com suporte a detecção fim a fim e foco em execução leve. Contagens de implantação/fusão dos documentos podem diferir do módulo PyTorch carregado. Fonte oficial: https://docs.ultralytics.com/models/yolo26/
 - **RF-DETR Nano:** alternativa com licença permissiva Apache2.0 para código/pesos dessa variante, mas a tabela atual do repositório informa30,5 M parâmetros; não tem o mesmo tamanho dos nanoYOLO. Pesquisado, sem instalação, treino ou benchmark local nesta rodada. Fonte primária: https://github.com/roboflow/rf-detr e https://roboflow.com/model-licenses/rf-detr
@@ -57,7 +57,7 @@ for base in ["yolo11n.pt", "yolov8n.pt", "yolo26n.pt"]:
 
 O novo treino customizado usa vision.train --base-model yolo26n.pt; sua saída fica em diretório novo e separado do detector ativo. Não chamar a comparação acima de treinamento próprio.
 
-## Resultado do treino customizado
+## Resultado histórico do treino customizado nano
 
 YOLO26n 80 épocas640 concluído e promovido pela validação: F1 micro de 0,4675 contra 0,3488 do YOLO11n 80 épocas; confiança 0,15 selecionada em validação. O arquivo yolo26n-custom-decision.json registra a decisão antes da regressão.
 
