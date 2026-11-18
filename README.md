@@ -46,7 +46,7 @@ O serviço usa o mesmo YOLO26m91 treinado e avaliado, em vision/release/best.pt.
 ## Documentação da entrega
 
 - [Relatório GenAI](docs/entregas/GENAI_RELATORIO.md): modelo, base, comparação, erros e reprodução.
-- [Relatório Vision](docs/entregas/VISION_RELATORIO.md) e [PDF](output/pdf/ACOLHE_VISION.pdf): dados, treinamento, comparação de ajustes finos e resultados.
+- [Relatório Vision](docs/entregas/VISION_RELATORIO.md) e [PDF](docs/ACOLHE_VISION.pdf): dados, treinamento, comparação de ajustes finos e resultados.
 - [Requisitos e diagramas](docs/PRD_GENAI_VISION.md): escopo e arquitetura dos dois módulos.
 - [Documentação geral](docs/README.md): manual e documentos das demais disciplinas.
 
@@ -77,3 +77,8 @@ A última verificação passou em 124 testes Python e 14 Node. Esses testes veri
 O servidor escuta em loopback. O fluxo das atividades usa sessões pseudônimas; o serviço do assistente não persiste perguntas e Vision não salva uploads. O modo de demonstração usa um banco local em docs/qa. As lições podem ser preparadas para leitura offline pelo service worker, mas o assistente e as atividades com API precisam do servidor.
 
 Docker/Compose e o comando python -m app.server executam o MVP básico; as dependências e a configuração das IAs são preparadas pelo fluxo Windows acima. Implantação pública, validação pedagógica, vídeos e envio acadêmico têm etapas próprias. O protótipo não foi validado para uso autônomo com crianças.
+
+## Vídeos de demonstração
+
+- [GenAI](https://youtu.be/csoYGnIeviM)
+- [Computer Vision](https://youtu.be/8FPF_BkSh58)

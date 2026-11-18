@@ -67,6 +67,10 @@ A instalação e as frases de teste estão no README da raiz e em genai/README.m
 
 ## Conclusão
 
-A entrega implementa uma LLM local com recuperação, citações, recusa e comparação real com agente. O resultado final foi 14/16 em RAG e agente, com duas falhas conhecidas. O conjunto pequeno e autoral não permite concluir eficácia pedagógica ou desempenho geral; a revisão humana bilíngue permanece pendente. Vídeo demonstrativo e envio acadêmico ainda dependem da equipe.
+A entrega implementa uma LLM local com recuperação, citações, recusa e comparação real com agente. O resultado final foi 14/16 em RAG e agente, com duas falhas conhecidas. O conjunto pequeno e autoral não permite concluir eficácia pedagógica ou desempenho geral; a revisão humana bilíngue permanece pendente. O vídeo demonstrativo está vinculado abaixo; o envio acadêmico permanece pendente.
 
 Referências: desafio FIAP GS CitizenTech, páginas 29-31; https://huggingface.co/Qwen/Qwen2.5-3B-Instruct; https://ollama.com/library/qwen2.5:3b-instruct. Repositório: https://github.com/Acolhe-Projeto/Acolhe---GS8/tree/feat/genai-vision.
+
+## Vídeos de demonstração
+
+- [GenAI](https://youtu.be/csoYGnIeviM)

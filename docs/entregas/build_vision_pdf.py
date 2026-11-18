@@ -112,5 +112,5 @@ def render(output):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', type=Path, default=ROOT/'output/pdf/ACOLHE_VISION.pdf')
+    parser.add_argument('--output', type=Path, default=ROOT/'docs/ACOLHE_VISION.pdf')
     render(parser.parse_args().output)

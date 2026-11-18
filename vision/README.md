@@ -6,7 +6,7 @@ Detector de 12 objetos cotidianos, com nomes em português e espanhol. O serviç
 
 Siga a instalação do README da raiz. O checkpoint e três fotos em examples já acompanham o clone; não é necessário treinar novamente. No portal, abra Para educadores → Objetos que ensinam, selecione JPEG/PNG de até 8 MiB e clique Reconhecer objetos. O upload não é salvo.
 
-O [relatório Vision](../docs/entregas/VISION_RELATORIO.md) reúne o treinamento, a comparação de ajustes finos e os resultados; a [versão PDF](../output/pdf/ACOLHE_VISION.pdf) acompanha a entrega. No teste básico reservado de 13 fotos, precisão foi 71,2% e recall, 72,2%. Nas 23 fotos anteriores, mais complexas, foram 68,3% e 62,1%. A amostra é pequena e a origem COCO limita independência em relação ao pré-treino.
+O [relatório Vision](../docs/entregas/VISION_RELATORIO.md) reúne o treinamento, a comparação de ajustes finos e os resultados; a [versão PDF](../docs/ACOLHE_VISION.pdf) acompanha a entrega. No teste básico reservado de 13 fotos, precisão foi 71,2% e recall, 72,2%. Nas 23 fotos anteriores, mais complexas, foram 68,3% e 62,1%. A amostra é pequena e a origem COCO limita independência em relação ao pré-treino.
 
 ## Arquivos
 
