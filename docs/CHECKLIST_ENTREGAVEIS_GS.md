@@ -2,6 +2,8 @@
 
 Rodada de 18/11, na `main` (`22af14f`), contra o enunciado "Desafio FIAP GS CitizenTech 4ES". Prazo: 19/11 às 23h55, um envio por equipe em cada disciplina. Repositório, aplicação e vídeos precisam continuar públicos e no ar durante a correção (até cerca de 26/11).
 
+Atualização de links em 19/11: RPA, BI e Maker já estão vinculados no README. As verificações da rodada de 18/11 abaixo são históricas; esta atualização não reavalia o conteúdo dos vídeos de RPA e BI.
+
 Legenda: ✅ atende · 🟡 parcial · ❌ falta · 👤 só a equipe pode fazer (gravar, enviar, hardware)
 
 Conferido nesta rodada:
@@ -21,9 +23,9 @@ O que enviar em cada disciplina está em [docs/entregas/README.md](entregas/READ
 | DevSecOps | Ian e Aksel | ✅ | Só o envio no portal |
 | GenAI | Rony | ✅ | Só o envio |
 | Vision | Rony | ✅ | Só o envio |
-| RPA | Ian e Aksel | ❌ 👤 | Vídeo de até 3 min e regerar o PDF com o link |
-| BI | Tomáz | ❌ 👤 | Vídeo pitch de até 5 min |
-| Maker | Tomáz | 🟡 👤 | Vídeo de até 6 min com o robô físico, link no README |
+| RPA | Ian e Aksel | 🟡 👤 | Vídeo publicado; conferir duração e link no PDF |
+| BI | Tomáz | 🟡 👤 | Link publicado; conferir duração, acesso e requisitos do pitch |
+| Maker | Tomáz | 🟡 👤 | Vídeo e link publicados; limites em `docs/maker-entrega.md` |
 
 ## 1. Big Data Architecture & Data Integration (Ian e Aksel)
 Entrega: PDF com o link do repositório, `docs/entregas/GS_BigData_Acolhe.pdf` (12 páginas).
@@ -55,7 +57,7 @@ Entrega: PDF com BPMN, PDD, evidências e links (`docs/entregas/GS_RPA_Acolhe.pd
 | 06 Integração com o MVP | ✅ | Painel "Acompanhamento automático" no app. |
 | 07 Testes de sucesso, decisão e falha | ✅ | `rpa/demo_e2e.py` e testes na esteira. |
 | 08 README estruturado | ✅ | Integrantes, PDD, BPMN, instruções. |
-| Vídeo de até 3 min | ❌ 👤 | Roteiro em `docs/roteiros_videos.md`. Depois de publicar: `VIDEO_RPA=<link> python docs/entregas/gerar_pdfs.py` tira o campo vermelho do PDF. |
+| Vídeo de até 3 min | 🟡 👤 | https://youtu.be/9Vxrja0XkZk. Conferir duração e link no PDF; se necessário, regerar com `VIDEO_RPA=<link> python docs/entregas/gerar_pdfs.py`. |
 
 ## 3. Secure DevOps Tools & Cloud Computing (Ian e Aksel), 14 pontos
 Entrega: PDF único com links clicáveis (`docs/entregas/GS_DevSecOps_Acolhe.pdf`, 6 páginas), no portal da disciplina.
@@ -91,16 +93,16 @@ Entrega: PDF único com links clicáveis (`docs/entregas/GS_DevSecOps_Acolhe.pdf
 ## 6. Business Intelligence & Startup Development (Tomáz)
 | Item | Status | Situação |
 |---|---|---|
-| Vídeo pitch de até 5 min, YouTube não listado, equipe aparecendo, MVP na URL pública | ❌ 👤 | URL pública no ar com os dados oficiais (75.600 pedidos de refúgio, 16% crianças). Roteiro em `bi/roteiro_pitch.md`. |
+| Vídeo pitch de até 5 min, YouTube não listado, equipe aparecendo, MVP na URL pública | 🟡 👤 | Link fornecido pela equipe: https://youtu.be/MRKXTSPRdXA. Conferir duração, acesso e conteúdo antes do envio. Roteiro em `bi/roteiro_pitch.md`. |
 
 ## 7. Project-Based Maker Lab (Tomáz)
 | Item | Status | Situação |
 |---|---|---|
-| Robô com sensor adicional e IA | 🟡 👤 | Firmware, DHT11, gestos e voz local, com testes. Falta mostrar o robô físico em vídeo. |
-| README e vídeo de até 6 min | 🟡 👤 | `robot/README.md` e `docs/maker-entrega.md` prontos; o link do vídeo ainda não existe. |
+| Robô com sensor adicional e IA | 🟡 👤 | Montagem, LCD, conversa ambiental e treino no vídeo https://youtu.be/Bm3uaAx4McE. Limites em `docs/maker-entrega.md`. |
+| README e vídeo de até 6 min | 🟡 👤 | Vídeo de 4min13s vinculado no README; falha e oferta automática por calor não identificadas no vídeo, conforme `docs/maker-entrega.md`. |
 
 ## Para todos, antes de 19/11 às 23h55
-- Gravar os vídeos de RPA, BI e Maker e colocar os links no README principal (seção de vídeos) e, no caso do RPA, regerar o PDF.
+- Conferir duração, acesso e requisitos dos vídeos já vinculados no README; no RPA, conferir o link no PDF e regerar se necessário.
 - Um integrante envia por disciplina, com os quatro nomes e RMs.
 - Manter o Azure (Container App e ACR) e os vídeos públicos até o fim da correção (cerca de 26/11).
 - Parar o Grafana local depois dos prints (`docker compose -f devsecops/monitoring/public/compose.yaml down`), para o app voltar a escalar a zero.

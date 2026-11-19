@@ -24,3 +24,6 @@ O manual é apoio geral; as evidências e condições de execução de cada disc
 
 - [GenAI](https://youtu.be/csoYGnIeviM)
 - [Computer Vision](https://youtu.be/8FPF_BkSh58)
+- [Maker Lab — 4min13s](https://youtu.be/Bm3uaAx4McE)
+- [RPA](https://youtu.be/9Vxrja0XkZk)
+- [BI — pitch Acolhe](https://youtu.be/MRKXTSPRdXA)

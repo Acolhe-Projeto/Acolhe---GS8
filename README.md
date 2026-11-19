@@ -276,4 +276,4 @@ Não insira nomes, endereços, fotos de pessoas ou dados de crianças. O protót
 - [Computer Vision](https://youtu.be/8FPF_BkSh58).
 - [Maker Lab — Acolhe, 4min13s](https://youtu.be/Bm3uaAx4McE).
 - [RPA](https://youtu.be/9Vxrja0XkZk).
-- BI
+- [BI — pitch Acolhe](https://youtu.be/MRKXTSPRdXA).

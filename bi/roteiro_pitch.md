@@ -2,7 +2,9 @@
 
 **Duração alvo:** 4min40s, com 20 segundos de margem para o limite de 5 minutos.
 **Formato:** equipe em vídeo e demonstração da versão executável. Distribuir falas entre os quatro integrantes após ensaio; os papéis abaixo são sugestões, não atribuições acordadas.
-**Estado:** roteiro para gravação. Não é vídeo pronto, MVP publicado nem evidência de impacto.
+**Vídeo fornecido pela equipe (19/11/2026):** https://youtu.be/MRKXTSPRdXA
+
+**Estado:** roteiro de referência para a gravação. O vídeo vinculado acima é a entrega atual; os itens abaixo servem como orientação de conferência.
 
 ## Preparação
 
