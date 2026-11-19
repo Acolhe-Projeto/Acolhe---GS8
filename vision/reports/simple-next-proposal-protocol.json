@@ -1,0 +1,26 @@
+{
+  "recorded_at_utc": "2026-11-17T10:17:07.965189+00:00",
+  "phase": "C data proposal only. Current M profile frozen; no training or retuning using old23 outcomes.",
+  "rationale": "Known development data issue: many tiny targets/clutter. User requested basic-object dataset with more clear examples. No model predictions used for selection.",
+  "source": "COCOtrain2017, per-photo rights checked",
+  "criteria": {
+    "max_target_classes": 3,
+    "annotated_people": 0,
+    "primary_target_long_edge_at640_min": 128,
+    "primary_target_short_edge_at640_min": 16,
+    "seed": 42,
+    "coverage_counts": "primary large targets only; annotate all target boxes"
+  },
+  "minimum_primary_photos_per_class": {
+    "train": 4,
+    "val": 1,
+    "test": 2
+  },
+  "minimum_split_images": {
+    "train": 48,
+    "val": 12
+  },
+  "historical_ids_excluded": 156,
+  "approval": "pending exact photos and annotations; no training before human approval",
+  "independence_limit": "New holdout only for team fine-tuning; COCO images may have been seen by pretrained weights. Truly independent evaluation still requires separate real-world scenes."
+}

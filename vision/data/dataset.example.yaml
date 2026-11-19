@@ -1,5 +1,5 @@
 # Replace paths with curated real data. No images included.
-path: ./vision/data/real
+path: ./real
 train: images/train
 val: images/val
 test: images/test

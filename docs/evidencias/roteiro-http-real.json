@@ -1,0 +1,109 @@
+{
+  "base_url": "http://127.0.0.1:8082",
+  "cases": [
+    {
+      "language": "pt",
+      "question": "Como atravessar a rua com segurança?",
+      "response": {
+        "answer": "Ir para o outro lado da rua é atravessar. Fique na calçada e peça ajuda a um adulto responsável. Use a faixa e respeite o semáforo. Nunca atravesse sozinho.",
+        "sources": [
+          {
+            "id": "crossing",
+            "title": "Travessia acompanhada",
+            "source": "Conteúdo autoral Acolhe, versão 2; revisão pedagógica pendente"
+          }
+        ],
+        "mode": "local_llm_rag",
+        "model": "qwen2.5:3b-instruct",
+        "warning": "Aviso fixo de segurança: nunca atravesse sozinho. Peça ajuda a um adulto responsável."
+      }
+    },
+    {
+      "language": "es",
+      "question": "¿Qué hago si estoy perdido?",
+      "response": {
+        "answer": "Si te pierdes, quédate en un lugar seguro y pide ayuda a un empleado identificado.",
+        "sources": [
+          {
+            "id": "lost",
+            "title": "Pedir ajuda",
+            "source": "Conteúdo autoral Acolhe, versão 2; revisão pedagógica pendente"
+          }
+        ],
+        "mode": "local_llm_rag",
+        "model": "qwen2.5:3b-instruct"
+      }
+    },
+    {
+      "language": "pt",
+      "question": "Qual é a previsão de chuva amanhã?",
+      "response": {
+        "answer": "Não consta no material. Peça ajuda a um adulto responsável.",
+        "sources": [],
+        "mode": "refusal",
+        "reason": "missing_detail"
+      }
+    }
+  ],
+  "vision_status": {
+    "ready": true,
+    "mode": "custom_model",
+    "reason": null,
+    "classes": {
+      "backpack": {
+        "pt": "mochila",
+        "es": "mochila"
+      },
+      "chair": {
+        "pt": "cadeira",
+        "es": "silla"
+      },
+      "book": {
+        "pt": "livro",
+        "es": "libro"
+      },
+      "bottle": {
+        "pt": "garrafa",
+        "es": "botella"
+      },
+      "cup": {
+        "pt": "copo",
+        "es": "vaso"
+      },
+      "spoon": {
+        "pt": "colher",
+        "es": "cuchara"
+      },
+      "fork": {
+        "pt": "garfo",
+        "es": "tenedor"
+      },
+      "bowl": {
+        "pt": "tigela",
+        "es": "cuenco"
+      },
+      "clock": {
+        "pt": "relógio",
+        "es": "reloj"
+      },
+      "umbrella": {
+        "pt": "guarda-chuva",
+        "es": "paraguas"
+      },
+      "bus": {
+        "pt": "ônibus",
+        "es": "autobús"
+      },
+      "traffic light": {
+        "pt": "semáforo",
+        "es": "semáforo"
+      }
+    },
+    "inference": {
+      "conf": 0.5,
+      "imgsz": 320
+    },
+    "verification": "checkpoint_hash_classes_and_load",
+    "quality_validated": false
+  }
+}

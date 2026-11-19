@@ -1,0 +1,24 @@
+{
+  "python_unittest": {
+    "passed": 104,
+    "failed": 0,
+    "skipped": 0
+  },
+  "node_tests": {
+    "passed": 14,
+    "failed": 0
+  },
+  "javascript_syntax": [
+    "app.js",
+    "vision.js",
+    "sw.js"
+  ],
+  "git_diff_check": "passed before final documentation staging",
+  "real_model_evidence": [
+    "genai/avaliacao/qwen3b-v4-gpu-dev20.json",
+    "genai/avaliacao/qwen3b-v4-gpu-holdout12.json",
+    "vision/reports/training-20261116.json",
+    "vision/reports/inference-http-20261116.json"
+  ],
+  "limits": "Unit tests mock model runtime; quality metrics and HTTP evidence are separate. Videos and human review remain pending."
+}

@@ -1,0 +1,465 @@
+{
+  "scope": "Four completed bounded experiments on approved training images only. New23test was not used for training or selection.",
+  "active_checkpoint_sha256": "007a199a43a6944699c43d26b23e30e5a2e25933b106181ed56a8243aa3b2e31",
+  "decision": "retain_existing_active_model",
+  "reason": "Best candidate improves validation F1 by only 0.00974 on eight images while precision falls from 0.6207 to 0.525. Neither reaches joint 0.70 precision/recall. Insufficient evidence of a practical improvement; preserve the active model and all candidate reports. No new test-based selection.",
+  "target": {
+    "precision": 0.7,
+    "recall": 0.7,
+    "achieved": false
+  },
+  "experiments": [
+    {
+      "name": "26-freeze10-640",
+      "report": "night-26-freeze10-640-556963bd.json",
+      "checkpoint_sha256": "29e3a3fc73f97309e0e62af7e895231481ae42eacc279cef198eb4667f79de3b",
+      "validation": {
+        "confidence": 0.1,
+        "iou": 0.5,
+        "tp": 21,
+        "fp": 19,
+        "fn": 27,
+        "precision": 0.525,
+        "recall": 0.4375,
+        "f1": 0.4772727272727273,
+        "per_class": [
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          {
+            "tp": 7,
+            "fp": 3,
+            "fn": 1,
+            "precision": 0.7,
+            "recall": 0.875,
+            "f1": 0.7777777777777778
+          },
+          {
+            "tp": 4,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.8,
+            "recall": 1.0,
+            "f1": 0.8888888888888888
+          },
+          {
+            "tp": 0,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "tp": 2,
+            "fp": 10,
+            "fn": 13,
+            "precision": 0.16666666666666666,
+            "recall": 0.13333333333333333,
+            "f1": 0.14814814814814814
+          },
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          },
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          {
+            "tp": 2,
+            "fp": 3,
+            "fn": 7,
+            "precision": 0.4,
+            "recall": 0.2222222222222222,
+            "f1": 0.2857142857142857
+          },
+          {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "precision": 0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "tp": 1,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666
+          },
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          }
+        ]
+      }
+    },
+    {
+      "name": "26-freeze22-640",
+      "report": "night-26-freeze22-640-a4a439a9.json",
+      "checkpoint_sha256": "46244879486cfffef0d239342721ed502743286972c4944b27a0d2c118a79b79",
+      "validation": {
+        "confidence": 0.1,
+        "iou": 0.5,
+        "tp": 21,
+        "fp": 22,
+        "fn": 27,
+        "precision": 0.4883720930232558,
+        "recall": 0.4375,
+        "f1": 0.46153846153846156,
+        "per_class": [
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          {
+            "tp": 7,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.6363636363636364,
+            "recall": 0.875,
+            "f1": 0.7368421052631579
+          },
+          {
+            "tp": 4,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.8,
+            "recall": 1.0,
+            "f1": 0.8888888888888888
+          },
+          {
+            "tp": 0,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "tp": 2,
+            "fp": 11,
+            "fn": 13,
+            "precision": 0.15384615384615385,
+            "recall": 0.13333333333333333,
+            "f1": 0.14285714285714285
+          },
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          },
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          {
+            "tp": 2,
+            "fp": 4,
+            "fn": 7,
+            "precision": 0.3333333333333333,
+            "recall": 0.2222222222222222,
+            "f1": 0.26666666666666666
+          },
+          {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "precision": 0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "tp": 1,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666
+          },
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          }
+        ]
+      }
+    },
+    {
+      "name": "26-freeze10-960",
+      "report": "night-26-freeze10-960-2cfb335d.json",
+      "checkpoint_sha256": "03345af378c27a57add32fc9d7c63311d442a6e7ebe64fb8e39c1af6e227e845",
+      "validation": {
+        "confidence": 0.25,
+        "iou": 0.5,
+        "tp": 15,
+        "fp": 11,
+        "fn": 33,
+        "precision": 0.5769230769230769,
+        "recall": 0.3125,
+        "f1": 0.40540540540540543,
+        "per_class": [
+          {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "precision": 0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "tp": 5,
+            "fp": 2,
+            "fn": 3,
+            "precision": 0.7142857142857143,
+            "recall": 0.625,
+            "f1": 0.6666666666666666
+          },
+          {
+            "tp": 3,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.75,
+            "recall": 0.75,
+            "f1": 0.75
+          },
+          {
+            "tp": 0,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "tp": 2,
+            "fp": 4,
+            "fn": 13,
+            "precision": 0.3333333333333333,
+            "recall": 0.13333333333333333,
+            "f1": 0.19047619047619047
+          },
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          },
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          {
+            "tp": 1,
+            "fp": 1,
+            "fn": 8,
+            "precision": 0.5,
+            "recall": 0.1111111111111111,
+            "f1": 0.18181818181818182
+          },
+          {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "precision": 0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          {
+            "tp": 0,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "name": "v8-freeze10-640",
+      "report": "night-v8-freeze10-640-b5641b11.json",
+      "checkpoint_sha256": "1dda315dfdb72d323d85711e3796e0bacb74f9d5624b765ef7e8c4a60d796cb2",
+      "validation": {
+        "confidence": 0.1,
+        "iou": 0.5,
+        "tp": 20,
+        "fp": 21,
+        "fn": 28,
+        "precision": 0.4878048780487805,
+        "recall": 0.4166666666666667,
+        "f1": 0.449438202247191,
+        "per_class": [
+          {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "precision": 0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "tp": 6,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.75,
+            "recall": 0.75,
+            "f1": 0.75
+          },
+          {
+            "tp": 3,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.75,
+            "recall": 0.75,
+            "f1": 0.75
+          },
+          {
+            "tp": 0,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "tp": 3,
+            "fp": 7,
+            "fn": 12,
+            "precision": 0.3,
+            "recall": 0.2,
+            "f1": 0.24
+          },
+          {
+            "tp": 1,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.5,
+            "recall": 0.5,
+            "f1": 0.5
+          },
+          {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          {
+            "tp": 2,
+            "fp": 4,
+            "fn": 7,
+            "precision": 0.3333333333333333,
+            "recall": 0.2222222222222222,
+            "f1": 0.26666666666666666
+          },
+          {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "precision": 0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "tp": 1,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666
+          },
+          {
+            "tp": 1,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666
+          },
+          {
+            "tp": 2,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1": 0.8
+          }
+        ]
+      }
+    }
+  ]
+}

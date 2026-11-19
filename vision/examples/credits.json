@@ -1,0 +1,26 @@
+[
+  {
+    "source": "https://commons.wikimedia.org/wiki/File:Burlington_Trailways_bus.jpg",
+    "author": "Znns",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "sha256": "297443633fbf2ca0bca6d69f6657ba0ea93cc52d5213ccf416d8f671a8ee9a43",
+    "file": "01-onibus.jpg",
+    "changes": "None; exact reviewed original bytes."
+  },
+  {
+    "source": "https://www.flickr.com/photos/stone-soup/8092393214/",
+    "author": "jules",
+    "license": "https://creativecommons.org/licenses/by/2.0/",
+    "sha256": "ea30c8058f6f658dc75d14c252eb0ddaba2b2a796164756585d208b9669cb2fa",
+    "file": "02-mesa-garfo-tigela.jpg",
+    "changes": "None; exact reviewed original bytes."
+  },
+  {
+    "source": "https://www.flickr.com/photos/calliope/2113224886/",
+    "author": "liz west",
+    "license": "https://creativecommons.org/licenses/by/2.0/",
+    "sha256": "ee3e96944723de59d8741e68c65e0395fec5841a03286563bf005f43a131a786",
+    "file": "03-copo-cadeira.jpg",
+    "changes": "None; exact reviewed original bytes."
+  }
+]

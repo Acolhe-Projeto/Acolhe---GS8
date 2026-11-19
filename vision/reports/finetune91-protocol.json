@@ -1,0 +1,59 @@
+{
+  "frozen_at_utc": "2026-11-17T09:44:21.363545+00:00",
+  "scope": "Development-only comparison; no blind-test claim. Existing23test excluded from training/selection. Same91train27val for all runs; no class/scene removals based on outcomes.",
+  "dataset_fingerprint_sha256": "abb3344456883d54fd452809101782b353c94de25c3127646e05b0edc7a9732e",
+  "training": {
+    "epochs_max_per_run": 30,
+    "patience": 8,
+    "freeze": 10,
+    "optimizer": "AdamW",
+    "lr0": 5e-05,
+    "lrf": 0.1,
+    "warmup_epochs": 1,
+    "warmup_bias_lr": 0,
+    "mosaic": 0,
+    "close_mosaic": 0,
+    "resume": false,
+    "imgsz": 640,
+    "batch": 2,
+    "workers": 0,
+    "device": "cpu",
+    "seed": 42
+  },
+  "candidates": [
+    {
+      "name": "old80-warm",
+      "initial_artifacts": "vision/artifacts",
+      "initial_checkpoint_sha256": "007a199a43a6944699c43d26b23e30e5a2e25933b106181ed56a8243aa3b2e31"
+    },
+    {
+      "name": "new70-warm",
+      "initial_artifacts": "vision/artifacts-train70-yolo26n-freeze22",
+      "initial_checkpoint_sha256": "0a03611c8dc675216cc142f5c41589bc73c235626ec4650d81068e35e2c727b9"
+    },
+    {
+      "name": "official-control",
+      "base_model": "yolo26n.pt",
+      "initial_checkpoint_sha256": "9b09cc8bf347f0fc8a5f7657480587f25db09b34bf33b0652110fb03a8ad4fef"
+    }
+  ],
+  "validation_sizes": [
+    640,
+    960,
+    1280
+  ],
+  "confidence_grid": [
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.35,
+    0.5,
+    0.65,
+    0.8
+  ],
+  "selection": "Reference is current active checkpoint at its original conf0.15/640 on same27validation. Candidate operating points must not regress precision or recall, require microF1 gain>=0.02. Prefer points reaching both>=0.70; then maxF1, precision, smaller resolution. Include active checkpoint with new resolution as a calibration-only comparator. Report perclass and macrorecall; no zero-recall class may newly appear relative to reference. If no candidate meets rule, retain active.",
+  "test_policy": "Only freeze winner before optional one23 diagnostic regression. Do not tune after reading it. Prior test exposures and COCO pretraining limit independence.",
+  "photos_published": false
+}

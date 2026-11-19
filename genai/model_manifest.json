@@ -1,0 +1,18 @@
+{
+  "model": "qwen2.5:3b-instruct",
+  "ollama_manifest_digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+  "downloaded_size_bytes": 1929912432,
+  "parameter_size": "3.09B",
+  "quantization": "Q4_K_M",
+  "installed_and_verified_locally": true,
+  "runtime": "Ollama",
+  "upstream": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct",
+  "registry": "https://ollama.com/library/qwen2.5:3b-instruct",
+  "license": "Qwen Research",
+  "weights_in_git": false,
+  "restore_command": "ollama pull qwen2.5:3b-instruct",
+  "team_weight_training": false,
+  "specialization": "RAG + LLM agent retrieve/refuse; no LoRA adapter; same base model compared in baseline/RAG/agent",
+  "evidence": "avaliacao/qwen3b-v6-D16-night.json",
+  "rubric_note": "PDF p29 says train a local LLM; p30 item05 explicitly allows LoRA OR agent. This project implements the agent path, not fine-tuning of model weights."
+}

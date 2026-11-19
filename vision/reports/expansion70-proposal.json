@@ -1,0 +1,81 @@
+{
+  "images": 90,
+  "image_bytes": 15687974,
+  "packet_sha256": "29569624253781bd7fb1dd4154efc33df6a8d13656e381d89cc058da77fcf918",
+  "contact_sheets": [
+    "contact-01.jpg",
+    "contact-02.jpg",
+    "contact-03.jpg",
+    "contact-04.jpg",
+    "contact-05.jpg",
+    "contact-06.jpg",
+    "contact-07.jpg",
+    "contact-08.jpg"
+  ],
+  "split_images": {
+    "val": 20,
+    "train": 70
+  },
+  "class_images_per_split": {
+    "train": {
+      "book": 22,
+      "bowl": 33,
+      "chair": 33,
+      "clock": 16,
+      "cup": 35,
+      "bottle": 24,
+      "fork": 19,
+      "spoon": 22,
+      "backpack": 7,
+      "traffic light": 9,
+      "bus": 6,
+      "umbrella": 6
+    },
+    "val": {
+      "backpack": 2,
+      "book": 7,
+      "bottle": 12,
+      "bowl": 12,
+      "chair": 11,
+      "cup": 12,
+      "spoon": 8,
+      "clock": 6,
+      "fork": 7,
+      "bus": 2,
+      "traffic light": 2,
+      "umbrella": 6
+    },
+    "test": {}
+  },
+  "human_approval": "approved",
+  "privacy_reviewed_true": 0,
+  "local_packet": "vision/data/public-review-train70-v2-20261117",
+  "source": "COCO train2017 (85 new) + five previously approved photos retaining original split",
+  "historical_test_excluded": true,
+  "historical_test_images": 30,
+  "within_packet_exact_duplicates": 0,
+  "historical_test_exact_overlap": 0,
+  "near_duplicate_review": "pending",
+  "agent_visual_screening": "All acquired contact sheets inspected; five unsuitable collage/toy/airplane images removed before final packet. One prior-approved bus scene has a distant annotated person; human review remains pending.",
+  "training_started": true,
+  "approval_required": false,
+  "planned_experiment": {
+    "base": "yolo26n.pt",
+    "epochs": 100,
+    "imgsz": 640,
+    "batch": 2,
+    "workers": 0,
+    "device": "cpu",
+    "seed": 42,
+    "confidence_selection": "validation only, max micro F1 then precision; separately inspect both 70% goals",
+    "promotion": "only if validation supports useful improvement; preserve current active model",
+    "test": "23 approved images, diagnostic regression only after frozen choice; never train on them"
+  },
+  "source_acquisition": "HTTP429 stopped online acquisition. Final packet assembled entirely from verified cache; no rate-limit bypass.",
+  "approval_reference": "Aprovo o lote e o treino local",
+  "dataset_fingerprint_sha256": "680186e488f3189b421f910e89a0010cecb836fa75d0232d7148e54313eb46ac",
+  "training_completed": true,
+  "training_promoted": false,
+  "completed_epochs_total": 100,
+  "decision_report": "expansion70-decision.json"
+}

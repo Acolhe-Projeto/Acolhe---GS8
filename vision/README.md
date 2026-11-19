@@ -1,49 +1,30 @@
-# Visão: vocabulário por objetos
+# Vision
 
-## Estado real
-12 classes definidas; contrato de inferência e workflow de treino preparados.
-**Nenhum treinamento, checkpoint customizado, métrica de detecção ou inferência real foi executado.** A API retorna indisponível, nunca uma detecção fictícia.
-Python global não tem torch/Pillow/ultralytics. PyYAML 6.0.3 foi instalado apenas em vision/.test-deps para validar o parser em testes, não no Python global. O venv CP5 histórico não inicia. Dataset Food101 encontrado localmente é inadequado às classes e não foi usado como evidência.
+Detector de 12 objetos cotidianos, com nomes em português e espanhol. O serviço carrega o YOLO26m91 customizado em release/best.pt, conferindo seu SHA-256, manifesto e classes. Inferência em CPU, resolução 960 e confiança 0,25.
 
-## Classes e segurança
-Mochila, cadeira, livro, garrafa, copo, colher, garfo, tigela, relógio, guarda-chuva, ônibus e semáforo.
-Labels em PT/ES em service.py. Caderno não está coberto por book; será expansão com dados próprios.
-Semáforo é apenas um objeto para vocabulário: não inferimos sua cor, permissão de travessia nem rota segura. Sem reconhecimento facial, identidade ou gravação de imagens.
+## Usar após clonar
 
-## Dataset real necessário
-Candidato: COCO 2017 (https://cocodataset.org/#download). As 12 classes existem no COCO.
-**Candidato ainda não baixado nem licenças individuais verificadas.** Anotações COCO usam CC-BY-4.0; fotografias têm licenças próprias, portanto verificar o campo licenses de cada imagem antes de reutilizar/distribuir. Não declarar todas as fotografias CC-BY.
-Planejamento: filtrar classes, selecionar imagens com licença compatível, manter créditos/image_id/source/license em inventário; remapear categorias para 0..11, converter caixas para YOLO normalizado, remover duplicatas.
-Separar por image_id antes de augmentations: treino/validação/teste 70/15/15 com seed 42; não reaproveitar teste para tuning. Auditar distribuição por classe/ambiente e evitar imagens identificáveis de crianças.
-Copiar dataset.example.yaml e provenance.example.json e preencher com evidências reais. O exemplo contém real_images=false de propósito.
+Siga a instalação do README da raiz. O checkpoint e três fotos em examples já acompanham o clone; não é necessário treinar novamente. No portal, abra Para educadores → Objetos que ensinam, selecione JPEG/PNG de até 8 MiB e clique Reconhecer objetos. O upload não é salvo.
 
-## Execução quando dependências/dados estiverem disponíveis
-```powershell
-python -m unittest vision.tests.test_service
-# Em ambiente aprovado com PyTorch apropriado e dependências de requirements.txt:
-python -m vision.train --dataset vision/data/dataset.yaml --provenance vision/data/provenance.json --epochs 40
-```
-Treino usa transferência de yolo11n.pt, seed 42 e teste separado. O Ultralytics pode obter pesos oficiais na primeira execução; revisar compatibilidade da licença AGPL/comercial com a distribuição. Treino customizado é obrigatório; pesos COCO sozinhos não cumprem a entrega.
-Resultados reais vão a runs/ e artifacts/. O script grava hash do checkpoint/dataset, procedência e métricas do conjunto teste. A pasta de saída de artefatos deve ser inexistente: a reserva exclusiva falha se já houver qualquer diretório com esse nome. Use --output vision/artifacts-experimento-02 para outro experimento. Arquivos finais são abertos exclusivamente, sem sobrescrever. Uma execução interrompida pode deixar uma pasta parcial; ela não será reutilizada automaticamente.
+O [relatório Vision](../docs/entregas/VISION_RELATORIO.md) reúne o treinamento, a comparação de ajustes finos e os resultados; a [versão PDF](../docs/ACOLHE_VISION.pdf) acompanha a entrega. No teste básico reservado de 13 fotos, precisão foi 71,2% e recall, 72,2%. Nas 23 fotos anteriores, mais complexas, foram 68,3% e 62,1%. A amostra é pequena e a origem COCO limita independência em relação ao pré-treino.
 
-## Serviço e avaliação
-status() só informa ready=true após verificar manifesto JSON, trained_on_real_images=true, ordem das classes, SHA-256 do checkpoint, dependências, carregamento por YOLO e nomes das classes do próprio modelo. Isso não comprova qualidade: quality_validated permanece false. predict(bytes) repete as verificações antes da inferência.
-Em caso de ausência: ModelUnavailable. Com checkpoint: objetos, caixas, confiança e traduções; limiar 0,5, limite de arquivo 8 MiB/20 megapixels, sem armazenamento. Dependências ausentes também impedem inferência.
-Antes da entrega acadêmica: confirmar classes do YAML correspondem à procedência; contar imagens/objetos por split; mAP50/mAP50-95, precisão/recall por classe; matriz de confusão; cinco erros reais com imagens licenciadas; testar luz baixa/oclusão e objetos não conhecidos. Esses resultados **estão pendentes**.
+## Arquivos
 
+- release: mesmo checkpoint avaliado, manifesto e licença AGPL-3.0.
+- examples: três fotos públicas com fontes, autores, licenças e hashes.
+- reports/finetune117-summary.json: decisão e resultados finais.
+- reports/ft117-reserved13.json: predições do teste reservado.
+- reports/reproduction-union91.json e reproduction-union117.json: metadados e rótulos para reconstruir os conjuntos.
+- train.py, calibrate.py e audit.py: treinamento, seleção/avaliação e auditoria.
 
-## Proteções verificadas em 2026-11-07
+## Refazer o treinamento
 
-O YAML é carregado com PyYAML SafeLoader, recusando chaves duplicadas. names deve ser uma lista na ordem de service.LABELS ou um mapa com IDs inteiros 0..11 e os mesmos nomes nessa ordem. Não aceita IDs em texto, classes extras, faltantes, duplicadas ou reordenadas. nc, quando presente, deve ser o inteiro 12. train, val e test precisam ser declarados; a procedência deve listar as mesmas classes em ordem. Essas verificações precedem a construção do modelo e qualquer obtenção de pesos.
-
-Ainda não há auditoria automática de pixels, licenças, contagens ou sobreposição dos splits. O campo real_images é uma declaração de procedência, não prova independente de curadoria. O hash detecta alterações no checkpoint, não autentica sua origem. Usar somente checkpoints locais próprios e confiáveis. status carrega o modelo para verificar compatibilidade, podendo consumir tempo e memória; a checagem não executa uma imagem de teste.
-
-Teste completo executado com PyYAML isolado: 55 testes passaram, sem skips, em 5,392 s. Os testes do carregador de modelo usam stubs deliberadamente; não representam execução de YOLO real. Sem treino, inferência real ou métricas de qualidade.
-
-Comando reproduzível a partir da raiz:
+A reprodução do treinamento é opcional. Com as dependências instaladas, executar na raiz usando destinos novos:
 
 ```powershell
-python -B -c "import sys,unittest;sys.path.insert(0,'vision/.test-deps');suite=unittest.defaultTestLoader.discover('.');r=unittest.TextTestRunner(verbosity=2).run(suite);sys.exit(not r.wasSuccessful())"
+.\.venv\Scripts\python.exe -m vision.reproduce --bundle vision/reports/reproduction-union91.json --output vision/data/reproduzido91
+.\.venv\Scripts\python.exe -m vision.audit --dataset vision/data/reproduzido91/dataset.yaml --provenance vision/data/reproduzido91/provenance.json
+.\.venv\Scripts\python.exe -m vision.train --dataset vision/data/reproduzido91/dataset.yaml --provenance vision/data/reproduzido91/provenance.json --epochs 12 --patience 4 --base-model yolo26m.pt --freeze 22 --learning-rate 0.00001 --mosaic 0 --device cpu --imgsz 640 --batch 2 --workers 0 --skip-test --output vision/artifacts-reproducao
 ```
 
-Sem PyYAML, somente o teste de parser YAML é explicitamente ignorado; os demais testes não precisam da stack de treinamento. Copias anteriores dos dois módulos estão em arquivos .py.before-guards, excluídos de versionamento.
+Esses comandos produzem novos artefatos e não substituem o checkpoint entregue. Para nova seleção, usar somente validação, congelar o perfil e avaliar em teste reservado. O relatório registra receitas, hashes e limitações. Respeite os créditos individuais das imagens; os dados completos e pesos experimentais não acompanham a distribuição.

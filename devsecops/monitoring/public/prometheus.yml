@@ -1,0 +1,15 @@
+# Prometheus scraping the PUBLISHED MVP (Azure Container Apps) over HTTPS.
+# Note: scraping keeps one replica awake (scale-to-zero stops while this runs); stop the stack after the prints.
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+rule_files:
+  - /etc/prometheus/alerts.yml
+scrape_configs:
+  - job_name: acolhe
+    scheme: https
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["acolhe-gs8.ambitiousbeach-2f5aaa39.canadacentral.azurecontainerapps.io:443"]
+        labels:
+          env: azure

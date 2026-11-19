@@ -1,0 +1,245 @@
+{
+  "epochs": 20,
+  "model": "yolo11n",
+  "device": "cpu",
+  "imgsz": 320,
+  "batch": 2,
+  "workers": 0,
+  "seed": 42,
+  "quality_validated": false,
+  "checkpoint_sha256": "b441e1490d6bbcb0aa173aca4589fc809ed6f42c263ee559c8424466413914a1",
+  "dataset_yaml_sha256": "24efcf57220f5ceb1224a5e3cb0b04296ea5110a83552fd50af8de7e573ccc0d",
+  "dataset_audit": {
+    "passed": true,
+    "class_names": [
+      "backpack",
+      "chair",
+      "book",
+      "bottle",
+      "cup",
+      "spoon",
+      "fork",
+      "bowl",
+      "clock",
+      "umbrella",
+      "bus",
+      "traffic light"
+    ],
+    "splits": {
+      "train": {
+        "images": 25,
+        "objects": 97,
+        "objects_per_class": {
+          "bowl": 16,
+          "chair": 14,
+          "fork": 8,
+          "clock": 4,
+          "spoon": 7,
+          "bottle": 10,
+          "traffic light": 5,
+          "book": 14,
+          "umbrella": 2,
+          "cup": 13,
+          "bus": 1,
+          "backpack": 3
+        },
+        "images_per_class": {
+          "bowl": 9,
+          "chair": 6,
+          "fork": 6,
+          "spoon": 5,
+          "clock": 3,
+          "bottle": 6,
+          "traffic light": 1,
+          "book": 2,
+          "umbrella": 1,
+          "cup": 5,
+          "bus": 1,
+          "backpack": 3
+        }
+      },
+      "val": {
+        "images": 8,
+        "objects": 48,
+        "objects_per_class": {
+          "bottle": 3,
+          "cup": 15,
+          "spoon": 2,
+          "bowl": 9,
+          "book": 4,
+          "chair": 8,
+          "clock": 1,
+          "fork": 1,
+          "traffic light": 2,
+          "umbrella": 1,
+          "bus": 1,
+          "backpack": 1
+        },
+        "images_per_class": {
+          "bottle": 1,
+          "bowl": 3,
+          "spoon": 2,
+          "cup": 3,
+          "book": 1,
+          "chair": 2,
+          "clock": 1,
+          "fork": 1,
+          "traffic light": 1,
+          "umbrella": 1,
+          "bus": 1,
+          "backpack": 1
+        }
+      },
+      "test": {
+        "images": 7,
+        "objects": 42,
+        "objects_per_class": {
+          "bottle": 4,
+          "umbrella": 1,
+          "chair": 6,
+          "cup": 4,
+          "spoon": 1,
+          "bowl": 3,
+          "fork": 1,
+          "bus": 1,
+          "clock": 1,
+          "book": 13,
+          "backpack": 1,
+          "traffic light": 6
+        },
+        "images_per_class": {
+          "bottle": 2,
+          "chair": 3,
+          "umbrella": 1,
+          "cup": 2,
+          "bowl": 2,
+          "spoon": 1,
+          "fork": 1,
+          "bus": 1,
+          "book": 1,
+          "clock": 1,
+          "backpack": 1,
+          "traffic light": 1
+        }
+      }
+    },
+    "dataset_fingerprint_sha256": "807dcc346068ebc6f63c7bb687c0b114a9a63347cf10c26915ba4759065df923",
+    "duplicate_content": 0,
+    "license_review": "human declarations checked; legal rights not independently verified",
+    "perceptual_duplicates_checked": false,
+    "quality_validated": false
+  },
+  "per_class_metrics": {
+    "backpack": {
+      "precision": 1.0,
+      "recall": 0.0,
+      "map50": 0.0,
+      "map50_95": 0.0
+    },
+    "chair": {
+      "precision": 0.6273002179258671,
+      "recall": 0.3333333333333333,
+      "map50": 0.47533333333333333,
+      "map50_95": 0.29430644122383254
+    },
+    "book": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "map50": 0.0873030303030303,
+      "map50_95": 0.00873030303030303
+    },
+    "bottle": {
+      "precision": 0.41026123184633867,
+      "recall": 0.365391847769508,
+      "map50": 0.34125,
+      "map50_95": 0.11775
+    },
+    "cup": {
+      "precision": 0.582536645944485,
+      "recall": 0.5,
+      "map50": 0.645,
+      "map50_95": 0.48774999999999996
+    },
+    "spoon": {
+      "precision": 1.0,
+      "recall": 0.0,
+      "map50": 0.0,
+      "map50_95": 0.0
+    },
+    "fork": {
+      "precision": 0.8923829587216926,
+      "recall": 1.0,
+      "map50": 0.995,
+      "map50_95": 0.8955
+    },
+    "bowl": {
+      "precision": 0.7132417837966948,
+      "recall": 0.3333333333333333,
+      "map50": 0.616875,
+      "map50_95": 0.5084375000000001
+    },
+    "clock": {
+      "precision": 1.0,
+      "recall": 0.0,
+      "map50": 0.0,
+      "map50_95": 0.0
+    },
+    "umbrella": {
+      "precision": 1.0,
+      "recall": 0.0,
+      "map50": 0.4975,
+      "map50_95": 0.34825
+    },
+    "bus": {
+      "precision": 0.4842492274976555,
+      "recall": 1.0,
+      "map50": 0.995,
+      "map50_95": 0.8955
+    },
+    "traffic light": {
+      "precision": 1.0,
+      "recall": 0.0,
+      "map50": 0.0,
+      "map50_95": 0.0
+    }
+  },
+  "test_metrics": {
+    "metrics/precision(B)": 0.7258310054777279,
+    "metrics/recall(B)": 0.2943382095363479,
+    "metrics/mAP50(B)": 0.3877717803030303,
+    "metrics/mAP50-95(B)": 0.2963520203545113,
+    "fitness": 0.2963520203545113
+  },
+  "runtime": {
+    "started_at_utc": "2026-11-17T01:39:45.703557+00:00",
+    "python": "3.12.10",
+    "torch": "2.15.0+cpu",
+    "ultralytics": "8.4.215",
+    "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+    "logical_cpu_count": 12,
+    "system_ram_bytes": 34270842880,
+    "cuda_available": false,
+    "requested_device": "cpu",
+    "requested_torch_threads": 4,
+    "temperature_c": null,
+    "temperature_reason": "No temperature telemetry was collected on this Windows run; no estimate fabricated",
+    "dataset_packet_sha256": "a7f3630698fd57102ea6d1f4f20afabba80c13e35cb96ecf28ac67450b345a71",
+    "approved_by": "Responsável humano nesta conversa",
+    "approval_reference": "User explicitly approved V2 batch and training, 2026-11-16 America/Sao_Paulo; GPU preferred if supported; stable CPU fallback authorized by parent.",
+    "status": "completed",
+    "finished_at_utc": "2026-11-17T01:42:45.492399+00:00",
+    "duration_seconds": 179.789,
+    "process_peak_rss_bytes": 772653056,
+    "torch_threads_after_run": 8,
+    "test_metrics": {
+      "metrics/precision(B)": 0.7258310054777279,
+      "metrics/recall(B)": 0.2943382095363479,
+      "metrics/mAP50(B)": 0.3877717803030303,
+      "metrics/mAP50-95(B)": 0.2963520203545113,
+      "fitness": 0.2963520203545113
+    }
+  },
+  "evaluation_scope": "Native Ultralytics metrics on 7 held-out photos / 42 annotated objects. Optional faster-coco-eval export validation did not run; native detector evaluation completed. No tuning after test.",
+  "source_manifest_sha256": "b16b82c972e3b513885d9497e633484d5e17182d38b42d203a5362f4dd3548aa",
+  "annotation_review": "Commons bus box proposed by agent and explicitly included in the human batch approval before training; source proposal pending_human field retained as historical metadata."
+}

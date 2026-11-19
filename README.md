@@ -1,5 +1,6 @@
 # Acolhe
 
+Protótipo acadêmico de acolhimento linguístico em português e espanhol, com atividades educativas de mobilidade e uso acompanhado por uma pessoa adulta. Global Solution FIAP 2026.2, CitizenTech.
 
 ## Equipe
 
@@ -8,236 +9,266 @@
 - Aksel Viktor Caminha Rae — RM 99011
 - Ian Xavier Kuraoka — RM 98860
 
+**Repositório:** https://github.com/Acolhe-Projeto/Acolhe---GS8
 
+**MVP público:** https://acolhe-gs8.ambitiousbeach-2f5aaa39.canadacentral.azurecontainerapps.io
 
-Português para recomeçar. Protótipo acadêmico da Global Solution FIAP 2026.2, CitizenTech, para acolhimento linguístico em português/espanhol e orientações educativas de mobilidade segura.
+O ambiente público disponibiliza o MVP básico: lições, painel, dados e RPA. A LLM local, a visão e o robô funcionam na instalação local descrita abaixo.
 
+## Instalação e execução
 
+### Demonstração geral: GenAI e Vision
 
-**Estado:** MVP local com módulos demonstrativos. Não é um produto validado para uso com crianças nem uma entrega acadêmica integralmente comprovada. Use adultos e dados fictícios nesta fase. Repositório: https://github.com/TomazVC/Acolhe---GS8. As alterações locais precisam de push para aparecer no GitHub. Isso não publica o aplicativo na internet nem comprova um ambiente de produção.
+Pré-requisitos: Windows, Python 3.12 e Ollama instalado e aberto. A primeira preparação usa internet para instalar as dependências e baixar o Qwen2.5 3B, com aproximadamente 1,9 GB de pesos. O checkpoint Vision de 44 MB acompanha o clone.
 
+```powershell
+git clone https://github.com/Acolhe-Projeto/Acolhe---GS8.git
+cd Acolhe---GS8
+.\scripts\preparar-demo.ps1
+.\scripts\iniciar-demo.ps1
+```
 
+Abra o endereço exibido no terminal. A porta é escolhida automaticamente a partir de 8080. Para iniciar novamente a demonstração geral, execute `scripts/iniciar-demo.ps1`. Encerre o servidor com Ctrl+C.
+
+A preparação e a inicialização da demonstração geral conferem o digest da LLM e o hash, as classes e o perfil do detector. Não é necessário treinar novamente para usar os modelos da entrega.
+
+### Robô Maker: conversa por voz e hardware
+
+O Maker utiliza Whisper, Qwen3 4B via Ollama e Piper. Sua preparação inclui dependências de voz e comunicação serial, além dos arquivos locais dos modelos.
+
+Consulte [robot/README.md](robot/README.md) para obter os modelos e organizar a pasta de origem. Depois execute, ajustando o caminho:
+
+```powershell
+.\Preparar-Robo.cmd --source "C:\Acolhe-modelos"
+.\Iniciar-Acolhe.cmd
+```
+
+`Iniciar-Acolhe.cmd`:
+
+- Verifica as dependências e os arquivos de voz.
+- Inicia o Ollama instalado quando necessário.
+- Confere e carrega o modelo configurado, por padrão `qwen3:4b`.
+- Valida a geração de voz Piper.
+- Abre a conversa no navegador.
+- Reutiliza o servidor Acolhe se ele já estiver aberto, preservando a conexão existente do Arduino.
+
+Modelos ausentes geram uma orientação de preparação; o iniciador não faz downloads silenciosos. A seleção da porta USB e a calibração dos motores são realizadas no painel.
+
+A conversa do robô fica disponível em http://127.0.0.1:8080/robo.html na configuração padrão. Mantenha a janela do servidor aberta durante o uso.
+
+### Apenas o servidor básico
+
+Para executar somente o servidor básico, sem iniciar os serviços locais de IA e voz:
+
+```powershell
+python -B -m app.server
+```
+
+Abra http://127.0.0.1:8080. Não abra `index.html` diretamente, pois a aplicação utiliza a API.
+
+## Testar GenAI
+
+Em **Caminho seguro**, digite uma pergunta e clique em **Perguntar ao ajudante**. Confira a resposta, a fonte e o aviso de acompanhamento adulto.
+
+| Idioma | Pergunta | Resultado esperado |
+|---|---|---|
+| Português | Como atravessar a rua com segurança? | Orientação com fonte e acompanhamento adulto |
+| Español | ¿Qué hago si estoy perdido? | Orientação em espanhol para buscar ajuda |
+| Português | Qual é a previsão de chuva amanhã? | Recusa por informação ausente |
+
+O modelo deste módulo é Qwen2.5 3B Q4_K_M. A especialização usa recuperação e agente, sem ajuste dos pesos da LLM. Na avaliação técnica D16, baseline teve 7/16 acertos; RAG e agente, 14/16. A interface usa RAG.
+
+O módulo Maker possui configuração própria de conversa por voz, descrita na seção seguinte.
+
+## Testar Vision
+
+Em **Para educadores → Objetos que ensinam**, selecione uma foto e clique em **Reconhecer objetos**. As três fotos abaixo acompanham o clone em `vision/examples`:
+
+| Arquivo | Resultado esperado |
+|---|---|
+| 01-onibus.jpg | ônibus / autobús |
+| 02-mesa-garfo-tigela.jpg | tigela / cuenco; garfo / tenedor; colher / cuchara |
+| 03-copo-cadeira.jpg | cadeiras / sillas; cena mais difícil, com possíveis omissões |
+
+O serviço usa o mesmo YOLO26m91 treinado e avaliado, em `vision/release/best.pt`. O manifesto confere o SHA-256 antes da inferência.
+
+No teste básico reservado de 13 fotos, a precisão foi 71,2% e o recall, 72,2%. No conjunto anterior de 23 fotos, os resultados foram 68,3% e 62,1%; conjuntos diferentes não medem evolução direta.
+
+O detector ainda erra e não decide se uma travessia é segura.
+
+[Créditos das imagens](vision/examples/README.md).
 
 ## Maker Lab: robô Acolhe
 
-O Acolhe apoia o acolhimento linguístico em português/espanhol, com conversa educativa e atividades sobre o ambiente. A proposta CitizenTech aproxima pessoas em adaptação ao idioma de um recurso interativo de aprendizagem, com mediação de um adulto.
+O robô apoia o acolhimento linguístico com conversa educativa em português e espanhol e atividades sobre o ambiente, sempre com mediação de um adulto.
 
-- **Hardware atual:** Arduino Uno USB, DHT11 adicional, LCD QAPASS I²C, L298N e dois motores TT (braço direito/braço esquerdo), sem buzzer e sem PWM.
-- **Voz e IA:** microfone → Whisper local → Qwen3 4B/Ollama com material educativo e telemetria validada → Piper/saída de voz no computador. O Uno atualiza o LCD e executa os gestos autorizados.
-- **Autonomia:** três leituras válidas de pelo menos 30 °C oferecem uma atividade sobre calor, sem comando manual; rearme abaixo de 28 °C e intervalo mínimo de dois minutos. É regra didática, sem significado clínico. No treino, acerto pede gesto do braço esquerdo e nova tentativa pede braço direito, após calibração observada. Regras e respostas geradas pelo LLM são identificadas separadamente.
-- **Instalação, componentes, circuito e firmware:** [robot/README.md](robot/README.md).
-- **Conferência de requisitos e evidências:** [docs/maker-entrega.md](docs/maker-entrega.md).
-- **Abrir a conversa local:** http://127.0.0.1:8080/robo.html, depois de executar `Iniciar-Acolhe.cmd`.
+A proposta CitizenTech utiliza interação por voz, informações ambientais e gestos para apoiar a aprendizagem de pessoas em adaptação ao idioma.
 
-### Vídeo demonstrativo Maker (até 6 minutos)
+### Componentes
 
-**[Assistir ao vídeo demonstrativo do Acolhe no YouTube](https://youtu.be/Bm3uaAx4McE)**
+- Arduino Uno conectado ao computador por USB.
+- Sensor adicional DHT11 para temperatura e umidade.
+- Display QAPASS LCD 16×2 com interface I²C.
+- Ponte H L298N.
+- Dois motores TT: braço esquerdo e braço direito.
+- Protoboard, fios e pack de pilhas AA para os motores.
+- Computador com microfone e saída de áudio.
 
-**Duração: 4min13s**, dentro do limite de seis minutos; acesso sem login conferido em 19/11/2026. O roteiro está em [docs/roteiros_videos.md](docs/roteiros_videos.md).
+A montagem atual não utiliza buzzer nem controle de velocidade por PWM. Os jumpers ENA e ENB permanecem instalados na ponte; o Arduino controla o sentido e a duração dos pulsos.
 
-A entrega Maker ainda depende da conferência das evidências físicas e da publicação desta revisão no GitHub. Os quatro integrantes e RMs estão acima; apenas um integrante deve enviar o link oficial.
+### Integração entre sensor, IA e atuação
+
+O fluxo de conversa é:
+
+```text
+Microfone
+   ↓
+Whisper local: transcrição
+   ↓
+Qwen3 4B via Ollama
+   + conteúdo educativo recuperado
+   + telemetria validada do DHT11
+   ↓
+Resposta escrita
+   ↓
+Piper: síntese de voz no computador
+```
+
+O Arduino envia as leituras do DHT11 por USB e atualiza o LCD. O backend valida as medidas e trata leituras inválidas ou expiradas como indisponíveis.
+
+Os valores apresentados vêm da telemetria validada. O sensor não detecta presença nem qualidade do ar, e as medidas não são utilizadas para diagnóstico de saúde.
+
+No treino de palavras, a correção das respostas e a escolha dos gestos seguem regras programadas. O texto livre produzido pela LLM não é interpretado como comando de motor.
+
+### Autonomia
+
+Três leituras válidas consecutivas de pelo menos 30 °C oferecem automaticamente uma atividade sobre calor no painel. A regra rearma abaixo de 28 °C e respeita um intervalo mínimo de dois minutos entre ofertas.
+
+A oferta visual é automática; iniciar a conversa sobre a atividade exige clique ou pergunta. Esses limiares são didáticos, sem significado clínico.
+
+### Movimentos e calibração
+
+| Situação ou comando | Movimento |
+|---|---|
+| Acerto no treino | Braço esquerdo |
+| Nova tentativa após palavra incorreta | Braço direito |
+| “Acolhe, mova o braço esquerdo” | Pulso no braço esquerdo |
+| “Acolhe, mova o braço direito” | Pulso no braço direito |
+| “Acolhe, dê um oi” ou “Acolhe, diga sim” | Pulso no braço esquerdo |
+| “Acolhe, diga não” | Pulso no braço direito |
+
+Os identificadores internos permanecem `arm` para braço esquerdo e `head` para braço direito.
+
+Para habilitar os gestos do treino, teste e registre o movimento observado dos dois motores em **Preparar gestos do treino**. O teste manual de pulso não registra automaticamente a calibração.
+
+Os motores TT não possuem encoder: não há garantia de ângulo ou retorno à posição inicial. Os pulsos têm duração limitada a 150 ms e intervalo mínimo de dois segundos. Parar ou reconectar limpa a habilitação dos gestos.
+
+### Como demonstrar
+
+1. Execute `Iniciar-Acolhe.cmd`.
+2. Abra a conversa e conecte a porta do Arduino.
+3. Confira as leituras do DHT11 e o LCD.
+4. Teste e registre os dois motores.
+5. Pergunte por voz: “Qual é a temperatura e a umidade da sala?”.
+6. Diga “Vamos praticar”.
+7. Responda “oi” ou “olá” para `hola`, “cadeira” para `silla` e “garrafa” para `botella`.
+
+“Não sei” e “Repita a pergunta” oferecem ajuda sem gesto. “Encerrar atividade” encerra o treino.
+
+### Documentação e vídeo
+
+- [Instalação, componentes, circuito Mermaid, firmware e calibração](robot/README.md).
+- [Conferência dos requisitos e evidências](docs/maker-entrega.md).
+- [Roteiro dos vídeos](docs/roteiros_videos.md).
+- **[Vídeo demonstrativo Maker — 4min13s](https://youtu.be/Bm3uaAx4McE)**.
+
+O vídeo está dentro do limite de seis minutos e apresenta a proposta, a conversa com leitura ambiental, o treino, o LCD e a montagem. Acesso sem login conferido em 19/11/2026.
+
+A demonstração de falhas e da oferta automática por calor não foi identificada nesse vídeo; esses limites permanecem registrados na documentação.
+
+Para Maker, a documentação oficial é o repositório GitHub. ZIP ou PDF não substituem código, instruções e vídeo. Apenas um integrante realiza a entrega, mantendo os nomes e RMs de todo o grupo no README.
+
+## Big Data, RPA e DevSecOps
+
+- **Big Data:** coleta diária no Airflow de duas fontes reais, IBGE e OBMigra, para `chegada/`; lotes de dias diferentes no Volume do Databricks; Bronze incremental com `COPY INTO`; Prata com `MERGE` e regras de qualidade com contagem; Ouro dimensional e consultas. [Guia](big_data/README.md) · [PDF](docs/entregas/GS_BigData_Acolhe.pdf).
+
+- **RPA:** robô em Python que lê o banco do app, aplica regras de consistência e decisão, registra logs e entrega o resultado ao painel do MVP. [Guia](rpa/README.md) · [PDF](docs/entregas/GS_RPA_Acolhe.pdf).
+
+- **DevSecOps:** container não root, Terraform no Azure, GitHub Actions com Gitleaks, Semgrep e Trivy a cada push, deploy automático pela `main` via OIDC e registro privado, Grafana com os quatro sinais de ouro. [Guia](devsecops/README.md) · [PDF](docs/entregas/GS_DevSecOps_Acolhe.pdf).
 
 ## Ficha técnica
 
+- **API:** versão 0.1.0; Python 3.12, SQLite e servidor HTTP.
+- **Interface:** HTML/CSS/JavaScript; cinco lições PT/ES, síntese de voz do navegador nas atividades, envio de foto para a visão e service worker.
+- **Persistência:** sessões pseudônimas, tentativas, acertos e idioma por tentativa. Exclusão por sessão e expurgo após sete dias nas operações do banco.
+- **GenAI:** Qwen2.5 3B com recuperação e agente; a interface utiliza RAG.
+- **Vision:** detector YOLO treinado, com checkpoint e manifesto de verificação.
+- **Maker:** Arduino Uno USB, DHT11, LCD, dois braços, Whisper, Qwen3 4B/Ollama e Piper. Simulador disponível separadamente.
+- **Demais integrações:** pipeline de dados, RPA e indicadores.
+- **Infraestrutura:** Azure Container Apps em `canadacentral`, de zero a uma réplica, HTTPS e SQLite persistente em Azure Files, criada por Terraform.
+- **CI/CD:** imagem Docker Alpine com usuário não root, scanners Gitleaks, Semgrep e Trivy, Azure Container Registry privado e deploy automático da `main` por OIDC.
+- **Monitoramento:** métricas Prometheus e os quatro sinais de ouro no Grafana.
 
+Detalhes de infraestrutura em [devsecops/README.md](devsecops/README.md).
 
-- Versão da API: 0.1.0; Python 3.12, biblioteca padrão, SQLite e servidor HTTP local.
+## Documentação da entrega
 
-- Interface: HTML/CSS/JavaScript sem instalação de pacotes; cinco lições PT/ES, síntese de voz do navegador e service worker.
+- [Relatório GenAI](docs/entregas/GENAI_RELATORIO.md): modelo, base, comparação, erros e reprodução.
+- [Relatório Vision](docs/entregas/VISION_RELATORIO.md) e [PDF](docs/ACOLHE_VISION.pdf): dados, treinamento, comparação de ajustes finos e resultados.
+- [Guia Maker](robot/README.md) e [conferência da entrega](docs/maker-entrega.md): instalação, componentes, integração, firmware, testes e evidências.
+- PDFs de [Big Data](docs/entregas/GS_BigData_Acolhe.pdf), [RPA](docs/entregas/GS_RPA_Acolhe.pdf) e [DevSecOps](docs/entregas/GS_DevSecOps_Acolhe.pdf).
+- [Requisitos e diagramas de GenAI e Vision](docs/PRD_GENAI_VISION.md).
+- [Checklist de entregáveis](docs/CHECKLIST_ENTREGAVEIS_GS.md).
+- [Documentação geral](docs/README.md).
 
-- Persistência: sessões pseudônimas, tentativas, acertos e idioma por tentativa. Exclusão por sessão; expurgo após sete dias nas operações do banco, não por agendador independente.
+Os formatos oficiais de entrega variam por disciplina. Para Maker, utilize a documentação navegável no GitHub e o vídeo vinculado ao README.
 
-- Integrações: recuperação lexical de conteúdo curado, Ollama e voz local no Maker, contrato de visão, robô físico USB e simulador separado, pipeline de dados e RPA local.
+## Estrutura do projeto
 
-- Infraestrutura preparada: Docker/Compose, GitHub Actions, Terraform Azure e métricas Prometheus. Configuração não equivale a infraestrutura executada.
+| Pasta | Conteúdo |
+|---|---|
+| app | Interface PT/ES, API Python, inicialização, sessões e atividades em SQLite |
+| genai | Base autoral, recuperação, adaptador Ollama, agente e avaliação |
+| vision | Treino e inferência, checkpoint entregue, imagens e métricas |
+| robot | Firmware, DHT11, LCD, gestos dos braços, voz local e simulador |
+| big_data | DAGs do Airflow, notebooks Databricks, SQL, amostras e evidências |
+| rpa | Automação de relatórios, BPMN, logs e evidências |
+| devsecops | Terraform, monitoramento, scripts de verificação e evidências |
+| bi | Indicadores e proposta de negócio |
+| docs | Entregas, roteiros dos vídeos, manuais e evidências |
 
-- Documentação oficial no GitHub: [guia Maker](robot/README.md), [manual Markdown](docs/manual_acolhe.md) e [registro de testes](docs/registro_testes.md). O PDF é material complementar e não substitui a entrega Maker no GitHub.
-
-
-
-## Executar localmente
-
-
-
-Abra um terminal na pasta `acolhe`, com Python 3.12 disponível:
-
-
-
-```powershell
-
-python --version
-
-python -B -m app.server
-
-```
-
-
-
-Abra http://127.0.0.1:8080. No Windows, `Iniciar-Acolhe.cmd` faz a inicialização completa do robô: confere dependências/modelos de voz, inicia o Ollama instalado quando necessário, carrega o modelo configurado e abre a conversa no navegador. Para esse modo completo, prepare antes com `Preparar-Robo.cmd`; ele reutiliza serviços abertos, sem reiniciar a conexão do Arduino. O comando `python -B -m app.server` acima continua sendo a abertura apenas do servidor básico. Encerre com Ctrl+C. Não é necessário instalar dependências para o MVP padrão ou sua suíte Python. Não abra index.html diretamente, pois a aplicação precisa da API.
-
-
-
-O servidor usa loopback por padrão. Se a porta já estiver ocupada, escolha outra sem interromper processos desconhecidos:
-
-
-
-```powershell
-
-$env:PORT="8081"
-
-python -B -m app.server
-
-```
-
-
-
-`ACOLHE_DB` altera o caminho do banco; o padrão é `data/acolhe.db`. Faça cópia de segurança antes de atualizar instalações com dados relevantes. A primeira abertura pelo código atual acrescenta a coluna de idioma de tentativa a bancos antigos, sem excluir suas atividades. Tentativas antigas continuam atribuídas ao idioma original da sessão, pois não é possível reconstruir mudanças de idioma que não foram registradas.
-
-
-
-O service worker prepara as lições para leitura offline após uma primeira carga bem-sucedida. Respostas e assistente precisam de conexão com o servidor; não há fila de sincronização offline. A verificação manual desse fluxo em navegador continua pendente. HTTPS é necessário para PWA fora de localhost.
-
-
-
-## Testar
-
-
+## Verificação técnica
 
 ```powershell
-
-python -B -m unittest discover -v
-
-node --test tests/frontend.test.cjs
-node --check app/static/app.js
-
-node --check app/static/sw.js
-
+.\.venv\Scripts\python.exe -B -m unittest discover -v
+node --test tests/frontend.test.cjs tests/robot_frontend.test.cjs
 ```
 
-
-
-Node é opcional para executar os testes de frontend em ambiente controlado e verificar sintaxe JavaScript; isso não substitui revisão no navegador real. Os testes Python usam bancos e diretórios temporários, inclusive um servidor HTTP em porta local temporária. Não precisam do banco de uso, hardware, dataset ou Ollama. A suíte verifica contratos e indisponibilidade explícita dos módulos que ainda não possuem modelo; não comprova inferência real, qualidade pedagógica ou funcionamento visual.
-
-
-
-Na validação de 7 de novembro de 2026, às 16:51:12 UTC, a suíte Python descobriu 61 testes: 60 aprovados e 1 ignorado por ausência da dependência opcional PyYAML de treinamento. Os 11 testes Node do frontend passaram. A sintaxe JavaScript também foi aprovada. Consulte a entrada T03 de [registro de testes](docs/registro_testes.md) e o [log com hashes](docs/evidencias/revisao-sessao-copy-20261107T165112Z.json). Resultados são específicos daquele estado do código; não comprovam execução real de navegador, Airflow, Databricks ou modelos.
-
-
-
-## Arquitetura e pastas
-
-
-
-1. `app/static/`: interface e cache offline. O idioma selecionado acompanha cada resposta enviada.
-
-2. `app/server.py`: rotas JSON, validação de entrada, arquivos estáticos, cabeçalhos de segurança e métricas.
-
-3. `app/core.py`: lições, sessão, retenção e gravação idempotente SQLite.
-
-4. `genai/`: corpus autoral bilíngue, recuperação, avaliações e comparação opcional de LLM local. Sem modelo configurado, o modo é `retrieval_only`, não geração por LLM.
-
-5. `vision/`: classes, serviço indisponível sem checkpoint e roteiro de treinamento real.
-
-6. `robot/`: painel local de voz, DHT11/LCD I2C e Uno USB com L298N, ENA/ENB nos jumpers e controle somente por direcao/duracao (ACOLHE_V2, sem PWM). Testes manuais por comando e gestos das licoes mediante calibracao observada. Veja [guia Maker](robot/README.md) e abra `/robo.html`.
-
-7. `big_data/`: pipeline demonstrativo, consultas SQL, exemplos Airflow/Databricks e saída sintética.
-
-8. `rpa/`: leitura do SQLite sem alterar a origem e produção de relatórios agregados locais. Agrupa novas atividades pelo idioma da tentativa; bancos antigos usam idioma da sessão.
-
-9. `bi/`: indicadores e roteiro de pitch. `devsecops/`: infraestrutura, segurança e observabilidade. `tests/`: núcleo e HTTP.
-
-
-
-Rotas principais: `GET /api/health`, `/api/lessons`, `/api/summary`, `/api/gold`, `/api/automation`, `/api/vision/status` e `/metrics`; `POST /api/sessions`, `/api/attempts`, `/api/sessions/delete` e `/api/assistant`. O identificador de sessão funciona como credencial da demonstração, não como autenticação de produção.
-
-
-
-## Demonstrações auxiliares
-
-
-
-Execute a partir da raiz, sabendo que os dois primeiros comandos gravam saídas locais:
-
-
+Para verificar a inicialização local do Maker:
 
 ```powershell
-
-python -B -m big_data.pipeline --demo
-
-python -B -m rpa.robot
-
-python -B -m robot.simulator --correct
-
-python -B -m robot.simulator --absent
-
+.\.venv\Scripts\python.exe -m app.launcher --check
 ```
 
+Essa verificação confere os serviços de IA e voz sem abrir um novo servidor, iniciar captura de microfone ou acionar motores.
 
+Os testes verificam a implementação; as avaliações dos modelos estão nos relatórios. A suíte automatizada também é executada no GitHub Actions, junto com os scanners de segurança.
 
-O pipeline usa dados sintéticos. O RPA precisa de `data/acolhe.db`, criado ao iniciar o MVP; não cria silenciosamente um banco ausente. Nenhum desses comandos envia resultados a terceiros. Veja [Big Data](big_data/README.md), [RPA](rpa/README.md), [robótica](robot/README.md), [GenAI](genai/README.md) e [visão](vision/README.md) para contratos e limites.
+Testes de software, compilação e confirmação serial não substituem observação do hardware nem evidências audiovisuais.
 
+## Operação e limites
 
+Localmente, o servidor escuta em loopback por padrão. O controle físico do robô aceita apenas pedidos deste computador.
 
-## Docker e infraestrutura
+As atividades usam sessões pseudônimas. O assistente não persiste perguntas e a visão não salva uploads. A conversa do Maker mantém apenas as últimas três interações em memória e não grava as falas do usuário em disco.
 
+As lições podem ficar disponíveis offline pelo service worker, mas o assistente e as atividades com API precisam do servidor.
 
+Não insira nomes, endereços, fotos de pessoas ou dados de crianças. O protótipo não foi validado para uso autônomo com crianças e deve ser utilizado com acompanhamento de uma pessoa adulta.
 
-```powershell
+## Vídeos de demonstração
 
-docker compose up --build
-
-docker compose --profile monitoring up --build
-
-```
-
-
-
-Esses comandos são instruções para ambiente com Docker funcional, não evidência de execução nesta máquina. Compose limita a porta ao loopback. O container executa sem root e usa banco em `/tmp`, **efêmero: recriar o container perde o progresso**. Persistência requer volume e permissões apropriadas antes de uso real. Prometheus usa a porta 9090 quando habilitado.
-
-
-
-Não executar Terraform apply, configurar credenciais, publicar imagem ou habilitar deploy sem revisão e autorização específica. Consulte [DevSecOps](devsecops/README.md). O workflow será executado pelo GitHub Actions a cada push em main; consulte o resultado do commit publicado. A presença do workflow não comprova aprovação da CI.
-
-
-
-## Privacidade e limites
-
-
-
-Não inserir nomes, endereços, fotos, áudio ou dados de crianças. Sessões aleatórias são pseudonimização, não anonimização garantida. Métricas são agregados de demonstração e não representam crianças atendidas. O relatório RPA exige retenção própria, pois é um retrato exportado e não acompanha automaticamente a exclusão de sessões. A demonstração não decide travessia nem substitui um adulto ou serviço de emergência.
-
-
-
-Antes de exposição pública: autenticação/autorização, TLS e servidor adequado, limitação de tráfego, proteção de métricas, armazenamento persistente, revisão LGPD e revisão pedagógica humana. Não publicar bancos, dependências de documentação (`docs/.deps/`), intermediários (`docs/qa/`), segredos ou arquivos de estado Terraform. A licença de distribuição do conjunto e das dependências/datasets precisa ser revisada antes de redistribuição.
-
-
-
-## Pendências de entrega
-
-
-
-- UI: revisão visual PT/ES, teclado, tela estreita, offline, voz e fluxos interrompidos no navegador.
-
-- GenAI: executar LLM local autorizado, comparar baseline/RAG/agente, avaliar respostas e documentar erros reais do modelo.
-
-- Visão: dataset real licenciado, treino customizado, split de teste, métricas e análise de erros. Não existe checkpoint validado.
-
-- Big Data: fontes reais e execuções de coleta em dois dias distintos; execução em Spark/Databricks e Airflow.
-
-- Robotica: software local e firmware DHT11/I2C implementados; movimentos e gestos confirmados pelo operador em 17/11. Faltam registro audiovisual, demonstracao de variacao real do sensor integrada a IA e casos de falha. Veja `robot/README.md` para evidencias e limites.
-
-- DevSecOps: build Docker, CI/scanners, validação Terraform, ambiente autorizado, métricas e alerta demonstrados.
-
-- RPA/BI: evidências integradas, vídeos, validação do problema/negócio e avaliação da adequação do RPA em Python à rubrica.
-
-- Entrega: revisar requisitos disciplinares, links públicos e vídeos antes de qualquer publicação autorizada. PDF, código e roteiros não substituem essas evidências.
-
-
-
-## Conteúdo da publicação
-
-O repositório mantém o código, testes, logo fornecido para o projeto, identificação acadêmica da equipe, manual PDF e fontes de documentação. Foram excluídos bancos de uso, segredos, dependências locais, intermediários de PDF, backups, pesos de modelos, fotografias e metadados de datasets e capturas de fontes externas cuja redistribuição não foi validada. Esses arquivos permanecem somente na máquina de origem.
-
-Os CSVs de `big_data/input/` e o resumo de demonstração `big_data/output/summary.json` são sintéticos. O corpus bilíngue em `genai/data/corpus.json` faz parte do projeto e é necessário para o assistente local; os exemplos de configuração em `vision/data/` não incluem imagens. Relatórios históricos que mencionam capturas e datasets locais não significam que esses arquivos estão neste repositório. Para obter novas capturas, consulte `big_data/OFFICIAL_SOURCES.md` e revise as condições da fonte.
-
-A publicação não adiciona uma licença geral de uso ao projeto. As indicações de licença em conteúdos e dependências específicos mantêm seu escopo; revise-as antes de redistribuir ou incorporar material de terceiros.
+- [GenAI](https://youtu.be/csoYGnIeviM).
+- [Computer Vision](https://youtu.be/8FPF_BkSh58).
+- [Maker Lab — Acolhe, 4min13s](https://youtu.be/Bm3uaAx4McE).
+- BI e RPA: pendentes.

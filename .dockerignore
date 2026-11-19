@@ -8,3 +8,36 @@ devsecops
 screenshots
 artifacts
 *.zip
+# Git ignore rules do not apply to the Docker build context.
+docs/qa
+docs/.deps
+docs/**/remote-access
+docs/**/remote-acess
+graphify-out
+vision/data
+vision/datasets
+vision/models
+vision/.test-deps
+vision/artifacts*
+vision/runs
+runs
+data
+rpa/output
+rpa/reports
+big_data/official_snapshots
+.publication-backup
+**/*.log
+**/*.pt
+**/*.onnx
+**/*.db
+**/*.db-*
+**/*.sqlite*
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+# Reviewed delivery checkpoint; raw datasets and experimental weights remain excluded.
+!vision/release/best.pt
+
+docs/knowledge
+genai/**/*.review.md

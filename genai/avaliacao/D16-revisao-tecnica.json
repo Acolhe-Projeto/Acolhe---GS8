@@ -1,0 +1,79 @@
+{
+  "scope": "Exploratory technical review by coding agent, NOT human or pedagogical validation. D16 frozen before candidate tuning; no adjustments after reading D16. Positive answers must address task, match expected source and language; omissions of safety instruction fail. Negative cases require refusal.",
+  "human_review": "pending",
+  "v4": {
+    "baseline_correct_ids": [
+      "d08",
+      "d11",
+      "d12",
+      "d13",
+      "d14",
+      "d15",
+      "d16"
+    ],
+    "rag_correct_ids": [
+      "d09",
+      "d12",
+      "d13",
+      "d14",
+      "d15",
+      "d16"
+    ],
+    "agent_correct_ids": [
+      "d09",
+      "d12",
+      "d13",
+      "d14",
+      "d15",
+      "d16"
+    ]
+  },
+  "v6": {
+    "baseline_correct_ids": [
+      "d08",
+      "d11",
+      "d12",
+      "d13",
+      "d14",
+      "d15",
+      "d16"
+    ],
+    "rag_correct_ids": [
+      "d01",
+      "d03",
+      "d04",
+      "d05",
+      "d06",
+      "d07",
+      "d09",
+      "d10",
+      "d11",
+      "d12",
+      "d13",
+      "d14",
+      "d15",
+      "d16"
+    ],
+    "agent_correct_ids": [
+      "d01",
+      "d03",
+      "d04",
+      "d05",
+      "d06",
+      "d07",
+      "d09",
+      "d10",
+      "d11",
+      "d12",
+      "d13",
+      "d14",
+      "d15",
+      "d16"
+    ]
+  },
+  "unresolved": {
+    "d02": "Lexical retriever chooses bus instead of lost; grounded generation cannot repair wrong context.",
+    "d08": "Lexical retriever chooses bottle instead of chair; output bolsa is incorrect and unsupported."
+  },
+  "no_post_D_tuning": true
+}

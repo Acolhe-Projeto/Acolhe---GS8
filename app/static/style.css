@@ -7,3 +7,5 @@
 .conversation-button{display:inline-flex;align-items:center;gap:12px;flex-shrink:0;padding:14px 20px;border-radius:14px;background:#f2a97a;color:#124943;font-weight:bold;font-size:15px}
 @media(max-width:900px){.conversation-entry{flex-wrap:wrap;gap:18px;padding:25px}.conversation-button{margin-left:82px}}
 @media(max-width:620px){.conversation-entry{gap:14px;padding:22px;margin-top:22px}.conversation-icon{width:46px;height:46px;border-radius:14px;font-size:28px}.conversation-copy{flex-basis:calc(100% - 60px)}.conversation-copy strong{font-size:22px}.conversation-eyebrow{font-size:9px}.conversation-button{margin-left:0;width:100%;justify-content:center}}
+
+#vision-file{display:block;max-width:100%;margin:12px 0}#vision-output{margin-top:12px}input:focus-visible{outline:3px solid #ce6a2c;outline-offset:3px}

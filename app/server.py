@@ -1,5 +1,5 @@
 """Local academic MVP. Put behind a production proxy/TLS before public deployment."""
-import json, os, time, mimetypes, threading
+import json, os, time, mimetypes, threading, socket
 import ipaddress
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
@@ -44,6 +44,8 @@ class Handler(BaseHTTPRequestHandler):
    if method=='POST':
     origin=self.headers.get('Origin'); host=self.headers.get('Host','')
     if origin and urlparse(origin).netloc!=host: self.reply({'error':'Origem não autorizada'},403); return
+    if urlparse(self.path).path=='/api/vision/predict':
+     self.predict_image(); return
     if self.headers.get('Content-Type','').split(';')[0]!='application/json': self.reply({'error':'Use JSON'},415); return
     size=int(self.headers.get('Content-Length','0'))
     limit=1048576 if route=='/api/robot/chat' else 8192
@@ -72,14 +74,14 @@ class Handler(BaseHTTPRequestHandler):
    target=ROOT/'big_data/output/summary.json'
    return self.reply(json.loads(target.read_text(encoding='utf-8')) if target.exists() else {'status':'not_generated','synthetic':True})
   if path=='/api/automation':
-   target=ROOT/'rpa/output/progress.json'
+   target=self.server.automation_path
    return self.reply(json.loads(target.read_text(encoding='utf-8')) if target.exists() else {'status':'not_generated'})
   if path=='/api/vision/status':
    from vision.service import status
    return self.reply(status())
   if path=='/metrics':
    with self.server.metrics_lock: m=dict(self.server.metrics)
-   metrics={'acolhe_requests_total':m['requests'],'acolhe_errors_total':m['errors'],'acolhe_request_duration_seconds_sum':m['duration'],'acolhe_request_duration_seconds_count':m['requests'],'acolhe_active_requests':m['active'],'acolhe_uptime_seconds':time.monotonic()-self.server.started,'acolhe_attempts_total':self.server.store.summary()['attempts']}
+   metrics={'acolhe_requests_total':m['requests'],'acolhe_errors_total':m['errors'],'acolhe_request_duration_seconds_sum':m['duration'],'acolhe_request_duration_seconds_count':m['requests'],'acolhe_active_requests':max(0,m['active']-1),'acolhe_uptime_seconds':time.monotonic()-self.server.started,'acolhe_attempts_total':self.server.store.summary()['attempts']}
    return self.reply((''.join(f'{k} {v}\n' for k,v in metrics.items())).encode(),ctype='text/plain; version=0.0.4; charset=utf-8')
   candidate=(STATIC/('index.html' if path=='/' else path.lstrip('/'))).resolve()
   if not candidate.is_relative_to(STATIC.resolve()) or not candidate.is_file(): return self.reply({'error':'Não encontrado'},404)
@@ -124,9 +126,40 @@ class Handler(BaseHTTPRequestHandler):
    return self.reply(answer(question,language))
   return self.reply({'error':'Não encontrado'},404)
 
-def create_server(host='127.0.0.1',port=8080,db_path=None):
- server=AcolheServer((host,port),Handler); server.daemon_threads=True
+ def predict_image(self):
+  """Explicit raw upload: no image or identifier is written to disk."""
+  content_type=self.headers.get('Content-Type','').split(';')[0]
+  if content_type not in ('image/png','image/jpeg'):
+   return self.reply({'error':'Use uma imagem PNG ou JPEG'},415)
+  size=int(self.headers.get('Content-Length','0'))
+  if not 0<size<=8*1024*1024:
+   return self.reply({'error':'Imagem vazia ou maior que 8 MiB'},413)
+  image=self.rfile.read(size)
+  if len(image)!=size:
+   raise ValueError('Upload incompleto')
+  if not (image.startswith(b'\x89PNG\r\n\x1a\n') if content_type=='image/png' else image.startswith(b'\xff\xd8\xff')):
+   raise ValueError('Conteúdo incompatível com PNG/JPEG')
+  from vision.service import predict, ModelUnavailable
+  try:
+   result=predict(image)
+  except ModelUnavailable:
+   return self.reply({'error':'Modelo de visão indisponível. Consulte /api/vision/status.', 'mode':'unavailable','stores_image':False},503)
+  except (OSError, ValueError):
+   raise ValueError('Não foi possível ler esta imagem')
+  return self.reply(result)
+
+def create_server(host='127.0.0.1',port=8080,db_path=None,automation_path=None):
+ server=AcolheServer((host,port),Handler,bind_and_activate=False); server.daemon_threads=True
+ try:
+  if os.name=='nt':
+   # Windows SO_REUSEADDR otherwise permits competing listeners on the same port.
+   server.allow_reuse_address=False
+   server.socket.setsockopt(socket.SOL_SOCKET,socket.SO_EXCLUSIVEADDRUSE,1)
+  server.server_bind(); server.server_activate()
+ except BaseException:
+  server.server_close(); raise
  server.robot=RobotConnection(); server.voice=VoiceAssistant()
+ server.automation_path=Path(automation_path or os.environ.get('ACOLHE_RPA_REPORT',str(ROOT/'rpa/output/progress.json')))
  server.store=Store(db_path or Path(os.environ.get('ACOLHE_DB',str(ROOT/'data/acolhe.db'))))
  server.metrics={'requests':0,'errors':0,'duration':0.0,'active':0}; server.metrics_lock=threading.Lock(); server.started=time.monotonic()
  return server

@@ -19,13 +19,16 @@ def create_demo(folder):
 def validated(row):
     # R1: required business key and territory; R2: supported language;
     # R3: nonnegative integer metric and valid ISO date; explicit provenance.
-    if not row.get('record_id','').strip() or not row.get('region','').strip(): raise ValueError('required key/region')
-    if row.get('language') not in LANGUAGES: raise ValueError('unsupported language')
-    count=int(row['count'])
-    if count<0: raise ValueError('negative count')
-    date.fromisoformat(row['snapshot_date'])
-    if row.get('synthetic') not in ('true','false'): raise ValueError('missing provenance flag')
+    if not (row.get('record_id') or '').strip() or not (row.get('region') or '').strip(): raise ValueError('R1: required key/region')
+    if row.get('language') not in LANGUAGES: raise ValueError('R2: unsupported language')
+    try:
+        count=int(row['count']); date.fromisoformat(row['snapshot_date'])
+    except (KeyError,TypeError,ValueError) as error: raise ValueError(f'R3: invalid count/date ({type(error).__name__})') from None
+    if count<0: raise ValueError('R3: negative count')
+    if row.get('synthetic') not in ('true','false'): raise ValueError('R3: missing provenance flag')
     return count
+
+QUALITY_RULES={'R1':'chave e territorio obrigatorios','R2':'idioma permitido (pt/es/en)','R3':'contagem inteira >= 0, data ISO e flag de origem'}
 
 def run(input_dir, output_dir):
     input_dir=Path(input_dir); output_dir=Path(output_dir); output_dir.mkdir(parents=True,exist_ok=True)
@@ -59,7 +62,7 @@ def run(input_dir, output_dir):
         def grouped(column):
             return [{column:k,'demand':d,'services':s} for k,d,s in db.execute(f"SELECT {column},SUM(CASE WHEN source='demand' THEN count ELSE 0 END),SUM(CASE WHEN source='services' THEN count ELSE 0 END) FROM silver GROUP BY {column} ORDER BY {column}")]
         totals=dict(db.execute('SELECT source,SUM(count) FROM silver GROUP BY source'))
-        summary={'schema_version':1,'generated_at':datetime.now(timezone.utc).isoformat(),'synthetic':bool(db.execute('SELECT COALESCE(MAX(synthetic),0) FROM silver').fetchone()[0]),'source_batches':db.execute('SELECT COUNT(*) FROM batches').fetchone()[0],'totals':totals,'by_region':grouped('region'),'by_language':grouped('language'),'quality':{'rejected':db.execute('SELECT COUNT(*) FROM quarantine').fetchone()[0]},'provenance':{'mode':'normalized CSV imports; supplied demo data are synthetic','sources':list(SOURCES)}}
+        summary={'schema_version':1,'generated_at':datetime.now(timezone.utc).isoformat(),'synthetic':bool(db.execute('SELECT COALESCE(MAX(synthetic),0) FROM silver').fetchone()[0]),'source_batches':db.execute('SELECT COUNT(*) FROM batches').fetchone()[0],'totals':totals,'by_region':grouped('region'),'by_language':grouped('language'),'quality':{'rejected':db.execute('SELECT COUNT(*) FROM quarantine').fetchone()[0],'by_rule':{f'{code} {label}':db.execute("SELECT COUNT(*) FROM quarantine WHERE reason LIKE ?",(code+':%',)).fetchone()[0] for code,label in QUALITY_RULES.items()}},'provenance':{'mode':'normalized CSV imports; supplied demo data are synthetic','sources':list(SOURCES)}}
         temporary=output_dir/'summary.tmp'; temporary.write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8'); temporary.replace(output_dir/'summary.json')
         for table in ('dim_region','dim_language','fact_indicators'):
             cursor=db.execute(f'SELECT * FROM {table}')

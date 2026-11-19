@@ -1,7 +1,7 @@
 {
   "scope": "lexical retrieval on 16 hand-authored bilingual cases, not independent benchmark or LLM evaluation",
-  "recall_at_1": 0.6875,
-  "recall_at_3": 0.6875,
+  "recall_at_1": 1.0,
+  "recall_at_3": 1.0,
   "cases": [
     {
       "question": "Como atravessar a rua?",
@@ -28,8 +28,7 @@
       "question": "Necesito ayuda, estoy perdido",
       "expected": "lost",
       "retrieved": [
-        "lost",
-        "crossing"
+        "lost"
       ]
     },
     {
@@ -77,12 +76,16 @@
     {
       "question": "Posso ir para o outro lado?",
       "expected": "crossing",
-      "retrieved": []
+      "retrieved": [
+        "crossing"
+      ]
     },
     {
       "question": "Cadê quem estava comigo?",
       "expected": "lost",
-      "retrieved": []
+      "retrieved": [
+        "lost"
+      ]
     },
     {
       "question": "Onde coloco meu estojo?",
@@ -94,44 +97,24 @@
     {
       "question": "Quero me acomodar",
       "expected": "chair",
-      "retrieved": []
+      "retrieved": [
+        "chair"
+      ]
     },
     {
       "question": "Preciso me hidratar",
       "expected": "bottle",
-      "retrieved": []
+      "retrieved": [
+        "bottle"
+      ]
     },
     {
       "question": "Saludamos al amanecer",
       "expected": "greeting",
-      "retrieved": []
+      "retrieved": [
+        "greeting"
+      ]
     }
   ],
-  "errors": [
-    {
-      "question": "Posso ir para o outro lado?",
-      "expected": "crossing",
-      "retrieved": []
-    },
-    {
-      "question": "Cadê quem estava comigo?",
-      "expected": "lost",
-      "retrieved": []
-    },
-    {
-      "question": "Quero me acomodar",
-      "expected": "chair",
-      "retrieved": []
-    },
-    {
-      "question": "Preciso me hidratar",
-      "expected": "bottle",
-      "retrieved": []
-    },
-    {
-      "question": "Saludamos al amanecer",
-      "expected": "greeting",
-      "retrieved": []
-    }
-  ]
+  "errors": []
 }

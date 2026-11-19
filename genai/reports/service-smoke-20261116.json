@@ -1,0 +1,41 @@
+{
+  "created_at": "2026-11-16T19:39:06.651149+00:00",
+  "scope": "Real service.answer calls; fictitious questions; technical smoke, not human quality validation",
+  "model": "qwen2.5:0.5b-instruct",
+  "cases": [
+    {
+      "question": "O que é mochila?",
+      "language": "pt",
+      "seconds": 2.907,
+      "output": {
+        "answer": "O que é mochila?",
+        "sources": [
+          {
+            "id": "backpack",
+            "title": "Mochila",
+            "source": "Conteúdo autoral Acolhe, versão 1; revisão pedagógica pendente"
+          }
+        ],
+        "mode": "local_llm_rag",
+        "model": "qwen2.5:0.5b-instruct"
+      }
+    },
+    {
+      "question": "¿Cómo cruzar la calle?",
+      "language": "es",
+      "seconds": 3.872,
+      "output": {
+        "answer": "Para cruzar la calle, espera en la acera y pide ayuda a un adulto responsable. Usa el paso peatonal y respeta el semáforo. Nunca cruces solo.",
+        "sources": [
+          {
+            "id": "crossing",
+            "title": "Travessia acompanhada",
+            "source": "Conteúdo autoral Acolhe, versão 1; revisão pedagógica pendente"
+          }
+        ],
+        "mode": "local_llm_rag",
+        "model": "qwen2.5:0.5b-instruct"
+      }
+    }
+  ]
+}

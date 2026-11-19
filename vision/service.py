@@ -5,8 +5,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).parent
-MODEL = ROOT / "artifacts/best.pt"
-MANIFEST = ROOT / "artifacts/model_manifest.json"
+MODEL = ROOT / "release/best.pt"
+MANIFEST = ROOT / "release/model_manifest.json"
 LABELS = {en: {"pt": pt, "es": es} for en, pt, es in [
  ("backpack","mochila","mochila"),("chair","cadeira","silla"),("book","livro","libro"),
  ("bottle","garrafa","botella"),("cup","copo","vaso"),("spoon","colher","cuchara"),
@@ -15,6 +15,18 @@ LABELS = {en: {"pt": pt, "es": es} for en, pt, es in [
 
 class ModelUnavailable(RuntimeError):
     pass
+
+def inference_options(manifest):
+    options = manifest.get("inference", {"conf": 0.5, "imgsz": 320})
+    if not isinstance(options, dict):
+        raise ValueError("Invalid inference configuration")
+    confidence, size = options.get("conf"), options.get("imgsz")
+    if type(confidence) not in (int, float) or not 0 < confidence <= 1:
+        raise ValueError("Invalid inference confidence")
+    if type(size) is not int or not 32 <= size <= 1280 or size % 32:
+        raise ValueError("Invalid inference image size")
+    return {"conf": confidence, "imgsz": size}
+
 
 def _load_verified_model():
     if not MODEL.is_file() or not MANIFEST.is_file():
@@ -25,6 +37,7 @@ def _load_verified_model():
             raise ValueError("Treino real nao documentado")
         if manifest.get("class_names") != list(LABELS):
             raise ValueError("Classes ou ordem do manifesto invalidas")
+        options = inference_options(manifest)
         with MODEL.open("rb") as source:
             digest = hashlib.file_digest(source, "sha256").hexdigest()
         if manifest.get("checkpoint_sha256") != digest:
@@ -38,6 +51,7 @@ def _load_verified_model():
             names = dict(enumerate(names))
         if names != expected:
             raise ValueError("Classes do checkpoint nao correspondem ao servico")
+        model._acolhe_inference = options
         return model
     except Exception as exc:
         raise ModelUnavailable("Modelo indisponivel: " + type(exc).__name__) from exc
@@ -45,13 +59,14 @@ def _load_verified_model():
 
 def status():
     try:
-        _load_verified_model()
+        model = _load_verified_model()
         reason = None
     except ModelUnavailable as exc:
         reason = str(exc)
     ready = reason is None
     return {"ready": ready, "mode": "custom_model" if ready else "unavailable",
             "reason": reason, "classes": LABELS,
+            "inference": model._acolhe_inference if ready else None,
             "verification": "checkpoint_hash_classes_and_load" if ready else "not_ready",
             "quality_validated": False}
 
@@ -61,11 +76,17 @@ def predict(image):
     if not isinstance(image, bytes) or not image or len(image) > 8 * 1024 * 1024:
         raise ValueError("image must be nonempty bytes, maximum 8 MiB")
     from PIL import Image
-    source = Image.open(io.BytesIO(image))
-    if source.width * source.height > 20_000_000:
-        raise ValueError("Image too large")
-    source = source.convert("RGB")
-    results = model.predict(source, conf=0.5, verbose=False)
+    try:
+        with Image.open(io.BytesIO(image)) as uploaded:
+            if uploaded.width * uploaded.height > 20_000_000:
+                raise ValueError("Image too large")
+            source = uploaded.convert("RGB")
+    except (OSError, Image.DecompressionBombError, ImportError) as exc:
+        raise ValueError("Invalid or unsafe image") from exc
+    options = getattr(model, "_acolhe_inference", None)
+    if not isinstance(options, dict):
+        options = {"conf": 0.5, "imgsz": 320}
+    results = model.predict(source, **options, device="cpu", save=False, verbose=False)
     detections = []
     for result in results:
         for box in result.boxes:

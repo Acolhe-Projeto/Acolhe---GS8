@@ -1,0 +1,10 @@
+{
+  "python_tests": 119,
+  "result": "passed",
+  "command": ".venv/Scripts/python.exe -B -m unittest discover",
+  "http_evidence": "docs/evidencias/demo-overnight-http.json",
+  "genai_profile": "chat_guidance_v6",
+  "vision_promoted": false,
+  "human_review": "pending",
+  "raw_photos_published": false
+}

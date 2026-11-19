@@ -1,0 +1,117 @@
+{
+  "frozen_at_utc": "2026-11-17T09:20:03.635788+00:00",
+  "test_evaluated_this_round": false,
+  "candidate_bases": "Same YOLO26n; all-layers stopped33 + freeze22 up67; total100epochs approved",
+  "selection_rule": "For each candidate, among validation confidence-grid rows with precision and recall each >= current active model on SAME20validation images, select max microF1, ties precision then higher confidence. Promote only if F1 gain >=0.02 absolute. Otherwise preserve active model. Target70/70 reported independently, never inferred from native precision.",
+  "active_confidence": 0.15,
+  "active_validation": {
+    "confidence": 0.15,
+    "iou": 0.5,
+    "tp": 98,
+    "fp": 62,
+    "fn": 112,
+    "precision": 0.6125,
+    "recall": 0.4666666666666667,
+    "f1": 0.5297297297297298,
+    "per_class": [
+      {
+        "tp": 0,
+        "fp": 1,
+        "fn": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      {
+        "tp": 18,
+        "fp": 8,
+        "fn": 3,
+        "precision": 0.6923076923076923,
+        "recall": 0.8571428571428571,
+        "f1": 0.7659574468085106
+      },
+      {
+        "tp": 12,
+        "fp": 4,
+        "fn": 18,
+        "precision": 0.75,
+        "recall": 0.4,
+        "f1": 0.5217391304347826
+      },
+      {
+        "tp": 19,
+        "fp": 6,
+        "fn": 13,
+        "precision": 0.76,
+        "recall": 0.59375,
+        "f1": 0.6666666666666666
+      },
+      {
+        "tp": 17,
+        "fp": 24,
+        "fn": 27,
+        "precision": 0.4146341463414634,
+        "recall": 0.38636363636363635,
+        "f1": 0.4
+      },
+      {
+        "tp": 2,
+        "fp": 1,
+        "fn": 16,
+        "precision": 0.6666666666666666,
+        "recall": 0.1111111111111111,
+        "f1": 0.19047619047619047
+      },
+      {
+        "tp": 3,
+        "fp": 1,
+        "fn": 9,
+        "precision": 0.75,
+        "recall": 0.25,
+        "f1": 0.375
+      },
+      {
+        "tp": 15,
+        "fp": 13,
+        "fn": 13,
+        "precision": 0.5357142857142857,
+        "recall": 0.5357142857142857,
+        "f1": 0.5357142857142857
+      },
+      {
+        "tp": 5,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.8333333333333334,
+        "f1": 0.9090909090909091
+      },
+      {
+        "tp": 3,
+        "fp": 1,
+        "fn": 3,
+        "precision": 0.75,
+        "recall": 0.5,
+        "f1": 0.6
+      },
+      {
+        "tp": 4,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.5714285714285714,
+        "f1": 0.7272727272727273
+      },
+      {
+        "tp": 0,
+        "fp": 3,
+        "fn": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    ]
+  },
+  "f1_gain_required": 0.02,
+  "no_test_based_selection": true
+}
