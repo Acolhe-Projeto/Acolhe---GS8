@@ -161,14 +161,15 @@
       }
     },
     {
-      "path": "/dashboard.html",
-      "error": "HTTP Error 404: Not Found"
-    },
-    {
       "path": "/app.js",
       "status": 200,
       "content_type": "text/javascript",
       "bytes": 15428
     }
-  ]
+  ],
+  "panel": {
+    "url": "https://acolhe-gs8.ambitiousbeach-2f5aaa39.canadacentral.azurecontainerapps.io/#painel",
+    "section_present": true
+  },
+  "scope": "DNS and HTTPS without credentials; read-only page and API checks. No browser interaction or local AI, vision or hardware validation."
 }

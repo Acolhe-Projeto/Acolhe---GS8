@@ -78,7 +78,9 @@ Relação proposta com [ODS 4 — Educação de qualidade](https://brasil.un.org
 
 ## Gravação e estado real
 
-O roteiro recebido orienta mostrar URL pública. A documentação local consultada confirma execução em `127.0.0.1:8080`; **não foi fornecida nem validada uma URL pública do MVP nesta tarefa**. Não inventar endereço nem apresentar localhost como publicação. Usar o slide de demonstração como transição e mostrar a aplicação real. A publicação do MVP continua uma preparação da equipe, quando exigida pela rubrica.
+O MVP possui **URL pública real, verificada em 19/11/2026**: https://acolhe-gs8.ambitiousbeach-2f5aaa39.canadacentral.azurecontainerapps.io. O domínio fornecido pela Azure resolveu em DNS público e respondeu por HTTPS sem login; página inicial, API de saúde (`status: ok`), lições e resumo do painel retornaram HTTP 200. [Evidência da verificação](docs/evidencias/dominio-publico-20261119.json). É um subdomínio público da Azure; não foi identificado domínio próprio contratado.
+
+Na gravação, mostrar essa URL e abrir a seção `/#painel` (Para educadores). O ambiente público oferece o MVP básico; LLM, visão e robô dependem da instalação local. A verificação de acesso não comprova a sequência de acerto/erro na interface: gravar essa sequência e conferir os registros antes do pitch. As notas do PowerPoint que dizem que a URL não foi validada retratam a pesquisa anterior e ficam superadas por esta verificação.
 
 Robô: Uno, LCD I²C, DHT11, L298N e dois motores TT; voz/IA no computador. Treino de palavras usa regras e respostas esperadas; conversa aberta usa Qwen3 4B local via Ollama. Braço esquerdo no acerto e direito na nova tentativa, após calibração. O sensor fornece temperatura/umidade; não detecta presença nem qualidade do ar. Demonstrar somente funções confirmadas em ensaio. O vídeo Maker existente não substitui a gravação do pitch de negócios.
 

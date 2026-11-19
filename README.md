@@ -13,6 +13,10 @@ Protótipo acadêmico de acolhimento linguístico em português e espanhol, com 
 
 **MVP público:** https://acolhe-gs8.ambitiousbeach-2f5aaa39.canadacentral.azurecontainerapps.io
 
+Acesso DNS/HTTPS sem login conferido em 19/11/2026: página inicial e APIs de saúde, lições e resumo retornaram HTTP 200. [Evidência da verificação](docs/evidencias/dominio-publico-20261119.json).
+
+**Pitch:** [PowerPoint com resumo Maker incorporado](Acolhe_Pitch.pptx) e [pesquisa, custos e orientações de gravação](Acolhe_Pesquisa_Pitch.md).
+
 O ambiente público disponibiliza o MVP básico: lições, painel, dados e RPA. A LLM local, a visão e o robô funcionam na instalação local descrita abaixo.
 
 ## Instalação e execução
