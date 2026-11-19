@@ -275,4 +275,4 @@ Não insira nomes, endereços, fotos de pessoas ou dados de crianças. O protót
 - [GenAI](https://youtu.be/csoYGnIeviM).
 - [Computer Vision](https://youtu.be/8FPF_BkSh58).
 - [Maker Lab — Acolhe, 4min13s](https://youtu.be/Bm3uaAx4McE).
-- BI e RPA: pendentes.
+- [BI e RPA](https://youtu.be/9Vxrja0XkZk).
