@@ -1,0 +1,174 @@
+{
+  "checked_at": "2026-11-19T14:46:29.863694-03:00",
+  "base_url": "https://acolhe-gs8.ambitiousbeach-2f5aaa39.canadacentral.azurecontainerapps.io",
+  "dns_ipv4": [
+    "4.173.227.35"
+  ],
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 7312,
+      "contains_acolhe": true
+    },
+    {
+      "path": "/api/health",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "bytes": 84,
+      "response": {
+        "status": "ok",
+        "mode": "academic_demo",
+        "robot": "simulation",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "path": "/api/lessons",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "bytes": 2272,
+      "response": [
+        {
+          "id": "casa",
+          "icon": "🏠",
+          "title": {
+            "pt": "Perto de casa",
+            "es": "Cerca de casa"
+          },
+          "word": "copo",
+          "translation": "vaso",
+          "intro": {
+            "pt": "Um copo para beber água. Repita: copo.",
+            "es": "Un vaso para beber agua. Repite: copo."
+          },
+          "question": {
+            "pt": "Qual palavra significa vaso em português?",
+            "es": "¿Qué palabra significa vaso en portugués?"
+          },
+          "options": [
+            "Copo",
+            "Cadeira",
+            "Livro"
+          ]
+        },
+        {
+          "id": "escola",
+          "icon": "🎒",
+          "title": {
+            "pt": "Vamos à escola",
+            "es": "Vamos a la escuela"
+          },
+          "word": "mochila",
+          "translation": "mochila",
+          "intro": {
+            "pt": "Na mochila, levo meu caderno.",
+            "es": "En la mochila llevo mi cuaderno."
+          },
+          "question": {
+            "pt": "Onde guardamos o caderno?",
+            "es": "¿Dónde guardamos el cuaderno?"
+          },
+          "options": [
+            "Copo",
+            "Mochila",
+            "Cadeira"
+          ]
+        },
+        {
+          "id": "amigos",
+          "icon": "👋",
+          "title": {
+            "pt": "Novos amigos",
+            "es": "Nuevos amigos"
+          },
+          "word": "bom dia",
+          "translation": "buenos días",
+          "intro": {
+            "pt": "Bom dia! Meu nome é... Como você se chama?",
+            "es": "¡Buenos días! Mi nombre es... ¿Cómo te llamas?"
+          },
+          "question": {
+            "pt": "Como cumprimentar de manhã?",
+            "es": "¿Cómo saludar por la mañana?"
+          },
+          "options": [
+            "Boa noite",
+            "Até amanhã",
+            "Bom dia"
+          ]
+        },
+        {
+          "id": "mobilidade",
+          "icon": "🚦",
+          "title": {
+            "pt": "Caminho seguro",
+            "es": "Camino seguro"
+          },
+          "word": "faixa de pedestres",
+          "translation": "paso de peatones",
+          "intro": {
+            "pt": "Atravesse com um adulto, na faixa. Observe o sinal de pedestres e espere os veículos pararem.",
+            "es": "Cruza con una persona adulta por el paso de peatones. Observa la señal peatonal y espera a que los vehículos se detengan."
+          },
+          "question": {
+            "pt": "Com quem devemos atravessar a rua?",
+            "es": "¿Con quién debemos cruzar la calle?"
+          },
+          "options": [
+            "Correndo sozinho",
+            "Com um adulto",
+            "Sem olhar"
+          ]
+        },
+        {
+          "id": "ajuda",
+          "icon": "💬",
+          "title": {
+            "pt": "Posso pedir ajuda",
+            "es": "Puedo pedir ayuda"
+          },
+          "word": "por favor",
+          "translation": "por favor",
+          "intro": {
+            "pt": "Não entendi. Pode repetir, por favor? Procure um adulto de confiança.",
+            "es": "No entendí. ¿Puede repetir, por favor? Busca a una persona adulta de confianza."
+          },
+          "question": {
+            "pt": "O que dizer quando não entende?",
+            "es": "¿Qué decir cuando no entiendes?"
+          },
+          "options": [
+            "Pode repetir, por favor?",
+            "Vou embora sem avisar",
+            "Não posso perguntar"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/api/summary",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "bytes": 103,
+      "response": {
+        "attempts": 17,
+        "correct": 12,
+        "sessions": 3,
+        "data_kind": "local_demo_sessions",
+        "retention_days": 7
+      }
+    },
+    {
+      "path": "/dashboard.html",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/app.js",
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 15428
+    }
+  ]
+}
