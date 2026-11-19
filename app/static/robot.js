@@ -51,9 +51,9 @@ if(typeof document!=='undefined') {
       const result=await api('chat',data,request.signal);
       if(own!==epoch)return;
       addMessage(result.transcript,true);addMessage(result.answer);
-      el('latency').textContent=result.motor_test?`Teste enviado: ${result.motor_test.motor==='arm'?'braço':'cabeça'} · ${result.motor_test.duration_ms} ms · acionamento total · movimento ainda não confirmado`:`Resposta preparada em ${result.elapsed_seconds} s · ${result.model||'Resposta de escopo'}`;
-      if(result.mode==='guided_practice')el('latency').textContent=`Atividade guiada · ${result.elapsed_seconds} s`+(result.motor_reaction?(result.motor_reaction.sent?` · gesto enviado: ${result.motor_reaction.motor==='arm'?'braço':'cabeça'}`:' · sem gesto: confira conexão, calibração e intervalo entre movimentos'):'');
-      if(result.motor_reaction?.sent===false&&lastStatus?.robot.connected&&!lastStatus.robot.motors_enabled)el('latency').textContent='Acerto ou tentativa reconhecidos. Para mover, falta registrar o movimento da cabeça e do braço em Preparar gestos do treino.';
+      el('latency').textContent=result.motor_test?`Teste enviado: ${result.motor_test.motor==='arm'?'braço esquerdo':'braço direito'} · ${result.motor_test.duration_ms} ms · acionamento total · movimento ainda não confirmado`:`Resposta preparada em ${result.elapsed_seconds} s · ${result.model||'Resposta de escopo'}`;
+      if(result.mode==='guided_practice')el('latency').textContent=`Atividade guiada · ${result.elapsed_seconds} s`+(result.motor_reaction?(result.motor_reaction.sent?` · gesto enviado: ${result.motor_reaction.motor==='arm'?'braço esquerdo':'braço direito'}`:' · sem gesto: confira conexão, calibração e intervalo entre movimentos'):'');
+      if(result.motor_reaction?.sent===false&&lastStatus?.robot.connected&&!lastStatus.robot.motors_enabled)el('latency').textContent='Acerto ou tentativa reconhecidos. Para mover, falta registrar o movimento do braço direito e do braço esquerdo em Preparar gestos do treino.';
       el('robot-question').value='';
       if(result.errors?.length)error(result.errors.map(x=>x.message).join(' '));
       if(result.audio_wav) {
@@ -118,10 +118,10 @@ if(typeof document!=='undefined') {
       el('voice-state').textContent=status.voice.whisper_files&&status.voice.piper_files?'Arquivos disponíveis':'Preparação necessária';
       el('motor-state').textContent=robot.motors_enabled?'Gestos das atividades habilitados':robot.connected?'Teste por comando disponível':'Bloqueados';
       el('test-pulse').disabled=!robot.connected;el('confirm-movement').disabled=!robot.connected||!tested;
-      const calibrated=Object.keys(robot.calibrations).map(x=>x==='head'?'cabeça':'braço');
+      const calibrated=Object.keys(robot.calibrations).map(x=>x==='head'?'braço direito':'braço esquerdo');
       el('gesture-setup').classList.toggle('hidden',!!robot.motors_enabled);
       el('prepare-gestures').classList.toggle('hidden',!robot.connected);
-      el('gesture-guidance').textContent=robot.connected?`Gestos do treino: ${calibrated.length} de 2 motores confirmados. Testar um pulso não habilita os gestos: observe e registre cabeça e braço abaixo.`:'Você pode conversar agora. Para usar os movimentos no treino, conecte o Arduino e confirme os dois motores.';
+      el('gesture-guidance').textContent=robot.connected?`Gestos do treino: ${calibrated.length} de 2 motores confirmados. Testar um pulso não habilita os gestos: observe e registre braço direito e braço esquerdo abaixo.`:'Você pode conversar agora. Para usar os movimentos no treino, conecte o Arduino e confirme os dois motores.';
       el('calibration-status').textContent=calibrated.length?`Confirmados nesta conexão: ${calibrated.join(' e ')}. ${robot.motors_enabled?'Gestos nas atividades habilitados.':''}`:'Confirme os dois motores para permitir gestos nas atividades.';
       if(robot.error)error(robot.error);
       latestActivity=sensor.valid?robot.activity:null;

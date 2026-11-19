@@ -53,7 +53,7 @@ test('practice explains missing calibration and offers setup without sending a p
   assert.equal(h.get('calibration').open,true);
   h.get('robot-question').value='Oi';h.get('robot-form').listeners.submit({preventDefault(){}});
   await h.tick();await h.tick();
-  assert.match(h.get('latency').textContent,/registrar.*cabeça.*braço/i);
+  assert.match(h.get('latency').textContent,/registrar.*braço direito.*braço esquerdo/i);
   assert.equal(h.requests.some(x=>['pulse','calibrate'].includes(x.route)),false);
 });
 test('stop suppresses a late answer and sends physical STOP',async()=>{
