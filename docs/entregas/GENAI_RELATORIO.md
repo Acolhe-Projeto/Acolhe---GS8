@@ -23,11 +23,44 @@ A especialização adotada foi a combinação de recuperação e agente, alterna
 
 O corpus está em genai/data/corpus.json, com SHA-256 44bc667247041dd06cd73d0a186df121e60de0df4be0971993b43c5df1c477c8. O manifesto genai/model_manifest.json identifica o modelo e seu digest; a inicialização exige essa mesma versão.
 
+### Pipeline de IA e documentos
+
+```mermaid
+flowchart LR
+    Pergunta[Pergunta PT/ES] --> Guardas[Validar idioma e escopo]
+    Guardas --> Busca[Recuperação lexical e limiar]
+    Base[Corpus JSON: oito microlições PT/ES] --> Busca
+    Busca --> Contexto[Trecho e fonte]
+    Contexto --> LLM[Ollama: Qwen2.5 3B]
+    LLM --> Validar[Validar JSON e identificadores de fonte]
+    Validar --> Resposta[Resposta com citação]
+    Guardas --> Recusa[Recusa explícita]
+    Busca --> Recusa
+```
+
+O diagrama representa o RAG utilizado pela interface. Na comparação, o baseline não recebe documentos; o agente decide entre consultar a mesma base por ferramenta ou recusar. A [arquitetura integrada ao produto](../PRD_GENAI_VISION.md#arquitetura) inclui também o fluxo de Vision.
+
+### Base de conhecimento
+
+| Fonte / trecho | Formato | Licença declarada | Número de trechos |
+|---|---|---|---:|
+| Acolhe v3 — Travessia acompanhada (`crossing`) | JSON, PT/ES | CC BY 4.0 | 2 |
+| Acolhe v3 — Pedir ajuda (`lost`) | JSON, PT/ES | CC BY 4.0 | 2 |
+| Acolhe v3 — Mochila (`backpack`) | JSON, PT/ES | CC BY 4.0 | 2 |
+| Acolhe v3 — Cadeira (`chair`) | JSON, PT/ES | CC BY 4.0 | 2 |
+| Acolhe v3 — Garrafa (`bottle`) | JSON, PT/ES | CC BY 4.0 | 2 |
+| Acolhe v3 — Ônibus acompanhado (`bus`) | JSON, PT/ES | CC BY 4.0 | 2 |
+| Acolhe v3 — Cumprimentos (`greeting`) | JSON, PT/ES | CC BY 4.0 | 2 |
+| Acolhe v3 — Livro e caderno (`book`) | JSON, PT/ES | CC BY 4.0 | 2 |
+| **Total: oito microlições autorais** | **JSON** | **CC BY 4.0** | **16** |
+
+Cada microlição possui um trecho em português e outro em espanhol; as vistas monolíngues de orientação não são novas fontes independentes. O [catálogo CSV](../../genai/base/fontes.csv) preserva os identificadores e a descrição histórica das fontes. A revisão pedagógica indicada nesses metadados é distinta da revisão humana dos resultados descrita abaixo.
+
 ## Método de avaliação
 
 Foram comparadas três configurações do mesmo modelo: baseline sem documentos, RAG com recuperação direta e agente com recuperação por ferramenta. As guardas de entrada foram mantidas nas três configurações. O conjunto de desenvolvimento contém 20 casos, sendo 16 positivos. Nele, Recall@1 e Recall@3 da recuperação foram 16/16; o limiar escolhido foi 2,0. Essa métrica avalia a localização da fonte, não a correção da resposta gerada.
 
-O conjunto final D16 contém dez perguntas positivas e seis negativas. Foi definido antes dos ajustes da versão v6; a configuração foi escolhida com desenvolvimento antes da leitura dos resultados D16. Não houve ajustes posteriores sobre esse conjunto. As perguntas são autorais e a revisão semântica foi técnica e exploratória, sem avaliação humana independente concluída.
+O conjunto final D16 contém dez perguntas positivas e seis negativas. Foi definido antes dos ajustes da versão v6; a configuração foi escolhida com desenvolvimento antes da leitura dos resultados D16. Não houve ajustes posteriores sobre esse conjunto. As perguntas são autorais e o placar registrado decorre de revisão técnica exploratória. Em 19/11/2026, a equipe informou que a revisão humana dos resultados foi concluída. Essa confirmação não constitui um novo placar independente; os JSONs históricos e seus resultados foram preservados.
 
 ## Resultados
 
@@ -67,9 +100,9 @@ A instalação e as frases de teste estão no README da raiz e em genai/README.m
 
 ## Conclusão
 
-A entrega implementa uma LLM local com recuperação, citações, recusa e comparação real com agente. O resultado final foi 14/16 em RAG e agente, com duas falhas conhecidas. O conjunto pequeno e autoral não permite concluir eficácia pedagógica ou desempenho geral; a revisão humana bilíngue permanece pendente. O vídeo demonstrativo está vinculado abaixo; o envio acadêmico permanece pendente.
+A entrega implementa uma LLM local com recuperação, citações, recusa e comparação real com agente. O resultado final foi 14/16 em RAG e agente, com duas falhas conhecidas. A revisão humana dos resultados foi concluída, conforme informação da equipe em 19/11/2026. O conjunto pequeno e autoral não permite concluir eficácia pedagógica ou desempenho geral; a revisão pedagógica do corpus permanece uma etapa distinta. O vídeo demonstrativo está vinculado abaixo; o envio acadêmico permanece pendente.
 
-Referências: desafio FIAP GS CitizenTech, páginas 29-31; https://huggingface.co/Qwen/Qwen2.5-3B-Instruct; https://ollama.com/library/qwen2.5:3b-instruct. Repositório: https://github.com/Acolhe-Projeto/Acolhe---GS8/tree/feat/genai-vision.
+Referências: desafio FIAP GS CitizenTech, páginas 29-31; https://huggingface.co/Qwen/Qwen2.5-3B-Instruct; https://ollama.com/library/qwen2.5:3b-instruct. Repositório: https://github.com/Acolhe-Projeto/Acolhe---GS8/tree/main.
 
 ## Vídeos de demonstração
 

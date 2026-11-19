@@ -13,12 +13,12 @@ from playwright.sync_api import sync_playwright
 
 HERE = Path(__file__).resolve().parent; ROOT = HERE.parents[1]; PRINTS = HERE / 'prints'
 REPO = 'https://github.com/Acolhe-Projeto/Acolhe---GS8'
-BRANCH_URL = REPO + '/tree/Aksel%2BIan'
+BRANCH_URL = REPO + '/tree/main'
 MVP = 'https://acolhe-gs8.ambitiousbeach-2f5aaa39.canadacentral.azurecontainerapps.io'
 RUN = REPO + '/actions/runs/'
 TEAM = [('Tomáz Versolato Carballo', '551417'), ('Rony Ken Nagai', '551549'),
         ('Aksel Viktor Caminha Rae', '99011'), ('Ian Xavier Kuraoka', '98860')]
-VIDEO_RPA = os.environ.get('VIDEO_RPA', '')
+VIDEO_RPA = os.environ.get('VIDEO_RPA', 'https://youtu.be/9Vxrja0XkZk')
 
 # ---------- helpers ----------
 def e(s): return html.escape(str(s))
@@ -55,7 +55,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; color: #1d2b2a; font-size: 10
 h1 { color: #0f5e57; font-size: 21pt; margin: 0 0 4px; } h2 { color: #0f5e57; border-bottom: 2px solid #cfe3df; padding-bottom: 3px; margin-top: 22px; font-size: 14pt; }
 h3 { font-size: 11.5pt; margin: 14px 0 4px; } .sub { color: #4a5e5c; margin-bottom: 14px; }
 table { border-collapse: collapse; width: 100%; margin: 6px 0 10px; font-size: 9pt; page-break-inside: avoid; }
-th { background: #e6f1ef; text-align: left; } th, td { border: 1px solid #c9d8d5; padding: 4px 6px; vertical-align: top; }
+th { background: #e6f1ef; text-align: left; } th, td { border: 1px solid #c9d8d5; padding: 4px 6px; vertical-align: top; overflow-wrap: anywhere; }
 table.narrow { width: 60%; } figure { margin: 8px 0 14px; page-break-inside: avoid; } img { border: 1px solid #c9d8d5; }
 figcaption { font-size: 8.8pt; color: #4a5e5c; margin-top: 3px; } code, pre { font-family: Consolas, monospace; font-size: 8.6pt; }
 pre { background: #f4f7f6; border: 1px solid #dbe5e3; padding: 8px; white-space: pre-wrap; page-break-inside: avoid; }
@@ -149,7 +149,7 @@ def big_data():
 
 <h2>8. Conclusão técnica</h2>
 <p>O pipeline coleta duas fontes reais por dia no Airflow, confere a chegada e avisa quando algo falha. No Databricks, a Bronze carrega cada lote uma única vez, a Prata trata os tipos, aplica as regras com contagem e faz MERGE pela chave, e a Ouro entrega ao MVP um contrato pequeno e sem dados pessoais. A execução real revelou defeitos que os testes locais não pegavam (importação no worker do Airflow, permissão de cópia, esquema da quarentena, pasta no Volume), todos corrigidos e registrados no repositório. Limitação: os indicadores de demanda e oferta continuam demonstrativos e aparecem marcados como tal; os dados reais servem de contexto, sem serem somados a eles.</p>
-<p>Repositório: {link(BRANCH_URL, REPO + ' (branch Aksel+Ian)')}</p>
+<p>Repositório: {link(BRANCH_URL, REPO + ' (branch main)')}</p>
 """
     return page('Acolhe · Big Data Architecture & Data Integration', 'Global Solution 2026.2 · FIAP · CitizenTech', body)
 
@@ -192,7 +192,7 @@ def rpa():
 <h2>10. Segurança e LGPD</h2>
 <p>Leitura em modo somente leitura (<code>mode=ro</code>, <code>query_only</code>); nenhum ID de sessão ou tentativa vai para relatório ou log; os relatórios são agregados e locais, sem e-mail, upload ou mensagem. Grupos pequenos ainda podem dar contexto, então o acesso aos relatórios deve ficar restrito aos educadores e a retenção acompanha a do app (7 dias).</p>
 <h2>11. Links</h2>
-<ul><li>Repositório: {link(BRANCH_URL + '/rpa', 'rpa/ na branch Aksel+Ian')}</li><li>Vídeo demonstrativo: {video}</li></ul>
+<ul><li>Repositório: {link(BRANCH_URL + '/rpa', 'rpa/ na branch main')}</li><li>Vídeo demonstrativo: {video}</li></ul>
 """
     return page('Acolhe · Robotic Process Automation', 'Do processo manual à automação inteligente · Global Solution 2026.2 · FIAP', body)
 
@@ -201,7 +201,7 @@ def devsecops():
     body = team_block() + f"""
 <h2>1. Links</h2>
 <ul><li>MVP público: {link(MVP)}</li>
-<li>Repositório: {link(BRANCH_URL, REPO + ' (branch Aksel+Ian)')}; Dockerfile, <code>.github/workflows/devsecops.yml</code>, <code>devsecops/terraform/</code>; Ficha Técnica no README</li>
+<li>Repositório: {link(BRANCH_URL, REPO + ' (branch main)')}; Dockerfile, <code>.github/workflows/devsecops.yml</code>, <code>devsecops/terraform/</code>; Ficha Técnica no README</li>
 <li>Execução barrada: {link(RUN + '44190586981')} · corrigida: {link(RUN + '44191227009')}</li>
 <li>Deploy automático pela <code>main</code>, sem passo manual: {link(RUN + '44218762634')} (e o primeiro, {link(RUN + '44218099076')})</li></ul>
 

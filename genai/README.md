@@ -6,11 +6,12 @@ Assistente local em PT/ES com Qwen2.5 3B Q4_K_M, recuperação lexical e agente 
 
 Siga a instalação do README da raiz. scripts/preparar-demo.ps1 baixa a LLM pelo Ollama; scripts/iniciar-demo.ps1 confere o mesmo digest usado na avaliação. O corpus, os prompts, as guardas e o agente estão no código.
 
-O [relatório GenAI](../docs/entregas/GENAI_RELATORIO.md) apresenta método, resultados e erros. No D16, baseline acertou 7/16 e RAG/agente, 14/16, em revisão técnica exploratória. A revisão humana permanece pendente.
+O [relatório GenAI](../docs/entregas/GENAI_RELATORIO.md) apresenta pipeline, catálogo da base, método, resultados e erros. No D16, baseline acertou 7/16 e RAG/agente, 14/16, em revisão técnica exploratória. A equipe informou em 19/11/2026 que concluiu a revisão humana dos resultados. O placar e os JSONs históricos foram preservados; essa confirmação não representa nova avaliação independente nem revisão pedagógica do corpus.
 
 ## Arquivos
 
 - data/corpus.json: fonte canônica das oito microlições PT/ES.
+- base/fontes.csv: catálogo com fonte, formato JSON, licença e número de trechos.
 - model_manifest.json: identidade, tamanho, licença e digest do modelo.
 - service.py e compare.py: recuperação, geração e agente.
 - avaliacao: casos, limiar, respostas, rastros e revisão técnica.

@@ -23,7 +23,7 @@ O que enviar em cada disciplina está em [docs/entregas/README.md](entregas/READ
 | DevSecOps | Ian e Aksel | ✅ | Só o envio no portal |
 | GenAI | Rony | ✅ | Só o envio |
 | Vision | Rony | ✅ | Só o envio |
-| RPA | Ian e Aksel | 🟡 👤 | Vídeo publicado; conferir duração e link no PDF |
+| RPA | Ian e Aksel | ✅ 👤 | PDF atualizado com vídeo de 2min50s e link da main; falta o envio |
 | BI | Tomáz | 🟡 👤 | Link publicado; conferir duração, acesso e requisitos do pitch |
 | Maker | Tomáz | 🟡 👤 | Vídeo e link publicados; limites em `docs/maker-entrega.md` |
 
@@ -57,7 +57,7 @@ Entrega: PDF com BPMN, PDD, evidências e links (`docs/entregas/GS_RPA_Acolhe.pd
 | 06 Integração com o MVP | ✅ | Painel "Acompanhamento automático" no app. |
 | 07 Testes de sucesso, decisão e falha | ✅ | `rpa/demo_e2e.py` e testes na esteira. |
 | 08 README estruturado | ✅ | Integrantes, PDD, BPMN, instruções. |
-| Vídeo de até 3 min | 🟡 👤 | https://youtu.be/9Vxrja0XkZk. Conferir duração e link no PDF; se necessário, regerar com `VIDEO_RPA=<link> python docs/entregas/gerar_pdfs.py`. |
+| Vídeo de até 3 min | ✅ | https://youtu.be/9Vxrja0XkZk, 2min50s; link incluído no PDF. O gerador utiliza esse vídeo por padrão. |
 
 ## 3. Secure DevOps Tools & Cloud Computing (Ian e Aksel), 14 pontos
 Entrega: PDF único com links clicáveis (`docs/entregas/GS_DevSecOps_Acolhe.pdf`, 6 páginas), no portal da disciplina.

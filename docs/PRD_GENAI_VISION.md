@@ -65,4 +65,4 @@ O modelo retido foi treinado com 91 fotos; a continuação com 117 não melhorou
 
 ## Evidências e estado da entrega
 
-O ensaio da distribuição verificou o checkpoint idêntico em um clone novo, três fotos e respostas PT/ES com recusa. Passaram 124 testes Python e 14 Node; esses testes verificam implementação, não qualidade pedagógica. Os relatórios GenAI e Vision apresentam os resultados dos modelos. Os vídeos estão vinculados nos relatórios; permanecem pendentes revisão humana e envio acadêmico.
+O ensaio da distribuição verificou o checkpoint idêntico em um clone novo, três fotos e respostas PT/ES com recusa. Passaram 124 testes Python e 14 Node; esses testes verificam implementação, não qualidade pedagógica. Os relatórios GenAI e Vision apresentam os resultados dos modelos. A equipe informou em 19/11/2026 que concluiu a revisão humana dos resultados de GenAI, preservando o placar técnico e os JSONs históricos, sem nova avaliação independente. A revisão pedagógica do corpus é uma etapa distinta. Os vídeos estão vinculados nos relatórios; o envio acadêmico permanece pendente.
