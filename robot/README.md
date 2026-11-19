@@ -9,12 +9,14 @@ Configuração atual: **17/11/2026**. ENA/ENB ficam habilitados pelos jumpers da
 - Aksel Viktor Caminha Rae — RM 99011
 - Ian Xavier Kuraoka — RM 98860
 
+Os identificadores internos e o protocolo continuam `arm` para **braço esquerdo** e `head` para **braço direito**. A mudança é de nomenclatura; os pinos, a duração e o sentido dos pulsos permanecem iguais.
+
 ## Ligações atuais
 
 | Componente | Conexão |
 | --- | --- |
-| Cabeça, motor A | L298N OUT1/OUT2; IN1→D2, IN2→D3 |
-| Braço, motor B | L298N OUT3/OUT4; IN3→D4, IN4→D7 |
+| Braço direito, motor A | L298N OUT1/OUT2; IN1→D2, IN2→D3 |
+| Braço esquerdo, motor B | L298N OUT3/OUT4; IN3→D4, IN4→D7 |
 | ENA/ENB | Jumpers instalados, sem fios ao Uno e sem resistores desses pinos para GND |
 | DHT11 em módulo | DATA/S→D8; VCC→5 V; GND comum; seguir marcações da placa |
 | LCD QAPASS 16×2 I²C | SDA→A4; SCL→A5; VCC→5 V; GND comum |
@@ -39,8 +41,8 @@ flowchart TB
     BAT ---|"Negativo: GND"| H
     UNO -->|"D2: IN1 — D3: IN2"| H
     UNO -->|"D4: IN3 — D7: IN4"| H
-    H -->|"OUT1/OUT2"| HEAD["Motor da cabeça"]
-    H -->|"OUT3/OUT4"| ARM["Motor do braço"]
+    H -->|"OUT1/OUT2"| HEAD["Motor do braço direito"]
+    H -->|"OUT3/OUT4"| ARM["Motor do braço esquerdo"]
     POS -->|"VCC"| DHT["Módulo DHT11"]
     GND ---|"GND"| DHT
     DHT -->|"DATA/S: D8"| UNO
@@ -75,19 +77,19 @@ TT DC sem encoder não mede posição nem garante retorno. Testar primeiro um mo
 
 ## Testar no Acolhe
 
-Execute `Iniciar-Acolhe.cmd` na raiz e abra **http://127.0.0.1:8080/robo.html**. Atualize com Ctrl+F5, escolha a porta atual do Uno e conecte. A versão nova exige gravar o firmware acima.
+Execute `Iniciar-Acolhe.cmd` na raiz. Ele verifica dependências e arquivos Whisper/Piper, inicia o Ollama instalado se necessário, confere e carrega o modelo configurado (padrão `qwen3:4b`), valida a voz e abre **http://127.0.0.1:8080/robo.html**. A primeira carga pode demorar; aguarde a mensagem de pronto. Se o servidor já estiver aberto, ele será reutilizado sem reiniciar a conexão ou os motores. Instalação/modelos ausentes geram instrução clara, sem download silencioso. O Ollama permanece em segundo plano ao fechar o Acolhe. Atualize com Ctrl+F5, escolha a porta atual do Uno e conecte. A versão nova exige gravar o firmware acima.
 
 | Frase por texto/voz ou botão rápido | Motor |
 | --- | --- |
-| `Acolhe, mova o braço` | Braço, OUT3/OUT4, pulso100ms/sentido1 |
-| `Acolhe, mova a cabeça` | Cabeça, OUT1/OUT2, pulso100ms/sentido1 |
-| `Acolhe, dê um oi` ou `Acolhe, diga sim` | Braço, mesmo pulso de teste |
-| `Acolhe, diga não` | Cabeça, mesmo pulso de teste |
+| `Acolhe, mova o braço esquerdo` | Braço esquerdo, OUT3/OUT4, pulso100ms/sentido1 |
+| `Acolhe, mova o braço direito` | Braço direito, OUT1/OUT2, pulso100ms/sentido1 |
+| `Acolhe, dê um oi` ou `Acolhe, diga sim` | Braço esquerdo, mesmo pulso de teste |
+| `Acolhe, diga não` | Braço direito, mesmo pulso de teste |
 | Perguntas sobre temperatura, umidade ou explicações | Nenhum motor |
 
 Os comandos de teste são pedidos explícitos do operador, reconhecidos por regra fechada; não são comandos produzidos pelo LLM. O retorno usa `mode:motor_test` e `model:null`, confirma somente envio do pulso e mantém `physical_verified:false`. Negação, frase explicativa, pergunta sobre como mover ou pedido para os dois motores não são acionamento.
 
-Na calibração supervisionada do painel, ajuste duração (1–150ms) e sentido. O campo PWM foi removido. Somente após **observar movimento seguro** registre os mesmos parâmetros testados. Confirme os dois motores para habilitar gestos das lições: acerto→braço; nova tentativa→cabeça. Parar/reiniciar/reconectar limpa essa habilitação. Um novo pedido explícito continua sendo uma nova autorização de teste manual; desconectar ou cortar a potência impede esses testes.
+Na calibração supervisionada do painel, ajuste duração (1–150ms) e sentido. O campo PWM foi removido. Somente após **observar movimento seguro** registre os mesmos parâmetros testados. Confirme os dois motores para habilitar gestos das lições: acerto→braço esquerdo; nova tentativa→braço direito. Parar/reiniciar/reconectar limpa essa habilitação. Um novo pedido explícito continua sendo uma nova autorização de teste manual; desconectar ou cortar a potência impede esses testes.
 
 ### Conversa e treino de palavras
 
@@ -103,7 +105,7 @@ Também aceita “Acolhe, vamos praticar?”, “Vamos aprender uma palavra”, 
 | silla | cadeira |
 | botella | garrafa |
 
-Responda apenas a palavra. Acerto pede gesto do braço; uma palavra incorreta pede gesto da cabeça e oferece nova tentativa. **Os dois motores precisam estar calibrados**, conectados e fora do intervalo mínimo de dois segundos; sem isso, a atividade continua sem gesto e o painel informa. Não há garantia de ângulo, balanço ou retorno: cada pedido é um pulso único. “Diga sim” é uma convenção de gesto com o braço, sem pressupor que a cabeça consiga assentir.
+Responda apenas a palavra. Acerto pede gesto do braço esquerdo; uma palavra incorreta pede gesto do braço direito e oferece nova tentativa. **Os dois motores precisam estar calibrados**, conectados e fora do intervalo mínimo de dois segundos; sem isso, a atividade continua sem gesto e o painel informa. Não há garantia de ângulo, balanço ou retorno: cada pedido é um pulso único. “Diga sim” é uma convenção de gesto com o braço esquerdo, sem pressupor que o braço direito consiga assentir.
 
 “Não sei” ou “Repita a pergunta” dá dica, sem gesto. “Encerrar atividade” ou “pare” encerra o treino, sem gesto. Perguntas completas e negações não são avaliadas como erro. O botão **Parar** cancela a interação, termina o treino pendente e bloqueia os gestos automáticos. Para recomeçar, diga “Vamos praticar”. “Limpar conversa” também zera o treino.
 
@@ -131,7 +133,7 @@ Configuração opcional de caminhos: `ACOLHE_WHISPER_PATH`, `ACOLHE_PIPER_EXE`, 
    git switch feat/acolhe-maker-voz
    ```
 
-3. Com Ollama instalado, obtenha o modelo e confira o nome. O download exige internet; a execução usa a API local. Mantenha o aplicativo Ollama aberto. Se ele não estiver servindo a API, execute `ollama serve` em um terminal separado; não abra uma segunda instância se a porta 11434 já estiver ocupada. [CLI oficial](https://docs.ollama.com/cli).
+3. Com Ollama instalado, obtenha o modelo e confira o nome. O download exige internet; a execução usa a API local. `Iniciar-Acolhe.cmd` iniciará o serviço instalado automaticamente. Para diagnóstico manual, existe `ollama serve`; não abra uma segunda instância se a porta 11434 já estiver ocupada. [CLI oficial](https://docs.ollama.com/cli).
 
    ```powershell
    ollama pull qwen3:4b
@@ -199,11 +201,18 @@ node --check app/static/robot.js
 
 - [ ] Medir/conferir pack, corrente na partida, GND e jumpers.
 - [x] Uno executando ACOLHE_V2; DHT11 com telemetria real válida e interface LCD detectada pelo backend.
-- [ ] Registrar em vídeo/fotos o sensor, as leituras e o conteúdo visível do LCD.
-- [x] Cabeça e braço testados pelo usuário em17/11; sessão registrou100ms/sentido1 em cada motor, acionamento total. Confirmação humana, sem medição de ângulo/retorno pelo sistema.
-- [x] Operador confirmou gestos nas atividades após registrar cabeça e braço em 17/11.
-- [ ] Fazer cinco conversas reais com microfone/voz audível e medir latência.
+- [x] Vídeo apresenta painel com leituras, LCD físico e montagem interna com apresentação dos componentes.
+- [x] Braço direito e braço esquerdo testados pelo usuário em17/11; sessão registrou100ms/sentido1 em cada motor, acionamento total. Confirmação humana, sem medição de ângulo/retorno pelo sistema.
+- [x] Operador confirmou gestos nas atividades após registrar braço direito e braço esquerdo em 17/11.
+- [x] Vídeo registra pergunta por voz sobre o ambiente e várias interações do treino com resposta falada.
+- [ ] Medir e registrar a latência das conversas; demonstrar variação ambiental e oferta automática de atividade.
 - [ ] Demonstrar falhas: comunicação, sensor inválido/expirado, IA indisponível e parada durante gesto.
-- [ ] Fotografar montagem e gravar vídeo de até6min; inserir link real no README.
+- [x] Vídeo gravado pelo grupo e link inserido nos READMEs.
+- [x] Duração de 4min13s e acesso sem login conferidos em 19/11/2026.
+- [ ] Completar conferência das evidências dos requisitos e fotos da montagem.
 
-**Vídeo: pendente.** GitHub é a documentação oficial da disciplina; ZIP/PDF não substituem código, instalação, integração e vídeo. Roteiro: [docs/roteiros_videos.md](../docs/roteiros_videos.md).
+**[Assistir ao vídeo demonstrativo do Acolhe — 4min13s](https://youtu.be/Bm3uaAx4McE).** Acesso sem login e duração dentro do limite conferidos em 19/11/2026. GitHub é a documentação oficial da disciplina; ZIP/PDF não substituem código, instalação, integração e vídeo. Roteiro: [docs/roteiros_videos.md](../docs/roteiros_videos.md).
+
+### Diagnóstico da inicialização completa
+
+Execute `.\.venv\Scripts\python.exe -m app.launcher --check` para verificar dependências, iniciar/carregar o Ollama e validar Piper sem abrir navegador, servidor novo ou acionar motores. O log de inicialização do Ollama fica em `%TEMP%\acolhe-ollama.log`. Se houver falha, o iniciador não anuncia que está pronto. Whisper é carregado na primeira fala; a captura só começa pelo botão. A porta do Arduino e a calibração continuam sendo escolhidas no painel.

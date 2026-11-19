@@ -22,18 +22,20 @@ Português para recomeçar. Protótipo acadêmico da Global Solution FIAP 2026.2
 
 O Acolhe apoia o acolhimento linguístico em português/espanhol, com conversa educativa e atividades sobre o ambiente. A proposta CitizenTech aproxima pessoas em adaptação ao idioma de um recurso interativo de aprendizagem, com mediação de um adulto.
 
-- **Hardware atual:** Arduino Uno USB, DHT11 adicional, LCD QAPASS I²C, L298N e dois motores TT (cabeça/braço), sem buzzer e sem PWM.
+- **Hardware atual:** Arduino Uno USB, DHT11 adicional, LCD QAPASS I²C, L298N e dois motores TT (braço direito/braço esquerdo), sem buzzer e sem PWM.
 - **Voz e IA:** microfone → Whisper local → Qwen3 4B/Ollama com material educativo e telemetria validada → Piper/saída de voz no computador. O Uno atualiza o LCD e executa os gestos autorizados.
-- **Autonomia:** três leituras válidas de pelo menos 30 °C oferecem uma atividade sobre calor, sem comando manual; rearme abaixo de 28 °C e intervalo mínimo de dois minutos. É regra didática, sem significado clínico. No treino, acerto pede gesto do braço e nova tentativa pede cabeça, após calibração observada. Regras e respostas geradas pelo LLM são identificadas separadamente.
+- **Autonomia:** três leituras válidas de pelo menos 30 °C oferecem uma atividade sobre calor, sem comando manual; rearme abaixo de 28 °C e intervalo mínimo de dois minutos. É regra didática, sem significado clínico. No treino, acerto pede gesto do braço esquerdo e nova tentativa pede braço direito, após calibração observada. Regras e respostas geradas pelo LLM são identificadas separadamente.
 - **Instalação, componentes, circuito e firmware:** [robot/README.md](robot/README.md).
 - **Conferência de requisitos e evidências:** [docs/maker-entrega.md](docs/maker-entrega.md).
 - **Abrir a conversa local:** http://127.0.0.1:8080/robo.html, depois de executar `Iniciar-Acolhe.cmd`.
 
 ### Vídeo demonstrativo Maker (até 6 minutos)
 
-**Pendente: gravar e inserir aqui o link real do YouTube ou o arquivo no repositório.** O funcionamento dos motores e dos gestos foi confirmado pelo operador; isso não substitui o vídeo exigido. O roteiro de até 5min45s está em [docs/roteiros_videos.md](docs/roteiros_videos.md).
+**[Assistir ao vídeo demonstrativo do Acolhe no YouTube](https://youtu.be/Bm3uaAx4McE)**
 
-A entrega Maker ainda depende do vídeo, das evidências físicas e da publicação desta revisão no GitHub. Os quatro integrantes e RMs estão acima; apenas um integrante deve enviar o link oficial.
+**Duração: 4min13s**, dentro do limite de seis minutos; acesso sem login conferido em 19/11/2026. O roteiro está em [docs/roteiros_videos.md](docs/roteiros_videos.md).
+
+A entrega Maker ainda depende da conferência das evidências físicas e da publicação desta revisão no GitHub. Os quatro integrantes e RMs estão acima; apenas um integrante deve enviar o link oficial.
 
 ## Ficha técnica
 
@@ -71,7 +73,7 @@ python -B -m app.server
 
 
 
-Abra http://127.0.0.1:8080. No Windows, `Iniciar-Acolhe.cmd` executa o mesmo servidor. Encerre com Ctrl+C. Não é necessário instalar dependências para o MVP padrão ou sua suíte Python. Não abra index.html diretamente, pois a aplicação precisa da API.
+Abra http://127.0.0.1:8080. No Windows, `Iniciar-Acolhe.cmd` faz a inicialização completa do robô: confere dependências/modelos de voz, inicia o Ollama instalado quando necessário, carrega o modelo configurado e abre a conversa no navegador. Para esse modo completo, prepare antes com `Preparar-Robo.cmd`; ele reutiliza serviços abertos, sem reiniciar a conexão do Arduino. O comando `python -B -m app.server` acima continua sendo a abertura apenas do servidor básico. Encerre com Ctrl+C. Não é necessário instalar dependências para o MVP padrão ou sua suíte Python. Não abra index.html diretamente, pois a aplicação precisa da API.
 
 
 

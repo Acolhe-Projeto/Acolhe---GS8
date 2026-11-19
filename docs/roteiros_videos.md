@@ -56,7 +56,7 @@ No painel Acolhe, clicar para falar e perguntar como esta a sala. Mostrar transc
 
 ## 3min25s a 4min35s Ação e retorno
 
-Com calibracao supervisionada confirmada nos dois motores, executar um caso de acerto (braco) e um caso de erro (cabeca). Confirmar movimento visivel e parametros de bancada. Demonstrar tambem a mudanca de estado no LCD I2C. Mostrar uma ação segura e um incentivo apropriado. Explicar como o mediador pode interromper. Evitar movimentos bruscos, força excessiva ou reação punitiva.
+Com calibracao supervisionada confirmada nos dois motores, executar um caso de acerto (braco esquerdo) e um caso de erro (braco direito). Confirmar movimento visivel e parametros de bancada. Demonstrar tambem a mudanca de estado no LCD I2C. Mostrar uma ação segura e um incentivo apropriado. Explicar como o mediador pode interromper. Evitar movimentos bruscos, força excessiva ou reação punitiva.
 
 ## 4min35s a 5min20s Falha e segurança
 
@@ -71,4 +71,4 @@ Recapitular sensor, decisão e ação efetivamente demonstrados. Exibir pendênc
 Fotos da montagem, diagrama conferido, lista de componentes reais, versão do firmware, leituras com data/hora, eventos da aplicação, casos de segurança e vídeo. Não usar imagens de pessoas sem autorização. Não afirmar hardware concluído com base em testes do simulador.
 
 ### Sequência curta para a atividade com gestos
-Dizer “Vamos praticar”. Acolhe pergunta como se diz hola: responder “olá” para mostrar acerto e gesto do braço. Na pergunta silla, responder “livro” para demonstrar dica e gesto da cabeça; em seguida “cadeira” e “garrafa” para concluir. Registrar previamente os dois motores na calibração supervisionada. Esperar ao menos dois segundos entre gestos. Dizer “não sei” demonstra dica sem gesto; “Encerrar atividade” termina. Explicar que essa avaliação é regra curada e que as outras perguntas usam Qwen3; não chamar a regra de geração de IA.
+Dizer “Vamos praticar”. Acolhe pergunta como se diz hola: responder “olá” para mostrar acerto e gesto do braço esquerdo. Na pergunta silla, responder “livro” para demonstrar dica e gesto do braço direito; em seguida “cadeira” e “garrafa” para concluir. Registrar previamente os dois motores na calibração supervisionada. Esperar ao menos dois segundos entre gestos. Dizer “não sei” demonstra dica sem gesto; “Encerrar atividade” termina. Explicar que essa avaliação é regra curada e que as outras perguntas usam Qwen3; não chamar a regra de geração de IA.

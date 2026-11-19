@@ -41,8 +41,8 @@ def motor_command(text):
     normalized = normalize(text)
     alias = re.fullmatch(r'(?:acolhe )?(de um oi|diga sim|diga nao)(?: por favor)?', normalized)
     if alias: return 'head' if alias[1] == 'diga nao' else 'arm'
-    match = re.fullmatch(r'(?:acolhe )?(?:mova|mexa|teste) (?:(?:o|a) )?(braco|cabeca)(?: por favor)?',normalized)
-    return {'braco':'arm', 'cabeca':'head'}[match[1]] if match else None
+    match = re.fullmatch(r'(?:acolhe )?(?:mova|mexa|teste) (?:(?:o|a) )?(braco esquerdo|braco direito|braco|cabeca)(?: por favor)?',normalized)
+    return {'braco esquerdo':'arm', 'braco direito':'head', 'braco':'arm', 'cabeca':'head'}[match[1]] if match else None
 
 
 class VoiceAssistant:
@@ -193,12 +193,12 @@ class VoiceAssistant:
                     if generation != self.generation: raise VoiceError('cancelled','Interação interrompida.') from exc
                     raise VoiceError('hardware',str(exc)) from exc
                 mode='motor_test'; documents=[]; environmental=False
-                part='braço' if requested_motor=='arm' else 'motor da cabeça'
+                part='braço esquerdo' if requested_motor=='arm' else 'motor do braço direito'
                 answer=f'Enviei um pulso de teste para o {part}. Confira se houve movimento.'
                 command=normalize(text)
-                if 'de um oi' in command: answer='Olá! Pedi um gesto de cumprimento com o braço. Vamos aprender juntos?'
-                elif 'diga sim' in command: answer='Sim! Pedi um gesto com o braço. Confira o movimento.'
-                elif 'diga nao' in command: answer='Não! Pedi um gesto com a cabeça. Confira o movimento.'
+                if 'de um oi' in command: answer='Olá! Pedi um gesto de cumprimento com o braço esquerdo. Vamos aprender juntos?'
+                elif 'diga sim' in command: answer='Sim! Pedi um gesto com o braço esquerdo. Confira o movimento.'
+                elif 'diga nao' in command: answer='Não! Pedi um gesto com o braço direito. Confira o movimento.'
             elif practice:
                 mode='guided_practice'; documents=[]; environmental=False
                 answer=practice['answer']

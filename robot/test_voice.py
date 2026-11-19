@@ -31,6 +31,10 @@ class VoiceTests(unittest.TestCase):
         self.assertNotEqual(result['mode'],'guided_practice')
 
     def test_motor_command_requires_an_explicit_complete_request(self):
+        self.assertEqual(motor_command('Acolhe, mova o braço esquerdo.'),'arm')
+        self.assertEqual(motor_command('Acolhe, mova o braço direito.'),'head')
+        self.assertIsNone(motor_command('Não mova o braço direito'))
+        self.assertIsNone(motor_command('Mova o braço esquerdo e o braço direito'))
         self.assertEqual(motor_command('Acolhe, mova o braço.'),'arm')
         self.assertEqual(motor_command('MEXA A CABEÇA, por favor!'),'head')
         self.assertEqual(motor_command('Acolhe, dê um oi!'),'arm')
